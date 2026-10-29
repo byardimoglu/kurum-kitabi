@@ -42,13 +42,13 @@ Eğitim sıklığı, eğitim süresi, periyodik muayene, risk değerlendirmesi y
 
 ### Evrak sayıları nasıl verilir?
 
-Yazı ve form şablonları değişmez; her kullanım ayrı bir evraktır ve kendi sayısını ve tarihini alır. Şirket bilgileri → Evrak numaralama'dan kural seçilir:
+Yazı ve form şablonları değişmez; her kullanım ayrı bir evraktır ve kendi sayısını ve tarihini alır. Sayıda şirket öneki, belge türünün kısaltması (SVN = savunma istem, GRV = görevlendirme, TRF = terfi, UYR = yazılı uyarı, IZN = izin…), yıl ve sıra yer alır. Kısaltma Belge ayarlarından değiştirilebilir. Şirket bilgileri → Evrak numaralama'dan kural seçilir:
 
 | Kural | Örnek (3. savunma istem yazısı) |
 |---|---|
-| Her belge türü kendi sırasıyla, her yıl 1'den (varsayılan) | ORM-YZ-05/2026-003 |
-| Her belge türü kendi sırasıyla, kesintisiz | ORM-YZ-05/003 |
-| Tüm evraklar tek sırada, her yıl 1'den | ORM-2026-0012 |
+| Her belge türü kendi sırasıyla, her yıl 1'den (varsayılan) | ORM-SVN-2026/003 |
+| Her belge türü kendi sırasıyla, kesintisiz | ORM-SVN/003 |
+| Tüm evraklar tek sırada, her yıl 1'den | ORM-2026/0012 |
 
 Sisteme geçmeden önce kâğıt üzerinde evrak verdiyseniz, belgenin **Belge ayarları** penceresine verilen son sayıyı yazın; sıra onun üzerine devam eder (4 yazdıysanız ilk evrak 005 olur). Gerekirse sayı, evrak düzenlenirken elle de değiştirilebilir; aynı sayının iki kez kullanılmasına izin verilmez.
 

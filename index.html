@@ -565,7 +565,7 @@ const FIELDS=[
   {k:'tatbikat_tarihi',l:'Son acil durum tatbikatı tarihi',type:'date'},
  ]],
  ['Evrak numaralama',[
-  {k:'evrak_sira',l:'Evrak sayısı nasıl verilsin?',type:'select',wide:true,opts:[['belge_yil','Her belge türü kendi sırasıyla, her yıl 1’den başlar (ORM-YZ-05/2026-003)'],['belge','Her belge türü kendi sırasıyla, yıl sonunda sıfırlanmaz (ORM-YZ-05/003)'],['genel_yil','Tüm evraklar tek sırada, her yıl 1’den başlar (ORM-2026-0012)']],hint:'Yazı ve formlar her kullanımda bu kurala göre sayı alır'},
+  {k:'evrak_sira',l:'Evrak sayısı nasıl verilsin?',type:'select',wide:true,opts:[['belge_yil','Her belge türü kendi sırasıyla, her yıl 1’den başlar (ORM-SVN-2026/003)'],['belge','Her belge türü kendi sırasıyla, yıl sonunda sıfırlanmaz (ORM-SVN/003)'],['genel_yil','Tüm evraklar tek sırada, her yıl 1’den başlar (ORM-2026/0012)']],hint:'Yazı ve formlar her kullanımda bu kurala göre sayı alır'},
  ]],
 ];
 const FIELD_LIST=FIELDS.flatMap(g=>g[1]);
@@ -628,6 +628,7 @@ function sanitizeCompany(c){
     d.sections=(Array.isArray(d.sections)?d.sections:[]).map(s=>({id:okId(s.id)?s.id:uid(),title:String(s.title||''),body:String(s.body||'')}));
     d.revisions=Array.isArray(d.revisions)?d.revisions:[];
     d.seqBase=d.seqBase&&typeof d.seqBase==='object'?d.seqBase:{};
+    d.abbr=normKod(d.abbr||'');
   }
   c.log=Array.isArray(c.log)?c.log:[];
   for(const e of c.log){e.act=String(e.act||'').replace(/[^a-z-]/g,'');}
@@ -2890,7 +2891,7 @@ async function docSettings(d){
   <label>Belge adı<input name="title" required maxlength="120" value="${esc(d.title)}"></label>
   <label>Doküman kodu<input name="code" required maxlength="20" value="${esc(d.code)}"></label>
   <p class="muted small">Ad ve kod değişikliği yayınlanmamış değişiklik sayılır; yeni revizyonla yayınlanır. Belgenin tam numarası şirket önekiyle birleşir.</p>
-  ${fillableDoc(d)&&C.info.evrak_sira!=='genel_yil'?`<label>${C.info.evrak_sira==='belge'?'Sisteme geçmeden önce bu belgeyle verilmiş son sayı':`${today0().getFullYear()} yılında sisteme geçmeden önce bu belgeyle verilmiş son sayı`}<input name="base" type="number" min="0" step="1" value="${esc(String((d.seqBase||{})[seqBaseKey(C,dayInput())]||''))}" placeholder="Yoksa boş bırakın"></label><p class="muted small">Örneğin bu yıl kâğıt üzerinde 4 tane verdiyseniz 4 yazın; sistemdeki ilk evrak 5 numarayı alır.</p>`:''}
+  ${fillableDoc(d)&&C.info.evrak_sira!=='genel_yil'?`<label>Evrak kısaltması<input name="abbr" maxlength="6" value="${esc(evrakAbbr(d))}"></label><p class="muted small">Evrak sayısında belge türünü gösterir: ${esc(evrakSeq(C,d,dayInput()).no)}. Sayılar bu kısaltmayla verilir; sıra değişmez.</p><label>${C.info.evrak_sira==='belge'?'Sisteme geçmeden önce bu belgeyle verilmiş son sayı':`${today0().getFullYear()} yılında sisteme geçmeden önce bu belgeyle verilmiş son sayı`}<input name="base" type="number" min="0" step="1" value="${esc(String((d.seqBase||{})[seqBaseKey(C,dayInput())]||''))}" placeholder="Yoksa boş bırakın"></label><p class="muted small">Örneğin bu yıl kâğıt üzerinde 4 tane verdiyseniz 4 yazın; sistemdeki ilk evrak 5 numarayı alır.</p>`:''}
   <div class="dlg-foot" style="justify-content:space-between"><button class="btn danger" value="delete" formnovalidate>Belgeyi sil</button><span class="actions"><button class="btn" value="cancel" formnovalidate>Vazgeç</button><button class="btn primary" value="ok">Kaydet</button></span></div></form>`);
   if(!r) return;
   if(r.v==='delete'){
@@ -2908,6 +2909,13 @@ async function docSettings(d){
   const notes=[];
   if(title!==d.title) notes.push(`Ad: “${d.title}” → “${title}”`);
   if(code!==d.code) notes.push(`Kod: ${d.code} → ${code}`);
+  if(r.fd.has('abbr')){
+    const na=normKod(r.fd.get('abbr')),oa=evrakAbbr(d);
+    if(na&&na!==oa){
+      if(C.docs.some(x=>x!==d&&evrakAbbr(x)===na)){toast(`${na} kısaltması başka bir belgede kullanılıyor.`,'err');return;}
+      d.abbr=na;notes.push(`Evrak kısaltması: ${oa} → ${na}`);
+    }
+  }
   if(r.fd.has('base')){
     const bk=seqBaseKey(C,dayInput()),nb=Math.max(0,parseInt(r.fd.get('base'),10)||0),ob=+((d.seqBase||{})[bk]||0);
     if(nb!==ob){d.seqBase={...(d.seqBase||{}),[bk]:nb};notes.push(`Kâğıt üzerinde verilmiş son sayı: ${ob} → ${nb}`);}
@@ -3112,6 +3120,14 @@ function helpDlg(){
 
 
 /* ---------- Kütüphane ve kategoriler ---------- */
+/* Evrak sayısında kullanılan belge kısaltması. Şablon kodu (YZ-05) yerine kullanılır; "05/2026" ay/yıl gibi okunmasın diye. */
+const ABBR={gorevlendirme:'GRV',gorev_degisikligi:'GDB',terfi:'TRF',uyari:'UYR',savunma:'SVN',calisma_belgesi:'CBL',tesekkur:'TSK',istifa:'IST',izin:'IZN',fazla_calisma:'FCO',tutanak:'TUT',savunma_form:'SVT',zimmet:'ZMT',ise_giris:'IGK',isten_cikis:'ICF',deneme:'DSD',performans:'PRF',oneri:'ONR',sikayet:'SKY',cikar:'CCB',kkd_zimmet:'KKD',egitim:'EGT',is_izni:'ISZ',ziyaretci:'ZYR',tehlike:'TDB',ramak:'RKB',kaza:'IKB',kvkk:'KVK',uzaktan:'UHC',elkitabi:'PEK',gorev:'GTT',isg:'ISG'};
+function evrakAbbr(d){
+  if(normKod(d.abbr)) return normKod(d.abbr);
+  if(ABBR[d.role]) return ABBR[d.role];
+  const w=ascii(d.title).toUpperCase().split(/[^A-Z0-9]+/).filter(x=>x&&!['VE','FORMU','FORM','YAZISI','BELGESI'].includes(x));
+  return (w.length>1?w.slice(0,3).map(x=>x[0]).join(''):(w[0]||'EVR').slice(0,3))||'EVR';
+}
 const ROLE_CAT={elkitabi:'politika',gorev:'politika',kvkk:'politika',uzaktan:'politika',isg:'isg',tehlike:'isg',ramak:'isg',kaza:'isg',kkd_zimmet:'isg',egitim:'isg',is_izni:'isg',ziyaretci:'isg'};
 const DESC={
   elkitabi:'Çalışma düzeni, izinler, davranış ve kılık kıyafet kuralları, disiplin ve okudum-anladım beyanı.',
@@ -3402,8 +3418,8 @@ function evrakSeq(c,d,date){
   const key=mode==='genel_yil'?`g:${y}`:mode==='belge'?`d:${d.id}`:`d:${d.id}:${y}`;
   let mx=mode==='genel_yil'?0:+((d.seqBase||{})[seqBaseKey(c,date)]||0);
   for(const r of c.records) if(r.seqKey===key) mx=Math.max(mx,r.seq||0);
-  const n=mx+1,p3=String(n).padStart(3,'0'),dn=docNo(c,d)||'EVR',kod=String(c.info.kod||'').trim()||'EVR';
-  const no=mode==='genel_yil'?`${kod}-${y}-${String(n).padStart(4,'0')}`:mode==='belge'?`${dn}/${p3}`:`${dn}/${y}-${p3}`;
+  const n=mx+1,p3=String(n).padStart(3,'0'),kod=String(c.info.kod||'').trim()||'EVR',ab=evrakAbbr(d);
+  const no=mode==='genel_yil'?`${kod}-${y}/${String(n).padStart(4,'0')}`:mode==='belge'?`${kod}-${ab}/${p3}`:`${kod}-${ab}-${y}/${p3}`;
   return {key,n,no,y,mode};
 }
 function seqLabel(rec){
@@ -3463,7 +3479,8 @@ async function fillSave(){
   const d=C.docs.find(x=>x.id===fst.docId);if(!d||!pub(d)) return;
   if(!(await ensureUser())) return;
   const person=C.people.find(p=>p.id===fst.pid)||null,no=(fst.no||'').trim();
-  if(no&&C.records.some(r=>r.no===no)){toast(`${no} sayısı başka bir evrakta kullanılmış. Başka bir sayı girin ya da kutuyu boşaltın.`,'err');return;}
+  const fin=no||evrakSeq(C,d,fst.date).no;
+  if(C.records.some(r=>r.no===fin)){toast(`${fin} sayısı başka bir evrakta kullanılmış. ${no?'Başka bir sayı girin ya da kutuyu boşaltın.':'Belge ayarlarından evrak kısaltmasını değiştirin.'}`,'err');return;}
   const rec=mkRecord(C,d,person,fst.date,collectFill(),{no:no||undefined});
   persist();fst=null;go('evrak/'+rec.id);printRecord(rec);
 }
