@@ -1,0 +1,1987 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f3b63">
+<meta name="apple-mobile-web-app-title" content="Kurum Kitabı">
+<title>Kurum Kitabı</title>
+<meta name="description" content="Şirketinize göre uyarlanan personel el kitabı, iş sağlığı ve güvenliği kuralları ve bildirim formları. Her değişiklik kayda geçer, her yeni sürüm kendi revizyon numarasını alır. Ücretsiz, üyelik yok, veriler cihazınızdan çıkmaz.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Kurum Kitabı · şirket yönetmeliği ve İSG belgeleri">
+<meta property="og:description" content="Personel el kitabı, İSG kuralları, ramak kala, iş kazası ve tehlikeli durum formları. Logonuzla, revizyon kayıtlı.">
+<meta property="og:url" content="https://byardimoglu.github.io/kurum-kitabi/">
+<meta property="og:image" content="https://byardimoglu.github.io/kurum-kitabi/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="manifest" href="manifest.json">
+<style id="pageStyle"></style>
+<style>
+/* Kurumsal görünüm: sistem yazı tipi, lacivert vurgu, nötr gri zemin. Sayfa dışarıya istek atmaz. */
+:root{
+  --bg:#f3f4f6;
+  --surface:#fff;
+  --surface-2:#f6f7f9;
+  --ink:#1f2328;
+  --ink-2:#57606a;
+  --ink-3:#8c959f;
+  --line:#d8dee4;
+  --line-2:#c2c9d1;
+  --accent:#1f3b63;
+  --accent-ink:#fff;
+  --accent-soft:#e9eef5;
+  --ok:#1e7a34;
+  --ok-soft:#eaf4ec;
+  --warn:#9a5b00;
+  --warn-soft:#fdf4e3;
+  --danger:#b3261e;
+  --danger-soft:#fbeceb;
+  --info:#1f3b63;
+  --info-soft:#eef2f7;
+  --f:"Segoe UI",-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono",Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#16181c;--surface:#1e2126;--surface-2:#24282e;--ink:#e6e8eb;--ink-2:#a9b0b8;--ink-3:#7b838c;
+    --line:#30353c;--line-2:#3e444c;--accent:#9ab8e3;--accent-ink:#101826;--accent-soft:#1d2a3c;
+    --ok:#71c387;--ok-soft:#17291c;--warn:#e3a649;--warn-soft:#30250f;--danger:#ef8a80;--danger-soft:#38201e;
+    --info:#9ab8e3;--info-soft:#1b2534;color-scheme:dark;
+  }
+}
+/* Belge kâğıdı her temada beyazdır; içindeki bileşenler açık renk değişkenleriyle çizilir. */
+.paper,#print{
+  --surface:#fff;--surface-2:#f6f7f9;--ink:#1f2328;--ink-2:#57606a;--ink-3:#8c959f;--line:#d8dee4;--line-2:#c2c9d1;
+  --accent:#1f3b63;--accent-ink:#fff;--accent-soft:#e9eef5;--warn:#9a5b00;--warn-soft:#fdf4e3;--danger:#b3261e;
+  --p-ink:#1f2328;--p-line:#2b3036;--p-soft:#eef0f3;color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 var(--f)}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--accent);text-underline-offset:2px}
+[hidden]{display:none!important}
+code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);border:1px solid var(--line);border-radius:4px;padding:0 4px}
+
+input,select,textarea{background:var(--surface);border:1px solid var(--line-2);border-radius:4px;padding:7px 10px;min-height:38px;width:100%;color:var(--ink)}
+textarea{resize:vertical;line-height:1.45}
+input:focus,select:focus,textarea:focus{outline:2px solid color-mix(in srgb,var(--accent) 40%,transparent);outline-offset:1px;border-color:var(--accent)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:38px;padding:0 15px;border-radius:4px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap;text-decoration:none;line-height:1.2}
+.btn:hover{background:var(--surface-2)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.warn{background:var(--warn-soft);border-color:color-mix(in srgb,var(--warn) 35%,transparent);color:var(--warn)}
+.btn.danger{color:var(--danger);border-color:color-mix(in srgb,var(--danger) 40%,transparent)}
+.btn.ghost{border-color:transparent;background:transparent}
+.btn.ghost:hover{background:var(--surface-2)}
+.btn.sm{min-height:31px;padding:0 11px;font-size:13px}
+.btn.big{min-height:46px;padding:0 20px;font-size:15.5px}
+.link{background:none;border:0;padding:0;color:var(--accent);cursor:pointer;font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* Üst çubuk ve kenar menüsü */
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;height:58px;padding:0 18px;background:var(--surface);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16.5px;letter-spacing:-.01em;color:var(--ink);text-decoration:none;white-space:nowrap}
+.brand svg{flex:none}
+.co-sel{width:auto;max-width:320px;min-width:0;font-weight:700}
+.top .sp{flex:1}
+.userbtn{max-width:240px;overflow:hidden;text-overflow:ellipsis}
+.shell{display:grid;grid-template-columns:256px minmax(0,1fr);min-height:calc(100vh - 58px)}
+.side{position:sticky;top:58px;height:calc(100vh - 58px);overflow:auto;padding:16px 12px 20px;border-right:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;gap:2px}
+.nv{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border-radius:4px;border:0;background:none;color:var(--ink);text-decoration:none;font-size:14.5px;text-align:left;cursor:pointer;line-height:1.3}
+.nv:hover{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+.nv[aria-current="page"]{background:var(--accent-soft);color:var(--accent);font-weight:700;box-shadow:inset 3px 0 0 var(--accent)}
+.nv-add{color:var(--accent);font-weight:700}
+.nv .badge{margin-left:auto;font-size:12px;font-weight:700;padding:0 7px;border-radius:3px;background:var(--line);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.nv .badge.warn{background:var(--warn-soft);color:var(--warn)}
+.dot{width:9px;height:9px;border-radius:50%;flex:none;background:var(--ink-3)}
+.dot.ok{background:var(--ok)}
+.dot.warn{background:var(--warn)}
+.dot.none{background:transparent;box-shadow:inset 0 0 0 1.6px var(--ink-3)}
+.side-h{margin:16px 10px 4px;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.side-foot{margin-top:auto;padding:16px 10px 0;font-size:12.5px;line-height:1.55;color:var(--ink-2)}
+main{padding:28px clamp(16px,3.2vw,44px) 96px;min-width:0}
+.wrap{max-width:1060px}
+
+/* Sayfa öğeleri */
+.page-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+h1{font-size:27px;line-height:1.2;margin:0;letter-spacing:-.015em}
+.crumb{font-size:13px;color:var(--ink-2);margin-bottom:3px}
+.lead{font-size:16px;margin:6px 0 0;max-width:62ch}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.h2{font-size:18px;margin:36px 0 12px;letter-spacing:-.01em}
+.muted{color:var(--ink-2)}
+.small{font-size:13px}
+.mono{font-variant-numeric:tabular-nums}
+.nowrap{white-space:nowrap}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px 20px}
+.note{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;padding:12px 16px;border-radius:4px;background:var(--info-soft);margin:0 0 14px;font-size:14px}
+.note>div:first-child{flex:1;min-width:240px}
+.note{border-left:3px solid var(--info)}
+.note.warn{background:var(--warn-soft);border-left-color:var(--warn)}
+.note.ok{background:var(--ok-soft);border-left-color:var(--ok)}
+.note-act{display:flex;gap:6px;flex-wrap:wrap}
+.chips{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-top:9px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:3px;font-size:12.5px;font-weight:700;background:var(--surface);border:1px solid var(--line);color:var(--ink-2);text-decoration:none;white-space:nowrap}
+.chip.ok{background:var(--surface);color:var(--ok);border-color:color-mix(in srgb,var(--ok) 45%,transparent)}
+.chip.warn{background:var(--surface);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
+.chip.none{background:var(--surface-2)}
+ul.chg{margin:6px 0 0;padding-left:20px}
+ul.chg li{margin:1px 0}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{text-align:left;font-size:12px;font-weight:700;letter-spacing:.03em;color:var(--ink-2);padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap;background:var(--surface-2)}
+.tbl td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tbody tr:last-child td{border-bottom:0}
+.tbl .rev-x td{background:var(--surface-2)}
+
+/* Karşılama */
+.hero{max-width:780px;margin:5vh auto 0}
+.hero h1{font-size:36px;margin-top:14px}
+.hero .lead{font-size:18.5px;color:var(--ink-2);margin:10px 0 24px}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:30px 0 22px}
+.feat div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;font-size:14px;color:var(--ink-2)}
+.feat b{color:var(--ink);font-size:15px}
+
+/* Genel bakış */
+.co-card{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.co-logo{width:96px;height:64px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--line-2);border-radius:4px;background:#fff;flex:none;overflow:hidden}
+.co-logo img{max-width:88px;max-height:56px;object-fit:contain}
+.co-info{flex:1;min-width:220px}
+.co-name{font-size:18px;font-weight:700;line-height:1.3}
+.nologo{font-weight:700;font-size:20px;color:#9aa0a6;letter-spacing:.04em;text-decoration:none}
+a.nologo{font-size:13px;color:#1f3b63;border:1px dashed #a9bad3;border-radius:6px;padding:6px 10px}
+
+/* Şirket bilgileri */
+.logo-card{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.logo-box{width:180px;height:110px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--line-2);border-radius:4px;background:#fff;overflow:hidden;flex:none}
+.logo-box img{max-width:164px;max-height:94px;object-fit:contain}
+.fgroup{margin-bottom:14px}
+.fg-h{font-size:16px;margin:0 0 12px}
+.fg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}
+.fi{display:flex;flex-direction:column;gap:4px;min-width:0}
+.fi.wide{grid-column:1/-1}
+.fi-l{font-size:13px;font-weight:700;color:var(--ink-2);display:flex;gap:8px;align-items:baseline}
+.fi-s{font-size:12px;color:var(--ok);font-weight:700}
+.fi-h{font-size:12px;color:var(--ink-3)}
+.danger-zone{border-color:color-mix(in srgb,var(--danger) 30%,var(--line))}
+
+/* Belge kâğıdı */
+.paper{background:#fff;color:var(--p-ink);border:1px solid var(--line);border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.08);padding:clamp(16px,4vw,44px)}
+.dochead{display:grid;grid-template-columns:150px minmax(0,1fr) 260px;border:1.5px solid var(--p-line);margin-bottom:22px;color:var(--p-ink)}
+.dh-logo{display:flex;align-items:center;justify-content:center;padding:10px;border-right:1px solid var(--p-line);min-height:96px}
+.dh-logo img{max-width:100%;max-height:72px;object-fit:contain}
+.dh-title{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 14px;border-right:1px solid var(--p-line);gap:4px}
+.dh-co{font-size:12.5px;color:#4a5058;line-height:1.3}
+.dh-doc{font-size:18px;font-weight:700;line-height:1.25}
+.dh-meta{width:100%;height:100%;border-collapse:collapse;font-size:12px}
+.dh-meta th{text-align:left;font-weight:400;color:#4a5058;padding:4px 9px;border-bottom:1px solid var(--p-line);white-space:nowrap;width:1%}
+.dh-meta td{padding:4px 9px;font-weight:700;border-bottom:1px solid var(--p-line);border-left:1px solid var(--p-line);font-variant-numeric:tabular-nums}
+.dh-meta tr:last-child th,.dh-meta tr:last-child td{border-bottom:0}
+.dh-meta .dr{color:#a15c00}
+.sec{position:relative;padding:14px 0 6px}
+.sec+.sec{border-top:1px solid #e4e7eb}
+.sec-h{display:flex;align-items:flex-start;gap:12px}
+.sec-t{font-size:17.5px;line-height:1.3;margin:0 0 8px;flex:1}
+.sec-tools{display:flex;gap:4px;opacity:0;transition:opacity .15s;flex:none}
+.sec:hover .sec-tools,.sec:focus-within .sec-tools{opacity:1}
+@media (hover:none){.sec-tools{opacity:1}}
+.sec-tools button{border:1px solid #d9d6ce;background:#fff;color:#2a2f35;border-radius:6px;font-size:12.5px;font-weight:700;padding:3px 9px;cursor:pointer;min-height:28px}
+.sec-tools button:hover{background:#f2f1ec}
+.sec-tools button:disabled{opacity:.35;cursor:default}
+.sec-tools .del{color:#b42318}
+.md{font-size:14.5px;line-height:1.62}
+.md p{margin:0 0 10px}
+.md h3{font-size:15.5px;margin:16px 0 6px}
+.md h4{font-size:14.5px;margin:12px 0 4px}
+.md ul,.md ol{margin:0 0 10px;padding-left:22px}
+.md li{margin:2px 0}
+.md table{border-collapse:collapse;width:100%;margin:6px 0 12px;font-size:13.5px}
+.md th,.md td{border:1px solid #c9ccd0;padding:6px 9px;text-align:left;vertical-align:top}
+.md th{background:var(--p-soft);font-weight:700}
+.md .tw{overflow-x:auto}
+.callout{border-left:3px solid #1f3b63;background:#f1f4f8;padding:8px 12px;margin:0 0 10px;border-radius:0 6px 6px 0}
+.prep{background:#fff8db;border:1px dashed #d4b24a;color:#5f4a00;padding:6px 10px;border-radius:6px;font-size:13px;margin:0 0 10px}
+.prep::before{content:"Hazırlık notu · yazdırılmaz";display:block;font-size:11px;font-weight:700;letter-spacing:.03em;opacity:.75}
+.ph{background:#e9eef5;border-bottom:1px dotted #1f3b63;border-radius:3px;padding:0 1px}
+.ph-empty{background:#fdecea;color:#a3271b;border:1px dashed #e3a39b;border-radius:4px;padding:0 4px;font-size:.92em}
+.ph-bad{background:#fdecea;color:#a3271b;font-family:var(--mono);font-size:.9em}
+.ph-blank{letter-spacing:.05em;color:#666}
+.add-sec{margin-top:16px;width:100%;border-style:dashed}
+
+/* Form alanları */
+.form .sec{padding:10px 0 2px}
+.form .sec+.sec{border-top:0}
+.form .sec-t{font-size:13.5px;background:#eceff2;border:1px solid var(--p-line);padding:5px 10px;margin:0}
+.form .sec-h{display:block;position:relative}
+.form .sec-tools{position:absolute;right:6px;top:2px}
+.form .md{font-size:13.5px}
+.form .md>:first-child:not(.fgrid){margin-top:8px}
+.form .md>.fgrid:first-child{border-top:0}
+.fgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:1px solid var(--p-line);border-left:1px solid var(--p-line);margin:0 0 12px}
+.f{border-right:1px solid var(--p-line);border-bottom:1px solid var(--p-line);padding:5px 9px 6px;min-height:48px;display:flex;flex-direction:column;gap:3px;font-size:12.5px}
+.fl{font-weight:700;font-size:12px;color:#3a4048}
+.f-uzun{min-height:96px}
+.f-secim{flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px 14px;min-height:40px}
+.fo{display:flex;flex-wrap:wrap;gap:4px 16px}
+.ck{display:inline-flex;align-items:center;gap:6px}
+.ck i{width:12px;height:12px;border:1.3px solid #2a2f35;border-radius:2px;flex:none}
+.f-kutu{min-height:36px;justify-content:center}
+.f-imza{min-height:118px}
+.f-imza .sl{font-size:11.5px;color:#5a626c;border-bottom:1px dotted #9aa0a6;padding-top:12px}
+
+/* Bölüm düzenleyici */
+.sec.editing{background:#f7f9fc;margin:8px -14px;padding:14px;border:1.5px solid #1f3b63;border-radius:6px}
+.sec.editing+.sec{border-top:0}
+.ed-l{display:flex;flex-direction:column;gap:4px;font-size:12.5px;font-weight:700;color:#4a5058}
+.ed-l input{font-size:16px;font-weight:700;background:#fff;color:#1b1e22;border-color:#cfd2d6}
+.ed-bar{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 8px;align-items:center}
+.ed-bar button,.ed-bar select{font-size:13px;min-height:31px;width:auto;padding:3px 9px;border:1px solid #cfd2d6;border-radius:6px;background:#fff;color:#1b1e22;cursor:pointer}
+.ed-bar button:hover{background:#f2f1ec}
+.ed-bar .link{border:0;background:none;color:#1f3b63}
+.ed-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.ed-grid textarea{min-height:300px;font:13.5px/1.6 var(--mono);background:#fff;color:#1b1e22;border:1px solid #cfd2d6;border-radius:4px;padding:10px 12px}
+.ed-prev{border:1px dashed #cfd2d6;border-radius:4px;padding:10px 14px;background:#fff;max-height:720px;overflow:auto;min-width:0}
+.ed-prev-l{font-size:11px;font-weight:700;letter-spacing:.06em;color:#8a9199;text-transform:uppercase;margin-bottom:6px}
+.ed-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px;font-size:12.5px;color:#4f5760}
+
+/* Fark gösterimi ve kayıt */
+.diff{font:12.5px/1.5 var(--mono);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:6px;background:var(--surface)}
+.dl{padding:1px 10px;white-space:pre-wrap;word-break:break-word}
+.dl .dm{display:inline-block;width:14px;opacity:.7}
+.dl.add{background:var(--ok-soft);color:var(--ok)}
+.dl.del{background:var(--danger-soft);color:var(--danger)}
+.dl.ctx{color:var(--ink-2)}
+.dl.gap{color:var(--ink-3);font-style:italic;background:var(--surface-2)}
+.sd{margin:12px 0}
+.sd-t{font-weight:700;font-size:13.5px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.filters select{width:auto;min-width:220px}
+.filters input{flex:1;min-width:200px}
+.lg-day{font-size:12.5px;font-weight:700;color:var(--ink-2);margin:22px 0 4px;letter-spacing:.03em}
+.lg-list{list-style:none;margin:0;padding:0}
+.lg{display:grid;grid-template-columns:14px minmax(0,1fr);gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.lg-dot{width:10px;height:10px;border-radius:50%;margin-top:6px;background:var(--ink-3)}
+.lg-dot.yayin{background:var(--ok)}
+.lg-dot.bolum,.lg-dot.bolum-ekle,.lg-dot.sira,.lg-dot.belge,.lg-dot.belge-ekle{background:var(--info)}
+.lg-dot.bolum-sil,.lg-dot.belge-sil,.lg-dot.geri{background:var(--danger)}
+.lg-dot.sirket,.lg-dot.logo{background:var(--warn)}
+.lg-t{font-weight:700}
+.lg-m{font-size:12.5px;color:var(--ink-2)}
+.lg-n{font-size:13.5px;margin-top:2px}
+.lg details{margin-top:4px;font-size:13px}
+.lg summary{cursor:pointer;color:var(--accent);font-weight:700}
+
+/* Hangi form? */
+.wiz{margin-bottom:8px}
+.wiz-step{font-size:12.5px;font-weight:700;color:var(--ink-3);letter-spacing:.04em}
+.wiz-q{font-size:21px;font-weight:700;line-height:1.3;margin-top:4px}
+.wiz-btns{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.wiz-btns .btn{min-width:110px}
+.wiz-res{border-left:6px solid var(--k,var(--ink-3));padding:4px 0 4px 16px}
+.wiz-k{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:700;color:var(--k-t,var(--ink))}
+.wiz-k svg{width:26px;height:26px}
+.wiz-form{font-size:16px;margin:6px 0 10px}
+.kaza{--k:#c62828;--k-t:#b3261e;--k-i:#fff}
+.ramak{--k:#e8710a;--k-t:#b45309;--k-i:#fff}
+.tehlike{--k:#f2b705;--k-t:#8a6100;--k-i:#1f2328}
+@media screen and (prefers-color-scheme:dark){.kaza{--k-t:#f28b82}.ramak{--k-t:#f6a35b}.tehlike{--k-t:#f2c94c}}
+.kinds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.kind{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--k);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:7px;font-size:14px}
+.kind h3{display:flex;align-items:center;gap:8px;margin:0;font-size:17px;color:var(--k-t)}
+.kind h3 svg{width:22px;height:22px}
+.kind b{color:var(--ink)}
+.kind .k-form{margin-top:auto;padding-top:8px;border-top:1px solid var(--line)}
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin-top:4px}
+.flow-b{flex:1;min-width:170px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--k);border-radius:6px;padding:10px 14px;font-size:14px}
+.flow-b b{display:block;color:var(--k-t)}
+.flow-a{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 8px;font-size:12px;color:var(--ink-2);text-align:center;min-width:92px}
+.flow-a::before{content:"→";font-size:22px;line-height:1;color:var(--ink-3)}
+
+/* Pencereler ve bildirim */
+dialog{border:0;border-radius:8px;padding:0;width:min(580px,calc(100vw - 24px));max-height:calc(100vh - 40px);background:var(--surface);color:var(--ink);box-shadow:0 24px 70px rgba(0,0,0,.3)}
+dialog.wide{width:min(1000px,calc(100vw - 24px))}
+dialog::backdrop{background:rgba(12,14,18,.5)}
+dialog form,.dlg-in{padding:22px 24px;display:flex;flex-direction:column;gap:13px}
+dialog h2{margin:0;font-size:19px}
+dialog p{margin:0}
+dialog label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:700;color:var(--ink-2)}
+dialog label input,dialog label select,dialog label textarea{font-weight:400;font-size:15px}
+.dlg-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.dlg-foot{display:flex;justify-content:flex-end;gap:8px;margin-top:4px;flex-wrap:wrap}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.numchange{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:12px 14px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line)}
+.numchange small{display:block;font-size:11.5px;color:var(--ink-3);font-weight:700;letter-spacing:.04em}
+.numchange b{font-variant-numeric:tabular-nums}
+.numchange .to b{color:var(--accent)}
+.bk-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);opacity:0;background:#1b1e22;color:#fff;padding:11px 16px;border-radius:6px;font-size:14px;transition:opacity .2s,transform .2s;z-index:100;max-width:calc(100vw - 32px);pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+#toast.err{background:#b42318}
+
+@media screen and (max-width:1100px){.ed-grid{grid-template-columns:1fr}}
+@media screen and (max-width:860px){
+  .shell{grid-template-columns:1fr}
+  .side{position:sticky;top:58px;z-index:20;height:auto;flex-direction:row;overflow-x:auto;padding:8px 12px;border-right:0;border-bottom:1px solid var(--line);gap:4px}
+  .side-h,.side-foot{display:none}
+  .nv{width:auto;white-space:nowrap;flex:none}
+  .brand span{display:none}
+  .userbtn{display:none}
+  .dochead{grid-template-columns:96px minmax(0,1fr)}
+  .dh-title{border-right:0}
+  .dh-m{grid-column:1/-1;border-top:1px solid var(--p-line)}
+  .kinds,.fg-grid,.row2{grid-template-columns:1fr}
+  .flow{flex-direction:column}
+  .flow-a{padding:4px 0;flex-direction:row;gap:8px}
+  .flow-a::before{content:"↓"}
+  .sec.editing{margin:8px -6px;padding:10px}
+}
+
+/* Yazdırma */
+#print{display:none}
+@media print{
+  html,body{background:#fff!important;color:#000}
+  .top,.shell,#toast,dialog{display:none!important}
+  #print{display:block;font-family:var(--f)}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ptable{width:100%;border-collapse:collapse}
+  .ptable>thead>tr>td{padding:0 0 5mm}
+  .ptable>tbody>tr>td{padding:0}
+  .ptable .dochead{margin:0}
+  .pdoc+.pdoc{break-before:page}
+  .cover{break-after:page}
+  .sec-t{break-after:avoid}
+  .md tr,.f,.callout,.appr{break-inside:avoid}
+  .md{font-size:10pt;line-height:1.5}
+  .md table{font-size:9.5pt}
+  .sec-t{font-size:12.5pt}
+  .form .sec-t{font-size:10pt}
+  .form .md{font-size:9.5pt}
+  .f{font-size:9pt}
+  .fl{font-size:8.5pt}
+  .dh-doc{font-size:13pt}
+  .dh-co{font-size:9pt}
+  .dh-meta{font-size:8.5pt}
+  .dh-logo{min-height:22mm}
+  .dh-logo img{max-height:17mm}
+  .draftmark{position:fixed;top:42%;left:0;right:0;text-align:center;font:700 92pt/1 Arial,sans-serif;color:rgba(180,35,24,.11);transform:rotate(-28deg);pointer-events:none}
+  .plain .btn,.plain .actions,.plain .filters,.plain details{display:none!important}
+}
+.cover{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:26mm;color:#1b1e22}
+.cv-logo img{max-height:36mm;max-width:90mm;object-fit:contain}
+.cv-co{font-size:14pt;margin-top:12mm;color:#333}
+.cv-title{font-size:27pt;font-weight:700;margin:3mm 0 9mm;line-height:1.15}
+.cv-sub{font-size:11pt;color:#444;margin:-5mm 0 9mm;max-width:130mm}
+.cv-meta{border-collapse:collapse;font-size:10pt}
+.cv-meta th,.cv-meta td{border:1px solid #2a2f35;padding:2mm 4mm;text-align:left}
+.cv-meta th{font-weight:400;color:#444;background:#f2f3f1}
+.cv-meta td{font-weight:700}
+.cv-toc{width:100%;max-width:140mm;text-align:left;margin-top:14mm}
+.cv-toc-h{font-weight:700;font-size:12pt;border-bottom:1.5px solid #2a2f35;padding-bottom:2mm;margin-bottom:3mm}
+.cv-toc ol{margin:0;padding-left:7mm;font-size:10.5pt;line-height:1.75}
+.cv-list{width:100%;max-width:170mm;margin-top:10mm;text-align:left}
+.revt{margin-top:8mm;break-inside:avoid}
+.revt h3,.appr-h{font-size:11.5pt;margin:0 0 2mm}
+.appr{display:grid;grid-template-columns:1fr 1fr;border:1px solid #2a2f35;margin-top:6mm;font-size:10pt}
+.appr>div{padding:3mm 4mm;min-height:30mm;display:flex;flex-direction:column;gap:1.5mm}
+.appr>div+div{border-left:1px solid #2a2f35}
+.appr b{font-size:9pt;color:#444;font-weight:700;letter-spacing:.03em}
+.appr .sig{margin-top:auto;border-top:1px dotted #888;padding-top:1mm;font-size:8.5pt;color:#666}
+.poster{color:#1b1e22}
+.pst-title{font-size:19pt;font-weight:700;margin:5mm 0 1mm;line-height:1.2}
+.pst-sub{font-size:10pt;color:#444;margin-bottom:4mm}
+.pst-row{display:grid;grid-template-columns:44mm 1fr;border:2px solid var(--k);border-radius:4mm;overflow:hidden;margin-bottom:4mm;break-inside:avoid}
+.pst-tag{background:var(--k);color:var(--k-i);padding:4mm;display:flex;flex-direction:column;gap:2mm;justify-content:center}
+.pst-tag svg{width:10mm;height:10mm}
+.pst-tag svg [stroke="#fff"]{stroke:var(--k)}
+.pst-tag svg [fill="#fff"]{fill:var(--k)}
+.pst-tag b{font-size:15pt;line-height:1.1}
+.pst-no{font-size:9pt;opacity:.92}
+.pst-b{padding:3mm 5mm;font-size:9.5pt;line-height:1.4;display:flex;flex-direction:column;gap:1mm}
+.pst-q{font-size:12pt;font-weight:700}
+.pst-emg{display:grid;grid-template-columns:repeat(4,1fr);border:2px solid #1b1e22;border-radius:4mm;overflow:hidden;margin-top:2mm}
+.pst-emg div{padding:3mm 4mm;border-left:1px solid #1b1e22;font-size:9pt}
+.pst-emg div:first-child{border-left:0;background:#c62828;color:#fff}
+.pst-emg b{display:block;font-size:13pt}
+</style>
+</head>
+<body>
+<header class="top" id="top"></header>
+<div class="shell" id="shell"><nav class="side" id="side" aria-label="Bölümler"></nav><main id="main"></main></div>
+<div id="print"></div>
+<dialog id="dlg"></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<input type="file" id="logoFile" accept="image/*" hidden>
+<input type="file" id="importFile" accept=".json,application/json" hidden>
+<script>
+(()=>{
+'use strict';
+const APP='kurumkitabi', FILE_APP='kurum-kitabi';
+
+/* ---------- Yardımcılar ---------- */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const ESC={'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>ESC[c]);
+const uid=()=>Date.now().toString(36).slice(-5)+Math.random().toString(36).slice(2,8);
+const pad2=n=>String(n).padStart(2,'0');
+const nowISO=()=>new Date().toISOString();
+function toDate(v){
+  if(!v) return null;
+  if(/^\d{4}-\d{2}-\d{2}$/.test(v)){const [y,m,d]=v.split('-').map(Number);return new Date(y,m-1,d);}
+  const d=new Date(v);return isNaN(d)?null:d;
+}
+const fmtD=v=>{const d=toDate(v);return d?`${pad2(d.getDate())}.${pad2(d.getMonth()+1)}.${d.getFullYear()}`:'—';};
+const fmtT=v=>{const d=toDate(v);return d?`${pad2(d.getHours())}:${pad2(d.getMinutes())}`:'';};
+const fmtDT=v=>v?fmtD(v)+' '+fmtT(v):'—';
+const dayInput=(d=new Date())=>`${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+const revStr=n=>pad2(n);
+const TR_ASCII={'ç':'c','ğ':'g','ı':'i','İ':'I','ö':'o','ş':'s','ü':'u','Ç':'C','Ğ':'G','Ö':'O','Ş':'S','Ü':'U'};
+const ascii=s=>String(s||'').replace(/[çğıİöşüÇĞÖŞÜ]/g,c=>TR_ASCII[c]);
+const slug=s=>ascii(s).replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)||'sirket';
+const normKod=s=>ascii(String(s||'').toLocaleUpperCase('tr-TR')).replace(/[^A-Z0-9-]/g,'').slice(0,10);
+function suggestKod(unvan){
+  const skip=/^(a\.?ş\.?|ltd\.?|şti\.?|san\.?|tic\.?|ve|ltd\.şti\.?|anonim|limited|şirketi|sanayi|ticaret|ith\.?|ihr\.?)$/i;
+  const w=String(unvan||'').split(/\s+/).filter(x=>x&&!skip.test(x));
+  return normKod(w.slice(0,3).map(x=>x[0]).join(''))||'SRK';
+}
+
+/* ---------- Şirket bilgisi alanları ---------- */
+const FIELDS=[
+ ['Şirket kimliği',[
+  {k:'unvan',l:'Şirket ünvanı',ph:'Örnek Sanayi ve Ticaret A.Ş.',wide:true},
+  {k:'kisa_ad',l:'Kısa ad',ph:'Örnek Sanayi'},
+  {k:'kod',l:'Belge kodu öneki',ph:'ORN',hint:'Belge numaralarının başına gelir, ör. ORN-ISG-01'},
+  {k:'faaliyet',l:'Faaliyet konusu',ph:'metal parça imalatı',wide:true},
+  {k:'adres',l:'Adres',type:'textarea',wide:true},
+  {k:'telefon',l:'Telefon'},
+  {k:'eposta',l:'E-posta'},
+  {k:'web',l:'Web sitesi'},
+  {k:'vergi',l:'Vergi dairesi / numarası'},
+ ]],
+ ['İşyeri ve tehlike sınıfı',[
+  {k:'sgk_sicil',l:'SGK işyeri sicil numarası'},
+  {k:'nace',l:'NACE kodu',ph:'25.62.01'},
+  {k:'tehlike_sinifi',l:'Tehlike sınıfı',type:'select',opts:[['','Seçin'],['az','Az tehlikeli'],['tehlikeli','Tehlikeli'],['cok','Çok tehlikeli']],hint:'Eğitim, muayene ve risk değerlendirmesi süreleri buna göre yazılır'},
+  {k:'calisan_sayisi',l:'Çalışan sayısı',type:'number'},
+ ]],
+ ['Sorumlular',[
+  {k:'isveren',l:'İşveren / işveren vekili',ph:'Ad Soyad (Genel Müdür)'},
+  {k:'ik_sorumlusu',l:'İnsan kaynakları sorumlusu'},
+  {k:'isg_uzmani',l:'İş güvenliği uzmanı'},
+  {k:'isyeri_hekimi',l:'İşyeri hekimi'},
+  {k:'calisan_temsilcisi',l:'Çalışan temsilcisi'},
+  {k:'ilkyardimci',l:'İlk yardımcı(lar)'},
+  {k:'destek',l:'Destek elemanları',ph:'Yangın, arama-kurtarma, tahliye ekibi',wide:true},
+ ]],
+ ['Çalışma düzeni',[
+  {k:'calisma_saatleri',l:'Çalışma saatleri',ph:'Pazartesi–Cuma 08.00–18.00'},
+  {k:'mola',l:'Ara dinlenme',ph:'12.00–13.00 öğle arası'},
+  {k:'maas_gunu',l:'Ücret ödeme günü',ph:'her ayın son iş günü'},
+  {k:'yan_haklar',l:'Yan haklar',type:'textarea',ph:'Öğle yemeği, personel servisi, özel sağlık sigortası',wide:true},
+ ]],
+ ['Acil durum',[
+  {k:'toplanma_yeri',l:'Acil toplanma alanı',ph:'Ana giriş karşısındaki otopark'},
+  {k:'acil_tel_ic',l:'İç acil durum hattı',ph:'Dahili 100'},
+  {k:'saglik_kurulusu',l:'En yakın sağlık kuruluşu',wide:true},
+ ]],
+];
+const FIELD_LIST=FIELDS.flatMap(g=>g[1]);
+const FIELD_MAP=Object.fromEntries(FIELD_LIST.map(f=>[f.k,f]));
+const SINIF={
+  az:{ad:'az tehlikeli',egitim:'üç yılda en az bir kez',saat:'8',risk:'en geç altı yılda bir',saglik:'en geç beş yılda bir'},
+  tehlikeli:{ad:'tehlikeli',egitim:'iki yılda en az bir kez',saat:'12',risk:'en geç dört yılda bir',saglik:'en geç üç yılda bir'},
+  cok:{ad:'çok tehlikeli',egitim:'yılda en az bir kez',saat:'16',risk:'en geç iki yılda bir',saglik:'en geç yılda bir'},
+};
+const COMPUTED=[
+  {k:'egitim_periyodu',l:'İSG eğitimi tekrar sıklığı',f:s=>s.egitim},
+  {k:'egitim_suresi',l:'İSG eğitimi asgari süresi (saat)',f:s=>s.saat},
+  {k:'risk_periyodu',l:'Risk değerlendirmesi ve acil durum planı yenileme',f:s=>s.risk},
+  {k:'saglik_periyodu',l:'Periyodik sağlık muayenesi sıklığı',f:s=>s.saglik},
+];
+const PH_RE=/\{\{\s*([a-z_]+(?::[a-z0-9_]+)?)\s*\}\}/g;
+
+/* ---------- Durum ve saklama ---------- */
+const store={
+  get(k){try{return JSON.parse(localStorage.getItem(APP+':'+k));}catch{return null;}},
+  set(k,v){try{localStorage.setItem(APP+':'+k,JSON.stringify(v));return true;}catch(e){toast('Kaydedilemedi: tarayıcı belleği dolu olabilir. Yedek indirip eski şirketleri silin.','err');return false;}},
+  del(k){try{localStorage.removeItem(APP+':'+k);}catch{}},
+};
+let meta=store.get('meta')||{list:[],active:null,user:''};
+if(!Array.isArray(meta.list)) meta.list=[];
+let C=null;
+let editing=null;
+let wz={step:0,res:null};
+let lf={doc:'',q:''};
+function loadActive(){
+  C=meta.active?store.get('c:'+meta.active):null;
+  if(!C&&meta.list.length){meta.active=meta.list[0].id;C=store.get('c:'+meta.active);}
+  if(C) sanitizeCompany(C);
+}
+function coName(c){return String(c.info.kisa_ad||c.info.unvan||'Adsız şirket').trim();}
+function saveMeta(){store.set('meta',meta);}
+function persist(){
+  if(C){
+    store.set('c:'+C.id,C);
+    const e=meta.list.find(x=>x.id===C.id);
+    if(e) e.name=coName(C); else meta.list.push({id:C.id,name:coName(C)});
+  }
+  saveMeta();
+}
+function sanitizeCompany(c){
+  const okId=s=>typeof s==='string'&&/^[a-z0-9]{3,40}$/i.test(s);
+  if(!okId(c.id)) c.id=uid();
+  c.info=c.info&&typeof c.info==='object'?c.info:{};
+  for(const k of Object.keys(c.info)) c.info[k]=String(c.info[k]??'');
+  if(typeof c.logo!=='string'||!/^data:image\/(png|jpeg|webp|gif|svg\+xml);base64,[A-Za-z0-9+/=]+$/.test(c.logo)) c.logo='';
+  c.docs=Array.isArray(c.docs)?c.docs:[];
+  for(const d of c.docs){
+    if(!okId(d.id)) d.id=uid();
+    if(typeof d.role!=='string'||!/^[a-z0-9]{1,20}$/.test(d.role)) d.role='x'+uid().slice(-5);
+    d.kind=d.kind==='form'?'form':'metin';
+    d.title=String(d.title||'Adsız belge');d.code=String(d.code||'');
+    d.sections=(Array.isArray(d.sections)?d.sections:[]).map(s=>({id:okId(s.id)?s.id:uid(),title:String(s.title||''),body:String(s.body||'')}));
+    d.revisions=Array.isArray(d.revisions)?d.revisions:[];
+  }
+  c.log=Array.isArray(c.log)?c.log:[];
+  for(const e of c.log){e.act=String(e.act||'').replace(/[^a-z-]/g,'');}
+  return c;
+}
+
+/* ---------- Değerler ve yer tutucular ---------- */
+function docNo(c,d){return [String(c.info.kod||'').trim(),d.code].filter(Boolean).join('-');}
+function roleDoc(c,r){return c.docs.find(d=>d.role===r);}
+function resolve(c,k){
+  const info=c.info||{};
+  if(k.startsWith('no:')){const d=roleDoc(c,k.slice(3));return d?docNo(c,d):null;}
+  const cp=COMPUTED.find(x=>x.k===k);
+  if(cp){const s=SINIF[info.tehlike_sinifi];return s?cp.f(s):'';}
+  if(k==='tehlike_sinifi') return SINIF[info.tehlike_sinifi]?.ad||'';
+  if(k==='kisa_ad') return String(info.kisa_ad||info.unvan||'').trim();
+  if(!FIELD_MAP[k]) return null;
+  return String(info[k]??'').trim().replace(/\s*\n\s*/g,', ');
+}
+function phLabel(k,c=C){
+  if(k.startsWith('no:')){const d=c&&roleDoc(c,k.slice(3));return d?`${d.title} numarası`:'Belge numarası';}
+  return FIELD_MAP[k]?.l||COMPUTED.find(x=>x.k===k)?.l||k;
+}
+function displayVal(k,v){
+  const f=FIELD_MAP[k];v=String(v??'').trim();
+  if(f&&f.type==='select'){const o=f.opts.find(o=>o[0]===v);return v&&o?o[1]:v;}
+  return v;
+}
+function usedKeys(d){
+  const set=new Set(['unvan','kod']);
+  for(const s of d.sections) for(const m of (s.title+'\n'+s.body).matchAll(PH_RE)) set.add(m[1]);
+  return [...set].sort();
+}
+function mkCtx(c,{info=null,print=false}={}){
+  return {print,ph(k){
+    const v=info&&Object.prototype.hasOwnProperty.call(info,k)?info[k]:resolve(c,k);
+    if(v===null) return `<span class="ph-bad" title="Tanımsız alan">{{${esc(k)}}}</span>`;
+    if(!v) return print?'<span class="ph-blank">……………………</span>':`<span class="ph-empty" title="Şirket bilgileri sayfasından doldurun">${esc(phLabel(k,c))}</span>`;
+    return print?esc(v):`<span class="ph" title="${esc(phLabel(k,c))} · şirket bilgilerinden">${esc(v)}</span>`;
+  }};
+}
+
+/* ---------- Biçim çözücü ---------- */
+function inl(s,cx){
+  return esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(PH_RE,(m,k)=>cx.ph(k));
+}
+const FIELD_RE=/^\[(alan|uzun|secim|imza|kutu)\]\s*(.*)$/i;
+const isBlock=t=>/^#{2,3}\s/.test(t)||/^[-*•]\s+/.test(t)||/^\d+[.)]\s+/.test(t)||t.startsWith('>')||t.startsWith('|')||t.startsWith('//')||FIELD_RE.test(t);
+function fieldsHTML(items,cx){
+  // Yarım genişlikli alanlar ikişer, imzalar üçer yan yana dizilir; artan alan satırı doldurur.
+  const out=[];let i=0;
+  while(i<items.length){
+    const t=items[i].type;
+    if(t==='alan'||t==='kutu'||t==='imza'){
+      const run=[];while(i<items.length&&items[i].type===t){run.push(items[i]);i++;}
+      const per=t==='imza'?3:2;
+      for(let j=0;j<run.length;j+=per){
+        const row=run.slice(j,j+per);
+        row.forEach(it=>out.push(fieldHTML(it,cx,6/row.length)));
+      }
+    }else{out.push(fieldHTML(items[i],cx,6));i++;}
+  }
+  return `<div class="fgrid">${out.join('')}</div>`;
+}
+function fieldHTML(it,cx,span){
+  const st=`style="grid-column:span ${span}"`;
+  if(it.type==='secim'){
+    const i=it.rest.indexOf(':');
+    const lab=i>=0?it.rest.slice(0,i):it.rest;
+    const opts=i>=0?it.rest.slice(i+1).split('|').map(s=>s.trim()).filter(Boolean):[];
+    return `<div class="f f-secim" ${st}><span class="fl">${inl(lab,cx)}</span><span class="fo">${opts.map(o=>`<span class="ck"><i></i>${inl(o,cx)}</span>`).join('')}</span></div>`;
+  }
+  if(it.type==='kutu') return `<div class="f f-kutu" ${st}><span class="ck"><i></i>${inl(it.rest,cx)}</span></div>`;
+  if(it.type==='imza') return `<div class="f f-imza" ${st}><span class="fl">${inl(it.rest,cx)}</span><span class="sl">Adı soyadı</span><span class="sl">Tarih</span><span class="sl">İmza</span></div>`;
+  return `<div class="f f-${it.type}" ${st}><span class="fl">${inl(it.rest,cx)}</span></div>`;
+}
+function renderMd(text,cx){
+  const L=String(text||'').replace(/\r/g,'').split('\n');
+  let h='',i=0;
+  const T=k=>(L[k]??'').trim();
+  while(i<L.length){
+    const t=T(i);let m;
+    if(!t){i++;continue;}
+    if((m=t.match(/^(#{2,3})\s+(.*)$/))){const lv=m[1].length===2?3:4;h+=`<h${lv}>${inl(m[2],cx)}</h${lv}>`;i++;continue;}
+    if(/^[-*•]\s+/.test(t)){h+='<ul>';while(i<L.length&&/^[-*•]\s+/.test(T(i))){h+=`<li>${inl(T(i).replace(/^[-*•]\s+/,''),cx)}</li>`;i++;}h+='</ul>';continue;}
+    if(/^\d+[.)]\s+/.test(t)){const st=parseInt(t,10);h+=`<ol${st>1?` start="${st}"`:''}>`;while(i<L.length&&/^\d+[.)]\s+/.test(T(i))){h+=`<li>${inl(T(i).replace(/^\d+[.)]\s+/,''),cx)}</li>`;i++;}h+='</ol>';continue;}
+    if(t.startsWith('//')){const b=[];while(i<L.length&&T(i).startsWith('//')){b.push(T(i).replace(/^\/\/\s?/,''));i++;}if(!cx.print) h+=`<div class="prep">${b.map(x=>inl(x,cx)).join('<br>')}</div>`;continue;}
+    if(t.startsWith('>')){const b=[];while(i<L.length&&T(i).startsWith('>')){b.push(T(i).replace(/^>\s?/,''));i++;}h+=`<div class="callout">${b.map(x=>inl(x,cx)).join('<br>')}</div>`;continue;}
+    if(t.startsWith('|')){
+      const rows=[];
+      while(i<L.length&&T(i).startsWith('|')){const r=T(i);if(!(r.replace(/[|\s:-]/g,'')===''&&r.includes('-'))) rows.push(r.replace(/^\||\|$/g,'').split('|').map(x=>x.trim()));i++;}
+      if(rows.length){const [hd,...bd]=rows;h+=`<div class="tw"><table><thead><tr>${hd.map(c=>`<th>${inl(c,cx)}</th>`).join('')}</tr></thead><tbody>${bd.map(r=>`<tr>${hd.map((_,j)=>`<td>${inl(r[j]??'',cx)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;}
+      continue;
+    }
+    if(FIELD_RE.test(t)){const items=[];while(i<L.length&&FIELD_RE.test(T(i))){const mm=T(i).match(FIELD_RE);items.push({type:mm[1].toLowerCase(),rest:mm[2]});i++;}h+=fieldsHTML(items,cx);continue;}
+    const b=[];while(i<L.length&&T(i)&&!isBlock(T(i))){b.push(T(i));i++;}
+    h+=`<p>${b.map(x=>inl(x,cx)).join('<br>')}</p>`;
+  }
+  return h;
+}
+
+/* ---------- Satır farkı ---------- */
+function diffLines(a,b){
+  const A=String(a||'').split('\n'),B=String(b||'').split('\n');
+  if(a==='') A.length=0;
+  if(b==='') B.length=0;
+  const n=A.length,m=B.length;
+  let s=0;while(s<n&&s<m&&A[s]===B[s]) s++;
+  let e=0;while(e<n-s&&e<m-s&&A[n-1-e]===B[m-1-e]) e++;
+  const a2=A.slice(s,n-e),b2=B.slice(s,m-e),N=a2.length,M=b2.length;
+  const dp=Array.from({length:N+1},()=>new Uint16Array(M+1));
+  for(let i=N-1;i>=0;i--) for(let j=M-1;j>=0;j--) dp[i][j]=a2[i]===b2[j]?dp[i+1][j+1]+1:Math.max(dp[i+1][j],dp[i][j+1]);
+  const ops=A.slice(0,s).map(x=>['=',x]);
+  let i=0,j=0;
+  while(i<N&&j<M){if(a2[i]===b2[j]){ops.push(['=',a2[i]]);i++;j++;}else if(dp[i+1][j]>=dp[i][j+1]){ops.push(['-',a2[i++]]);}else{ops.push(['+',b2[j++]]);}}
+  while(i<N) ops.push(['-',a2[i++]]);
+  while(j<M) ops.push(['+',b2[j++]]);
+  A.slice(n-e).forEach(x=>ops.push(['=',x]));
+  return ops;
+}
+function compactDiff(ops,ctx=1){
+  const keep=ops.map(()=>false);
+  ops.forEach((o,i)=>{if(o[0]!=='=') for(let j=Math.max(0,i-ctx);j<=Math.min(ops.length-1,i+ctx);j++) keep[j]=true;});
+  const out=[];let skip=0;
+  ops.forEach((o,i)=>{if(keep[i]){if(skip){out.push(['…',skip]);skip=0;}out.push(o);}else skip++;});
+  if(skip) out.push(['…',skip]);
+  return out;
+}
+function diffHTML(ops){
+  if(!ops||!ops.length) return '';
+  return `<div class="diff">${ops.map(o=>o[0]==='…'?`<div class="dl gap">… ${o[1]} satır değişmedi</div>`:`<div class="dl ${o[0]==='+'?'add':o[0]==='-'?'del':'ctx'}"><span class="dm">${o[0]==='='?' ':o[0]}</span>${esc(o[1])||'&nbsp;'}</div>`).join('')}</div>`;
+}
+const diffText=ops=>(ops||[]).filter(o=>o[0]==='+'||o[0]==='-').map(o=>o[0]+' '+o[1]).join(' / ');
+
+/* ---------- Sürüm, yayın ve kayıt ---------- */
+const pub=d=>d.revisions.length?d.revisions[d.revisions.length-1]:null;
+function snapOf(c,d){
+  const info={};
+  for(const k of usedKeys(d)){const v=resolve(c,k);info[k]=v??'';}
+  return {title:d.title,code:d.code,sections:d.sections.map(s=>({id:s.id,title:s.title,body:s.body})),info};
+}
+function changesBetween(a,b,c=C){
+  if(!a) return ['İlk yayın'];
+  const out=[];
+  if(a.title!==b.title) out.push(`Belge adı değişti: “${a.title}” → “${b.title}”`);
+  if(a.code!==b.code) out.push(`Doküman kodu değişti: ${a.code} → ${b.code}`);
+  const am=new Map(a.sections.map(s=>[s.id,s])),bm=new Map(b.sections.map(s=>[s.id,s]));
+  b.sections.forEach((s,i)=>{
+    const o=am.get(s.id);
+    if(!o){out.push(`Bölüm eklendi: ${i+1}. ${s.title}`);return;}
+    if(o.title!==s.title) out.push(`Bölüm başlığı değişti: “${o.title}” → “${s.title}”`);
+    if(o.body!==s.body) out.push(`Bölüm güncellendi: ${i+1}. ${s.title}`);
+  });
+  a.sections.forEach(s=>{if(!bm.has(s.id)) out.push(`Bölüm silindi: ${s.title}`);});
+  const ao=a.sections.filter(s=>bm.has(s.id)).map(s=>s.id).join(),bo=b.sections.filter(s=>am.has(s.id)).map(s=>s.id).join();
+  if(ao!==bo) out.push('Bölüm sırası değişti');
+  const ai=a.info||{},bi=b.info||{};
+  for(const k of Object.keys(bi)){
+    if(!(k in ai)||ai[k]===bi[k]) continue;
+    if(k.startsWith('no:')) out.push(`Atıf yapılan belge numarası değişti: ${ai[k]||'boş'} → ${bi[k]||'boş'}`);
+    else out.push(`Şirket bilgisi değişti: ${phLabel(k,c)} (${ai[k]||'boş'} → ${bi[k]||'boş'})`);
+  }
+  return out;
+}
+function docState(d,c=C){
+  const p=pub(d);
+  if(!p) return {cls:'none',label:'Hiç yayınlanmadı',changes:['İlk yayın']};
+  const snap=snapOf(c,d);
+  if(JSON.stringify(snap)===JSON.stringify(p.snapshot)) return {cls:'ok',label:'Yayında, güncel',changes:[]};
+  const ch=changesBetween(p.snapshot,snap,c);
+  if(!ch.length) ch.push('Diğer değişiklikler');
+  return {cls:'warn',label:`${ch.length} yayınlanmamış değişiklik`,changes:ch};
+}
+function addLog(c,e){
+  c.log.unshift({id:uid(),ts:e.ts||nowISO(),user:e.user||meta.user||'Belirtilmedi',doc:e.doc||null,docTitle:e.docTitle||'',act:e.act,text:e.text,note:e.note||'',list:e.list||null,diff:e.diff||null});
+}
+function touch(d,ts,user){d.updatedAt=ts||nowISO();d.updatedBy=user||meta.user||'';}
+function publishTo(c,d,o){
+  const p=pub(d),snap=snapOf(c,d),ch=changesBetween(p?p.snapshot:null,snap,c),rev=p?p.rev+1:0;
+  d.revisions.push({rev,date:o.date,desc:o.desc,by:o.by,approver:o.approver||'',changes:ch,ts:o.ts||nowISO(),snapshot:snap});
+  addLog(c,{act:'yayin',doc:d.id,docTitle:d.title,text:`${docNo(c,d)} Rev.${revStr(rev)} yayınlandı`,note:o.desc,list:p?ch:null,ts:o.ts,user:o.user});
+  return rev;
+}
+function emptyKeys(d){return usedKeys(d).filter(k=>resolve(C,k)==='');}
+function missingFields(){return FIELD_LIST.filter(f=>!String(C.info[f.k]??'').trim());}
+function sortedLog(){return C.log.slice().sort((a,b)=>a.ts<b.ts?1:a.ts>b.ts?-1:0);}
+function initials(){
+  const w=String(C.info.kisa_ad||C.info.unvan||'').split(/\s+/).filter(Boolean);
+  return w.slice(0,2).map(x=>x[0]).join('').toLocaleUpperCase('tr-TR')||'—';
+}
+
+/* ---------- Hazır taslak belgeler ----------
+   Mevzuat atıfları 29.10.2026 itibarıyla yazıldı (7578 sayılı Kanun'la gelen analık ve babalık izni süreleri dâhil).
+   {{alan}} şirket bilgisiyle dolar, // ile başlayan satır yazdırılmayan hazırlık notudur. */
+function mkDoc(role,kind,title,code,secs){
+  const t=nowISO();
+  return {id:uid(),role,kind,title,code,sections:secs.map(([a,b])=>({id:uid(),title:a,body:b.trim()})),revisions:[],createdAt:t,updatedAt:t,updatedBy:''};
+}
+function makeDocs(){return [
+mkDoc('elkitabi','metin','Personel El Kitabı','PEK-01',[
+['Giriş',`
+{{unvan}} ailesine hoş geldiniz.
+
+Bu el kitabı; çalışma düzenimizi, haklarınızı, sorumluluklarınızı ve işyerimizdeki temel kuralları tek bir yerde toplamak amacıyla hazırlanmıştır. İşe başladığınız ilk günden itibaren başvuru kaynağınız olarak kullanabilirsiniz.
+
+## Kapsam
+El kitabı; belirsiz ve belirli süreli, tam ve kısmi süreli tüm çalışanları, stajyerleri ve geçici görevlendirilen personeli kapsar.
+
+## Temel ilkeler
+- Bu el kitabı iş sözleşmesinin yerine geçmez; iş sözleşmesinden ve yürürlükteki mevzuattan doğan hakları kısıtlamaz.
+- El kitabı ile mevzuat arasında çelişki olması hâlinde mevzuat hükümleri uygulanır.
+- El kitabında yapılan her değişiklik yeni revizyon numarasıyla yayımlanır ve çalışanlara duyurulur. Yürürlükteki sürüm, belge başlığındaki revizyon numarasıyla belirlenir.
+`],
+['Şirketimiz',`
+**{{unvan}}**, {{faaliyet}} alanında faaliyet göstermektedir.
+
+| Bilgi | Ayrıntı |
+|---|---|
+| Adres | {{adres}} |
+| Telefon | {{telefon}} |
+| E-posta | {{eposta}} |
+| Web sitesi | {{web}} |
+
+## Değerlerimiz
+- **Güvenlik önce gelir:** Hiçbir iş, çalışanlarımızın sağlığından ve güvenliğinden daha önemli değildir.
+- **Dürüstlük:** Kurallara, mevzuata ve verdiğimiz sözlere bağlı kalırız.
+- **Saygı:** Çalışma arkadaşlarımıza, müşterilerimize ve paydaşlarımıza eşit ve saygılı davranırız.
+- **Sorumluluk:** İşimizin kalitesinden ve sonuçlarından sorumluluk alırız.
+
+// Değerler listesini şirketinizin kendi değerleriyle güncelleyin.
+`],
+['İşe Başlama',`
+## İşe giriş belgeleri
+İşe başlamadan önce aşağıdaki belgeler İnsan Kaynaklarına ({{ik_sorumlusu}}) teslim edilir:
+- Kimlik kartı fotokopisi
+- Yerleşim yeri belgesi (e-Devlet çıktısı)
+- Diploma veya mezuniyet belgesi
+- İşe giriş sağlık muayenesi raporu (işyeri hekimince düzenlenir)
+- Adli sicil kaydı (görevin gerektirdiği durumlarda)
+- Banka hesap (IBAN) bilgisi
+- Vesikalık fotoğraf
+- Görevin gerektirdiği mesleki yeterlilik ve eğitim belgeleri
+
+## Sigorta girişi
+Sigortalı işe giriş bildirgesi, 5510 sayılı Kanun gereğince çalışan işe başlamadan önce SGK'ya verilir. Bildirim yapılmadan hiçbir çalışan işe başlatılmaz.
+
+## Deneme süresi
+İş sözleşmesinde deneme süresi öngörülmüşse bu süre en çok iki aydır; toplu iş sözleşmesiyle dört aya kadar uzatılabilir. Deneme süresi içinde taraflar sözleşmeyi bildirim süresine gerek olmaksızın ve tazminatsız feshedebilir; çalışanın çalıştığı günlere ait ücret ve diğer hakları saklıdır (4857 sayılı Kanun md. 15).
+
+## Oryantasyon ve İSG eğitimi
+Her çalışan işe başlamadan önce işyerini, çalışma kurallarını ve görevine ilişkin riskleri tanıtan oryantasyon programına ve iş sağlığı ve güvenliği eğitimine katılır.
+`],
+['Çalışma Saatleri ve Devam',`
+## Çalışma saatleri
+- Çalışma saatleri: **{{calisma_saatleri}}**
+- Ara dinlenme: **{{mola}}**
+- Haftalık çalışma süresi en çok 45 saattir (4857 sayılı Kanun md. 63).
+
+Ara dinlenme süreleri en az şöyledir (4857 sayılı Kanun md. 68):
+
+| Günlük çalışma süresi | Asgari ara dinlenme |
+|---|---|
+| 4 saat veya daha kısa | 15 dakika |
+| 4 saatten fazla, 7,5 saate kadar | 30 dakika |
+| 7,5 saatten fazla | 1 saat |
+
+## Devam ve geç kalma
+- Çalışanlar mesai başlangıcında görev yerinde hazır bulunur.
+- Geç kalma veya gelememe durumu en geç mesai başlangıcında bağlı yöneticiye bildirilir.
+- Hastalık nedeniyle alınan raporlar (e-rapor dâhil) en kısa sürede İnsan Kaynaklarına bildirilir.
+- Mazeretsiz devamsızlık ücretten kesintiye ve disiplin işlemine konu olur. Bir ay içinde art arda iki iş günü, bir tatil gününden sonraki iş günü iki defa veya toplam üç iş günü mazeretsiz devamsızlık, 4857 sayılı Kanun'un 25. maddesi uyarınca haklı fesih nedenidir.
+
+## Fazla çalışma
+- Fazla çalışma, yöneticinin talebi ve çalışanın yazılı onayıyla yapılır.
+- Fazla çalışma yılda 270 saati geçemez.
+- Her bir saat fazla çalışma için normal saat ücretinin yüzde elli fazlası ödenir. Çalışan isterse ücret yerine her fazla saat için 1 saat 30 dakika serbest zaman kullanabilir (4857 sayılı Kanun md. 41).
+`],
+['Ücret ve Yan Haklar',`
+- Ücretler **{{maas_gunu}}** çalışanın banka hesabına yatırılır.
+- Ücret hesap pusulası (bordro) her ödeme döneminde çalışana iletilir. Bordroya ilişkin sorular İnsan Kaynaklarına iletilir.
+- Ücret ve kişisel bilgiler gizli tutulur ve kişisel verilerin korunması mevzuatına uygun işlenir.
+
+## Yan haklar
+{{yan_haklar}}
+
+// Yan hakları (yemek, servis, sağlık sigortası, prim vb.) Şirket bilgileri sayfasına girin ya da bu bölüme ayrıntılı yazın.
+`],
+['İzinler',`
+## Yıllık ücretli izin
+İşyerinde deneme süresi dâhil en az bir yıl çalışmış olan çalışan yıllık ücretli izne hak kazanır. İzin süreleri aşağıdaki sürelerden az olamaz (4857 sayılı Kanun md. 53):
+
+| Kıdem | Yıllık izin süresi |
+|---|---|
+| 1 yıldan 5 yıla kadar (5 yıl dâhil) | 14 gün |
+| 5 yıldan fazla, 15 yıldan az | 20 gün |
+| 15 yıl ve üzeri | 26 gün |
+
+- 18 yaş ve altı ile 50 yaş ve üzeri çalışanların yıllık izni 20 günden az olamaz.
+- Yıllık izin, tarafların anlaşmasıyla bir bölümü 10 günden az olmamak üzere en fazla üç bölüm hâlinde kullanılabilir.
+- İzin talepleri en az **15 gün önceden** izin formuyla bağlı yöneticiye iletilir.
+
+## Mazeret izinleri (ücretli)
+| Durum | Süre |
+|---|---|
+| Evlenme | 3 gün |
+| Evlat edinme | 3 gün |
+| Anne, baba, eş, kardeş veya çocuğun ölümü | 3 gün |
+| Eşin doğum yapması (babalık izni) | 10 gün |
+| Engelli ya da süreğen hastalığı olan çocuğun tedavisi (ebeveynlerden yalnız biri) | Yılda 10 güne kadar |
+
+## Analık izni ve süt izni
+- Kadın çalışana doğumdan önce 8, doğumdan sonra 16 hafta olmak üzere toplam 24 hafta analık izni verilir. Çoğul gebelikte doğumdan önceki süreye 2 hafta eklenir.
+- Bir yaşından küçük çocuğu olan kadın çalışana günde toplam bir buçuk saat süt izni verilir.
+
+// Analık izni (24 hafta) ve babalık izni (10 gün), 7578 sayılı Kanun'la (Resmî Gazete 01.05.2026) güncellendi. İzin talep süresini şirket uygulamanıza göre düzeltin; ücretsiz izin ve şirkete özel izinleri bu bölüme ekleyin.
+`],
+['Davranış Kuralları',`
+- Çalışma arkadaşlarımıza, müşterilerimize ve ziyaretçilere saygılı ve nezaket kuralları içinde davranırız.
+- Dil, ırk, renk, cinsiyet, engellilik, siyasal düşünce, felsefi inanç, din ve mezhep ve benzeri sebeplere dayalı ayrım yapılmaz (4857 sayılı Kanun md. 5).
+- Her türlü taciz, psikolojik taciz (mobbing), tehdit ve şiddet yasaktır. Bu tür davranışlara maruz kalan ya da tanık olan çalışan durumu bağlı yöneticisine veya İnsan Kaynaklarına bildirir. Bildirimde bulunan çalışana misilleme yapılmaz.
+- Görevle ilgili kararlar kişisel çıkar gözetilmeden verilir; çıkar çatışması doğurabilecek durumlar yöneticiye bildirilir.
+- İş ilişkisi kurulan kişi ve kurumlardan, görevin tarafsızlığını etkileyebilecek hediye veya menfaat kabul edilmez.
+- İşyerine alkollü gelinmez; işyerinde alkol ve uyuşturucu madde bulundurulmaz ve kullanılmaz.
+- Kapalı alanlarda tütün ürünü kullanılmaz (4207 sayılı Kanun); sigara yalnız belirlenen açık alanlarda içilir.
+- Şirket araç, gereç ve kaynakları yalnız iş amacıyla ve özenle kullanılır.
+- Kılık kıyafet, görevin gerektirdiği güvenlik kurallarına ve şirketi temsil anlayışına uygun olur.
+- Sosyal medyada şirket adına açıklama yapılmaz; şirkete, çalışanlara ve müşterilere ait gizli bilgiler paylaşılmaz.
+`],
+['Gizlilik ve Kişisel Veriler',`
+- Görev sırasında öğrenilen ticari sırlar, müşteri bilgileri, fiyatlar ve şirket içi bilgiler gizlidir. Bu yükümlülük iş ilişkisi sona erdikten sonra da devam eder.
+- Kişisel veriler 6698 sayılı Kişisel Verilerin Korunması Kanunu'na uygun işlenir; çalışanlara işe girişte aydınlatma metni verilir.
+- Bilgisayar, e-posta ve şirket sistemlerine erişim şifreleri kişiye özeldir ve başkasıyla paylaşılmaz.
+- Şüpheli e-postalar açılmadan bilgi işlem sorumlusuna bildirilir.
+- İşten ayrılırken zimmetli tüm cihaz, belge ve erişim kartları iade edilir.
+`],
+['Disiplin Uygulamaları',`
+Kurallara aykırı davranışlarda kademeli ve ölçülü bir yaklaşım izlenir:
+
+1. Sözlü uyarı
+2. Yazılı uyarı (ihtar)
+3. Son yazılı uyarı
+4. İş sözleşmesinin feshi
+
+- Yazılı uyarı ve sonraki işlemlerden önce çalışanın yazılı savunması alınır.
+- Ağır ihlallerde kademeler atlanabilir; 4857 sayılı Kanun'un 25. maddesinde sayılan hâllerde iş sözleşmesi derhal feshedilebilir.
+- Ücret kesme cezası yalnız iş sözleşmesinde veya toplu iş sözleşmesinde gösterilen sebeplerle ve 4857 sayılı Kanun'un 38. maddesindeki sınırlar içinde uygulanır.
+- Disiplin kararları çalışanın kişisel dosyasında saklanır.
+`],
+['Şikâyet ve Öneri',`
+- Çalışma koşulları, yönetim uygulamaları veya çalışma arkadaşlarıyla ilgili şikâyet ve öneriler bağlı yöneticiye ya da İnsan Kaynaklarına ({{ik_sorumlusu}}) iletilir.
+- Yöneticiyle ilgili konularda doğrudan İnsan Kaynaklarına veya işverene ({{isveren}}) başvurulabilir.
+- Başvurular gizlilik içinde değerlendirilir ve başvuru sahibine geri dönüş yapılır.
+- İyi niyetle başvuruda bulunan çalışana hiçbir şekilde olumsuz muamele yapılmaz.
+`],
+['İş Sağlığı ve Güvenliği',`
+İş sağlığı ve güvenliği, işyerimizdeki tüm çalışmaların önünde gelir. Tüm çalışanlar **İş Sağlığı ve Güvenliği Kuralları ({{no:isg}})** belgesine uymakla yükümlüdür.
+
+| Görev | Sorumlu |
+|---|---|
+| İş güvenliği uzmanı | {{isg_uzmani}} |
+| İşyeri hekimi | {{isyeri_hekimi}} |
+| Çalışan temsilcisi | {{calisan_temsilcisi}} |
+| İlk yardımcı(lar) | {{ilkyardimci}} |
+
+## Bildirim yükümlülüğü
+- Tehlikeli bir durum ya da davranış gördüğünüzde: **Tehlikeli Durum Bildirim Formu ({{no:tehlike}})**
+- Kimsenin yaralanmadığı ama yaralanabileceği bir olay yaşandığında: **Ramak Kala Olay Bildirim Formu ({{no:ramak}})**
+- Bir yaralanma meydana geldiğinde: **İş Kazası Bildirim ve Araştırma Formu ({{no:kaza}})**
+
+Acil durumda **112**'yi arayın. Acil toplanma alanı: **{{toplanma_yeri}}**
+`],
+['İşten Ayrılma',`
+- İstifa yazılı olarak ve aşağıdaki bildirim (ihbar) sürelerine uyularak yapılır. Aynı süreler işveren için de geçerlidir (4857 sayılı Kanun md. 17).
+
+| Kıdem | Bildirim süresi |
+|---|---|
+| 6 aydan az | 2 hafta |
+| 6 aydan 1,5 yıla kadar | 4 hafta |
+| 1,5 yıldan 3 yıla kadar | 6 hafta |
+| 3 yıldan fazla | 8 hafta |
+
+- Ayrılan çalışan, zimmetindeki tüm malzeme, belge, cihaz ve erişim kartlarını teslim eder.
+- Çalışana, isteği hâlinde işin türünü ve süresini gösteren çalışma belgesi verilir (4857 sayılı Kanun md. 28).
+- Kıdem tazminatı ve diğer haklar yürürlükteki mevzuata göre ödenir.
+`],
+['Yürürlük ve Okudum-Anladım Beyanı',`
+Bu el kitabı işveren onayıyla yürürlüğe girer. Değişiklikler yeni revizyon numarasıyla yayımlanır ve çalışanlara duyurulur. Her çalışan, el kitabının yürürlükteki sürümünü okuduğunu aşağıdaki beyanla onaylar.
+
+## Okudum, anladım beyanı
+{{unvan}} Personel El Kitabı'nın ({{no:elkitabi}}) bir örneğini aldım, okudum ve anladım. Belirtilen kurallara uyacağımı beyan ederim.
+
+[alan] Adı soyadı
+[alan] Görevi / bölümü
+[imza] Çalışan
+`],
+]),
+mkDoc('isg','metin','İş Sağlığı ve Güvenliği Kuralları','ISG-01',[
+['Amaç, Kapsam ve Dayanak',`
+## Amaç
+Bu belge, {{unvan}} işyerinde iş kazalarını ve meslek hastalıklarını önlemek, çalışanların sağlığını ve güvenliğini korumak için uyulması zorunlu kuralları belirler.
+
+## Kapsam
+Kurallar; tüm çalışanları, stajyerleri, alt işveren çalışanlarını ve işyerine gelen ziyaretçileri kapsar.
+
+## Dayanak
+- 6331 sayılı İş Sağlığı ve Güvenliği Kanunu
+- İş Sağlığı ve Güvenliği Risk Değerlendirmesi Yönetmeliği
+- Çalışanların İş Sağlığı ve Güvenliği Eğitimlerinin Usul ve Esasları Hakkında Yönetmelik
+- İşyerlerinde Acil Durumlar Hakkında Yönetmelik
+- Kişisel Koruyucu Donanımların İşyerlerinde Kullanılması Hakkında Yönetmelik
+- 5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu (iş kazası bildirimi)
+
+| İşyeri bilgisi | Değer |
+|---|---|
+| SGK işyeri sicil numarası | {{sgk_sicil}} |
+| NACE kodu | {{nace}} |
+| Tehlike sınıfı | {{tehlike_sinifi}} |
+| Çalışan sayısı | {{calisan_sayisi}} |
+`],
+['Tanımlar',`
+- **İş kazası:** İşyerinde veya işin yürütümü nedeniyle meydana gelen, ölüme sebebiyet veren veya vücut bütünlüğünü ruhen ya da bedenen engelli hâle getiren olaydır (6331 sayılı Kanun md. 3).
+- **Ramak kala olay:** İşyerinde meydana gelen; çalışanı, iş ekipmanını ya da işyerini zarara uğratma potansiyeli olduğu hâlde zarara uğratmayan olaydır.
+- **Tehlikeli durum:** Henüz bir olaya yol açmamış, ancak zarar verme potansiyeli taşıyan koşul (güvensiz durum) ya da davranıştır (güvensiz davranış). Örnek: kaygan zemin, koruyucusu sökülmüş makine, önü kapatılmış acil çıkış, kişisel koruyucu donanım kullanmadan çalışma.
+- **Tehlike:** İşyerinde var olan ya da dışarıdan gelebilecek, çalışanı veya işyerini etkileyebilecek zarar veya hasar verme potansiyelidir.
+- **Risk:** Tehlikeden kaynaklanacak kayıp, yaralanma ya da başka zararlı sonuç meydana gelme ihtimalidir.
+- **Meslek hastalığı:** Mesleki risklere maruziyet sonucu ortaya çıkan hastalıktır.
+- **Kişisel koruyucu donanım (KKD):** Çalışanı işteki risklere karşı koruyan baret, gözlük, eldiven, iş ayakkabısı, kulak koruyucu gibi donanımlardır.
+`],
+['Görev ve Sorumluluklar',`
+## İşveren ({{isveren}})
+- Çalışanların sağlık ve güvenliğini sağlar; risk değerlendirmesini yaptırır ve önlemleri uygular.
+- Gerekli kişisel koruyucu donanımı ücretsiz sağlar.
+- Çalışanlara İSG eğitimi verilmesini sağlar.
+
+## İş güvenliği uzmanı ({{isg_uzmani}}) ve işyeri hekimi ({{isyeri_hekimi}})
+- İşvereni İSG konularında bilgilendirir ve rehberlik eder.
+- Risk değerlendirmesine katılır, eğitimleri planlar.
+- Bildirimleri inceler; düzeltici ve önleyici faaliyetleri takip eder.
+- İşyeri hekimi sağlık gözetimini yürütür, ilk yardım ve acil müdahale organizasyonunu planlar.
+
+## Bölüm yöneticileri
+- Ekibinin kurallara uymasını sağlar ve örnek olur.
+- Bildirimleri zamanında iletir, olay yerini korur.
+
+## Çalışan temsilcisi ({{calisan_temsilcisi}})
+- Çalışanların İSG ile ilgili görüş ve önerilerini işverene iletir.
+
+## Çalışanlar (6331 sayılı Kanun md. 19)
+- Makine, cihaz, araç ve tehlikeli maddeleri kurallara uygun kullanır; güvenlik donanımlarını çıkarmaz ve değiştirmez.
+- Kendisine verilen kişisel koruyucu donanımı doğru kullanır ve korur.
+- Ciddi ve yakın bir tehlikeyle karşılaştığında veya koruma tedbirlerinde bir eksiklik gördüğünde işverene ya da çalışan temsilcisine derhal haber verir.
+- Kendi görev alanında sağlık ve güvenlik için işveren ve çalışan temsilcisiyle iş birliği yapar.
+
+## Destek elemanları ve ilk yardımcılar
+- Destek elemanları ({{destek}}) yangınla mücadele, arama, kurtarma ve tahliye işlerini yürütür.
+- İlk yardımcılar ({{ilkyardimci}}) ilk müdahaleyi yapar.
+`],
+['Genel Güvenlik Kuralları',`
+1. İşe başlamadan önce görevinizle ilgili İSG eğitimini almış olmalısınız.
+2. Yetkiniz ve eğitiminiz olmayan makine, araç ve ekipmanı kullanmayın.
+3. Makinelerin koruyucularını sökmeyin, güvenlik sistemlerini devre dışı bırakmayın.
+4. Bakım, onarım ve temizlik öncesinde makineyi durdurun, enerjisini kesin ve etiketleyin.
+5. Belirlenen kişisel koruyucu donanımı her zaman kullanın.
+6. Çalışma alanınızı düzenli ve temiz tutun; yürüme yollarına malzeme bırakmayın.
+7. Acil çıkışların, yangın söndürücülerin ve elektrik panolarının önünü kapatmayın.
+8. Elektrik panolarına ve tesisatına yalnız yetkili kişiler müdahale eder.
+9. Kimyasalları etiketsiz kaplara koymayın; kullanmadan önce güvenlik bilgi formunu okuyun.
+10. Ağır yükleri dizlerinizi bükerek ve sırtınızı düz tutarak kaldırın; gerektiğinde yardım veya kaldırma ekipmanı kullanın.
+11. Merdivenlerde koşmayın, tırabzanı kullanın.
+12. Yüksekte çalışma, kapalı alanda çalışma ve sıcak işler (kaynak, kesme) iş izniyle yapılır.
+13. Arızalı ekipmanı kullanmayın; etiketleyip yöneticinize bildirin.
+14. İşyerine alkollü ya da çalışmanızı tehlikeye sokacak ilaç etkisi altında gelmeyin.
+15. Ziyaretçiler işyerinde refakatçiyle dolaşır ve belirlenen KKD'yi kullanır.
+
+// Kuralları işyerinizin risk değerlendirmesine göre ekleyin veya çıkarın.
+`],
+['Kişisel Koruyucu Donanım (KKD)',`
+Kişisel koruyucu donanım işveren tarafından ücretsiz sağlanır ve tutanakla zimmetlenir. Hasar gören veya kullanım ömrü dolan donanım derhal değiştirilir.
+
+| Çalışma alanı / görev | Kullanılması zorunlu KKD |
+|---|---|
+| Üretim alanı | Baret, koruyucu gözlük, iş eldiveni, çelik burunlu iş ayakkabısı, kulak koruyucu |
+| Depo ve sevkiyat | Çelik burunlu iş ayakkabısı, iş eldiveni, yüksek görünürlüklü yelek |
+| Bakım ve onarım | Koruyucu gözlük, iş eldiveni, iş ayakkabısı; elektrik işlerinde yalıtkan eldiven |
+| Kimyasal kullanımı | Kimyasal eldiven, koruyucu gözlük veya yüz siperi, gerektiğinde maske |
+| Ofis | Gerekmez |
+
+// Tabloyu risk değerlendirmenizdeki KKD matrisine göre düzenleyin.
+`],
+['Bildirimler: Hangi Durumda Hangi Form?',`
+Her çalışan gördüğü tehlikeyi ve yaşadığı olayı bildirmekle yükümlüdür. Bildirimler olayların tekrarlanmasını ve daha ağır sonuçlara dönüşmesini önlemek için yapılır; bildirimde bulunan çalışan bu nedenle cezalandırılmaz.
+
+| Durum | Örnek | Kullanılacak form | Ne zaman | Kime |
+|---|---|---|---|---|
+| **Tehlikeli durum:** henüz olay yok, zarar verebilecek bir durum ya da davranış var | Kaygan zemin, önü kapatılmış acil çıkış, koruyucusu sökülmüş makine, baretsiz çalışma | Tehlikeli Durum Bildirim Formu ({{no:tehlike}}) | Fark edildiği anda, aynı vardiya içinde | Bağlı yönetici ve iş güvenliği uzmanı |
+| **Ramak kala:** olay yaşandı, kimse yaralanmadı | Raftan düşen kutunun kimseye çarpmaması, forkliftin yayaya az kalsın çarpması, kayıp düşmeden toparlanma | Ramak Kala Olay Bildirim Formu ({{no:ramak}}) | Olaydan sonra en geç 24 saat içinde | Bağlı yönetici ve iş güvenliği uzmanı |
+| **İş kazası:** bir çalışan yaralandı veya sağlığı bozuldu | Kesik, ezilme, düşme sonucu yaralanma, yanık, elektrik çarpması | İş Kazası Bildirim ve Araştırma Formu ({{no:kaza}}) | Hemen sözlü; form en geç 24 saat içinde | Bağlı yönetici, iş güvenliği uzmanı, işyeri hekimi, İnsan Kaynakları |
+
+- Yaralanma olmadan yalnız makine, araç veya malzeme hasarı oluşan olaylar da Ramak Kala Olay Bildirim Formu ile bildirilir; formda “Yalnız maddi hasar oluştu” seçeneği işaretlenir.
+- İş kazası, işveren tarafından kazadan sonraki **en geç 3 iş günü** içinde SGK'ya bildirilir (6331 sayılı Kanun md. 14, 5510 sayılı Kanun md. 13). Şirket içi form yasal bildirimin yerine geçmez.
+- Meslek hastalığı şüphesi işyeri hekimine iletilir. Meslek hastalığı, öğrenildiği tarihten itibaren 3 iş günü içinde SGK'ya bildirilir.
+- Bildirimler iş güvenliği uzmanı tarafından kayda alınır ve incelenir; alınan önlemler bildirimde bulunana iletilir.
+
+// 24 saat ve “aynı vardiya” süreleri şirket kuralıdır; uygulamanıza göre değiştirebilirsiniz. Yasal süre olan 3 iş günü değiştirilemez.
+`],
+['İş Kazası Anında Yapılacaklar',`
+1. **Kendi güvenliğinizi sağlayın.** Tehlike sürüyorsa makineyi durdurun, enerjiyi kesin; kendinizi riske atmayın.
+2. **112'yi arayın.** Yaralının durumunu ve adresi net verin: {{adres}}
+3. **İlk yardımcıyı çağırın** ({{ilkyardimci}}). İlk yardım eğitimi almamış kişiler yaralıyı hareket ettirmez, yalnız güvenli ortamı sağlar.
+4. **Yöneticinize ve iş güvenliği uzmanına haber verin** ({{isg_uzmani}}). İç acil durum hattı: {{acil_tel_ic}}
+5. **Olay yerini koruyun.** İnceleme tamamlanana kadar ekipman ve malzemelerin yerini değiştirmeyin; mümkünse fotoğraf çekin.
+6. **Tanıkları not edin.** Olayı görenlerin adlarını kaydedin.
+7. **Formu doldurun.** İş Kazası Bildirim ve Araştırma Formu ({{no:kaza}}) en geç 24 saat içinde doldurulur.
+8. **Yasal bildirim.** İşveren kazayı kolluk kuvvetlerine derhal, SGK'ya kazadan sonraki en geç 3 iş günü içinde bildirir (5510 sayılı Kanun md. 13).
+
+En yakın sağlık kuruluşu: **{{saglik_kurulusu}}**
+`],
+['Ciddi ve Yakın Tehlike: Çalışmaktan Kaçınma Hakkı',`
+Ciddi ve yakın bir tehlikeyle karşılaşan çalışan, İSG kuruluna; kurul bulunmayan işyerlerinde işverene başvurarak durumun tespit edilmesini ve gerekli tedbirlerin alınmasını talep edebilir (6331 sayılı Kanun md. 13).
+- Talebin uygun bulunması hâlinde gerekli tedbirler alınıncaya kadar çalışan çalışmaktan kaçınabilir. Bu sürede çalışanın ücreti ve diğer hakları saklıdır.
+- Ciddi, yakın ve önlenemez tehlike durumunda çalışan, işyerini veya tehlikeli bölgeyi terk ederek güvenli bir yere gider. Bu nedenle çalışanın hakları kısıtlanamaz.
+- Böyle bir durumu fark eden çalışan, Tehlikeli Durum Bildirim Formu ({{no:tehlike}}) ile kayıt da oluşturur.
+`],
+['Acil Durumlar',`
+| Acil durum bilgisi | Değer |
+|---|---|
+| Acil çağrı | 112 |
+| İç acil durum hattı | {{acil_tel_ic}} |
+| Acil toplanma alanı | {{toplanma_yeri}} |
+| En yakın sağlık kuruluşu | {{saglik_kurulusu}} |
+
+## Yangın
+- Yangını gördüğünüzde yüksek sesle uyarın, alarmı çalıştırın ve 112'yi arayın.
+- Eğitim aldıysanız ve yangın başlangıç aşamasındaysa söndürücüyü kullanın: pimi çekin, hortumu ateşin dibine yöneltin, tetiğe basın, süpürür gibi hareket ettirin.
+- Asansör kullanmayın; tahliye yollarını izleyerek toplanma alanına gidin.
+
+## Deprem
+- Sarsıntı sırasında koşmayın; sağlam bir eşyanın yanına çökün, başınızı ve boynunuzu koruyun, tutunun.
+- Sarsıntı bittikten sonra binayı tahliye yollarından terk edin.
+- Toplanma alanında yoklama verin; izin verilmeden binaya geri dönmeyin.
+
+## Tahliye ve tatbikat
+- Tahliye talimatı geldiğinde işinizi güvenli şekilde durdurup en yakın acil çıkışı kullanın.
+- Acil durum tatbikatı yılda en az bir kez yapılır; tüm çalışanların katılımı zorunludur.
+- Acil durum planı {{risk_periyodu}} yenilenir.
+`],
+['Eğitim, Sağlık Gözetimi ve Risk Değerlendirmesi',`
+## İSG eğitimleri
+- Her çalışana işe başlamadan önce temel İSG eğitimi verilir.
+- İşyerimiz **{{tehlike_sinifi}}** sınıfta yer aldığından eğitimler **{{egitim_periyodu}}** tekrarlanır ve çalışan başına en az **{{egitim_suresi}} saat** olarak planlanır.
+- İş kazası geçiren veya meslek hastalığına yakalanan çalışana işe dönmeden önce ek eğitim verilir.
+- Herhangi bir nedenle altı aydan uzun süre işten uzak kalan çalışana işe dönmeden önce bilgi yenileme eğitimi verilir.
+- Görev, ekipman veya teknoloji değişikliğinde ilgili eğitim tekrarlanır.
+
+## Sağlık gözetimi
+- İşe girişte ve iş değişikliğinde sağlık muayenesi yapılır.
+- Periyodik muayeneler {{saglik_periyodu}} yapılır; işyeri hekimi gerekli gördüğünde bu süre kısaltılır.
+
+## Risk değerlendirmesi
+İşyerinin risk değerlendirmesi {{risk_periyodu}} yenilenir. İş kazası, meslek hastalığı, ramak kala olay veya işyerinde önemli bir değişiklik olduğunda süre beklenmeden güncellenir.
+`],
+['Yaptırımlar',`
+- İSG kurallarına uymayan çalışan hakkında Personel El Kitabı'nda ({{no:elkitabi}}) belirtilen disiplin süreci uygulanır.
+- Çalışanın kendi isteği veya ihmali nedeniyle iş güvenliğini tehlikeye düşürmesi, 4857 sayılı İş Kanunu'nun 25. maddesi uyarınca haklı fesih nedeni olabilir.
+- Tehlikeli durum veya ramak kala bildiriminde bulunan çalışan, bildirimi nedeniyle hiçbir yaptırımla karşılaşmaz.
+`],
+['Yürürlük',`
+Bu kurallar işveren onayıyla yürürlüğe girer ve tüm çalışanlara eğitimle duyurulur. Revizyonlar yeni belge numarasıyla yayımlanır; yürürlükteki sürüm, belge başlığındaki revizyon numarasıyla belirlenir.
+`],
+]),
+mkDoc('tehlike','form','Tehlikeli Durum Bildirim Formu','FR-01',[
+['Bu form ne zaman kullanılır?',`
+**Henüz bir olay yaşanmadı ama yaşanabilir.** İşyerinde zarar verebilecek bir durum (güvensiz durum) ya da davranış (güvensiz davranış) gördüğünüzde bu formu doldurun.
+- Örnek: kaygan ya da delik zemin, koruyucusu sökülmüş makine, açıkta elektrik kablosu, önü kapatılmış acil çıkış veya yangın söndürücü, KKD kullanmadan çalışma, hatalı istif.
+- Önce bağlı yöneticinize sözlü haber verin; formu **aynı vardiya içinde** teslim edin.
+- Ciddi ve yakın bir tehlike varsa işi durdurun, bölgeden uzaklaşın ve hemen haber verin.
+- Bir olay yaşandıysa **Ramak Kala Olay Bildirim Formu ({{no:ramak}})**, yaralanma varsa **İş Kazası Bildirim ve Araştırma Formu ({{no:kaza}})** kullanılır.
+- Bildirimde bulunan çalışan cezalandırılmaz. Adınızı yazmak isteğe bağlıdır.
+`],
+['Bildiren',`
+[alan] Adı soyadı (isteğe bağlı)
+[alan] Bölümü / görevi
+[alan] Tarih ve saat
+[alan] Telefon / dahili
+`],
+['Tespit',`
+[alan] Yer (bölüm, hat, makine)
+[secim] Bildirim türü: Güvensiz durum (ortam, ekipman) | Güvensiz davranış
+[secim] Konu: Düzen ve temizlik | Makine koruyucusu | Elektrik | Yangın / acil çıkış | KKD kullanımı | Kimyasal | Yüksekte çalışma | İstif / depolama | Diğer
+[uzun] Gördüğünüz durumu anlatın
+[uzun] Önleme öneriniz
+[secim] Anında önlem alındı mı?: Evet | Hayır
+[secim] Ciddi ve yakın tehlike var mı?: Evet | Hayır
+`],
+['Değerlendirme (iş güvenliği uzmanı doldurur)',`
+[secim] Risk düzeyi: Düşük | Orta | Yüksek
+[uzun] Alınacak önlem
+[alan] Sorumlu
+[alan] Termin tarihi
+[alan] Kapanış tarihi
+[kutu] Bildiren kişiye geri bildirim verildi
+[imza] Bölüm yöneticisi
+[imza] İş güvenliği uzmanı
+`],
+]),
+mkDoc('ramak','form','Ramak Kala Olay Bildirim Formu','FR-02',[
+['Bu form ne zaman kullanılır?',`
+**Kimse yaralanmadı ama yaralanabilirdi.** İşyerinde bir olay yaşandığında ve bu olay hiçbir yaralanmaya yol açmadığında bu formu doldurun. Yaralanma olmadan yalnız makine, araç veya malzeme hasarı oluştuysa da bu form kullanılır.
+- Örnek: raftan düşen kutunun yanındaki çalışana çarpmaması, forkliftin yayaya az kalsın çarpması, kayıp düşmeden toparlanma, hortumun patlayıp kimseye zarar vermeden sızıntı yapması.
+- Formu olaydan sonra **en geç 24 saat** içinde bağlı yöneticinize veya iş güvenliği uzmanına teslim edin.
+- Biri yaralandıysa **İş Kazası Bildirim ve Araştırma Formu ({{no:kaza}})** kullanılır. Henüz bir olay yoksa ama tehlike görüyorsanız **Tehlikeli Durum Bildirim Formu ({{no:tehlike}})** kullanılır.
+- Ramak kala bildirimi yapan çalışan cezalandırılmaz. Adınızı yazmak isteğe bağlıdır.
+`],
+['Bildiren',`
+[alan] Adı soyadı (isteğe bağlı)
+[alan] Bölümü / görevi
+[alan] Telefon / dahili
+[alan] Bildirim tarihi
+`],
+['Olay bilgileri',`
+[alan] Olay tarihi ve saati
+[alan] Olay yeri (bölüm, hat, makine)
+[secim] Olay türü: Kayma, takılma, düşme | Cisim düşmesi | Makine / ekipman | Elektrik | Kimyasal | Araç / forklift | Yangın | Diğer
+[secim] Olayın sonucu: Zarar oluşmadı | Yalnız maddi hasar oluştu
+[uzun] Ne oldu? Olayı kısaca anlatın
+[uzun] Sizce neden oldu?
+[uzun] Tekrar etmemesi için öneriniz
+[alan] Olayı gören diğer kişiler
+`],
+['Değerlendirme (iş güvenliği uzmanı doldurur)',`
+[secim] Risk düzeyi: Düşük | Orta | Yüksek
+[uzun] Kök neden
+[uzun] Alınacak düzeltici ve önleyici önlem
+[alan] Sorumlu
+[alan] Termin tarihi
+[alan] Kapanış tarihi
+[kutu] Bildiren kişiye geri bildirim verildi
+[kutu] Risk değerlendirmesi gözden geçirildi
+[imza] Bölüm yöneticisi
+[imza] İş güvenliği uzmanı
+`],
+]),
+mkDoc('kaza','form','İş Kazası Bildirim ve Araştırma Formu','FR-03',[
+['Bu form ne zaman kullanılır?',`
+**Bir çalışan yaralandığında ya da sağlığı bozulduğunda** bu form doldurulur. Küçük görünen ve yalnız ilk yardımla sonuçlanan yaralanmalar da bildirilir.
+- Önce müdahale: yaralıya ilk yardım sağlayın, gerekiyorsa 112'yi arayın, olay yerini koruyun.
+- Form kazadan sonra **en geç 24 saat** içinde bağlı yönetici ve iş güvenliği uzmanı tarafından doldurulur.
+- Bu form şirket içi kayıttır. İşveren kazayı en geç 3 iş günü içinde SGK'ya ayrıca bildirir.
+- Yaralanma yoksa **Ramak Kala Olay Bildirim Formu ({{no:ramak}})** kullanılır.
+`],
+['Kazazede bilgileri',`
+[alan] Adı soyadı
+[alan] T.C. kimlik numarası
+[alan] Bölümü / görevi
+[alan] İşe giriş tarihi
+[alan] Son İSG eğitimi tarihi
+[alan] Telefon
+`],
+['Kaza bilgileri',`
+[alan] Kaza tarihi ve saati
+[alan] Kaza yeri
+[alan] Kaza anında yapılan iş
+[alan] Kullanılan makine / ekipman
+[uzun] Kaza nasıl oldu?
+[secim] Yaralanan vücut bölgesi: Baş / boyun | Göz | Gövde | Kol / el / parmak | Bacak / ayak | Birden fazla bölge
+[secim] Yaralanma türü: Kesik | Ezilme | Kırık | Burkulma | Yanık | Elektrik çarpması | Zehirlenme | Diğer
+[secim] Yapılan müdahale: İşyerinde ilk yardım | Sağlık kuruluşuna sevk | 112 çağrıldı
+[alan] Sevk edilen sağlık kuruluşu
+[alan] İş göremezlik raporu (var ise süresi)
+[alan] Kazayı gören kişiler
+`],
+['Araştırma (iş güvenliği uzmanı doldurur)',`
+[uzun] Doğrudan neden (güvensiz durum / güvensiz davranış)
+[uzun] Kök neden(ler)
+[uzun] Düzeltici ve önleyici faaliyetler
+[alan] Sorumlu
+[alan] Termin tarihi
+[kutu] Risk değerlendirmesi güncellendi
+[kutu] Çalışana işe dönüşte ek eğitim verildi
+`],
+['Yasal bildirim',`
+[alan] SGK bildirim tarihi
+[alan] Bildirimi yapan
+[alan] Kolluk bildirimi (tarih / birim)
+[alan] Açıklama
+`],
+['Onay',`
+[imza] Kazazede
+[imza] Bölüm yöneticisi
+[imza] İş güvenliği uzmanı
+[imza] İşyeri hekimi
+[imza] İşveren / işveren vekili
+`],
+]),
+];}
+
+function newDocSections(kind){
+  return kind==='form'
+    ?[['Bu form ne zaman kullanılır?','// Formun hangi durumda, kim tarafından ve ne kadar sürede doldurulacağını yazın.'],['Bilgiler','[alan] Adı soyadı\n[alan] Bölümü / görevi\n[alan] Tarih\n[uzun] Açıklama'],['Onay','[imza] Hazırlayan\n[imza] Onaylayan']]
+    :[['Amaç ve Kapsam','Bu belge, {{unvan}} bünyesinde ... amacıyla hazırlanmıştır.\n\n// Belgenin amacını ve kimleri kapsadığını yazın.'],['Kurallar','1. Birinci kural\n2. İkinci kural'],['Yürürlük','Bu belge işveren onayıyla yürürlüğe girer.']];
+}
+function mkCompany(info){
+  return {id:uid(),app:FILE_APP,createdAt:nowISO(),info:{...info},logo:'',docs:makeDocs(),log:[],lastBackup:null};
+}
+
+/* Örnek şirket: geçmiş revizyonları ve bekleyen bir değişikliği göstermek için hazır kayıtlarla gelir. */
+function createSampleCompany(){
+  const c=mkCompany({
+    unvan:'Örnek Metal Sanayi ve Ticaret A.Ş.',kisa_ad:'Örnek Metal',kod:'ORM',faaliyet:'metal parça işleme ve imalatı',
+    adres:'Organize Sanayi Bölgesi 3. Cadde No: 12, Nilüfer / Bursa',telefon:'0224 000 00 00',eposta:'info@ornekmetal.example',web:'www.ornekmetal.example',
+    vergi:'Nilüfer V.D. 0000000000',sgk_sicil:'',nace:'',tehlike_sinifi:'cok',calisan_sayisi:'85',
+    isveren:'Ayşe Demir (Genel Müdür)',ik_sorumlusu:'Mehmet Kaya',isg_uzmani:'Elif Arslan',isyeri_hekimi:'Dr. Can Öztürk',
+    calisan_temsilcisi:'Hasan Çelik',ilkyardimci:'Zeynep Şahin, Murat Aydın',destek:'Ali Yıldız (yangın), Fatma Koç (tahliye), Okan Er (arama-kurtarma)',
+    calisma_saatleri:'Pazartesi–Cuma 08.00–18.00',mola:'12.00–13.00 öğle arası',maas_gunu:'her ayın son iş günü',yan_haklar:'Öğle yemeği ve personel servisi',
+    toplanma_yeri:'Ana giriş karşısındaki otopark',acil_tel_ic:'Dahili 100',saglik_kurulusu:'',
+  });
+  const at=(m,d,h,mi)=>new Date(2026,m-1,d,h,mi).toISOString();
+  addLog(c,{act:'olustur',text:'Şirket oluşturuldu',note:c.info.unvan,ts:at(9,1,8,30),user:'Mehmet Kaya'});
+  for(const d of c.docs){
+    const by=d.role==='elkitabi'?'Mehmet Kaya':'Elif Arslan';
+    publishTo(c,d,{date:'2026-09-01',desc:'İlk yayın',by,approver:'Ayşe Demir',ts:at(9,1,9,0),user:by});
+    touch(d,at(9,1,9,0),by);
+  }
+  const ek=roleDoc(c,'elkitabi'),iz=ek.sections.find(s=>s.title==='İzinler');
+  const o1=iz.body;iz.body=o1.replace('en az **15 gün önceden**','en az **10 gün önceden**');
+  addLog(c,{act:'bolum',doc:ek.id,docTitle:ek.title,text:`${ek.sections.indexOf(iz)+1}. İzinler bölümü düzenlendi`,diff:compactDiff(diffLines(o1,iz.body)),ts:at(10,14,16,20),user:'Mehmet Kaya'});
+  publishTo(c,ek,{date:'2026-10-15',desc:'Yıllık izin talep süresi 15 günden 10 güne indirildi.',by:'Mehmet Kaya',approver:'Ayşe Demir',ts:at(10,15,10,0),user:'Mehmet Kaya'});
+  touch(ek,at(10,15,10,0),'Mehmet Kaya');
+  const isg=roleDoc(c,'isg'),kkd=isg.sections.find(s=>s.title.startsWith('Kişisel Koruyucu'));
+  const o2=kkd.body;kkd.body=o2.replace('| Ofis | Gerekmez |','| Kaynak atölyesi | Kaynak maskesi, deri önlük, kaynak eldiveni, iş ayakkabısı |\n| Ofis | Gerekmez |');
+  addLog(c,{act:'bolum',doc:isg.id,docTitle:isg.title,text:`${isg.sections.indexOf(kkd)+1}. Kişisel Koruyucu Donanım (KKD) bölümü düzenlendi`,diff:compactDiff(diffLines(o2,kkd.body)),ts:at(10,28,11,5),user:'Elif Arslan'});
+  touch(isg,at(10,28,11,5),'Elif Arslan');
+  return c;
+}
+
+/* ---------- Görünümler ---------- */
+const BRAND='<svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect width="30" height="30" rx="5" fill="#1f3b63"/><path d="M7 9.2c2.9-1 5.6-.7 8 1v11.6c-2.4-1.6-5.1-2-8-1z" fill="#fff"/><path d="M23 9.2c-2.9-1-5.6-.7-8 1v11.6c2.4-1.6 5.1-2 8-1z" fill="#fff" opacity=".7"/><path d="M17.6 15.6l1.7 1.7 3.2-3.6" stroke="#1f3b63" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const ICON={
+  kaza:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M12 6.5v11M6.5 12h11" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>',
+  ramak:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M12 6.5v7" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/><circle cx="12" cy="17.3" r="1.6" fill="#fff"/></svg>',
+  tehlike:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8 23 21.5H1z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 8.5v6.2" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="12" cy="18" r="1.5" fill="#fff"/></svg>',
+};
+const KINDS={
+  kaza:{t:'İş kazası',when:'Bir çalışan yaralandı ya da sağlığı bozuldu.',ex:'Kesik, ezilme, yanık, düşme sonucu yaralanma, elektrik çarpması.',act:'Önce ilk yardım; gerekirse 112. Olay yerini koruyun, yöneticinize hemen haber verin.',time:'Sözlü bildirim hemen, form en geç 24 saat içinde. İşveren SGK’ya en geç 3 iş günü içinde bildirir.'},
+  ramak:{t:'Ramak kala',when:'Bir olay yaşandı ama kimse yaralanmadı.',ex:'Raftan düşen kutunun kimseye çarpmaması, forkliftin yayaya az kalsın çarpması, kayıp düşmeden toparlanma.',act:'Ortamı güvenli hâle getirin, yöneticinize haber verin. Yalnız maddi hasar oluştuysa formda işaretleyin.',time:'Olaydan sonra en geç 24 saat içinde.'},
+  tehlike:{t:'Tehlikeli durum',when:'Henüz olay yok ama zarar verebilecek bir durum ya da davranış var.',ex:'Kaygan zemin, koruyucusu sökülmüş makine, önü kapatılmış acil çıkış, baretsiz çalışma.',act:'Yöneticinize sözlü haber verin. Ciddi ve yakın tehlike varsa işi durdurup bölgeden uzaklaşın.',time:'Fark edildiği anda, aynı vardiya içinde.'},
+};
+const WQ=[
+  {q:'Birisi yaralandı mı ya da sağlığı bozuldu mu?',yes:'kaza'},
+  {q:'Bir olay yaşandı mı? Bir şey düştü, devrildi, kaydı, çarptı, sızdı ya da patladı mı?',yes:'ramak'},
+  {q:'Zarar verebilecek bir durum ya da davranış mı gördünüz?',yes:'tehlike'},
+];
+const ACT_LABEL={olustur:'Şirket oluşturuldu',sirket:'Şirket bilgisi',logo:'Logo',bolum:'Bölüm düzenlendi','bolum-ekle':'Bölüm eklendi','bolum-sil':'Bölüm silindi',sira:'Sıra değişti',belge:'Belge ayarları','belge-ekle':'Belge eklendi','belge-sil':'Belge silindi',yayin:'Revizyon yayınlandı',geri:'Taslak geri alındı',yedek:'Yedek yüklendi'};
+
+function route(){const h=decodeURIComponent(location.hash.slice(1));const [v,id]=h.split('/');return {v:v||'genel',id:id||''};}
+function go(h){if(location.hash==='#'+h) render(); else location.hash=h;}
+function curDoc(){const r=route();return r.v==='belge'&&C?C.docs.find(d=>d.id===r.id):null;}
+function logoHTML(print){return C.logo?`<img src="${esc(C.logo)}" alt="Logo">`:(print?'':'<a class="nologo" href="#sirket">Logo ekle</a>');}
+
+function render(){
+  renderTop();
+  const shell=$('#shell');
+  if(!C){$('#side').hidden=true;shell.style.gridTemplateColumns='1fr';$('#main').innerHTML=welcomeHTML();return;}
+  $('#side').hidden=false;shell.style.gridTemplateColumns='';
+  const r=route();
+  renderSide(r);
+  const V={sirket:companyHTML,belge:()=>docHTML(r.id),rehber:guideHTML,kayit:logHTML};
+  $('#main').innerHTML=(V[r.v]||homeHTML)();
+  if(r.v==='belge') bindEditor();
+}
+function renderTop(){
+  const sel=meta.list.length?`<select class="co-sel" data-change="company" aria-label="Şirket seç">${meta.list.map(x=>`<option value="${esc(x.id)}"${x.id===meta.active?' selected':''}>${esc(x.name||'Adsız şirket')}</option>`).join('')}<option value="__new">+ Yeni şirket ekle</option></select>`:'';
+  $('#top').innerHTML=`<a class="brand" href="#genel">${BRAND}<span>Kurum Kitabı</span></a>${sel}<span class="sp"></span>
+  <button class="btn ghost sm userbtn" data-act="user" title="Değişiklik kaydında görünen ad">${meta.user?'Düzenleyen: <b>'+esc(meta.user)+'</b>':'Adınızı girin'}</button>
+  <button class="btn sm" data-act="backup">Yedek</button>`;
+}
+function renderSide(r=route()){
+  const cur=(v,id)=>r.v===v&&(!id||r.id===id)?' aria-current="page"':'';
+  const miss=missingFields().length;
+  let h=`<a class="nv" href="#genel"${cur('genel')}>Genel bakış</a>
+  <a class="nv" href="#sirket"${cur('sirket')}>Şirket bilgileri${miss?`<span class="badge warn" title="Boş alan sayısı">${miss}</span>`:''}</a>
+  <div class="side-h">Belgeler</div>`;
+  for(const d of C.docs){const s=docState(d);h+=`<a class="nv" href="#belge/${esc(d.id)}"${cur('belge',d.id)} title="${esc(s.label)}"><span class="dot ${s.cls}"></span><span>${esc(d.title)}</span></a>`;}
+  h+=`<button class="nv nv-add" data-act="new-doc">+ Yeni belge</button>
+  <div class="side-h">Araçlar</div>
+  <a class="nv" href="#rehber"${cur('rehber')}>Hangi form?</a>
+  <a class="nv" href="#kayit"${cur('kayit')}>Değişiklik kaydı<span class="badge">${C.log.length}</span></a>
+  <div class="side-foot">Veriler yalnız bu tarayıcıda saklanır.<br>Son yedek: <b>${C.lastBackup?fmtD(C.lastBackup):'alınmadı'}</b><br><button class="link" data-act="export">Yedek indir</button></div>`;
+  $('#side').innerHTML=h;
+}
+
+function welcomeHTML(){return `<div class="hero">
+  ${BRAND.replace('width="30" height="30"','width="56" height="56"')}
+  <h1>Kurum Kitabı</h1>
+  <p class="lead">Şirketinize göre uyarlanan personel el kitabı, iş sağlığı ve güvenliği kuralları ve bildirim formları. Her değişiklik kayda geçer, yayınlanan her sürüm yeni revizyon numarası alır.</p>
+  <div class="actions"><button class="btn primary big" data-act="new-company">Şirketimi ekle</button><button class="btn big" data-act="sample">Örnek şirketle incele</button><button class="btn ghost big" data-act="import">Yedek yükle</button></div>
+  <div class="feat">
+    <div><b>Hazır taslak</b><span>Personel el kitabı, İSG kuralları; tehlikeli durum, ramak kala ve iş kazası formları.</span></div>
+    <div><b>Şirketinize göre</b><span>Ünvan, logo, sorumlular ve tehlike sınıfı belgelere kendiliğinden yerleşir.</span></div>
+    <div><b>Revizyon kaydı</b><span>Her değişiklik kişi ve saatle kaydedilir. Yayınlanan her sürümün numarası artar.</span></div>
+    <div><b>Yazdır ya da PDF</b><span>Başlıklı, numaralı A4 çıktı ve pano için “Hangi form?” afişi.</span></div>
+  </div>
+  <p class="muted small">Veriler yalnız bu tarayıcıda saklanır, hiçbir sunucuya gönderilmez. Taslaklar genel bilgilendirme amaçlıdır; yürürlüğe koymadan önce iş güvenliği uzmanınız ve hukuk danışmanınızla kontrol edin.</p>
+</div>`;}
+
+function homeHTML(){
+  const st=C.docs.map(d=>({d,s:docState(d)})),pend=st.filter(x=>x.s.cls!=='ok'),miss=missingFields();
+  const sub=[displayVal('tehlike_sinifi',C.info.tehlike_sinifi),C.info.calisan_sayisi?C.info.calisan_sayisi+' çalışan':'',C.info.nace?'NACE '+C.info.nace:''].filter(Boolean);
+  return `<div class="wrap">
+  <div class="page-h"><div><div class="crumb">${esc(coName(C))}</div><h1>Genel bakış</h1></div>
+    <div class="actions"><button class="btn" data-act="print-all">Tüm seti yazdır</button><button class="btn" data-act="new-doc">+ Yeni belge</button></div></div>
+  <div class="card co-card">
+    <div class="co-logo">${C.logo?`<img src="${esc(C.logo)}" alt="Logo">`:`<span class="nologo">${esc(initials())}</span>`}</div>
+    <div class="co-info"><div class="co-name">${esc(C.info.unvan||'Şirket ünvanı girilmedi')}</div>
+      <div class="muted">${sub.length?esc(sub.join(' · ')):'Tehlike sınıfı ve çalışan sayısı girilmedi'}</div>
+      <div class="chips">${miss.length?`<a class="chip warn" href="#sirket">${miss.length} bilgi boş</a>`:'<span class="chip ok">Şirket bilgileri tam</span>'}${C.logo?'':'<a class="chip warn" href="#sirket">Logo yok</a>'}</div></div>
+    <a class="btn sm" href="#sirket">Düzenle</a>
+  </div>
+  ${pend.length?`<div class="note warn" style="margin-top:14px"><div><b>${pend.length} belge yayın bekliyor:</b> ${pend.map(x=>esc(x.d.title)).join(', ')}. Yayınlanmamış belgeler “taslak” ibaresiyle yazdırılır.</div><button class="btn sm warn" data-act="publish-all">Bekleyenleri yayınla</button></div>`:''}
+  <h2 class="h2">Doküman ana listesi</h2>
+  ${masterListHTML(st)}
+  <h2 class="h2">Son değişiklikler</h2>
+  ${logListHTML(sortedLog().slice(0,6),true)}
+  <p><a href="#kayit">Tüm değişiklik kaydı →</a></p>
+</div>`;
+}
+function masterListHTML(st,print){
+  st=st||C.docs.map(d=>({d,s:docState(d)}));
+  const rows=st.map(({d,s})=>{const p=pub(d),f=d.revisions[0];
+    return `<tr><td class="mono nowrap">${esc(docNo(C,d))}</td><td>${print?esc(d.title):`<a href="#belge/${esc(d.id)}">${esc(d.title)}</a>`}</td><td class="mono">${p?revStr(p.rev):'—'}</td><td class="mono">${f?fmtD(f.date):'—'}</td><td class="mono">${p&&p.rev?fmtD(p.date):'—'}</td>${print?'':`<td class="mono nowrap">${fmtDT(d.updatedAt)}</td>`}<td>${print?esc(s.cls==='ok'?'Yürürlükte':s.cls==='warn'?'Revizyon hazırlanıyor':'Taslak'):`<span class="chip ${s.cls}">${esc(s.label)}</span>`}</td></tr>`;}).join('');
+  const t=`<table class="tbl"><thead><tr><th>Doküman no</th><th>Doküman adı</th><th>Rev.</th><th>Yayın tarihi</th><th>Revizyon tarihi</th>${print?'':'<th>Son düzenleme</th>'}<th>Durum</th></tr></thead><tbody>${rows}</tbody></table>`;
+  return print?`<div class="md">${t.replace(/ class="tbl"/,'')}</div>`:`<div class="tbl-wrap">${t}</div>`;
+}
+
+function companyHTML(){
+  const usedBy=k=>C.docs.filter(d=>{const u=usedKeys(d);return u.includes(k)||(k==='tehlike_sinifi'&&COMPUTED.some(x=>u.includes(x.k)));}).length;
+  const fi=f=>{
+    const v=C.info[f.k]??'',n=usedBy(f.k),id='f_'+f.k;let inp;
+    if(f.type==='select') inp=`<select id="${id}" data-field="${f.k}">${f.opts.map(([o,l])=>`<option value="${o}"${o===v?' selected':''}>${l}</option>`).join('')}</select>`;
+    else if(f.type==='textarea') inp=`<textarea id="${id}" data-field="${f.k}" rows="2" placeholder="${esc(f.ph||'')}">${esc(v)}</textarea>`;
+    else inp=`<input id="${id}" data-field="${f.k}" ${f.type==='number'?'type="number" min="0" inputmode="numeric"':'type="text"'} value="${esc(v)}" placeholder="${esc(f.ph||'')}" autocomplete="off">`;
+    const hint=[f.hint,n?`${n} belgede kullanılıyor`:''].filter(Boolean).join(' · ');
+    return `<label class="fi${f.wide?' wide':''}"><span class="fi-l">${esc(f.l)}<span class="fi-s" id="s_${f.k}"></span></span>${inp}${hint?`<span class="fi-h">${esc(hint)}</span>`:''}</label>`;
+  };
+  return `<div class="wrap">
+  <div class="page-h"><div><div class="crumb">${esc(coName(C))}</div><h1>Şirket bilgileri</h1>
+    <p class="lead muted">Bu bilgiler belgelerdeki alanlara kendiliğinden yerleşir. Her değişiklik kayda geçer; bilgiyi kullanan yayındaki belgeler yeni revizyon için “yayın bekliyor” durumuna geçer.</p></div></div>
+  ${meta.user?'':'<div class="note warn"><div>Değişiklik kaydında görünecek adınızı girin.</div><button class="btn sm" data-act="user">Adımı gir</button></div>'}
+  <div class="card logo-card">
+    <div class="logo-box">${C.logo?`<img src="${esc(C.logo)}" alt="Şirket logosu">`:'<span class="muted small">Logo yok</span>'}</div>
+    <div style="flex:1;min-width:220px"><h2 class="fg-h" style="margin-bottom:4px">Şirket logosu</h2>
+      <p class="muted small" style="margin:0 0 10px">Belge başlığında ve kapak sayfasında görünür. PNG, JPG, SVG veya WebP; en uzun kenarı 600 piksele küçültülür.</p>
+      <div class="actions"><button class="btn" data-act="logo-pick">${C.logo?'Logoyu değiştir':'Logo yükle'}</button>${C.logo?'<button class="btn ghost" data-act="logo-del">Kaldır</button>':''}</div></div>
+  </div>
+  ${FIELDS.map(([g,fs])=>`<section class="card fgroup"><h2 class="fg-h">${esc(g)}</h2><div class="fg-grid">${fs.map(fi).join('')}</div></section>`).join('')}
+  <section class="card danger-zone"><h2 class="fg-h">Şirketi sil</h2><p class="muted small" style="margin:0 0 10px">Bu şirkete ait tüm belgeler, revizyonlar ve kayıtlar bu tarayıcıdan silinir. Önce yedek indirmeniz önerilir.</p><button class="btn danger" data-act="company-del">Şirketi sil</button></section>
+</div>`;
+}
+
+function headMeta(d,revIdx=null){
+  const f=d.revisions[0];
+  if(revIdx!==null){
+    const r=d.revisions[revIdx],sn=r.snapshot;
+    return {unvan:sn.info.unvan||'',title:sn.title,no:[sn.info.kod,sn.code].filter(Boolean).join('-'),rev:revStr(r.rev),yayin:fmtD(f.date),revT:r.rev?fmtD(r.date):'—',draft:false};
+  }
+  const p=pub(d),dirty=docState(d).cls!=='ok';
+  return {unvan:C.info.unvan||'',title:d.title,no:docNo(C,d)||'—',
+    rev:p?(dirty?revStr(p.rev+1)+' (taslak)':revStr(p.rev)):'00 (taslak)',
+    yayin:f?fmtD(f.date):'Yayınlanmadı',revT:p?(dirty?'Yayınlanmadı':(p.rev?fmtD(p.date):'—')):'—',draft:dirty};
+}
+function docHeadHTML(m,print){
+  const dr=v=>/taslak|Yayınlanmadı/.test(v)?' class="dr"':'';
+  return `<div class="dochead"><div class="dh-logo">${logoHTML(print)}</div>
+  <div class="dh-title"><div class="dh-co">${esc(m.unvan||'Şirket ünvanı')}</div><div class="dh-doc">${esc(m.title)}</div></div>
+  <div class="dh-m"><table class="dh-meta"><tr><th>Doküman no</th><td>${esc(m.no)}</td></tr><tr><th>Yayın tarihi</th><td${dr(m.yayin)}>${esc(m.yayin)}</td></tr><tr><th>Revizyon no</th><td${dr(m.rev)}>${esc(m.rev)}</td></tr><tr><th>Revizyon tarihi</th><td${dr(m.revT)}>${esc(m.revT)}</td></tr></table></div></div>`;
+}
+function roSecHTML(kind,s,i,cx){
+  return `<section class="sec"><h2 class="sec-t">${kind==='metin'?(i+1)+'. ':''}${inl(s.title,cx)}</h2><div class="md">${renderMd(s.body,cx)}</div></section>`;
+}
+function secHTML(d,s,i,cx){
+  return `<section class="sec" data-sid="${esc(s.id)}"><div class="sec-h"><h2 class="sec-t">${d.kind==='metin'?(i+1)+'. ':''}${inl(s.title,cx)}</h2>
+  <div class="sec-tools"><button data-act="sec-edit">Düzenle</button><button data-act="sec-up" title="Yukarı taşı" aria-label="Yukarı taşı"${i===0?' disabled':''}>↑</button><button data-act="sec-down" title="Aşağı taşı" aria-label="Aşağı taşı"${i===d.sections.length-1?' disabled':''}>↓</button><button class="del" data-act="sec-del">Sil</button></div></div>
+  <div class="md">${renderMd(s.body,cx)}</div></section>`;
+}
+function docHTML(id){
+  const d=C.docs.find(x=>x.id===id);
+  if(!d) return '<div class="wrap"><h1>Belge bulunamadı</h1><p><a href="#genel">Genel bakışa dön</a></p></div>';
+  const s=docState(d),p=pub(d),m=headMeta(d),empt=emptyKeys(d),cx=mkCtx(C);
+  const preps=d.sections.reduce((n,x)=>n+x.body.split('\n').filter(l=>l.trim().startsWith('//')).length,0);
+  const ed=editing&&editing.docId===d.id?editing:null;
+  return `<div class="wrap">
+  <div class="page-h"><div><div class="crumb">Belgeler</div><h1>${esc(d.title)}</h1>
+    <div class="chips"><span class="chip mono">${esc(m.no)}</span><span class="chip ${s.cls}">${p?'Rev.'+revStr(p.rev)+' · ':''}${esc(s.label)}</span><span class="chip">Son düzenleme: ${fmtDT(d.updatedAt)}${d.updatedBy?' · '+esc(d.updatedBy):''}</span></div></div>
+    <div class="actions">${s.cls!=='ok'?`<button class="btn primary" data-act="publish">${p?'Revizyonu yayınla':'İlk sürümü yayınla'}</button>`:''}<button class="btn" data-act="print-doc">Yazdır / PDF</button><button class="btn" data-act="doc-settings">Belge ayarları</button></div></div>
+  ${s.cls==='warn'?`<div class="note warn"><div><b>Yayınlanmamış değişiklikler.</b> Yayınlandığında belge <b class="mono">${esc(m.no)} Rev.${revStr(p.rev)}</b> → <b class="mono">Rev.${revStr(p.rev+1)}</b> olur.<ul class="chg">${s.changes.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div class="note-act"><button class="btn sm warn" data-act="publish">Yayınla</button><button class="btn sm ghost" data-act="revert">Taslağı geri al</button></div></div>`:''}
+  ${s.cls==='none'?'<div class="note"><div><b>Bu belge henüz yayınlanmadı.</b> İçeriği şirketinize göre düzenleyin, ardından ilk sürümü yayınlayın. İlk yayın Rev.00 olarak kaydedilir.</div></div>':''}
+  ${empt.length?`<div class="note warn"><div>Belgede <b>${empt.length} şirket bilgisi boş:</b> ${empt.map(k=>esc(phLabel(k))).join(', ')}. Yazdırıldığında noktalı boşluk olarak görünür.</div><a class="btn sm" href="#sirket">Şirket bilgilerine git</a></div>`:''}
+  <div class="paper ${d.kind}">
+    ${docHeadHTML(m)}
+    ${d.sections.map((x,i)=>ed&&ed.sid===x.id?editorHTML(d):secHTML(d,x,i,cx)).join('')}
+    ${ed&&ed.sid===null?editorHTML(d):'<button class="btn add-sec" data-act="sec-add">+ Bölüm ekle</button>'}
+  </div>
+  ${preps?`<p class="muted small">Belgede ${preps} hazırlık notu var. Bu notlar yalnız ekranda görünür, yazdırılmaz.</p>`:''}
+  <h2 class="h2">Revizyon geçmişi</h2>
+  ${revHistHTML(d)}
+</div>`;
+}
+function revHistHTML(d){
+  if(!d.revisions.length) return '<p class="muted">Henüz revizyon yok. İlk yayından sonra her revizyon burada listelenir.</p>';
+  const rows=d.revisions.map((r,i)=>`<tr><td class="mono">${revStr(r.rev)}</td><td class="mono nowrap">${fmtD(r.date)}</td><td>${esc(r.desc)}</td><td>${esc(r.by)}</td><td>${esc(r.approver||'—')}</td><td class="nowrap"><button class="btn sm" data-act="rev-diff" data-i="${i}">Farklar</button> <button class="btn sm" data-act="rev-view" data-i="${i}">Görüntüle</button></td></tr><tr class="rev-x" id="revx-${i}" hidden><td colspan="6"></td></tr>`).reverse();
+  // reverse satır çiftlerini bozmasın diye her revizyon tek dizi elemanıdır.
+  return `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Rev.</th><th>Tarih</th><th>Değişiklik açıklaması</th><th>Hazırlayan</th><th>Onaylayan</th><th></th></tr></thead><tbody>${rows.join('')}</tbody></table></div>`;
+}
+function sectionDiffs(a,b){
+  const am=new Map(a.sections.map(s=>[s.id,s]));let h='';
+  b.sections.forEach((s,i)=>{const o=am.get(s.id);
+    if(!o) h+=`<div class="sd"><div class="sd-t">Eklendi: ${i+1}. ${esc(s.title)}</div>${diffHTML(compactDiff(diffLines('',s.body),2))}</div>`;
+    else if(o.body!==s.body) h+=`<div class="sd"><div class="sd-t">${i+1}. ${esc(s.title)}</div>${diffHTML(compactDiff(diffLines(o.body,s.body)))}</div>`;});
+  const bm=new Set(b.sections.map(s=>s.id));
+  a.sections.forEach(s=>{if(!bm.has(s.id)) h+=`<div class="sd"><div class="sd-t">Silindi: ${esc(s.title)}</div>${diffHTML(compactDiff(diffLines(s.body,''),2))}</div>`;});
+  return h;
+}
+function revDiffHTML(d,i){
+  const r=d.revisions[i],prev=i>0?d.revisions[i-1].snapshot:null;
+  return `<ul class="chg">${(r.changes||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>${prev?sectionDiffs(prev,r.snapshot)||'':'<p class="muted small">İlk yayın; karşılaştırılacak önceki sürüm yok.</p>'}`;
+}
+
+function editorHTML(d){
+  const e=editing;
+  const phOpts=FIELDS.map(([g,fs])=>`<optgroup label="${esc(g)}">${fs.map(f=>`<option value="${f.k}">${esc(f.l)}</option>`).join('')}</optgroup>`).join('')
+    +`<optgroup label="Tehlike sınıfına göre">${COMPUTED.map(f=>`<option value="${f.k}">${esc(f.l)}</option>`).join('')}</optgroup>`
+    +`<optgroup label="Belge numaraları">${C.docs.map(x=>`<option value="no:${esc(x.role)}">${esc(x.title)}</option>`).join('')}</optgroup>`;
+  return `<section class="sec editing" id="editor">
+  <label class="ed-l">Bölüm başlığı<input id="edTitle" value="${esc(e.title)}" maxlength="160"></label>
+  <div class="ed-bar" role="toolbar" aria-label="Biçim">
+    <button data-act="ins" data-snip="bold" title="Kalın (Ctrl+B)"><b>K</b></button>
+    <button data-act="ins" data-snip="h">Ara başlık</button>
+    <button data-act="ins" data-snip="ul">• Madde</button>
+    <button data-act="ins" data-snip="ol">1. Numaralı</button>
+    <button data-act="ins" data-snip="table">Tablo</button>
+    <button data-act="ins" data-snip="note">Not kutusu</button>
+    <button data-act="ins" data-snip="prep">Hazırlık notu</button>
+    <select data-change="ins-ph" aria-label="Şirket bilgisi ekle"><option value="">Şirket bilgisi ekle…</option>${phOpts}</select>
+    <select data-change="ins-field" aria-label="Form alanı ekle"><option value="">Form alanı ekle…</option><option value="alan">Kısa yazı alanı</option><option value="uzun">Geniş yazı alanı</option><option value="secim">İşaret kutuları</option><option value="kutu">Tek işaret kutusu</option><option value="imza">İmza alanı</option></select>
+    <button class="link" data-act="help">Biçim rehberi</button>
+  </div>
+  <div class="ed-grid"><textarea id="edBody" spellcheck="true" aria-label="Bölüm metni">${esc(e.body)}</textarea><div class="ed-prev"><div class="ed-prev-l">Önizleme</div><div class="md" id="edPrev"></div></div></div>
+  <div class="ed-foot"><button class="btn primary" data-act="sec-save">Kaydet</button><button class="btn" data-act="sec-cancel">Vazgeç</button><span>Kaydettiğiniz her değişiklik Değişiklik kaydına işlenir. Belge numarası revizyon yayınlandığında değişir. Ctrl+S kaydeder.</span></div>
+</section>`;
+}
+
+function guideHTML(){
+  const card=k=>{const K=KINDS[k],d=roleDoc(C,k);return `<div class="kind ${k}"><h3>${ICON[k]}${K.t}</h3><div><b>Ne zaman:</b> ${K.when}</div><div><b>Örnek:</b> ${K.ex}</div><div><b>Ne yapılır:</b> ${K.act}</div><div><b>Süre:</b> ${K.time}</div><div class="k-form">${d?`<a href="#belge/${esc(d.id)}">${esc(d.title)}</a> <span class="muted mono">${esc(docNo(C,d))}</span>`:'<span class="muted">Form silinmiş</span>'}</div></div>`;};
+  return `<div class="wrap">
+  <div class="page-h"><div><div class="crumb">Araçlar</div><h1>Hangi formu kullanmalıyım?</h1><p class="lead muted">Üç soruda doğru bildirim formunu bulun. Bu sayfayı afiş olarak yazdırıp panoya asabilirsiniz.</p></div>
+    <div class="actions"><button class="btn" data-act="print-poster">Afiş olarak yazdır</button></div></div>
+  <div class="card wiz" id="wiz">${wizHTML()}</div>
+  <h2 class="h2">Üç bildirim türü birbirine bağlıdır</h2>
+  <div class="flow"><div class="flow-b tehlike"><b>Tehlikeli durum</b>Risk var, olay yok</div><div class="flow-a">olay yaşanırsa</div><div class="flow-b ramak"><b>Ramak kala</b>Olay var, yaralanma yok</div><div class="flow-a">biri yaralanırsa</div><div class="flow-b kaza"><b>İş kazası</b>Yaralanma var</div></div>
+  <p class="muted small">Tehlikeli durumlar ve ramak kalalar zamanında bildirilirse iş kazaları önlenir. Bu yüzden bildirimde bulunan çalışan cezalandırılmaz.</p>
+  <h2 class="h2">Karşılaştırma</h2>
+  <div class="kinds">${['tehlike','ramak','kaza'].map(card).join('')}</div>
+</div>`;
+}
+function wizHTML(){
+  if(wz.res==='yok') return `<div class="wiz-res"><div class="wiz-k">Bildirim gerekmiyor</div><p>Bir olay ya da tehlike yoksa form doldurmanız gerekmez. Emin değilseniz yöneticinize veya iş güvenliği uzmanına${resolve(C,'isg_uzmani')?' ('+esc(resolve(C,'isg_uzmani'))+')':''} danışın.</p><button class="btn" data-act="wiz-reset">Baştan başla</button></div>`;
+  if(wz.res){const K=KINDS[wz.res],d=roleDoc(C,wz.res);
+    return `<div class="wiz-res ${wz.res}"><div class="wiz-k">${ICON[wz.res]}${K.t}</div><div class="wiz-form">${d?`Kullanılacak form: <a href="#belge/${esc(d.id)}"><b>${esc(d.title)}</b></a> <span class="muted mono">${esc(docNo(C,d))}</span>`:'Form bulunamadı'}</div><p><b>Ne yapılır:</b> ${K.act}</p><p><b>Süre:</b> ${K.time}</p><button class="btn" data-act="wiz-reset">Baştan başla</button></div>`;}
+  const q=WQ[wz.step];
+  return `<div class="wiz-step">SORU ${wz.step+1} / 3</div><div class="wiz-q">${q.q}</div><div class="wiz-btns"><button class="btn primary" data-act="wiz" data-v="1">Evet</button><button class="btn" data-act="wiz" data-v="0">Hayır</button>${wz.step?'<button class="btn ghost" data-act="wiz-reset">Baştan</button>':''}</div>`;
+}
+
+function filteredLog(){
+  const q=lf.q.trim().toLocaleLowerCase('tr-TR');
+  return sortedLog().filter(e=>(!lf.doc||(lf.doc==='__sirket'?['sirket','logo','olustur','yedek'].includes(e.act):e.doc===lf.doc))
+    &&(!q||[e.text,e.note,e.user,e.docTitle,...(e.list||[])].join(' ').toLocaleLowerCase('tr-TR').includes(q)));
+}
+function logHTML(){
+  return `<div class="wrap">
+  <div class="page-h"><div><div class="crumb">Araçlar</div><h1>Değişiklik kaydı</h1><p class="lead muted">Belgelerde ve şirket bilgilerinde yapılan her değişiklik; tarih, saat ve düzenleyen kişiyle birlikte burada saklanır. Silinen ve değiştirilen metinler satır satır görülebilir.</p></div>
+    <div class="actions"><button class="btn" data-act="csv">Excel (CSV) indir</button></div></div>
+  <div class="filters"><select data-change="log-doc" aria-label="Belge filtresi"><option value="">Tüm kayıtlar</option><option value="__sirket"${lf.doc==='__sirket'?' selected':''}>Şirket bilgileri</option>${C.docs.map(d=>`<option value="${esc(d.id)}"${lf.doc===d.id?' selected':''}>${esc(d.title)}</option>`).join('')}</select>
+  <input type="search" data-input="log-q" placeholder="Kayıtlarda ara" value="${esc(lf.q)}" aria-label="Kayıtlarda ara"></div>
+  <div id="logList">${logListHTML(filteredLog())}</div>
+</div>`;
+}
+function logListHTML(list,compact){
+  if(!list.length) return '<p class="muted">Kayıt yok.</p>';
+  const item=e=>`<li class="lg"><span class="lg-dot ${esc(e.act)}"></span><div><div class="lg-t">${esc(e.text)}</div><div class="lg-m">${compact?fmtDT(e.ts):fmtT(e.ts)} · ${esc(e.user)}${e.docTitle?' · '+esc(e.docTitle):''}${compact?'':' · '+esc(ACT_LABEL[e.act]||e.act)}</div>${e.note?`<div class="lg-n">${esc(e.note)}</div>`:''}${e.list&&e.list.length?`<ul class="chg small">${e.list.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}${!compact&&e.diff?`<details><summary>Metin farkını göster</summary>${diffHTML(e.diff)}</details>`:''}</div></li>`;
+  if(compact) return `<ul class="lg-list">${list.map(item).join('')}</ul>`;
+  let h='',day='';
+  for(const e of list){const dd=fmtD(e.ts);if(dd!==day){h+=(day?'</ul>':'')+`<div class="lg-day">${dd}</div><ul class="lg-list">`;day=dd;}h+=item(e);}
+  return h+'</ul>';
+}
+
+/* ---------- Yazdırma çıktıları ---------- */
+function coverHTML(m,snap,cx){
+  return `<div class="cover"><div class="cv-logo">${logoHTML(true)}</div><div class="cv-co">${esc(m.unvan)}</div><div class="cv-title">${esc(m.title)}</div>
+  <table class="cv-meta"><tr><th>Doküman no</th><td>${esc(m.no)}</td><th>Revizyon no</th><td>${esc(m.rev)}</td></tr><tr><th>Yayın tarihi</th><td>${esc(m.yayin)}</td><th>Revizyon tarihi</th><td>${esc(m.revT)}</td></tr></table>
+  <div class="cv-toc"><div class="cv-toc-h">İçindekiler</div><ol>${snap.sections.map(s=>`<li>${inl(s.title,cx)}</li>`).join('')}</ol></div></div>`;
+}
+function revTablePrint(revs,m){
+  const rows=revs.map(r=>`<tr><td>${revStr(r.rev)}</td><td>${fmtD(r.date)}</td><td>${esc(r.desc)}</td><td>${esc(r.by)}</td><td>${esc(r.approver||'')}</td></tr>`);
+  if(m.draft) rows.push(`<tr><td>${esc(m.rev)}</td><td>—</td><td>Yayınlanmamış değişiklikler</td><td></td><td></td></tr>`);
+  return `<div class="revt"><h3>Revizyon tablosu</h3><div class="md"><table><thead><tr><th>Rev.</th><th>Tarih</th><th>Değişiklik açıklaması</th><th>Hazırlayan</th><th>Onaylayan</th></tr></thead><tbody>${rows.join('')||'<tr><td colspan="5">Henüz yayınlanmadı</td></tr>'}</tbody></table></div></div>`;
+}
+function apprHTML(r){
+  return `<div class="appr"><div><b>HAZIRLAYAN</b><span>${esc(r?r.by:'')}</span><span>${r?fmtD(r.date):''}</span><span class="sig">İmza</span></div><div><b>ONAYLAYAN</b><span>${esc(r?r.approver:'')}</span><span>${r?fmtD(r.date):''}</span><span class="sig">İmza</span></div></div>`;
+}
+function docPrintHTML(d,revIdx=null,o={}){
+  const isRev=revIdx!==null,r=isRev?d.revisions[revIdx]:null,snap=isRev?r.snapshot:snapOf(C,d);
+  const m=headMeta(d,revIdx),cx=mkCtx(C,{info:isRev?snap.info:null,print:true});
+  const revs=isRev?d.revisions.slice(0,revIdx+1):d.revisions;
+  const last=isRev?r:(m.draft?null:pub(d));
+  let h=d.kind==='metin'?coverHTML(m,snap,cx):'';
+  h+=`<table class="ptable"><thead><tr><td>${docHeadHTML(m,true)}</td></tr></thead><tbody><tr><td><div class="${d.kind}">${snap.sections.map((s,i)=>roSecHTML(d.kind,s,i,cx)).join('')}${d.kind==='metin'?revTablePrint(revs,m)+apprHTML(last):''}</div></td></tr></tbody></table>`;
+  if(o.watermark&&m.draft) h+='<div class="draftmark">TASLAK</div>';
+  return `<div class="pdoc">${h}</div>`;
+}
+function posterHTML(){
+  const head={unvan:C.info.unvan||'',title:'İSG Bildirim Rehberi',no:'Bilgilendirme afişi',yayin:fmtD(nowISO()),rev:'—',revT:'—'};
+  const rows=['kaza','ramak','tehlike'].map((k,i)=>{const K=KINDS[k],d=roleDoc(C,k);
+    return `<div class="pst-row ${k}"><div class="pst-tag">${ICON[k]}<b>${K.t}</b><span class="pst-no">${d?esc(docNo(C,d)):''}</span></div><div class="pst-b"><div class="pst-q">${i+1}. ${WQ[i].q}</div><div><b>Evet ise:</b> ${d?esc(d.title):'—'}</div><div><b>Örnek:</b> ${K.ex}</div><div><b>Ne yapılır:</b> ${K.act}</div><div><b>Süre:</b> ${K.time}</div></div></div>`;}).join('');
+  const v=k=>esc(resolve(C,k)||'……………');
+  return `<div class="pdoc poster">${docHeadHTML(head,true).replace('<th>Yayın tarihi</th>','<th>Basım tarihi</th>')}
+  <div class="pst-title">Ne gördün, ne yaşadın? Doğru formu seç.</div>
+  <div class="pst-sub">Soruları sırayla yanıtlayın; ilk “evet” dediğiniz satırdaki formu doldurun. Bildirimde bulunan çalışan cezalandırılmaz.</div>
+  ${rows}
+  <div class="pst-sub">Üç soruya da “hayır” dediyseniz bildirim gerekmez. Emin değilseniz yöneticinize ya da iş güvenliği uzmanına danışın.</div>
+  <div class="pst-emg"><div>Acil çağrı<b>112</b></div><div>İç acil hat<b>${v('acil_tel_ic')}</b></div><div>Toplanma alanı<b>${v('toplanma_yeri')}</b></div><div>İş güvenliği uzmanı<b>${v('isg_uzmani')}</b></div></div></div>`;
+}
+function printAllHTML(){
+  const cover=`<div class="cover"><div class="cv-logo">${logoHTML(true)}</div><div class="cv-co">${esc(C.info.unvan||'')}</div><div class="cv-title">Şirket Yönetmeliği</div><div class="cv-sub">Personel el kitabı, iş sağlığı ve güvenliği kuralları ve bildirim formları</div><div class="cv-list"><div class="cv-toc-h">Doküman ana listesi</div>${masterListHTML(null,true)}<p style="font-size:9pt;color:#555">Basım tarihi: ${fmtD(nowISO())}</p></div></div>`;
+  return cover+C.docs.map(d=>docPrintHTML(d)).join('');
+}
+
+/* ---------- Pencere ve bildirim ---------- */
+let toastT=0;
+function toast(msg,kind){const t=$('#toast');t.textContent=msg;t.className='on'+(kind?' '+kind:'');clearTimeout(toastT);toastT=setTimeout(()=>{t.className='';},kind==='err'?6000:3800);}
+function closeDlg(){
+  const d=$('#dlg');if(!d.open) return Promise.resolve();
+  return new Promise(r=>{d.addEventListener('close',()=>setTimeout(r),{once:true});d.close();});
+}
+async function dlg(html,wide){
+  await closeDlg();
+  const d=$('#dlg');d.className=wide?'wide':'';d.innerHTML=html;d.returnValue='';
+  return new Promise(res=>{
+    d.addEventListener('close',()=>{const v=d.returnValue,f=d.querySelector('form');res(v&&v!=='cancel'?{v,fd:f?new FormData(f):null}:null);},{once:true});
+    d.showModal();
+    const a=d.querySelector('[autofocus]')||d.querySelector('input:not([type=hidden]),textarea');
+    if(a) a.focus();
+  });
+}
+const foot=(ok,danger)=>`<div class="dlg-foot"><button class="btn" value="cancel" formnovalidate>Vazgeç</button><button class="btn ${danger?'danger':'primary'}" value="ok">${ok}</button></div>`;
+async function confirmDlg(title,msg,ok='Tamam',danger=false){
+  return !!(await dlg(`<form method="dialog"><h2>${esc(title)}</h2><p>${esc(msg)}</p>${foot(esc(ok),danger)}</form>`));
+}
+async function ensureUser(){
+  if(meta.user) return true;
+  const r=await dlg(`<form method="dialog"><h2>Adınız</h2><p class="muted">Değişiklik kaydında her değişikliğin yanında bu ad görünür. Bu sistem kullanıcı doğrulaması yapmaz; ad yalnız kayıt içindir.</p><label>Ad soyad<input name="user" required autofocus maxlength="60"></label>${foot('Kaydet')}</form>`);
+  if(!r) return false;
+  meta.user=String(r.fd.get('user')).trim();saveMeta();renderTop();return !!meta.user;
+}
+async function userDlg(){
+  const r=await dlg(`<form method="dialog"><h2>Düzenleyen kişi</h2><p class="muted">Bu tarayıcıda yapılan değişiklikler bu adla kaydedilir. Ad yalnız kayıt içindir, giriş ya da şifre yoktur.</p><label>Ad soyad<input name="user" required autofocus maxlength="60" value="${esc(meta.user)}"></label>${foot('Kaydet')}</form>`);
+  if(!r) return;
+  meta.user=String(r.fd.get('user')).trim();saveMeta();render();
+}
+
+/* ---------- Şirket işlemleri ---------- */
+const sinifOpts=v=>FIELD_MAP.tehlike_sinifi.opts.map(([o,l])=>`<option value="${o}"${o===v?' selected':''}>${l}</option>`).join('');
+async function newCompany(){
+  const r=await dlg(`<form method="dialog"><h2>Yeni şirket</h2><p class="muted">Diğer bilgileri sonra Şirket bilgileri sayfasında tamamlayabilirsiniz.</p>
+  <label>Şirket ünvanı<input name="unvan" required autofocus placeholder="Örnek Sanayi ve Ticaret A.Ş."></label>
+  <div class="row2"><label>Kısa ad<input name="kisa_ad" placeholder="Örnek Sanayi"></label><label>Belge kodu öneki<input name="kod" maxlength="10" placeholder="Boş bırakılırsa önerilir"></label></div>
+  <label>Tehlike sınıfı<select name="tehlike_sinifi">${sinifOpts('')}</select></label>
+  ${meta.user?'':'<label>Adınız (değişiklik kaydında görünür)<input name="user" required maxlength="60"></label>'}
+  ${foot('Oluştur')}</form>`);
+  if(!r){renderTop();return;}
+  const fd=r.fd;
+  if(fd.get('user')) meta.user=String(fd.get('user')).trim();
+  const unvan=String(fd.get('unvan')).trim();
+  const c=mkCompany({unvan,kisa_ad:String(fd.get('kisa_ad')||'').trim(),kod:normKod(fd.get('kod'))||suggestKod(unvan),tehlike_sinifi:String(fd.get('tehlike_sinifi')||'')});
+  addLog(c,{act:'olustur',text:'Şirket oluşturuldu',note:unvan});
+  C=c;meta.active=c.id;editing=null;persist();go('sirket');
+  toast('Şirket oluşturuldu. Bilgileri tamamlayın, ardından belgeleri yayınlayın.');
+}
+function createSample(){
+  const c=createSampleCompany();
+  C=c;meta.active=c.id;editing=null;persist();go('genel');
+  toast('Örnek şirket eklendi. İstediğiniz gibi değiştirebilir ya da silebilirsiniz.');
+}
+function switchCompany(id){
+  if(id==='__new'){newCompany();return;}
+  const c=store.get('c:'+id);if(!c){toast('Şirket kaydı bulunamadı.','err');return;}
+  C=sanitizeCompany(c);meta.active=id;editing=null;saveMeta();go('genel');
+}
+function onFieldChange(el){
+  const k=el.dataset.field;
+  let v=el.value;
+  if(k==='kod'){v=normKod(v);el.value=v;}
+  v=String(v).replace(/[ \t]+$/gm,'').trim();
+  const old=String(C.info[k]??'');
+  if(old===v) return;
+  const before=new Map(C.docs.map(d=>[d.id,docState(d).cls]));
+  C.info[k]=v;
+  addLog(C,{act:'sirket',text:`Şirket bilgisi güncellendi: ${FIELD_MAP[k].l}`,note:`${displayVal(k,old)||'boş'} → ${displayVal(k,v)||'boş'}`});
+  persist();
+  const s=$('#s_'+k);if(s){s.textContent='Kaydedildi';setTimeout(()=>{if(s.isConnected) s.textContent='';},1800);}
+  renderSide();
+  if(k==='unvan'||k==='kisa_ad') renderTop();
+  const turned=C.docs.filter(d=>before.get(d.id)==='ok'&&docState(d).cls==='warn');
+  if(turned.length) toast(`${turned.length} belge yeni revizyon bekliyor: ${turned.map(d=>d.title).join(', ')}`);
+}
+async function loadLogo(file){
+  if(!file) return;
+  if(!/^image\//.test(file.type)){toast('Lütfen bir görsel dosyası seçin.','err');return;}
+  const url=URL.createObjectURL(file);
+  try{
+    const img=new Image();img.src=url;await img.decode();
+    let w=img.naturalWidth||600,h=img.naturalHeight||300;
+    const k=Math.min(1,600/Math.max(w,h));w=Math.max(1,Math.round(w*k));h=Math.max(1,Math.round(h*k));
+    const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);
+    let data=cv.toDataURL('image/png');
+    if(data.length>350000) data=cv.toDataURL('image/webp',.9);
+    const had=!!C.logo;C.logo=data;
+    addLog(C,{act:'logo',text:had?'Şirket logosu değiştirildi':'Şirket logosu eklendi',note:file.name});
+    persist();render();toast('Logo kaydedildi.');
+  }catch{toast('Görsel okunamadı. PNG veya JPG deneyin.','err');}
+  finally{URL.revokeObjectURL(url);}
+}
+async function deleteCompany(){
+  const ok=await confirmDlg('Şirket silinsin mi?',`“${C.info.unvan||coName(C)}” ve tüm belgeleri, revizyonları ve değişiklik kaydı bu tarayıcıdan kalıcı olarak silinir. Yedeğiniz yoksa geri alınamaz.`,'Kalıcı olarak sil',true);
+  if(!ok) return;
+  store.del('c:'+C.id);meta.list=meta.list.filter(x=>x.id!==C.id);meta.active=meta.list[0]?.id||null;
+  C=null;editing=null;loadActive();saveMeta();go('genel');toast('Şirket silindi.');
+}
+
+/* ---------- Belge işlemleri ---------- */
+async function newDoc(){
+  const r=await dlg(`<form method="dialog"><h2>Yeni belge</h2><p class="muted">Talimat, prosedür ya da şirkete özel bir form ekleyin. Belge, numarası ve revizyon kaydıyla diğer belgeler gibi yönetilir.</p>
+  <label>Belge adı<input name="title" required autofocus maxlength="120" placeholder="Örn. Forklift Kullanma Talimatı"></label>
+  <div class="row2"><label>Doküman kodu<input name="code" required maxlength="20" placeholder="TL-01"></label><label>Belge türü<select name="kind"><option value="metin">Metin (talimat, prosedür)</option><option value="form">Form</option></select></label></div>
+  <p class="muted small">Tam numara, şirketin belge kodu önekiyle birleşir: ${esc(C.info.kod||'ÖNEK')}-TL-01</p>${foot('Belgeyi ekle')}</form>`);
+  if(!r) return;
+  if(!(await ensureUser())) return;
+  const code=normKod(r.fd.get('code')),kind=r.fd.get('kind')==='form'?'form':'metin',title=String(r.fd.get('title')).trim();
+  if(!code){toast('Doküman kodu geçersiz.','err');return;}
+  if(C.docs.some(d=>d.code===code)){toast(`${code} kodu başka bir belgede kullanılıyor.`,'err');return;}
+  const d=mkDoc('x'+uid().slice(-5),kind,title,code,newDocSections(kind));
+  touch(d);C.docs.push(d);
+  addLog(C,{act:'belge-ekle',doc:d.id,docTitle:title,text:`Belge eklendi: ${docNo(C,d)} ${title}`});
+  persist();go('belge/'+d.id);
+}
+async function docSettings(d){
+  const r=await dlg(`<form method="dialog"><h2>Belge ayarları</h2>
+  <label>Belge adı<input name="title" required maxlength="120" value="${esc(d.title)}"></label>
+  <label>Doküman kodu<input name="code" required maxlength="20" value="${esc(d.code)}"></label>
+  <p class="muted small">Ad ve kod değişikliği yayınlanmamış değişiklik sayılır; yeni revizyonla yayınlanır. Belgenin tam numarası şirket önekiyle birleşir.</p>
+  <div class="dlg-foot" style="justify-content:space-between"><button class="btn danger" value="delete" formnovalidate>Belgeyi sil</button><span class="actions"><button class="btn" value="cancel" formnovalidate>Vazgeç</button><button class="btn primary" value="ok">Kaydet</button></span></div></form>`);
+  if(!r) return;
+  if(r.v==='delete'){
+    const refs=C.docs.filter(x=>x!==d&&usedKeys(x).includes('no:'+d.role)).map(x=>x.title);
+    const ok=await confirmDlg('Belge silinsin mi?',`${docNo(C,d)} ${d.title} ve revizyon geçmişi silinir. İşlem değişiklik kaydına işlenir.${refs.length?' Bu belgenin numarası şu belgelerde geçiyor: '+refs.join(', ')+'.':''}`,'Belgeyi sil',true);
+    if(!ok) return;
+    if(!(await ensureUser())) return;
+    C.docs=C.docs.filter(x=>x!==d);
+    addLog(C,{act:'belge-sil',doc:d.id,docTitle:d.title,text:`Belge silindi: ${docNo(C,d)} ${d.title}`,note:d.revisions.length?`Son yayın Rev.${revStr(pub(d).rev)} · ${fmtD(pub(d).date)}`:'Hiç yayınlanmamıştı'});
+    editing=null;persist();go('genel');toast('Belge silindi.');return;
+  }
+  const title=String(r.fd.get('title')).trim(),code=normKod(r.fd.get('code'));
+  if(!code){toast('Doküman kodu geçersiz.','err');return;}
+  if(code!==d.code&&C.docs.some(x=>x!==d&&x.code===code)){toast(`${code} kodu başka bir belgede kullanılıyor.`,'err');return;}
+  const notes=[];
+  if(title!==d.title) notes.push(`Ad: “${d.title}” → “${title}”`);
+  if(code!==d.code) notes.push(`Kod: ${d.code} → ${code}`);
+  if(!notes.length) return;
+  if(!(await ensureUser())) return;
+  d.title=title;d.code=code;touch(d);
+  addLog(C,{act:'belge',doc:d.id,docTitle:title,text:'Belge ayarları değişti',note:notes.join(' · ')});
+  persist();render();
+}
+async function publishDlg(d){
+  const p=pub(d),st=docState(d);
+  if(p&&st.cls==='ok'){toast('Yayınlanacak değişiklik yok.');return;}
+  const next=p?p.rev+1:0,empt=emptyKeys(d);
+  const r=await dlg(`<form method="dialog"><h2>${p?'Revizyonu yayınla':'İlk sürümü yayınla'}</h2>
+  <div class="numchange"><div><small>ŞU AN</small><b>${p?esc([p.snapshot.info.kod,p.snapshot.code].filter(Boolean).join('-'))+' · Rev.'+revStr(p.rev):'Yayınlanmadı'}</b></div><span aria-hidden="true">→</span><div class="to"><small>YENİ</small><b>${esc(docNo(C,d))} · Rev.${revStr(next)}</b></div></div>
+  ${p?`<div><b class="small">Değişiklikler</b><ul class="chg small">${st.changes.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:''}
+  ${empt.length?`<p class="note warn small" style="margin:0">Belgede ${empt.length} şirket bilgisi boş (${empt.map(k=>esc(phLabel(k))).join(', ')}). Çıktıda noktalı boşluk olarak görünür.</p>`:''}
+  <label>Değişiklik açıklaması<textarea name="desc" required rows="3">${esc(p?st.changes.join('; '):'İlk yayın')}</textarea></label>
+  <div class="row2"><label>Hazırlayan<input name="by" required value="${esc(meta.user)}"></label><label>Onaylayan<input name="ap" value="${esc(C.info.isveren||'')}"></label></div>
+  <label>Yayın tarihi<input type="date" name="date" required value="${dayInput()}"></label>
+  ${foot('Rev.'+revStr(next)+' olarak yayınla')}</form>`);
+  if(!r) return;
+  const date=String(r.fd.get('date'));
+  if(p&&toDate(date)<toDate(p.date)){toast(`Yayın tarihi önceki revizyondan (${fmtD(p.date)}) önce olamaz.`,'err');return;}
+  if(!meta.user){meta.user=String(r.fd.get('by')).trim();saveMeta();}
+  publishTo(C,d,{date,desc:String(r.fd.get('desc')).trim(),by:String(r.fd.get('by')).trim(),approver:String(r.fd.get('ap')).trim()});
+  touch(d);persist();render();toast(`${docNo(C,d)} Rev.${revStr(next)} yayınlandı.`);
+}
+async function publishAll(){
+  const items=C.docs.filter(d=>docState(d).cls!=='ok');
+  if(!items.length){toast('Yayın bekleyen belge yok.');return;}
+  const r=await dlg(`<form method="dialog"><h2>Bekleyen belgeleri yayınla</h2><p class="muted">Aşağıdaki belgeler yeni revizyon numarasıyla yayınlanır.</p>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Belge</th><th>Yeni numara</th></tr></thead><tbody>${items.map(d=>{const p=pub(d);return `<tr><td>${esc(d.title)}</td><td class="mono nowrap">${esc(docNo(C,d))} · Rev.${revStr(p?p.rev+1:0)}</td></tr>`;}).join('')}</tbody></table></div>
+  <label>Değişiklik açıklaması (boş bırakılırsa her belgenin kendi değişiklik listesi yazılır)<textarea name="desc" rows="2"></textarea></label>
+  <div class="row2"><label>Hazırlayan<input name="by" required value="${esc(meta.user)}"></label><label>Onaylayan<input name="ap" value="${esc(C.info.isveren||'')}"></label></div>
+  <label>Yayın tarihi<input type="date" name="date" required value="${dayInput()}"></label>
+  ${foot(items.length+' belgeyi yayınla')}</form>`);
+  if(!r) return;
+  const date=String(r.fd.get('date')),desc=String(r.fd.get('desc')||'').trim(),by=String(r.fd.get('by')).trim(),ap=String(r.fd.get('ap')).trim();
+  if(!meta.user){meta.user=by;saveMeta();}
+  let n=0;const skipped=[];
+  for(const d of items){
+    const p=pub(d);
+    if(p&&toDate(date)<toDate(p.date)){skipped.push(d.title);continue;}
+    publishTo(C,d,{date,desc:desc||(p?docState(d).changes.join('; '):'İlk yayın'),by,approver:ap});touch(d);n++;
+  }
+  persist();render();
+  toast(skipped.length?`${n} belge yayınlandı. Tarihi önceki revizyondan eski olduğu için atlananlar: ${skipped.join(', ')}`:`${n} belge yayınlandı.`,skipped.length?'err':'');
+}
+async function revertDoc(d){
+  const p=pub(d);if(!p) return;
+  const ok=await confirmDlg('Taslak geri alınsın mı?',`Belge, yayındaki Rev.${revStr(p.rev)} hâline döner. Yayınlanmamış bölüm değişiklikleri silinir; geri alma işlemi değişiklik kaydına işlenir.`,'Geri al',true);
+  if(!ok) return;
+  if(!(await ensureUser())) return;
+  const ch=docState(d).changes;
+  d.title=p.snapshot.title;d.code=p.snapshot.code;d.sections=p.snapshot.sections.map(s=>({...s}));
+  touch(d);addLog(C,{act:'geri',doc:d.id,docTitle:d.title,text:`Taslak geri alındı, Rev.${revStr(p.rev)} hâline dönüldü`,list:ch});
+  editing=null;persist();render();
+  toast(docState(d).cls==='ok'?'Taslak geri alındı.':'Kalan fark şirket bilgilerinden geliyor. Şirket bilgisini düzeltin ya da yeni revizyon yayınlayın.');
+}
+
+/* ---------- Bölüm düzenleyici ---------- */
+const edChanged=()=>editing&&(editing.title!==editing.orig.title||editing.body!==editing.orig.body);
+async function startEdit(sid){
+  const d=curDoc();if(!d) return;
+  if(edChanged()&&!(await confirmDlg('Açık düzenleme kaydedilmedi','Kaydedilmemiş değişiklikler kaybolacak. Devam edilsin mi?','Devam et',true))) return;
+  if(sid===null){editing={docId:d.id,sid:null,title:'Yeni bölüm',body:'',orig:{title:'',body:''},focus:'title'};}
+  else{const s=d.sections.find(x=>x.id===sid);if(!s) return;editing={docId:d.id,sid,title:s.title,body:s.body,orig:{title:s.title,body:s.body},focus:'body'};}
+  render();
+}
+function bindEditor(){
+  const ta=$('#edBody');if(!ta||!editing) return;
+  const prev=()=>{$('#edPrev').innerHTML=renderMd(ta.value,mkCtx(C));ta.style.height='auto';ta.style.height=Math.max(300,ta.scrollHeight+4)+'px';};
+  prev();
+  if(editing.focus){
+    const el=editing.focus==='title'?$('#edTitle'):ta;
+    $('#editor').scrollIntoView({block:'start',behavior:'smooth'});
+    el.focus({preventScroll:true});if(editing.focus==='title') el.select();
+    editing.focus=null;
+  }
+  ta._prev=prev;
+}
+async function saveEdit(){
+  const d=C.docs.find(x=>x.id===editing.docId);if(!d){editing=null;render();return;}
+  const title=editing.title.trim()||'Başlıksız bölüm',body=editing.body.replace(/\s+$/,'');
+  if(editing.sid===null){
+    if(!body&&title==='Yeni bölüm'){editing=null;render();return;}
+    if(!(await ensureUser())) return;
+    const s={id:uid(),title,body};d.sections.push(s);touch(d);
+    addLog(C,{act:'bolum-ekle',doc:d.id,docTitle:d.title,text:`Bölüm eklendi: ${d.sections.length}. ${title}`,diff:body?compactDiff(diffLines('',body),3):null});
+  }else{
+    const s=d.sections.find(x=>x.id===editing.sid);if(!s){editing=null;render();return;}
+    if(s.title===title&&s.body===body){editing=null;render();return;}
+    if(!(await ensureUser())) return;
+    const i=d.sections.indexOf(s);
+    addLog(C,{act:'bolum',doc:d.id,docTitle:d.title,text:`${i+1}. ${title} bölümü düzenlendi`,note:s.title!==title?`Başlık: “${s.title}” → “${title}”`:'',diff:s.body!==body?compactDiff(diffLines(s.body,body)):null});
+    s.title=title;s.body=body;touch(d);
+  }
+  editing=null;persist();render();toast('Kaydedildi. Değişiklik kayda geçti.');
+}
+async function moveSec(sid,dir){
+  const d=curDoc(),i=d.sections.findIndex(s=>s.id===sid),j=i+dir;
+  if(i<0||j<0||j>=d.sections.length) return;
+  if(!(await ensureUser())) return;
+  const [s]=d.sections.splice(i,1);d.sections.splice(j,0,s);touch(d);
+  addLog(C,{act:'sira',doc:d.id,docTitle:d.title,text:`“${s.title}” bölümü ${dir<0?'yukarı':'aşağı'} taşındı (${i+1}. → ${j+1}. sıra)`});
+  persist();render();
+}
+async function delSec(sid){
+  const d=curDoc(),s=d.sections.find(x=>x.id===sid);if(!s) return;
+  const ok=await confirmDlg('Bölüm silinsin mi?',`“${s.title}” bölümü silinir. Silinen metin değişiklik kaydında saklanır; revizyon yayınlanana kadar taslağı geri alabilirsiniz.`,'Bölümü sil',true);
+  if(!ok) return;
+  if(!(await ensureUser())) return;
+  const i=d.sections.indexOf(s);d.sections.splice(i,1);touch(d);
+  addLog(C,{act:'bolum-sil',doc:d.id,docTitle:d.title,text:`Bölüm silindi: ${i+1}. ${s.title}`,diff:s.body?compactDiff(diffLines(s.body,''),3):null});
+  persist();render();
+}
+const SNIP={
+  bold:['**','**','kalın metin'],h:'## Ara başlık',ul:'- Madde',ol:'1. Madde',table:'| Başlık 1 | Başlık 2 |\n|---|---|\n| Hücre | Hücre |',note:'> Not metni',prep:'// Hazırlık notu (yazdırılmaz)',
+  alan:'[alan] Etiket',uzun:'[uzun] Etiket',secim:'[secim] Soru: Seçenek 1 | Seçenek 2',kutu:'[kutu] Kontrol maddesi',imza:'[imza] Unvan',
+};
+function insertSnip(key,raw){
+  const ta=$('#edBody');if(!ta) return;
+  const sn=raw!==undefined?raw:SNIP[key];
+  const s=ta.selectionStart,e=ta.selectionEnd,v=ta.value;
+  let nv,a,b;
+  if(Array.isArray(sn)){const sel=v.slice(s,e)||sn[2];nv=v.slice(0,s)+sn[0]+sel+sn[1]+v.slice(e);a=s+sn[0].length;b=a+sel.length;}
+  else if(raw!==undefined){nv=v.slice(0,s)+sn+v.slice(e);a=b=s+sn.length;}
+  else{const pre=v.slice(0,s),nl=pre&&!pre.endsWith('\n')?'\n':'',post=v.slice(e),nl2=post&&!post.startsWith('\n')?'\n':'';nv=pre+nl+sn+nl2+post;a=pre.length+nl.length;b=a+sn.length;}
+  ta.value=nv;editing.body=nv;ta.focus();ta.setSelectionRange(a,b);ta._prev&&ta._prev();
+}
+
+/* ---------- Yazdırma ---------- */
+function setPageStyle(footer,numbers=true){
+  const q=s=>'"'+String(s).replace(/\\/g,'\\\\').replace(/"/g,'\\"').replace(/[\n\r]/g,' ')+'"';
+  $('#pageStyle').textContent=`@page{size:A4;margin:12mm 13mm 15mm;@bottom-left{content:${q(footer)};font:8pt Arial,sans-serif;color:#555}${numbers?'@bottom-right{content:"Sayfa " counter(page) " / " counter(pages);font:8pt Arial,sans-serif;color:#555}':''}}`;
+}
+async function doPrint(html,footer,numbers){
+  const el=$('#print');el.innerHTML=html;setPageStyle(footer,numbers);
+  await Promise.all($$('img',el).map(i=>i.decode?i.decode().catch(()=>{}):0));
+  window.print();
+}
+function printDoc(d,revIdx=null){
+  const m=headMeta(d,revIdx);
+  doPrint(docPrintHTML(d,revIdx,{watermark:true}),`${coName(C)} · ${m.no} · Rev.${m.rev}`);
+}
+function fillPrintForRoute(){
+  const r=route();
+  if(!C) return;
+  if(r.v==='belge'&&curDoc()){const d=curDoc(),m=headMeta(d);$('#print').innerHTML=docPrintHTML(d,null,{watermark:true});setPageStyle(`${coName(C)} · ${m.no} · Rev.${m.rev}`);}
+  else if(r.v==='rehber'){$('#print').innerHTML=posterHTML();setPageStyle(coName(C)+' · İSG Bildirim Rehberi',false);}
+  else if(r.v==='genel'){$('#print').innerHTML=printAllHTML();setPageStyle(coName(C)+' · Şirket Yönetmeliği');}
+  else{$('#print').innerHTML=`<div class="plain">${$('#main').innerHTML}</div>`;setPageStyle(coName(C));}
+}
+window.addEventListener('beforeprint',()=>{if(!$('#print').innerHTML.trim()) fillPrintForRoute();});
+window.addEventListener('afterprint',()=>{$('#print').innerHTML='';});
+
+/* ---------- Yedek ve dışa aktarma ---------- */
+function download(data,name,type){
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type}));a.download=name;
+  document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);
+}
+function exportBackup(){
+  if(!C){toast('Önce bir şirket ekleyin.');return;}
+  C.lastBackup=nowISO();persist();
+  download(JSON.stringify({app:FILE_APP,format:1,exportedAt:nowISO(),company:C},null,1),`KurumKitabi_${slug(coName(C))}_${dayInput()}.json`,'application/json');
+  renderSide();toast('Yedek indirildi. Dosyayı güvenli bir yerde saklayın.');
+}
+async function importBackup(file){
+  if(!file) return;
+  let o;try{o=JSON.parse(await file.text());}catch{toast('Dosya okunamadı. Geçerli bir Kurum Kitabı yedeği seçin.','err');return;}
+  const c=o&&o.app===FILE_APP&&o.company&&typeof o.company==='object'?o.company:null;
+  if(!c||!Array.isArray(c.docs)||!c.info){toast('Bu dosya bir Kurum Kitabı yedeği değil.','err');return;}
+  sanitizeCompany(c);
+  if(meta.list.some(x=>x.id===c.id)){
+    const r=await dlg(`<form method="dialog"><h2>Bu şirket zaten kayıtlı</h2><p>“${esc(coName(c))}” bu tarayıcıda zaten var. Yedek mevcut kaydın üzerine mi yazılsın, ayrı bir kopya olarak mı eklensin?</p><div class="dlg-foot"><button class="btn" value="cancel" formnovalidate>Vazgeç</button><button class="btn" value="copy">Kopya olarak ekle</button><button class="btn danger" value="over">Üzerine yaz</button></div></form>`);
+    if(!r) return;
+    if(r.v==='copy'){c.id=uid();c.info.kisa_ad=coName(c)+' (kopya)';}
+  }else await closeDlg();
+  addLog(c,{act:'yedek',text:'Yedekten yüklendi',note:`Dosya: ${file.name}`});
+  C=c;meta.active=c.id;editing=null;persist();go('genel');toast('Yedek yüklendi.');
+}
+function backupDlg(){
+  dlg(`<div class="dlg-in"><h2>Yedek</h2><p class="muted">Kurum Kitabı verileri yalnız bu tarayıcıda saklanır. Tarayıcı verileri silinirse belgeler de silinir. Düzenli yedek alın; yedeği başka bir bilgisayarda “Yedek yükle” ile açabilirsiniz.</p>
+  ${C?`<div class="bk-row"><div><b>Yedek indir</b><br><span class="muted small">${esc(coName(C))} · son yedek: ${C.lastBackup?fmtDT(C.lastBackup):'alınmadı'}</span></div><button class="btn primary" data-act="export">İndir</button></div>`:''}
+  <div class="bk-row"><div><b>Yedek yükle</b><br><span class="muted small">Daha önce indirilen .json dosyası</span></div><button class="btn" data-act="import">Dosya seç</button></div>
+  <div class="dlg-foot"><button class="btn" data-act="dlg-close">Kapat</button></div></div>`);
+}
+function exportCSV(){
+  const cell=x=>{let s=String(x??'');if(/^[=+\-@\t\r]/.test(s)) s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};
+  const rows=[['Tarih','Saat','Düzenleyen','Belge','İşlem','Açıklama','Ayrıntı']];
+  for(const e of sortedLog()) rows.push([fmtD(e.ts),fmtT(e.ts),e.user,e.docTitle,ACT_LABEL[e.act]||e.act,e.text,[e.note,...(e.list||[]),diffText(e.diff)].filter(Boolean).join(' | ')]);
+  download('\ufeff'+rows.map(r=>r.map(cell).join(';')).join('\r\n'),`KurumKitabi_DegisiklikKaydi_${slug(coName(C))}_${dayInput()}.csv`,'text/csv;charset=utf-8');
+}
+function helpDlg(){
+  const R=[['## Ara başlık','Ara başlık'],['- Madde','Madde işaretli liste'],['1. Madde','Numaralı liste'],['**kalın**','<b>kalın</b>'],['> Not','Renkli not kutusu'],['// Not','Hazırlık notu (yalnız ekranda, yazdırılmaz)'],['| A | B |','Tablo (ilk satır başlık)'],['{{isg_uzmani}}','Şirket bilgisi, kendiliğinden dolar'],['{{no:kaza}}','Başka bir belgenin numarası'],['[alan] Etiket','Form: kısa yazı alanı (ikişer yan yana)'],['[uzun] Etiket','Form: geniş yazı alanı'],['[secim] Soru: A | B','Form: işaret kutuları'],['[kutu] Madde','Form: tek işaret kutusu'],['[imza] Unvan','Form: imza alanı (üçer yan yana)']];
+  dlg(`<div class="dlg-in"><h2>Biçim rehberi</h2><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Yazdığınız</th><th>Görünen</th></tr></thead><tbody>${R.map(([a,b])=>`<tr><td><code>${esc(a)}</code></td><td>${b}</td></tr>`).join('')}</tbody></table></div><p class="muted small">Boş satır yeni paragraf başlatır. Ctrl+S kaydeder, Ctrl+B seçili metni kalın yapar.</p><div class="dlg-foot"><button class="btn primary" data-act="dlg-close">Tamam</button></div></div>`);
+}
+
+/* ---------- Olaylar ---------- */
+const ACT={
+  'new-company':newCompany,sample:createSample,user:userDlg,backup:backupDlg,export:exportBackup,
+  import:()=>$('#importFile').click(),'logo-pick':()=>$('#logoFile').click(),
+  'logo-del':async()=>{if(!(await confirmDlg('Logo kaldırılsın mı?','Logo belgelerin başlığından kaldırılır.','Kaldır',true))) return;C.logo='';addLog(C,{act:'logo',text:'Şirket logosu kaldırıldı'});persist();render();},
+  'company-del':deleteCompany,'new-doc':newDoc,
+  'doc-settings':()=>docSettings(curDoc()),publish:()=>publishDlg(curDoc()),'publish-all':publishAll,revert:()=>revertDoc(curDoc()),
+  'print-doc':()=>printDoc(curDoc()),
+  'print-all':()=>doPrint(printAllHTML(),coName(C)+' · Şirket Yönetmeliği'),
+  'print-poster':()=>doPrint(posterHTML(),coName(C)+' · İSG Bildirim Rehberi',false),
+  'sec-edit':b=>startEdit(b.closest('[data-sid]').dataset.sid),'sec-add':()=>startEdit(null),
+  'sec-up':b=>moveSec(b.closest('[data-sid]').dataset.sid,-1),'sec-down':b=>moveSec(b.closest('[data-sid]').dataset.sid,1),
+  'sec-del':b=>delSec(b.closest('[data-sid]').dataset.sid),
+  'sec-save':saveEdit,'sec-cancel':()=>{editing=null;render();},
+  ins:b=>insertSnip(b.dataset.snip),help:helpDlg,'dlg-close':closeDlg,
+  'rev-diff':b=>{const i=+b.dataset.i,row=$('#revx-'+i);if(!row) return;if(row.hidden){row.firstElementChild.innerHTML=revDiffHTML(curDoc(),i);row.hidden=false;b.textContent='Gizle';}else{row.hidden=true;b.textContent='Farklar';}},
+  'rev-view':b=>{const d=curDoc(),i=+b.dataset.i,r=d.revisions[i],cx=mkCtx(C,{info:r.snapshot.info});
+    dlg(`<div class="dlg-in"><div class="dlg-top"><h2>${esc(r.snapshot.title)} · Rev.${revStr(r.rev)}</h2><div class="actions"><button class="btn" data-act="print-rev" data-i="${i}">Bu sürümü yazdır</button><button class="btn" data-act="dlg-close">Kapat</button></div></div><p class="muted small">${fmtD(r.date)} tarihinde yayınlanan sürüm. Şirket bilgileri o günkü değerleriyle gösterilir.</p><div class="paper ${d.kind}">${docHeadHTML(headMeta(d,i))}${r.snapshot.sections.map((s,k)=>roSecHTML(d.kind,s,k,cx)).join('')}</div></div>`,true);},
+  'print-rev':async b=>{const d=curDoc(),i=+b.dataset.i;await closeDlg();printDoc(d,i);},
+  wiz:b=>{if(b.dataset.v==='1') wz.res=WQ[wz.step].yes; else if(wz.step<2) wz.step++; else wz.res='yok';$('#wiz').innerHTML=wizHTML();},
+  'wiz-reset':()=>{wz={step:0,res:null};$('#wiz').innerHTML=wizHTML();},
+  csv:exportCSV,
+};
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');if(!b||b.disabled) return;
+  const f=ACT[b.dataset.act];if(!f) return;
+  e.preventDefault();f(b,e);
+});
+document.addEventListener('dblclick',e=>{
+  const s=e.target.closest('.sec[data-sid]');
+  if(s&&!e.target.closest('.sec-tools')&&!editing) startEdit(s.dataset.sid);
+});
+document.addEventListener('change',e=>{
+  const t=e.target;
+  if(t.dataset.field){onFieldChange(t);return;}
+  if(t.id==='logoFile'){loadLogo(t.files[0]);t.value='';return;}
+  if(t.id==='importFile'){importBackup(t.files[0]);t.value='';return;}
+  const k=t.dataset.change;
+  if(k==='company') switchCompany(t.value);
+  else if(k==='log-doc'){lf.doc=t.value;$('#logList').innerHTML=logListHTML(filteredLog());}
+  else if(k==='ins-ph'&&t.value){insertSnip(null,`{{${t.value}}}`);t.value='';}
+  else if(k==='ins-field'&&t.value){insertSnip(t.value);t.value='';}
+});
+document.addEventListener('input',e=>{
+  const t=e.target;
+  if(t.id==='edBody'&&editing){editing.body=t.value;t._prev&&t._prev();}
+  else if(t.id==='edTitle'&&editing){editing.title=t.value;}
+  else if(t.dataset.input==='log-q'){lf.q=t.value;$('#logList').innerHTML=logListHTML(filteredLog());}
+});
+document.addEventListener('keydown',e=>{
+  if(!editing||$('#dlg').open) return;
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();saveEdit();}
+  else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='b'&&e.target.id==='edBody'){e.preventDefault();insertSnip('bold');}
+});
+window.addEventListener('beforeunload',e=>{if(edChanged()){e.preventDefault();e.returnValue='';}});
+window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0);});
+
+/* ---------- Başlangıç ---------- */
+loadActive();
+if(navigator.storage&&navigator.storage.persist) navigator.storage.persist().catch(()=>{});
+render();
+})();
+</script>
+</body>
+</html>

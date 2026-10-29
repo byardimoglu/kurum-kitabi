@@ -1,0 +1,14 @@
+{
+  "name": "Kurum Kitabı",
+  "short_name": "Kurum Kitabı",
+  "description": "Şirketinize göre personel el kitabı, İSG kuralları ve bildirim formları; revizyon kayıtlı.",
+  "lang": "tr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f4f6",
+  "theme_color": "#1f3b63",
+  "icons": [
+    { "src": "icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
