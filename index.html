@@ -495,15 +495,16 @@ const FIELDS=[
 const FIELD_LIST=FIELDS.flatMap(g=>g[1]);
 const FIELD_MAP=Object.fromEntries(FIELD_LIST.map(f=>[f.k,f]));
 const SINIF={
-  az:{ad:'az tehlikeli',egitim:'üç yılda en az bir kez',saat:'8',risk:'en geç altı yılda bir',saglik:'en geç beş yılda bir'},
-  tehlikeli:{ad:'tehlikeli',egitim:'iki yılda en az bir kez',saat:'12',risk:'en geç dört yılda bir',saglik:'en geç üç yılda bir'},
-  cok:{ad:'çok tehlikeli',egitim:'yılda en az bir kez',saat:'16',risk:'en geç iki yılda bir',saglik:'en geç yılda bir'},
+  az:{ad:'az tehlikeli',egitim:'üç yılda en az bir kez',saat:'8',risk:'en geç altı yılda bir',saglik:'en geç beş yılda bir',uzman:'en az (C) sınıfı'},
+  tehlikeli:{ad:'tehlikeli',egitim:'iki yılda en az bir kez',saat:'12',risk:'en geç dört yılda bir',saglik:'en geç üç yılda bir',uzman:'en az (B) sınıfı'},
+  cok:{ad:'çok tehlikeli',egitim:'yılda en az bir kez',saat:'16',risk:'en geç iki yılda bir',saglik:'en geç yılda bir',uzman:'(A) sınıfı'},
 };
 const COMPUTED=[
   {k:'egitim_periyodu',l:'İSG eğitimi tekrar sıklığı',f:s=>s.egitim},
   {k:'egitim_suresi',l:'İSG eğitimi asgari süresi (saat)',f:s=>s.saat},
   {k:'risk_periyodu',l:'Risk değerlendirmesi ve acil durum planı yenileme',f:s=>s.risk},
   {k:'saglik_periyodu',l:'Periyodik sağlık muayenesi sıklığı',f:s=>s.saglik},
+  {k:'uzman_sinifi',l:'İş güvenliği uzmanı belge sınıfı',f:s=>s.uzman},
 ];
 const PH_RE=/\{\{\s*([a-z_]+(?::[a-z0-9_]+)?)\s*\}\}/g;
 
@@ -797,6 +798,9 @@ Sigortalı işe giriş bildirgesi, 5510 sayılı Kanun gereğince çalışan iş
 ## Deneme süresi
 İş sözleşmesinde deneme süresi öngörülmüşse bu süre en çok iki aydır; toplu iş sözleşmesiyle dört aya kadar uzatılabilir. Deneme süresi içinde taraflar sözleşmeyi bildirim süresine gerek olmaksızın ve tazminatsız feshedebilir; çalışanın çalıştığı günlere ait ücret ve diğer hakları saklıdır (4857 sayılı Kanun md. 15).
 
+## Görev tanımı
+Her çalışana işe başlarken pozisyonuna ait görev tanımı tebliğ edilir. Görev tanımında pozisyonun amacı, görev ve sorumlulukları, yetkileri, aranan nitelikler ve İSG sorumlulukları yer alır (Görev Tanımları, {{no:gorev}}).
+
 ## Oryantasyon ve İSG eğitimi
 Her çalışan işe başlamadan önce işyerini, çalışma kurallarını ve görevine ilişkin riskleri tanıtan oryantasyon programına ve iş sağlığı ve güvenliği eğitimine katılır.
 `],
@@ -873,8 +877,49 @@ Ara dinlenme süreleri en az şöyledir (4857 sayılı Kanun md. 68):
 - İşyerine alkollü gelinmez; işyerinde alkol ve uyuşturucu madde bulundurulmaz ve kullanılmaz.
 - Kapalı alanlarda tütün ürünü kullanılmaz (4207 sayılı Kanun); sigara yalnız belirlenen açık alanlarda içilir.
 - Şirket araç, gereç ve kaynakları yalnız iş amacıyla ve özenle kullanılır.
-- Kılık kıyafet, görevin gerektirdiği güvenlik kurallarına ve şirketi temsil anlayışına uygun olur.
 - Sosyal medyada şirket adına açıklama yapılmaz; şirkete, çalışanlara ve müşterilere ait gizli bilgiler paylaşılmaz.
+`],
+['Kılık Kıyafet ve Kişisel Bakım',`
+## Genel ilkeler
+- Kılık kıyafet temiz, düzenli, işin gerektirdiği güvenliğe ve şirketi temsile uygun olur.
+- Kurallar cinsiyet, yaş, inanç ve benzeri farklar gözetilmeksizin eşit uygulanır. Getirilen sınırlamaların gerekçesi iş güvenliği, hijyen ve şirketi temsildir (4857 sayılı Kanun md. 5).
+- Dinî ve kültürel kıyafet tercihlerine, iş güvenliğini ve hijyeni engellemediği sürece saygı gösterilir.
+- İşverence verilen iş kıyafeti ve kişisel koruyucu donanım ücretsizdir; temiz ve bakımlı tutulur, işyeri dışında kullanılmaz.
+
+## Ofis ve idari çalışanlar
+- İş günlerinde sade ve iş ortamına uygun günlük iş kıyafeti giyilir.
+- Müşteri ziyaretlerinde, resmî toplantılarda ve şirketi temsil edilen etkinliklerde daha resmî kıyafet tercih edilir.
+- Şort, plaj terliği, spor tayt, yırtık veya transparan kıyafet giyilmez; siyasi, ideolojik ya da rahatsız edici yazı ve görsel taşıyan kıyafetler kullanılmaz.
+
+## Üretim, depo ve saha çalışanları
+- Çalışma alanına işverenin verdiği iş kıyafeti ve o alan için belirlenen KKD ile girilir.
+- İş kıyafeti bol ve sarkan olmaz; kollar ve paçalar ilikli tutulur. Kravat, atkı, şal ve benzeri sarkan aksesuar kullanılmaz.
+- Makine ve hareketli ekipman başında yüzük, bilezik, saat, kolye ve sarkan küpe takılmaz.
+- Çalışma alanına çelik burunlu iş ayakkabısı dışında ayakkabıyla (terlik, sandalet, spor ayakkabı, topuklu ayakkabı) girilmez.
+- Yağ, kimyasal bulaşmış ya da yırtılmış iş kıyafeti vakit kaybetmeden değiştirilir.
+
+## Saç, sakal ve kişisel bakım
+- Saç, sakal ve bıyık temiz ve bakımlı tutulur.
+- Makine ve hareketli ekipman başında omuz hizasını geçen saç toplanır, bone ya da baret altına alınır.
+- Toz veya gaz maskesi gibi yüze sıkı oturan solunum koruyucu kullanılan görevlerde, maskenin yüze tam oturmasını engelleyecek sakal bırakılmaz; maskenin temas ettiği bölge tıraşlı olur.
+- Gıda, ilaç ve temiz oda gibi hijyen gerektiren alanlarda bone ve gerektiğinde sakal filesi kullanılır.
+- Tırnaklar kısa ve temiz tutulur; üretim ve hijyen alanlarında takma tırnak kullanılmaz.
+- Parfüm ve deodorant ölçülü kullanılır; kişisel hijyene özen gösterilir.
+
+## Kadın çalışanlar
+- Üretim ve saha alanlarında etek ve elbise yerine iş kıyafeti (pantolon) giyilir. Ofiste sade ve iş ortamına uygun etek, elbise veya pantolon giyilebilir.
+- Uzun saç makine başında toplanır; toka ve saç aksesuarları makineye takılmayacak şekilde seçilir.
+- Başörtüsü kullanan çalışanlar makine ve hareketli ekipman başında başörtüsünü ucu sarkmayacak şekilde bağlar ya da işverenin sağladığı uygun başlığı kullanır. Baret gereken alanlarda baret altına uygun model tercih edilir.
+- Üretim alanında topuklu ayakkabı giyilmez; ofiste de merdiven ve yürüme yollarında güvenliği bozacak ayakkabı tercih edilmez.
+- Makyaj ve aksesuar sade olur; makine başında takı takılmaz.
+- Gebe ve emziren çalışanlara bedenine uygun iş kıyafeti ve güvenli ayakkabı sağlanır; gerektiğinde işyeri hekiminin önerisiyle kıyafet ve KKD düzenlenir.
+
+## Erkek çalışanlar
+- Sakal ve bıyık düzenli ve bakımlı olur; solunum koruyucu kullanılan görevlerde yukarıdaki tıraş kuralı uygulanır.
+- Uzun saç için kadın çalışanlarla aynı toplama kuralı uygulanır.
+- Ofiste kolsuz atlet ve şort giyilmez; müşteriyle yüz yüze görevlerde yakalı gömlek veya tişört tercih edilir.
+
+// Kuralları sektörünüze (ofis, üretim, gıda, sağlık, perakende) ve risk değerlendirmenize göre uyarlayın. Kıyafet yardımı ya da üniforma veriliyorsa ayrıntısını bu bölüme ekleyin.
 `],
 ['Gizlilik ve Kişisel Veriler',`
 - Görev sırasında öğrenilen ticari sırlar, müşteri bilgileri, fiyatlar ve şirket içi bilgiler gizlidir. Bu yükümlülük iş ilişkisi sona erdikten sonra da devam eder.
@@ -944,6 +989,330 @@ Bu el kitabı işveren onayıyla yürürlüğe girer. Değişiklikler yeni reviz
 [imza] Çalışan
 `],
 ]),
+mkDoc('gorev','metin','Görev Tanımları','GT-01',[
+['Genel Esaslar',`
+Bu belge, {{unvan}} bünyesindeki pozisyonların amacını, görev ve sorumluluklarını, yetkilerini, aranan nitelikleri ve iş sağlığı ve güvenliği sorumluluklarını tanımlar.
+
+- Her çalışana işe başlarken ve pozisyon değişikliğinde kendi görev tanımı tebliğ edilir; çalışan ve bağlı olduğu yönetici tebliğ tutanağını imzalar.
+- Görev tanımı, pozisyonun niteliğine uygun ve yöneticinin verdiği benzer işlerin yapılmasına engel değildir. Çalışma koşullarında esaslı değişiklik ancak 4857 sayılı Kanun'un 22. maddesine uygun olarak, çalışanın yazılı onayıyla yapılır.
+- Her pozisyonun İSG sorumlulukları görev tanımının parçasıdır ve İSG Kuralları ({{no:isg}}) ile birlikte uygulanır.
+- Görev tanımlarında yapılan değişiklikler yeni revizyon numarasıyla yayımlanır ve ilgili çalışanlara yeniden tebliğ edilir.
+
+// Pozisyonları şirketinizin organizasyon şemasına göre düzenleyin. Her pozisyon ayrı bir bölümdür; yeni pozisyon için “Bölüm ekle”ye basın, boş görev tanımı şablonu hazır gelir. Kullanmadığınız pozisyonları silin.
+`],
+['Genel Müdür',`
+| Pozisyon bilgisi | Açıklama |
+|---|---|
+| Bölüm | Yönetim |
+| Bağlı olduğu pozisyon | Yönetim kurulu / şirket ortakları |
+| Bağlı pozisyonlar | Bölüm yöneticileri, İnsan Kaynakları Sorumlusu, İdari İşler |
+| Vekâlet eden | Yönetim kurulunun belirlediği yönetici |
+| Görevli | {{isveren}} |
+
+## Amaç
+Şirketin faaliyetlerini hedeflere uygun olarak planlamak, yönetmek ve denetlemek; işveren vekili olarak yasal yükümlülüklerin yerine getirilmesini sağlamak.
+
+## Görev ve sorumluluklar
+1. Yıllık hedefleri ve bütçeyi hazırlar, onaya sunar ve uygulanmasını izler.
+2. Bölümler arası koordinasyonu sağlar, bölüm performanslarını düzenli olarak değerlendirir.
+3. Şirket yönetmeliğini, personel el kitabını ve görev tanımlarını onaylar.
+4. İş, vergi, SGK ve İSG mevzuatına uyumu sağlar.
+5. Şirketi resmî kurumlar, müşteriler ve tedarikçiler nezdinde temsil eder.
+
+## Yetkiler
+- Yetki sınırları içinde harcama ve sözleşme onayı
+- İşe alım, görevlendirme ve iş sözleşmesi feshi kararlarının onayı
+- Belge revizyonlarının onayı
+
+## Aranan nitelikler
+- **Eğitim:** Üniversite mezunu
+- **Deneyim:** Sektörde en az 10 yıl, bunun en az 5 yılı yönetici olarak
+- **Yetkinlikler:** Planlama, karar verme, finansal okuryazarlık, iletişim
+
+## İSG sorumlulukları
+- İşveren vekili olarak 6331 sayılı Kanun'daki işveren yükümlülüklerinin yerine getirilmesini sağlar.
+- İş güvenliği uzmanı ve işyeri hekiminin yazılı tespit ve önerilerini değerlendirir, gereğini yaptırır.
+- İSG için gerekli bütçe, ekipman ve eğitim kaynaklarını sağlar.
+`],
+['Bölüm Yöneticisi (Üretim Şefi)',`
+| Pozisyon bilgisi | Açıklama |
+|---|---|
+| Bölüm | Üretim |
+| Bağlı olduğu pozisyon | Genel Müdür |
+| Bağlı pozisyonlar | Üretim operatörleri, depo ve sevkiyat personeli |
+| Vekâlet eden | Bölümün kıdemli personeli |
+| Çalışma şekli | Tam zamanlı |
+
+## Amaç
+Bölümün üretim hedeflerine kalite, süre ve maliyet açısından uygun şekilde ve güvenli olarak ulaşmasını sağlamak.
+
+## Görev ve sorumluluklar
+1. Günlük ve haftalık üretim planını hazırlar, iş dağılımını yapar.
+2. Üretimin kalite standartlarına uygunluğunu kontrol eder, uygunsuzlukları kayda alır.
+3. Makine ve ekipmanın periyodik bakımını planlar, arızaları takip eder.
+4. Çalışanların devam, izin ve fazla çalışma kayıtlarını İnsan Kaynaklarına iletir.
+5. Yeni başlayan çalışanların işbaşı eğitimini sağlar.
+
+## Yetkiler
+- Bölüm içi görevlendirme ve vardiya planı
+- Güvensiz koşulda işi durdurma
+- Bölüm malzeme taleplerinin onayı
+
+## Aranan nitelikler
+- **Eğitim:** Meslek yüksekokulu veya ilgili mühendislik bölümü mezunu
+- **Deneyim:** Benzer üretim ortamında en az 5 yıl, bunun 2 yılı sorumlu olarak
+- **Yetkinlikler:** Planlama, problem çözme, ekip koordinasyonu
+
+## İSG sorumlulukları
+- Bölümünde İSG kurallarının ve KKD kullanımının uygulanmasını sağlar, örnek olur.
+- Tehlikeli durum, ramak kala ve iş kazası bildirimlerini zamanında iletir, olay yerini korur.
+- İş güvenliği uzmanının önerdiği önlemlerin bölümünde uygulanmasını takip eder.
+`],
+['İnsan Kaynakları Sorumlusu',`
+| Pozisyon bilgisi | Açıklama |
+|---|---|
+| Bölüm | İnsan Kaynakları |
+| Bağlı olduğu pozisyon | Genel Müdür |
+| Bağlı pozisyonlar | — |
+| Vekâlet eden | İdari İşler personeli |
+| Görevli | {{ik_sorumlusu}} |
+
+## Amaç
+İşe alım, özlük işleri, bordro ve eğitim süreçlerini mevzuata uygun ve zamanında yürütmek.
+
+## Görev ve sorumluluklar
+1. İşe alım ilanlarını, mülakatları ve işe giriş evrakını yönetir.
+2. SGK işe giriş ve çıkış bildirgelerini yasal süresinde verir.
+3. Özlük dosyalarını, izin ve devam kayıtlarını tutar.
+4. Bordro için puantaj bilgilerini hazırlar.
+5. Personel el kitabını ve görev tanımlarını çalışanlara tebliğ eder, imzalı tutanakları saklar.
+6. Eğitim planını İSG birimiyle birlikte hazırlar, katılım kayıtlarını tutar.
+
+## Yetkiler
+- Özlük ve izin kayıtlarına erişim
+- İşe giriş evrakının tamamlanmasını işe başlama şartı olarak isteme
+
+## Aranan nitelikler
+- **Eğitim:** Üniversitelerin ilgili bölümlerinden mezun
+- **Deneyim:** İnsan kaynakları veya bordro alanında en az 3 yıl
+- **Yetkinlikler:** İş ve SGK mevzuatı bilgisi, gizlilik, düzenli kayıt tutma
+
+## İSG sorumlulukları
+- İSG eğitim kayıtlarının ve işe giriş sağlık raporlarının özlük dosyasında bulunmasını sağlar.
+- İş kazasının SGK'ya yasal sürede (en geç 3 iş günü) bildirilmesi için işverenle birlikte çalışır.
+- Kişisel verileri 6698 sayılı Kanun'a uygun işler.
+`],
+['Üretim Operatörü',`
+| Pozisyon bilgisi | Açıklama |
+|---|---|
+| Bölüm | Üretim |
+| Bağlı olduğu pozisyon | Bölüm Yöneticisi (Üretim Şefi) |
+| Bağlı pozisyonlar | — |
+| Vekâlet eden | Aynı hattaki operatör |
+| Çalışma şekli | Tam zamanlı, gerektiğinde vardiyalı |
+
+## Amaç
+Sorumlu olduğu makine ve hatta üretimi talimatlara, kalite ve güvenlik kurallarına uygun olarak yapmak.
+
+## Görev ve sorumluluklar
+1. Vardiya başında makine ve ekipmanın günlük kontrolünü yapar, uygunsuzluğu bildirir.
+2. Üretimi iş talimatlarına ve teknik resimlere uygun olarak gerçekleştirir.
+3. Ürün kontrollerini yapar, uygun olmayan ürünü ayırır ve kayda geçirir.
+4. Çalışma alanını düzenli ve temiz tutar.
+5. Vardiya sonunda üretim ve arıza bilgilerini kayda geçirir.
+
+## Yetkiler
+- Güvensiz durumda makineyi durdurma
+- Uygun olmayan malzemeyi kullanmayı reddetme
+
+## Aranan nitelikler
+- **Eğitim:** En az ortaöğretim; ilgili meslek lisesi tercih edilir
+- **Belgeler:** İşin tehlike sınıfı gerektiriyorsa mesleki eğitim veya mesleki yeterlilik belgesi
+- **Yetkinlikler:** Dikkat, talimata uyum, ekip çalışması
+
+## İSG sorumlulukları
+- Makine koruyucularını sökmez, güvenlik sistemlerini devre dışı bırakmaz.
+- Kendisine verilen KKD'yi kullanır ve korur.
+- Tehlikeli durumları ve ramak kala olayları bildirir.
+`],
+['Depo ve Sevkiyat Personeli',`
+| Pozisyon bilgisi | Açıklama |
+|---|---|
+| Bölüm | Depo ve Sevkiyat |
+| Bağlı olduğu pozisyon | Bölüm Yöneticisi |
+| Bağlı pozisyonlar | — |
+| Vekâlet eden | Aynı bölümdeki personel |
+| Çalışma şekli | Tam zamanlı |
+
+## Amaç
+Malzeme kabulü, depolama ve sevkiyat işlerini doğru, zamanında ve güvenli şekilde yürütmek.
+
+## Görev ve sorumluluklar
+1. Gelen malzemeyi irsaliyeye göre kontrol eder, kayda alır ve yerleştirir.
+2. Stokları istif kurallarına uygun şekilde depolar, sayımlara katılır.
+3. Sevkiyat siparişlerini hazırlar, yükleme ve belge işlemlerini tamamlar.
+4. Depo düzenini ve yürüme yollarının açık kalmasını sağlar.
+
+## Yetkiler
+- Hasarlı veya eksik malzemeyi teslim almama
+- Güvenli olmayan istifte yüklemeyi durdurma
+
+## Aranan nitelikler
+- **Eğitim:** En az ortaöğretim
+- **Belgeler:** Forklift kullanacaksa forklift operatörlüğü için mesleki yeterlilik belgesi
+- **Yetkinlikler:** Düzen, stok takibi, dikkat
+
+## İSG sorumlulukları
+- Yüksek görünürlüklü yelek ve iş ayakkabısı kullanır.
+- Forklift ve yükleme sırasında yaya yollarına ve hız sınırlarına uyar.
+- Raf hasarlarını ve hatalı istifi bildirir.
+`],
+['İdari İşler ve Ofis Personeli',`
+| Pozisyon bilgisi | Açıklama |
+|---|---|
+| Bölüm | İdari İşler |
+| Bağlı olduğu pozisyon | Genel Müdür |
+| Bağlı pozisyonlar | — |
+| Vekâlet eden | İnsan Kaynakları Sorumlusu |
+| Çalışma şekli | Tam zamanlı |
+
+## Amaç
+Ofis düzenini, yazışmaları, satın alma ve genel idari işleri aksatmadan yürütmek.
+
+## Görev ve sorumluluklar
+1. Gelen giden evrakı ve yazışmaları kayda alır, arşivler.
+2. Ofis malzemesi ve hizmet alımlarını talep üzerine yapar.
+3. Ziyaretçi karşılama ve toplantı organizasyonlarını yürütür.
+4. Yemek, servis, temizlik gibi hizmetlerin takibini yapar.
+
+## Yetkiler
+- Belirlenen limit içinde ofis harcaması
+
+## Aranan nitelikler
+- **Eğitim:** En az ön lisans
+- **Deneyim:** İdari işlerde en az 2 yıl
+- **Yetkinlikler:** Ofis programları, yazışma kuralları, iletişim
+
+## İSG sorumlulukları
+- Ofis alanında acil çıkış ve yangın söndürücülerin önünün açık kalmasını gözetir.
+- Ziyaretçilere giriş sırasında temel güvenlik bilgilendirmesini yapar.
+`],
+['İş Güvenliği Uzmanı',`
+| Pozisyon bilgisi | Açıklama |
+|---|---|
+| Bölüm | İş Sağlığı ve Güvenliği |
+| Bağlı olduğu pozisyon | Genel Müdür (işveren) |
+| Hizmet şekli | İşyerinden ya da ortak sağlık güvenlik biriminden (OSGB) |
+| Görevli | {{isg_uzmani}} |
+
+## Amaç
+İşvereni iş sağlığı ve güvenliği konusunda yönlendirmek; risklerin belirlenmesi ve önlenmesi için çalışmaları yürütmek.
+
+## Görev ve sorumluluklar
+1. İşverene İSG mevzuatı ve önlemler hakkında rehberlik eder; tespit ve önerilerini onaylı deftere yazar.
+2. Risk değerlendirmesi çalışmalarına katılır, önlemlerin uygulanmasını takip eder.
+3. Çalışma ortamını düzenli olarak gözetir; periyodik bakım ve ölçümlerin yapılmasını izler.
+4. İSG eğitimlerini planlar, verir ve kayıtlarını tutar.
+5. Tehlikeli durum, ramak kala ve iş kazası bildirimlerini inceler, kök neden araştırması yapar.
+6. Acil durum planının hazırlanmasına ve tatbikatlara katılır.
+
+## Yetkiler
+- Hayati tehlike gördüğünde işin durdurulması için işverene yazılı bildirimde bulunma
+- İSG ile ilgili çalışmalar için işyerinde inceleme ve bilgi isteme
+
+## Aranan nitelikler
+- **Belge:** Bakanlıkça verilen iş güvenliği uzmanlığı belgesi; bu işyeri için {{uzman_sinifi}}
+- **Yetkinlikler:** Mevzuat bilgisi, risk analizi, eğitim verme
+
+## İSG sorumlulukları
+- Görevlerini İş Güvenliği Uzmanlarının Görev, Yetki, Sorumluluk ve Eğitimleri Hakkında Yönetmelik'e uygun olarak yürütür.
+`],
+['İşyeri Hekimi',`
+| Pozisyon bilgisi | Açıklama |
+|---|---|
+| Bölüm | İş Sağlığı ve Güvenliği |
+| Bağlı olduğu pozisyon | Genel Müdür (işveren) |
+| Hizmet şekli | İşyerinden ya da ortak sağlık güvenlik biriminden (OSGB) |
+| Görevli | {{isyeri_hekimi}} |
+
+## Amaç
+Çalışanların sağlığını korumak ve geliştirmek; sağlık gözetimini mevzuata uygun yürütmek.
+
+## Görev ve sorumluluklar
+1. İşe giriş, periyodik ve işe dönüş muayenelerini yapar, raporlarını düzenler.
+2. Periyodik muayenelerin {{saglik_periyodu}} yapılmasını takip eder.
+3. Risk değerlendirmesine sağlık yönünden katılır.
+4. İlk yardım ve acil müdahale organizasyonunu planlar.
+5. Çalışanlara sağlık konularında eğitim verir.
+6. Meslek hastalığı şüphesi olan durumları değerlendirir ve bildirir.
+
+## Yetkiler
+- Sağlık açısından uygun bulmadığı çalışanın o işte çalıştırılmaması için işverene bildirim
+- Çalışanların sağlık kayıtlarına erişim (gizlilik kuralları içinde)
+
+## Aranan nitelikler
+- **Belge:** İşyeri hekimliği belgesi
+
+## İSG sorumlulukları
+- Görevlerini İşyeri Hekimi ve Diğer Sağlık Personelinin Görev, Yetki, Sorumluluk ve Eğitimleri Hakkında Yönetmelik'e uygun olarak yürütür; sağlık bilgilerinin gizliliğini korur.
+`],
+['Çalışan Temsilcisi',`
+| Pozisyon bilgisi | Açıklama |
+|---|---|
+| Seçim | Çalışanlar arasından seçimle ya da seçim yapılamazsa atama ile |
+| Sayı | Çalışan sayısına göre 6331 sayılı Kanun'un 20. maddesindeki kadar |
+| Görevli | {{calisan_temsilcisi}} |
+
+## Amaç
+İş sağlığı ve güvenliği konusunda çalışanları temsil etmek, görüş ve önerilerini işverene iletmek.
+
+## Görev ve sorumluluklar
+1. Çalışanların İSG ile ilgili görüş, öneri ve şikâyetlerini işverene iletir.
+2. Risklerin azaltılması için işverenden önlem alınmasını talep eder.
+3. Risk değerlendirmesi ve İSG eğitimlerinin planlanması çalışmalarına katılır.
+
+## Yetkiler
+- İSG konularında işverene öneride bulunma
+- Görevini yerine getirmek için gerekli zaman ve imkânın sağlanmasını isteme
+
+## İSG sorumlulukları
+- Temsilcilik görevi nedeniyle hakları kısıtlanmaz; görevini tarafsız ve çalışanlar adına yürütür.
+`],
+['Destek Elemanı ve İlk Yardımcı',`
+| Pozisyon bilgisi | Açıklama |
+|---|---|
+| Görevlendirme | İşveren tarafından, uygun nitelikteki çalışanlar arasından |
+| Destek elemanları | {{destek}} |
+| İlk yardımcılar | {{ilkyardimci}} |
+
+## Amaç
+Acil durumlarda yangınla mücadele, arama, kurtarma, tahliye ve ilk yardım işlerini ilk müdahale düzeyinde yürütmek.
+
+## Görev ve sorumluluklar
+1. Acil durum planındaki görevini bilir ve tatbikatlara katılır.
+2. Yangın söndürücü, ilk yardım dolabı ve acil durum ekipmanının yerini ve kullanılabilir olduğunu kontrol eder.
+3. Acil durumda tahliyeyi yönlendirir, toplanma alanında ({{toplanma_yeri}}) sayımı yapar.
+4. İlk yardımcılar, yaralıya profesyonel ekip gelene kadar ilk yardım uygular.
+
+## Aranan nitelikler
+- **Destek elemanı:** Acil durum (yangın, arama-kurtarma, tahliye) eğitimi almış olmak
+- **İlk yardımcı:** Geçerli ilk yardımcı sertifikasına sahip olmak
+
+## İSG sorumlulukları
+- Görevini İşyerlerinde Acil Durumlar Hakkında Yönetmelik'e ve acil durum planına uygun olarak yürütür.
+`],
+['Görev Tanımı Tebliğ Tutanağı',`
+Pozisyonuma ait görev tanımının bir örneğini aldım, okudum ve anladım. Görev ve sorumluluklarımı bu görev tanımına ve şirket kurallarına uygun olarak yerine getireceğimi beyan ederim.
+
+[alan] Pozisyon
+[alan] Bölüm
+[alan] Adı soyadı
+[alan] Tebliğ tarihi
+[imza] Çalışan
+[imza] Bağlı olduğu yönetici
+[imza] İnsan Kaynakları
+`],
+]),
 mkDoc('isg','metin','İş Sağlığı ve Güvenliği Kuralları','ISG-01',[
 ['Amaç, Kapsam ve Dayanak',`
 ## Amaç
@@ -1004,6 +1373,8 @@ Kurallar; tüm çalışanları, stajyerleri, alt işveren çalışanlarını ve 
 ## Destek elemanları ve ilk yardımcılar
 - Destek elemanları ({{destek}}) yangınla mücadele, arama, kurtarma ve tahliye işlerini yürütür.
 - İlk yardımcılar ({{ilkyardimci}}) ilk müdahaleyi yapar.
+
+Pozisyon bazında ayrıntılı görev ve sorumluluklar Görev Tanımları belgesinde ({{no:gorev}}) yer alır.
 `],
 ['Genel Güvenlik Kuralları',`
 1. İşe başlamadan önce görevinizle ilgili İSG eğitimini almış olmalısınız.
@@ -1244,6 +1615,35 @@ mkDoc('kaza','form','İş Kazası Bildirim ve Araştırma Formu','FR-03',[
 ]),
 ];}
 
+/* Görev Tanımları belgesine yeni bölüm eklenince gelen boş pozisyon şablonu */
+const POZ_TPL=`| Pozisyon bilgisi | Açıklama |
+|---|---|
+| Bölüm | |
+| Bağlı olduğu pozisyon | |
+| Bağlı pozisyonlar | |
+| Vekâlet eden | |
+| Çalışma şekli | Tam zamanlı |
+
+## Amaç
+// Pozisyonun var olma nedenini tek cümleyle yazın.
+
+## Görev ve sorumluluklar
+1.
+2.
+3.
+
+## Yetkiler
+-
+
+## Aranan nitelikler
+- **Eğitim:**
+- **Deneyim:**
+- **Belgeler:**
+- **Yetkinlikler:**
+
+## İSG sorumlulukları
+- İSG Kuralları'na ({{no:isg}}) uyar, kendisine verilen KKD'yi kullanır.
+- Tehlikeli durumları ve ramak kala olayları bildirir.`;
 function newDocSections(kind){
   return kind==='form'
     ?[['Bu form ne zaman kullanılır?','// Formun hangi durumda, kim tarafından ve ne kadar sürede doldurulacağını yazın.'],['Bilgiler','[alan] Adı soyadı\n[alan] Bölümü / görevi\n[alan] Tarih\n[uzun] Açıklama'],['Onay','[imza] Hazırlayan\n[imza] Onaylayan']]
@@ -1688,7 +2088,10 @@ async function deleteCompany(){
 
 /* ---------- Belge işlemleri ---------- */
 async function newDoc(){
-  const r=await dlg(`<form method="dialog"><h2>Yeni belge</h2><p class="muted">Talimat, prosedür ya da şirkete özel bir form ekleyin. Belge, numarası ve revizyon kaydıyla diğer belgeler gibi yönetilir.</p>
+  // Şirkette bulunmayan hazır taslaklar (sonradan eklenen ya da silinmiş olanlar) buradan geri eklenebilir.
+  const ready=makeDocs().filter(t=>!C.docs.some(d=>d.role===t.role));
+  const r=await dlg(`<form method="dialog"><h2>Yeni belge</h2><p class="muted">Hazır bir taslak, talimat, prosedür ya da şirkete özel bir form ekleyin. Belge, numarası ve revizyon kaydıyla diğer belgeler gibi yönetilir.</p>
+  ${ready.length?`<label>Başlangıç<select name="tpl" data-change="tpl-pick"><option value="">Boş belge</option>${ready.map(t=>`<option value="${esc(t.role)}" data-title="${esc(t.title)}" data-code="${esc(t.code)}">Hazır taslak: ${esc(t.title)}</option>`).join('')}</select></label>`:''}
   <label>Belge adı<input name="title" required autofocus maxlength="120" placeholder="Örn. Forklift Kullanma Talimatı"></label>
   <div class="row2"><label>Doküman kodu<input name="code" required maxlength="20" placeholder="TL-01"></label><label>Belge türü<select name="kind"><option value="metin">Metin (talimat, prosedür)</option><option value="form">Form</option></select></label></div>
   <p class="muted small">Tam numara, şirketin belge kodu önekiyle birleşir: ${esc(C.info.kod||'ÖNEK')}-TL-01</p>${foot('Belgeyi ekle')}</form>`);
@@ -1697,7 +2100,8 @@ async function newDoc(){
   const code=normKod(r.fd.get('code')),kind=r.fd.get('kind')==='form'?'form':'metin',title=String(r.fd.get('title')).trim();
   if(!code){toast('Doküman kodu geçersiz.','err');return;}
   if(C.docs.some(d=>d.code===code)){toast(`${code} kodu başka bir belgede kullanılıyor.`,'err');return;}
-  const d=mkDoc('x'+uid().slice(-5),kind,title,code,newDocSections(kind));
+  const tpl=ready.find(t=>t.role===r.fd.get('tpl'));
+  const d=tpl?Object.assign(tpl,{title,code}):mkDoc('x'+uid().slice(-5),kind,title,code,newDocSections(kind));
   touch(d);C.docs.push(d);
   addLog(C,{act:'belge-ekle',doc:d.id,docTitle:title,text:`Belge eklendi: ${docNo(C,d)} ${title}`});
   persist();go('belge/'+d.id);
@@ -1787,7 +2191,7 @@ const edChanged=()=>editing&&(editing.title!==editing.orig.title||editing.body!=
 async function startEdit(sid){
   const d=curDoc();if(!d) return;
   if(edChanged()&&!(await confirmDlg('Açık düzenleme kaydedilmedi','Kaydedilmemiş değişiklikler kaybolacak. Devam edilsin mi?','Devam et',true))) return;
-  if(sid===null){editing={docId:d.id,sid:null,title:'Yeni bölüm',body:'',orig:{title:'',body:''},focus:'title'};}
+  if(sid===null){const g=d.role==='gorev';editing={docId:d.id,sid:null,title:g?'Yeni pozisyon':'Yeni bölüm',body:g?POZ_TPL:'',orig:{title:'',body:''},focus:'title'};}
   else{const s=d.sections.find(x=>x.id===sid);if(!s) return;editing={docId:d.id,sid,title:s.title,body:s.body,orig:{title:s.title,body:s.body},focus:'body'};}
   render();
 }
@@ -1962,6 +2366,12 @@ document.addEventListener('change',e=>{
   else if(k==='log-doc'){lf.doc=t.value;$('#logList').innerHTML=logListHTML(filteredLog());}
   else if(k==='ins-ph'&&t.value){insertSnip(null,`{{${t.value}}}`);t.value='';}
   else if(k==='ins-field'&&t.value){insertSnip(t.value);t.value='';}
+  else if(k==='tpl-pick'){
+    const o=t.selectedOptions[0],f=t.form,tp=t.value?makeDocs().find(x=>x.role===t.value):null;
+    f.title.value=tp?o.dataset.title:'';f.code.value=tp?o.dataset.code:'';
+    if(tp) f.kind.value=tp.kind;
+    f.kind.disabled=!!tp;
+  }
 });
 document.addEventListener('input',e=>{
   const t=e.target;

@@ -17,7 +17,8 @@ Kurum Kitabı, şirketler için ücretsiz bir yönetmelik hazırlama aracıdır.
 
 ## Hazır taslaklar
 
-- **Personel El Kitabı:** işe başlama, çalışma saatleri, ücret, izinler, davranış kuralları, gizlilik, disiplin, işten ayrılma ve okudum-anladım beyanı
+- **Personel El Kitabı:** işe başlama, çalışma saatleri, ücret, izinler, davranış kuralları, kılık kıyafet ve kişisel bakım (saç, sakal, kadın ve erkek çalışanlar), gizlilik, disiplin, işten ayrılma ve okudum-anladım beyanı
+- **Görev Tanımları:** pozisyon bilgisi, amaç, görev ve sorumluluklar, yetkiler, aranan nitelikler ve İSG sorumlulukları; genel müdürden üretim operatörüne, iş güvenliği uzmanından ilk yardımcıya örnek pozisyonlar ve tebliğ tutanağı
 - **İş Sağlığı ve Güvenliği Kuralları:** tanımlar, görev ve sorumluluklar, genel kurallar, KKD, bildirimler, iş kazası anında yapılacaklar, çalışmaktan kaçınma hakkı, acil durumlar, eğitim ve sağlık gözetimi
 - **Tehlikeli Durum Bildirim Formu**
 - **Ramak Kala Olay Bildirim Formu**
