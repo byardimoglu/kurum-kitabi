@@ -336,6 +336,12 @@ input.inl{display:inline-block;width:auto;max-width:100%;min-height:0;padding:1p
 .fill-bar{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:14px}
 .fill-bar label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:700;color:var(--ink-2);min-width:220px}
 .rec-line{font-size:12px;margin:-10px 0 14px;color:#4a5058}
+.use{margin:0 0 14px;padding:14px 18px;border-left:3px solid var(--accent)}
+.use-h{display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap}
+.use-h>div{flex:1;min-width:260px}
+.use-l{margin-top:12px}
+.ev-sum{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0 12px}
+button.chip{cursor:pointer;font-family:inherit}
 /* Kütüphane */
 .lib-h{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .lib-h .h2{margin-bottom:10px}
@@ -558,6 +564,9 @@ const FIELDS=[
   {k:'acil_plan_tarihi',l:'Acil durum planı tarihi',type:'date'},
   {k:'tatbikat_tarihi',l:'Son acil durum tatbikatı tarihi',type:'date'},
  ]],
+ ['Evrak numaralama',[
+  {k:'evrak_sira',l:'Evrak sayısı nasıl verilsin?',type:'select',wide:true,opts:[['belge_yil','Her belge türü kendi sırasıyla, her yıl 1’den başlar (ORM-YZ-05/2026-003)'],['belge','Her belge türü kendi sırasıyla, yıl sonunda sıfırlanmaz (ORM-YZ-05/003)'],['genel_yil','Tüm evraklar tek sırada, her yıl 1’den başlar (ORM-2026-0012)']],hint:'Yazı ve formlar her kullanımda bu kurala göre sayı alır'},
+ ]],
 ];
 const FIELD_LIST=FIELDS.flatMap(g=>g[1]);
 const FIELD_MAP=Object.fromEntries(FIELD_LIST.map(f=>[f.k,f]));
@@ -607,6 +616,7 @@ function sanitizeCompany(c){
   if(!okId(c.id)) c.id=uid();
   c.info=c.info&&typeof c.info==='object'?c.info:{};
   for(const k of Object.keys(c.info)) c.info[k]=String(c.info[k]??'');
+  if(!['belge_yil','belge','genel_yil'].includes(c.info.evrak_sira)) c.info.evrak_sira='belge_yil';
   if(typeof c.logo!=='string'||!/^data:image\/(png|jpeg|webp|gif|svg\+xml);base64,[A-Za-z0-9+/=]+$/.test(c.logo)) c.logo='';
   c.docs=Array.isArray(c.docs)?c.docs:[];
   for(const d of c.docs){
@@ -617,6 +627,7 @@ function sanitizeCompany(c){
     d.title=String(d.title||'Adsız belge');d.code=String(d.code||'');
     d.sections=(Array.isArray(d.sections)?d.sections:[]).map(s=>({id:okId(s.id)?s.id:uid(),title:String(s.title||''),body:String(s.body||'')}));
     d.revisions=Array.isArray(d.revisions)?d.revisions:[];
+    d.seqBase=d.seqBase&&typeof d.seqBase==='object'?d.seqBase:{};
   }
   c.log=Array.isArray(c.log)?c.log:[];
   for(const e of c.log){e.act=String(e.act||'').replace(/[^a-z-]/g,'');}
@@ -628,7 +639,7 @@ function sanitizeCompany(c){
   c.records=(Array.isArray(c.records)?c.records:[]).filter(r=>r&&r.snap&&Array.isArray(r.snap.sections)&&r.snap.info);
   for(const r of c.records){
     if(!okId(r.id)) r.id=uid();
-    r.no=String(r.no||'');r.kind=['form','yazi'].includes(r.kind)?r.kind:'metin';
+    r.no=String(r.no||'');r.seq=+r.seq||0;r.seqKey=String(r.seqKey||'');r.kind=['form','yazi'].includes(r.kind)?r.kind:'metin';
     r.vals=r.vals&&typeof r.vals==='object'?r.vals:{};
     r.snap.sections=r.snap.sections.map(x=>({title:String(x.title||''),body:String(x.body||'')}));
   }
@@ -2378,7 +2389,7 @@ function newDocSections(kind){
     :[['Amaç ve Kapsam','Bu belge, {{unvan}} bünyesinde ... amacıyla hazırlanmıştır.\n\n// Belgenin amacını ve kimleri kapsadığını yazın.'],['Kurallar','1. Birinci kural\n2. İkinci kural'],['Yürürlük','Bu belge işveren onayıyla yürürlüğe girer.']];
 }
 function mkCompany(info){
-  return {id:uid(),app:FILE_APP,createdAt:nowISO(),info:{...info},logo:'',docs:makeDocs(),log:[],people:[],records:[],lastBackup:null};
+  return {id:uid(),app:FILE_APP,createdAt:nowISO(),info:{evrak_sira:'belge_yil',...info},logo:'',docs:makeDocs(),log:[],people:[],records:[],lastBackup:null};
 }
 
 /* Örnek şirket: geçmiş revizyonları ve bekleyen bir değişikliği göstermek için hazır kayıtlarla gelir. */
@@ -2409,7 +2420,9 @@ function createSampleCompany(){
   const o2=kkd.body;kkd.body=o2.replace('| Ofis | Gerekmez |','| Kaynak atölyesi | Kaynak maskesi, deri önlük, kaynak eldiveni, iş ayakkabısı |\n| Ofis | Gerekmez |');
   addLog(c,{act:'bolum',doc:isg.id,docTitle:isg.title,text:`${isg.sections.indexOf(kkd)+1}. Kişisel Koruyucu Donanım (KKD) bölümü düzenlendi`,diff:compactDiff(diffLines(o2,kkd.body)),ts:at(10,28,11,5),user:'Elif Arslan'});
   touch(isg,at(10,28,11,5),'Elif Arslan');
-  for(const t of [...libYazi(),...libForm(),...libIsgPol()]){c.docs.push(t);publishTo(c,t,{date:'2026-09-01',desc:'İlk yayın',by:'Mehmet Kaya',approver:'Ayşe Demir',ts:at(9,1,9,30),user:'Mehmet Kaya'});touch(t,at(9,1,9,30),'Mehmet Kaya');}
+  // Önce hepsi eklenir, sonra yayınlanır; böylece birbirine atıf yapan belgelerin numaraları ilk yayında dolu olur.
+  const lib=[...libYazi(),...libForm(),...libIsgPol()];c.docs.push(...lib);
+  for(const t of lib){publishTo(c,t,{date:'2026-09-01',desc:'İlk yayın',by:'Mehmet Kaya',approver:'Ayşe Demir',ts:at(9,1,9,30),user:'Mehmet Kaya'});touch(t,at(9,1,9,30),'Mehmet Kaya');}
   const P=o=>({id:uid(),tc:'',telefon:'',eposta:'',adres:'',cikis:'',acks:{},...o});
   c.people=[
     P({ad:'Zeynep Şahin',sicil:'1024',pozisyon:'Bölüm Yöneticisi (Üretim Şefi)',bolum:'Üretim',ise_giris:'2021-11-08',dogum:'1988-04-12',son_egitim:'2026-02-10',son_muayene:'2026-02-10'}),
@@ -2422,6 +2435,10 @@ function createSampleCompany(){
   ack(ali,'elkitabi',0,'2026-09-15');ack(ali,'isg',0,'2026-09-15');ack(ali,'gorev',0,'2026-09-15');
   addLog(c,{act:'personel',text:'4 personel listeden eklendi',ts:at(9,2,10,0),user:'Mehmet Kaya'});
   mkRecord(c,roleDoc(c,'gorevlendirme'),zey,'2026-10-05',{'b:Görevin konusu':'Müşteri tesisinde hat kurulumu ve devreye alma','b:Başlangıç tarihi':'12.10.2026','b:Bitiş tarihi':'14.10.2026','b:Görev yeri':'Gebze Organize Sanayi Bölgesi, Kocaeli','b:Rapor teslim süresi':'3 iş günü'},{ts:at(10,5,14,10),user:'Mehmet Kaya'});
+  mkRecord(c,roleDoc(c,'gorevlendirme'),meh,'2026-10-22',{'b:Görevin konusu':'Bölge müdürlüğünde düzenlenen İK eğitimine katılım','b:Başlangıç tarihi':'26.10.2026','b:Bitiş tarihi':'27.10.2026','b:Görev yeri':'Ankara','b:Rapor teslim süresi':'2 iş günü'},{ts:at(10,22,11,0),user:'Ayşe Demir'});
+  const sv=roleDoc(c,'savunma');sv.seqBase={'2026':4};
+  addLog(c,{act:'belge',doc:sv.id,docTitle:sv.title,text:'Belge ayarları değişti',note:'Kâğıt üzerinde verilmiş son sayı: 0 → 4',ts:at(9,1,10,0),user:'Mehmet Kaya'});
+  mkRecord(c,sv,ali,'2026-10-27',{'b:Olay tarihi':'26.10.2026','b:Olayın kısa tanımı':'üretim alanında baret takılmadan çalışıldığı','b:Tutanak tarihi':'26.10.2026','b:Savunma süresi':'3 iş günü'},{ts:at(10,27,15,30),user:'Mehmet Kaya'});
   mkRecord(c,roleDoc(c,'izin'),fat,'2026-10-20',{'f:İzin türü':['Yıllık ücretli izin'],'f:İzin başlangıç tarihi':'02.11.2026','f:İşe dönüş tarihi':'09.11.2026','f:İzin süresi (iş günü)':'5','f:Kalan yıllık izin (gün)':'21','f:İzinde ulaşılabilecek telefon':'Dahili 214','f:Yerine bakacak çalışan':'Ali Yıldız'},{ts:at(10,20,9,40),user:'Mehmet Kaya'});
   return c;
 }
@@ -2597,10 +2614,11 @@ function docHTML(id){
   return `<div class="wrap">
   <div class="page-h"><div><div class="crumb">Belgeler</div><h1>${esc(d.title)}</h1>
     <div class="chips"><span class="chip mono">${esc(m.no)}</span><span class="chip ${s.cls}">${p?'Rev.'+revStr(p.rev)+' · ':''}${esc(s.label)}</span><span class="chip">Son düzenleme: ${fmtDT(d.updatedAt)}${d.updatedBy?' · '+esc(d.updatedBy):''}</span>${C.records.some(r=>r.docId===d.id)?`<span class="chip">${C.records.filter(r=>r.docId===d.id).length} evrak</span>`:''}</div></div>
-    <div class="actions">${s.cls!=='ok'?`<button class="btn primary" data-act="publish">${p?'Revizyonu yayınla':'İlk sürümü yayınla'}</button>`:''}${p&&fillableDoc(d)?'<button class="btn" data-act="fill">Evrak düzenle</button>':''}<button class="btn" data-act="print-doc">${d.kind==='metin'?'Yazdır / PDF':'Boş şablonu yazdır'}</button><button class="btn" data-act="doc-settings">Belge ayarları</button></div></div>
+    <div class="actions">${s.cls!=='ok'?`<button class="btn primary" data-act="publish">${p?'Revizyonu yayınla':'İlk sürümü yayınla'}</button>`:''}${p&&fillableDoc(d)&&d.kind==='metin'?'<button class="btn" data-act="fill">Evrak düzenle</button>':''}<button class="btn" data-act="print-doc">${d.kind==='metin'?'Yazdır / PDF':'Boş şablonu yazdır'}</button><button class="btn" data-act="doc-settings">Belge ayarları</button></div></div>
   ${s.cls==='warn'?`<div class="note warn"><div><b>Yayınlanmamış değişiklikler.</b> Yayınlandığında belge <b class="mono">${esc(m.no)} Rev.${revStr(p.rev)}</b> → <b class="mono">Rev.${revStr(p.rev+1)}</b> olur.<ul class="chg">${s.changes.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div class="note-act"><button class="btn sm warn" data-act="publish">Yayınla</button><button class="btn sm ghost" data-act="revert">Taslağı geri al</button></div></div>`:''}
   ${s.cls==='none'?'<div class="note"><div><b>Bu belge henüz yayınlanmadı.</b> İçeriği şirketinize göre düzenleyin, ardından ilk sürümü yayınlayın. İlk yayın Rev.00 olarak kaydedilir.</div></div>':''}
   ${empt.length?`<div class="note warn"><div>Belgede <b>${empt.length} şirket bilgisi boş:</b> ${empt.map(k=>esc(phLabel(k))).join(', ')}. Yazdırıldığında noktalı boşluk olarak görünür.</div><a class="btn sm" href="#sirket">Şirket bilgilerine git</a></div>`:''}
+  ${useCardHTML(d)}
   ${tebligBoxHTML(d)}
   <div class="paper ${d.kind}">
     ${docHeadHTML(m,false,d.kind)}
@@ -2872,6 +2890,7 @@ async function docSettings(d){
   <label>Belge adı<input name="title" required maxlength="120" value="${esc(d.title)}"></label>
   <label>Doküman kodu<input name="code" required maxlength="20" value="${esc(d.code)}"></label>
   <p class="muted small">Ad ve kod değişikliği yayınlanmamış değişiklik sayılır; yeni revizyonla yayınlanır. Belgenin tam numarası şirket önekiyle birleşir.</p>
+  ${fillableDoc(d)&&C.info.evrak_sira!=='genel_yil'?`<label>${C.info.evrak_sira==='belge'?'Sisteme geçmeden önce bu belgeyle verilmiş son sayı':`${today0().getFullYear()} yılında sisteme geçmeden önce bu belgeyle verilmiş son sayı`}<input name="base" type="number" min="0" step="1" value="${esc(String((d.seqBase||{})[seqBaseKey(C,dayInput())]||''))}" placeholder="Yoksa boş bırakın"></label><p class="muted small">Örneğin bu yıl kâğıt üzerinde 4 tane verdiyseniz 4 yazın; sistemdeki ilk evrak 5 numarayı alır.</p>`:''}
   <div class="dlg-foot" style="justify-content:space-between"><button class="btn danger" value="delete" formnovalidate>Belgeyi sil</button><span class="actions"><button class="btn" value="cancel" formnovalidate>Vazgeç</button><button class="btn primary" value="ok">Kaydet</button></span></div></form>`);
   if(!r) return;
   if(r.v==='delete'){
@@ -2889,6 +2908,10 @@ async function docSettings(d){
   const notes=[];
   if(title!==d.title) notes.push(`Ad: “${d.title}” → “${title}”`);
   if(code!==d.code) notes.push(`Kod: ${d.code} → ${code}`);
+  if(r.fd.has('base')){
+    const bk=seqBaseKey(C,dayInput()),nb=Math.max(0,parseInt(r.fd.get('base'),10)||0),ob=+((d.seqBase||{})[bk]||0);
+    if(nb!==ob){d.seqBase={...(d.seqBase||{}),[bk]:nb};notes.push(`Kâğıt üzerinde verilmiş son sayı: ${ob} → ${nb}`);}
+  }
   if(!notes.length) return;
   if(!(await ensureUser())) return;
   d.title=title;d.code=code;touch(d);
@@ -3371,10 +3394,22 @@ function dynVal(k,f){
 function fillableDoc(d){return d.kind!=='metin'||d.sections.some(s=>/\[\[|\{\{\s*p:|^\s*\[(alan|uzun|secim|kutu)\]/m.test(s.body));}
 function fkey(f,base){f.seen[base]=(f.seen[base]||0)+1;return f.seen[base]>1?base+'#'+f.seen[base]:base;}
 function plainFill(s,cx){return String(s).replace(PH_RE,(m,k)=>isDyn(k)?(cx.fill?dynVal(k,cx.fill):''):((cx.info&&k in cx.info?cx.info[k]:resolve(C,k))||''));}
-function nextEvrakNo(c,date){
-  const y=(toDate(date)||new Date()).getFullYear(),pre=(String(c.info.kod||'').trim()||'EVR')+'-'+y+'-';
-  let mx=0;for(const r of c.records) if(r.no.startsWith(pre)) mx=Math.max(mx,parseInt(r.no.slice(pre.length),10)||0);
-  return pre+String(mx+1).padStart(4,'0');
+/* Evrak sayısı, şirketin numaralama kuralına göre belge türü (ve yıl) bazında ya da tek sırada artar.
+   seqBase: sisteme geçmeden önce kâğıt üzerinde verilmiş son sayı; sıra onun üzerine eklenir. */
+function seqBaseKey(c,date){return c.info.evrak_sira==='belge'?'all':String((toDate(date)||new Date()).getFullYear());}
+function evrakSeq(c,d,date){
+  const y=(toDate(date)||new Date()).getFullYear(),mode=c.info.evrak_sira||'belge_yil';
+  const key=mode==='genel_yil'?`g:${y}`:mode==='belge'?`d:${d.id}`:`d:${d.id}:${y}`;
+  let mx=mode==='genel_yil'?0:+((d.seqBase||{})[seqBaseKey(c,date)]||0);
+  for(const r of c.records) if(r.seqKey===key) mx=Math.max(mx,r.seq||0);
+  const n=mx+1,p3=String(n).padStart(3,'0'),dn=docNo(c,d)||'EVR',kod=String(c.info.kod||'').trim()||'EVR';
+  const no=mode==='genel_yil'?`${kod}-${y}-${String(n).padStart(4,'0')}`:mode==='belge'?`${dn}/${p3}`:`${dn}/${y}-${p3}`;
+  return {key,n,no,y,mode};
+}
+function seqLabel(rec){
+  if(!rec.seqKey) return '';
+  const [t,,yy]=rec.seqKey.split(':');
+  return t==='g'?`${rec.seqKey.slice(2)} yılının ${rec.seq}. evrakı`:`${rec.seq}. ${rec.docTitle}${yy?` (${yy})`:''}`;
 }
 function letterHeadHTML({no,date,print}){
   const co=[C.info.telefon,C.info.eposta,C.info.web].filter(Boolean).join(' · ');
@@ -3396,14 +3431,15 @@ function fillHTML(id,pre){
   if(!r) return `<div class="wrap"><div class="crumb"><a href="#belge/${esc(d.id)}">${esc(d.title)}</a></div><h1>Evrak düzenle</h1><div class="note warn" style="margin-top:14px"><div>Bu belge henüz yayınlanmadı. Evrak düzenlemek için önce belgeyi yayınlayın; böylece her evrakın hangi sürümle düzenlendiği kayıtlı kalır.</div><a class="btn sm" href="#belge/${esc(d.id)}">Belgeye git</a></div></div>`;
   if(!fst||fst.docId!==d.id) fst={docId:d.id,pid:pre||'',date:dayInput(),vals:{}};
   const person=C.people.find(p=>p.id===fst.pid)||null;
-  const cx=mkCtx(C,{info:r.snapshot.info,fill:{mode:'edit',vals:fst.vals,person,date:fst.date,no:null,seen:{},tbl:0}});
-  const head=d.kind==='yazi'?letterHeadHTML({no:null,date:fst.date}):docHeadHTML(recMeta(d,r.rev,r.snapshot));
+  const sq=evrakSeq(C,d,fst.date),no=fst.no||sq.no;
+  const cx=mkCtx(C,{info:r.snapshot.info,fill:{mode:'edit',vals:fst.vals,person,date:fst.date,no,seen:{},tbl:0}});
+  const head=d.kind==='yazi'?letterHeadHTML({no,date:fst.date}):docHeadHTML(recMeta(d,r.rev,r.snapshot));
   const opts=C.people.filter(p=>!p.cikis||p.id===fst.pid).map(p=>`<option value="${esc(p.id)}"${p.id===fst.pid?' selected':''}>${esc(p.ad)}${p.pozisyon?' · '+esc(p.pozisyon):''}</option>`).join('');
   return `<div class="wrap">
-  <div class="page-h"><div><div class="crumb"><a href="#belge/${esc(d.id)}">${esc(d.title)}</a></div><h1>Evrak düzenle</h1><p class="lead muted">Belgenin yayındaki Rev.${revStr(r.rev)} sürümü doldurulur. Kaydedince evrak kayıt defterine <b class="mono">${esc(nextEvrakNo(C,fst.date))}</b> sayısıyla işlenir ve yazdırılır.</p></div></div>
-  <div class="card fill-bar"><label>Personel<select data-change="fill-person"><option value="">Seçilmedi, elle yazılacak</option>${opts}</select></label><label>Evrak tarihi<input type="date" data-change="fill-date" value="${esc(fst.date)}"></label><div class="actions"><button class="btn primary" data-act="fill-save">Kaydet ve yazdır</button><button class="btn" data-act="fill-cancel">Vazgeç</button></div></div>
+  <div class="page-h"><div><div class="crumb"><a href="#belge/${esc(d.id)}">${esc(d.title)}</a></div><h1>Evrak düzenle</h1><p class="lead muted">Şablon (Rev.${revStr(r.rev)}) değişmez; her kullanım ayrı bir evraktır. Kaydedince aşağıdaki sayıyla Evrak kayıt defterine işlenir ve yazdırılır. Bu, ${sq.mode==='genel_yil'?`${sq.y} yılının ${sq.n}.`:`${sq.mode==='belge'?'':sq.y+' yılında '}düzenlenen ${sq.n}.`} ${sq.mode==='genel_yil'?'evrakı':esc(d.title)} olacak.</p></div></div>
+  <div class="card fill-bar"><label>Personel<select data-change="fill-person"><option value="">Seçilmedi, elle yazılacak</option>${opts}</select></label><label>Evrak sayısı<input class="mono" data-input="fill-no" value="${esc(no)}" title="Sıradaki sayı kendiliğinden gelir; gerekirse değiştirebilirsiniz"></label><label>Evrak tarihi<input type="date" data-change="fill-date" value="${esc(fst.date)}"></label><div class="actions"><button class="btn primary" data-act="fill-save">Kaydet ve yazdır</button><button class="btn" data-act="fill-cancel">Vazgeç</button></div></div>
   ${C.people.length?'':'<p class="muted small">İpucu: Personel sayfasına çalışan eklerseniz ad, pozisyon, işe giriş tarihi gibi bilgiler kendiliğinden dolar.</p>'}
-  <div class="paper ${d.kind}" id="fillPaper">${fillDocHTML(d.kind,head,r.snapshot,cx,null,fst.date)}</div>
+  <div class="paper ${d.kind}" id="fillPaper">${fillDocHTML(d.kind,head,r.snapshot,cx,no,fst.date)}</div>
 </div>`;
 }
 function collectFill(){
@@ -3416,8 +3452,9 @@ function collectFill(){
   return vals;
 }
 function mkRecord(c,d,person,date,vals,o={}){
-  const r=pub(d),no=nextEvrakNo(c,date);
-  const rec={id:uid(),no,date,ts:o.ts||nowISO(),user:o.user||meta.user||'Belirtilmedi',docId:d.id,docTitle:r.snapshot.title,docNo:[r.snapshot.info.kod,r.snapshot.code].filter(Boolean).join('-'),rev:r.rev,kind:d.kind,snap:r.snapshot,pid:person?person.id:'',pname:person?person.ad:'',pdata:person?pdataOf(person):null,vals,iptal:null};
+  const r=pub(d),sq=evrakSeq(c,d,date),no=o.no||sq.no;
+  let seq=sq.n;if(o.no){const m=String(o.no).match(/(\d+)\s*$/);if(m) seq=+m[1];}
+  const rec={id:uid(),no,seq,seqKey:sq.key,date,ts:o.ts||nowISO(),user:o.user||meta.user||'Belirtilmedi',docId:d.id,docTitle:r.snapshot.title,docNo:[r.snapshot.info.kod,r.snapshot.code].filter(Boolean).join('-'),rev:r.rev,kind:d.kind,snap:r.snapshot,pid:person?person.id:'',pname:person?person.ad:'',pdata:person?pdataOf(person):null,vals,iptal:null};
   c.records.unshift(rec);
   addLog(c,{act:'evrak',doc:d.id,docTitle:d.title,text:`Evrak düzenlendi: ${no} · ${rec.docTitle}${person?' · '+person.ad:''}`,ts:o.ts,user:o.user});
   return rec;
@@ -3425,8 +3462,9 @@ function mkRecord(c,d,person,date,vals,o={}){
 async function fillSave(){
   const d=C.docs.find(x=>x.id===fst.docId);if(!d||!pub(d)) return;
   if(!(await ensureUser())) return;
-  const person=C.people.find(p=>p.id===fst.pid)||null;
-  const rec=mkRecord(C,d,person,fst.date,collectFill());
+  const person=C.people.find(p=>p.id===fst.pid)||null,no=(fst.no||'').trim();
+  if(no&&C.records.some(r=>r.no===no)){toast(`${no} sayısı başka bir evrakta kullanılmış. Başka bir sayı girin ya da kutuyu boşaltın.`,'err');return;}
+  const rec=mkRecord(C,d,person,fst.date,collectFill(),{no:no||undefined});
   persist();fst=null;go('evrak/'+rec.id);printRecord(rec);
 }
 function recCtx(rec,print){return mkCtx(C,{info:rec.snap.info,print,fill:{mode:'view',vals:rec.vals,person:rec.pdata,date:rec.date,no:rec.no,seen:{},tbl:0}});}
@@ -3445,6 +3483,16 @@ function dueWidget(){
   const it=dueItems().filter(x=>x.st.cls==='late'||x.st.cls==='soon').slice(0,6);
   return it.length?`<h2 class="h2">Geciken ve yaklaşan işler</h2>${dueListHTML(it)}<p><a href="#takvim">Yasal takvimin tamamı →</a></p>`:'';
 }
+function useCardHTML(d){
+  if(d.kind==='metin'||!fillableDoc(d)) return '';
+  const r=pub(d);
+  if(!r) return '<div class="card use"><b>Bu belge bir şablondur.</b> Yayınladıktan sonra her kullanımda “Evrak düzenle” ile doldurulur; sayı ve tarih o evraka özel verilir ve Evrak kayıt defterine işlenir.</div>';
+  const recs=C.records.filter(x=>x.docId===d.id),y=today0().getFullYear(),thisY=recs.filter(x=>!x.iptal&&(toDate(x.date)||new Date()).getFullYear()===y).length,sq=evrakSeq(C,d,dayInput());
+  return `<div class="card use"><div class="use-h"><div><b>Bu belge bir şablondur; şablon değişmez.</b> Her kullanımda “Evrak düzenle” ile doldurulur. Sayı ve tarih o evraka özel verilir, evrak kayıt defterine ve çalışanın kartına işlenir.
+  <div class="small muted" style="margin-top:4px">Sıradaki sayı: <b class="mono">${esc(sq.no)}</b> · ${y} yılında düzenlenen: <b>${thisY}</b> · Toplam: <b>${recs.length}</b>${C.info.evrak_sira!=='genel_yil'&&d.seqBase&&+d.seqBase[seqBaseKey(C,dayInput())]?` · Kâğıt üzerinde verilmiş son sayı: ${+d.seqBase[seqBaseKey(C,dayInput())]}`:''}</div></div>
+  <button class="btn primary" data-act="fill">Evrak düzenle</button></div>
+  ${recs.length?`<div class="use-l">${recTableHTML(recs.slice(0,5))}${recs.length>5?`<p class="small"><a href="#evrak" data-act="ev-filter" data-doc="${esc(d.id)}">Bu belgenin tüm evrakı (${recs.length}) →</a></p>`:''}</div>`:''}</div>`;
+}
 function recTableHTML(list){
   return `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Sayı</th><th>Tarih</th><th>Belge</th><th>Personel</th><th>Düzenleyen</th><th>Durum</th></tr></thead><tbody>${list.map(r=>`<tr><td class="mono nowrap"><a href="#evrak/${esc(r.id)}">${esc(r.no)}</a></td><td class="mono nowrap">${fmtD(r.date)}</td><td>${esc(r.docTitle)}</td><td>${r.pid?`<a href="#personel/${esc(r.pid)}">${esc(r.pname)}</a>`:esc(r.pname||'—')}</td><td>${esc(r.user)}</td><td>${r.iptal?'<span class="chip warn">İptal</span>':'<span class="chip ok">Geçerli</span>'}</td></tr>`).join('')}</tbody></table></div>`;
 }
@@ -3456,11 +3504,17 @@ function recordsHTML(){
   const docs=[...new Map(C.records.map(r=>[r.docId,r.docTitle])).entries()];
   const fillables=C.docs.filter(d=>pub(d)&&fillableDoc(d));
   return `<div class="wrap">
-  <div class="page-h"><div><div class="crumb">Araçlar</div><h1>Evrak kayıt defteri</h1><p class="lead muted">Yazılar ve formlar doldurulup kaydedildiğinde sıra numarası alır (${esc((C.info.kod||'EVR')+'-'+today0().getFullYear()+'-0001')} gibi). Kayıtlar silinmez; gerekirse gerekçesiyle iptal edilir.</p></div>
+  <div class="page-h"><div><div class="crumb">Araçlar</div><h1>Evrak kayıt defteri</h1><p class="lead muted">Yazı ve formların her kullanımı burada kayıtlıdır. Sayılar <a href="#sirket">Şirket bilgileri</a> sayfasındaki kurala göre verilir: ${esc(displayVal('evrak_sira',C.info.evrak_sira||'belge_yil'))}. Kayıtlar silinmez; gerekirse gerekçesiyle iptal edilir.</p></div>
     <div class="actions"><select data-change="p-fill" aria-label="Yeni evrak" style="width:auto"><option value="">+ Yeni evrak…</option>${fillables.map(d=>`<option value="${esc(d.id)}">${esc(d.title)}</option>`).join('')}</select><button class="btn" data-act="evrak-csv">Excel (CSV) indir</button></div></div>
   <div class="filters"><select data-change="ev-doc" aria-label="Belge"><option value="">Tüm belgeler</option>${docs.map(([id,t])=>`<option value="${esc(id)}"${ef.doc===id?' selected':''}>${esc(t)}</option>`).join('')}</select><select data-change="ev-p" aria-label="Personel"><option value="">Tüm personel</option>${C.people.map(p=>`<option value="${esc(p.id)}"${ef.p===p.id?' selected':''}>${esc(p.ad)}</option>`).join('')}</select><input type="search" data-input="ev-q" placeholder="Sayı, belge ya da ad ara" value="${esc(ef.q)}"></div>
+  ${evSummaryHTML()}
   <div id="recList">${C.records.length?recTableHTML(filteredRecs()):'<p class="muted">Henüz evrak yok. Bir yazı ya da form açıp “Evrak düzenle”ye basın.</p>'}</div>
 </div>`;
+}
+function evSummaryHTML(){
+  const y=today0().getFullYear(),ds=C.docs.filter(d=>C.records.some(r=>r.docId===d.id));
+  if(!ds.length) return '';
+  return `<div class="ev-sum"><span class="muted small">${y} yılında belge türüne göre:</span>${ds.map(d=>{const n=C.records.filter(r=>r.docId===d.id&&!r.iptal&&(toDate(r.date)||new Date()).getFullYear()===y).length;return `<button class="chip${ef.doc===d.id?' ok':''}" data-act="ev-filter" data-doc="${esc(d.id)}">${esc(d.title)}: ${n}</button>`;}).join('')}${ef.doc?'<button class="chip" data-act="ev-filter" data-doc="">Tümünü göster</button>':''}</div>`;
 }
 function recordHTML(id){
   const rec=C.records.find(r=>r.id===id);
@@ -3468,7 +3522,7 @@ function recordHTML(id){
   const cx=recCtx(rec,false);
   return `<div class="wrap">
   <div class="page-h"><div><div class="crumb"><a href="#evrak">Evrak kayıt defteri</a></div><h1>${esc(rec.no)}</h1>
-    <div class="chips"><span class="chip">${esc(rec.docTitle)}</span><span class="chip mono">${esc(rec.docNo)} Rev.${revStr(rec.rev)}</span>${rec.pname?`<span class="chip">${esc(rec.pname)}</span>`:''}<span class="chip">Düzenleyen: ${esc(rec.user)} · ${fmtDT(rec.ts)}</span>${rec.iptal?'<span class="chip warn">İptal edildi</span>':''}</div></div>
+    <div class="chips"><span class="chip">${esc(rec.docTitle)}</span>${seqLabel(rec)?`<span class="chip">${esc(seqLabel(rec))}</span>`:''}<span class="chip mono">Şablon ${esc(rec.docNo)} Rev.${revStr(rec.rev)}</span>${rec.pname?`<span class="chip">${esc(rec.pname)}</span>`:''}<span class="chip">Düzenleyen: ${esc(rec.user)} · ${fmtDT(rec.ts)}</span>${rec.iptal?'<span class="chip warn">İptal edildi</span>':''}</div></div>
     <div class="actions"><button class="btn primary" data-act="rec-print" data-rid="${esc(rec.id)}">Yazdır / PDF</button>${rec.iptal?'':`<button class="btn danger" data-act="rec-cancel" data-rid="${esc(rec.id)}">İptal et</button>`}</div></div>
   ${rec.iptal?`<div class="note warn"><div><b>Bu evrak iptal edildi.</b> ${esc(rec.iptal.user)} · ${fmtDT(rec.iptal.ts)} · Gerekçe: ${esc(rec.iptal.reason)}</div></div>`:''}
   <div class="paper ${rec.kind}">${fillDocHTML(rec.kind,recHeadHTML(rec,false),rec.snap,cx,rec.no,rec.date)}</div>
@@ -3512,6 +3566,7 @@ const ACT={
   wiz:b=>{if(b.dataset.v==='1') wz.res=WQ[wz.step].yes; else if(wz.step<2) wz.step++; else wz.res='yok';$('#wiz').innerHTML=wizHTML();},
   'wiz-reset':()=>{wz={step:0,res:null};$('#wiz').innerHTML=wizHTML();},
   csv:exportCSV,
+  'ev-filter':b=>{ef.doc=b.dataset.doc||'';if(route().v==='evrak'&&!route().id) render(); else go('evrak');},
   'lib-add':b=>libAdd([b.dataset.role]),'lib-add-cat':b=>libAdd(allTemplates().filter(t=>t.cat===b.dataset.cat).map(t=>t.role)),'lib-add-all':()=>libAdd(allTemplates().map(t=>t.role)),
   'p-new':()=>personDlg(null),'p-edit':b=>personDlg(b.dataset.pid),'p-del':b=>personDel(b.dataset.pid),'p-paste':pasteDlg,
   fill:()=>{fst=null;go('doldur/'+curDoc().id);},'fill-save':fillSave,'fill-cancel':()=>{const id=fst&&fst.docId;fst=null;go(id?'belge/'+id:'evrak');},
@@ -3561,6 +3616,7 @@ document.addEventListener('input',e=>{
   else if(t.id==='edTitle'&&editing){editing.title=t.value;}
   else if(t.dataset.input==='log-q'){lf.q=t.value;$('#logList').innerHTML=logListHTML(filteredLog());}
   else if(t.dataset.input==='ev-q'){ef.q=t.value;$('#recList').innerHTML=recTableHTML(filteredRecs());}
+  else if(t.dataset.input==='fill-no'&&fst){fst.no=t.value.trim()||null;}
   else if(t.dataset.fk&&fst&&t.type!=='checkbox'){
     fst.vals[t.dataset.fk]=t.value;
     if(t.classList.contains('inl')) t.size=Math.min(60,Math.max(10,t.placeholder.length+2,t.value.length+2));

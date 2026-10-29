@@ -38,7 +38,21 @@ Eğitim sıklığı, eğitim süresi, periyodik muayene, risk değerlendirmesi y
 
 - **Personel kartları:** Çalışanların bilgileri bir kez girilir ya da Excel'den yapıştırılır. Kıdem ve 4857 md. 53'e göre yıllık izin hakkı (yaş kuralı dâhil) hesaplanır.
 - **Evrak düzenle:** Yazı ya da form açılır, personel seçilir. Ad, pozisyon, işe giriş tarihi gibi alanlar kendiliğinden dolar; kalan boşluklar ekranda yazılır.
-- **Evrak kayıt defteri:** Kaydedilen her evrak sıra numarası alır (ORM-2026-0001 gibi), hangi belge sürümüyle düzenlendiği saklanır. Kayıtlar silinmez, gerekçesiyle iptal edilir. Çalışanın tüm evrakı kartında birikir.
+- **Evrak kayıt defteri:** Kaydedilen her evrak sayı alır, hangi belge sürümüyle düzenlendiği saklanır. Kayıtlar silinmez, gerekçesiyle iptal edilir. Çalışanın tüm evrakı kartında, belgenin evrakları belge sayfasında görünür.
+
+### Evrak sayıları nasıl verilir?
+
+Yazı ve form şablonları değişmez; her kullanım ayrı bir evraktır ve kendi sayısını ve tarihini alır. Şirket bilgileri → Evrak numaralama'dan kural seçilir:
+
+| Kural | Örnek (3. savunma istem yazısı) |
+|---|---|
+| Her belge türü kendi sırasıyla, her yıl 1'den (varsayılan) | ORM-YZ-05/2026-003 |
+| Her belge türü kendi sırasıyla, kesintisiz | ORM-YZ-05/003 |
+| Tüm evraklar tek sırada, her yıl 1'den | ORM-2026-0012 |
+
+Sisteme geçmeden önce kâğıt üzerinde evrak verdiyseniz, belgenin **Belge ayarları** penceresine verilen son sayıyı yazın; sıra onun üzerine devam eder (4 yazdıysanız ilk evrak 005 olur). Gerekirse sayı, evrak düzenlenirken elle de değiştirilebilir; aynı sayının iki kez kullanılmasına izin verilmez.
+
+Not: Veriler tarayıcıda saklandığı için sayı sırası tek bilgisayar içindir. Aynı şirkette birden fazla bilgisayardan evrak düzenlenecekse tek bir bilgisayar evrak kaydı için kullanılmalı ya da yedekle aktarılmalıdır.
 - **Tebliğ takibi:** Politika belgeleri yeni revizyon aldığında yeni sürümü hangi çalışanın imzalamadığı görünür; imza listesi basılır.
 - **Yasal takvim:** Risk değerlendirmesi, acil durum planı, tatbikat, çalışanların İSG eğitimi ve periyodik muayenesi, deneme süresi bitişi, yıllık izin hakedişi ve belge gözden geçirme tarihleri hesaplanır; geciken ve yaklaşan işler genel bakışta görünür.
 
