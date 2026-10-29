@@ -304,6 +304,68 @@ a.nologo{font-size:13px;color:#1f3b63;border:1px dashed #a9bad3;border-radius:6p
 .flow-a{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 8px;font-size:12px;color:var(--ink-2);text-align:center;min-width:92px}
 .flow-a::before{content:"→";font-size:22px;line-height:1;color:var(--ink-3)}
 
+/* Antetli yazı */
+.lhead{display:flex;align-items:center;gap:18px;border-bottom:2px solid var(--p-ink);padding-bottom:10px;color:var(--p-ink)}
+.lh-logo{width:130px;min-height:48px;display:flex;align-items:center;flex:none}
+.lh-logo img{max-width:130px;max-height:62px;object-fit:contain}
+.lh-co{display:flex;flex-direction:column;font-size:11.5px;color:#4a5058;line-height:1.45}
+.lh-co b{font-size:15.5px;color:var(--p-ink)}
+.lh-meta{display:flex;justify-content:space-between;gap:12px;font-size:12.5px;margin:8px 0 24px;color:var(--p-ink)}
+.lh-ctl{font-size:11.5px;color:#8c959f;margin:-16px 0 18px;text-align:right}
+.yazi .md{font-size:14.5px;line-height:1.75}
+.yazi .sec{padding:2px 0}
+.yazi .sec+.sec{border-top:0}
+.yazi .sec-t{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#8c959f;margin:8px 0 2px}
+.yazi .fgrid{border:0;margin-top:28px}
+.yazi .f{border:0}
+.yazi .f-imza{min-height:104px}
+/* Evrak düzenleme */
+.ph-dyn{background:#f2edf9;color:#5b3d8a;border:1px dashed #c8b6e2;border-radius:3px;padding:0 4px;font-size:.92em}
+.blank{border-bottom:1.5px dotted #8c959f;color:#6e7781;font-size:.92em;padding:0 2px}
+.fdef{font-size:11.5px;color:#8c959f}
+.ph-auto{background:#eef2f7;border-radius:2px;padding:0 3px}
+input.inl{display:inline-block;width:auto;max-width:100%;min-height:0;padding:1px 6px;font:inherit;line-height:1.4;border:0;border-bottom:1.5px solid #1f3b63;border-radius:0;background:#f4f7fb;color:#1f2328}
+.fin{width:100%;min-height:26px;border:0;border-radius:2px;background:#f4f7fb;resize:vertical;padding:3px 6px;font:13px/1.45 var(--f);color:#1f2328}
+.f-uzun .fin{min-height:74px}
+.fv{white-space:pre-wrap;font-size:inherit;color:#1f2328}
+.f .fv{font-size:13px}
+@media print{.f .fv{font-size:9.5pt}}
+.tin{width:100%;min-height:26px;border:0;border-radius:0;background:#f4f7fb;padding:2px 5px;font:inherit;color:#1f2328}
+.ck input{width:14px;height:14px;min-height:0;margin:0;accent-color:#1f3b63}
+.ck.on i{background:#2b3036;box-shadow:inset 0 0 0 2px #fff}
+.fill-bar{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:14px}
+.fill-bar label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:700;color:var(--ink-2);min-width:220px}
+.rec-line{font-size:12px;margin:-10px 0 14px;color:#4a5058}
+/* Kütüphane */
+.lib-h{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.lib-h .h2{margin-bottom:10px}
+.lib-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.lib-card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.lib-card p{margin:0;flex:1}
+.lib-t{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.lib-a{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.side-sub{margin:8px 10px 2px;font-size:11.5px;color:var(--ink-3)}
+/* Personel, tebliğ, takvim */
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 20px}
+.pgrid div{min-width:0;overflow-wrap:anywhere}
+.pgrid span{display:block;font-size:12px;color:var(--ink-3)}
+.teb{margin:0 0 14px;padding:14px 18px}
+.teb-h{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.chk-list{display:flex;flex-direction:column;gap:2px;max-height:300px;overflow:auto;border:1px solid var(--line);border-radius:4px;padding:6px 10px}
+.ckrow{flex-direction:row!important;align-items:center;gap:8px!important;font-weight:400!important;color:var(--ink)!important;font-size:14px!important;padding:4px 0}
+.ckrow input{width:16px;height:16px;min-height:0}
+.due-list{list-style:none;margin:0;padding:0}
+.due{display:grid;grid-template-columns:140px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.st{display:inline-block;font-size:12px;font-weight:700;padding:1px 8px;border-radius:3px;border:1px solid;background:var(--surface)}
+.st.late{color:var(--danger);border-color:color-mix(in srgb,var(--danger) 50%,transparent)}
+.st.soon{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 50%,transparent)}
+.st.plan{color:var(--ink-2);border-color:var(--line-2)}
+.st.miss{color:var(--ink-3);border-color:var(--line-2);border-style:dashed}
+.lg-dot.evrak{background:#6b4fa0}
+.lg-dot.personel,.lg-dot.teblig{background:var(--ok)}
+@media screen and (max-width:860px){.side-sub{display:none}.pgrid{grid-template-columns:1fr}.due{grid-template-columns:1fr;gap:4px}}
+@media print{.lh-ctl{display:none}.lhead{margin-top:0}}
+
 /* Pencereler ve bildirim */
 dialog{border:0;border-radius:8px;padding:0;width:min(580px,calc(100vw - 24px));max-height:calc(100vh - 40px);background:var(--surface);color:var(--ink);box-shadow:0 24px 70px rgba(0,0,0,.3)}
 dialog.wide{width:min(1000px,calc(100vw - 24px))}
@@ -491,6 +553,11 @@ const FIELDS=[
   {k:'acil_tel_ic',l:'İç acil durum hattı',ph:'Dahili 100'},
   {k:'saglik_kurulusu',l:'En yakın sağlık kuruluşu',wide:true},
  ]],
+ ['İSG takvimi',[
+  {k:'risk_tarihi',l:'Son risk değerlendirmesi tarihi',type:'date',hint:'Yasal takvim yenileme tarihini hesaplar'},
+  {k:'acil_plan_tarihi',l:'Acil durum planı tarihi',type:'date'},
+  {k:'tatbikat_tarihi',l:'Son acil durum tatbikatı tarihi',type:'date'},
+ ]],
 ];
 const FIELD_LIST=FIELDS.flatMap(g=>g[1]);
 const FIELD_MAP=Object.fromEntries(FIELD_LIST.map(f=>[f.k,f]));
@@ -544,14 +611,27 @@ function sanitizeCompany(c){
   c.docs=Array.isArray(c.docs)?c.docs:[];
   for(const d of c.docs){
     if(!okId(d.id)) d.id=uid();
-    if(typeof d.role!=='string'||!/^[a-z0-9]{1,20}$/.test(d.role)) d.role='x'+uid().slice(-5);
-    d.kind=d.kind==='form'?'form':'metin';
+    if(typeof d.role!=='string'||!/^[a-z0-9_]{1,24}$/.test(d.role)) d.role='x'+uid().slice(-5);
+    d.kind=['form','yazi'].includes(d.kind)?d.kind:'metin';
+    d.cat=CATS.some(x=>x[0]===d.cat)?d.cat:(ROLE_CAT[d.role]||(d.kind==='metin'?'diger':d.kind));
     d.title=String(d.title||'Adsız belge');d.code=String(d.code||'');
     d.sections=(Array.isArray(d.sections)?d.sections:[]).map(s=>({id:okId(s.id)?s.id:uid(),title:String(s.title||''),body:String(s.body||'')}));
     d.revisions=Array.isArray(d.revisions)?d.revisions:[];
   }
   c.log=Array.isArray(c.log)?c.log:[];
   for(const e of c.log){e.act=String(e.act||'').replace(/[^a-z-]/g,'');}
+  c.people=(Array.isArray(c.people)?c.people:[]).filter(p=>p&&typeof p==='object').map(p=>{
+    const o={id:okId(p.id)?p.id:uid(),acks:{}};for(const f of PFIELDS) o[f.k]=String(p[f.k]??'');
+    if(p.acks&&typeof p.acks==='object') for(const [k,v] of Object.entries(p.acks)) if(v&&typeof v==='object') o.acks[k]={rev:+v.rev||0,date:String(v.date||'')};
+    return o;
+  });
+  c.records=(Array.isArray(c.records)?c.records:[]).filter(r=>r&&r.snap&&Array.isArray(r.snap.sections)&&r.snap.info);
+  for(const r of c.records){
+    if(!okId(r.id)) r.id=uid();
+    r.no=String(r.no||'');r.kind=['form','yazi'].includes(r.kind)?r.kind:'metin';
+    r.vals=r.vals&&typeof r.vals==='object'?r.vals:{};
+    r.snap.sections=r.snap.sections.map(x=>({title:String(x.title||''),body:String(x.body||'')}));
+  }
   return c;
 }
 
@@ -566,6 +646,7 @@ function resolve(c,k){
   if(k==='tehlike_sinifi') return SINIF[info.tehlike_sinifi]?.ad||'';
   if(k==='kisa_ad') return String(info.kisa_ad||info.unvan||'').trim();
   if(!FIELD_MAP[k]) return null;
+  if(FIELD_MAP[k].type==='date') return info[k]?fmtD(info[k]):'';
   return String(info[k]??'').trim().replace(/\s*\n\s*/g,', ');
 }
 function phLabel(k,c=C){
@@ -575,25 +656,41 @@ function phLabel(k,c=C){
 function displayVal(k,v){
   const f=FIELD_MAP[k];v=String(v??'').trim();
   if(f&&f.type==='select'){const o=f.opts.find(o=>o[0]===v);return v&&o?o[1]:v;}
+  if(f&&f.type==='date') return v?fmtD(v):'';
   return v;
 }
 function usedKeys(d){
   const set=new Set(['unvan','kod']);
-  for(const s of d.sections) for(const m of (s.title+'\n'+s.body).matchAll(PH_RE)) set.add(m[1]);
+  for(const s of d.sections) for(const m of (s.title+'\n'+s.body).matchAll(PH_RE)) if(!isDyn(m[1])) set.add(m[1]);
   return [...set].sort();
 }
-function mkCtx(c,{info=null,print=false}={}){
-  return {print,ph(k){
+function mkCtx(c,{info=null,print=false,fill=null}={}){
+  // fill: evrak düzenlerken {mode:'edit'|'view', vals, person, date, no}. Boşluklar ve personel alanları buradan dolar.
+  const plain=print||!!fill;
+  const cx={print,fill,info,ph(k){
+    if(isDyn(k)){
+      if(!fill) return print?'<span class="ph-blank">……………………</span>':`<span class="ph-dyn" title="Evrak düzenlerken kendiliğinden dolar">${esc(dynLabel(k))}</span>`;
+      const v=dynVal(k,fill);
+      if(v) return fill.mode==='edit'?`<span class="ph-auto">${esc(v)}</span>`:esc(v);
+      if(k==='evrak_no') return fill.mode==='edit'?'<span class="ph-auto">kayıtta verilir</span>':'……………';
+      return cx.blank(k,esc(PLABEL[k.slice(2)]||k));
+    }
     const v=info&&Object.prototype.hasOwnProperty.call(info,k)?info[k]:resolve(c,k);
     if(v===null) return `<span class="ph-bad" title="Tanımsız alan">{{${esc(k)}}}</span>`;
-    if(!v) return print?'<span class="ph-blank">……………………</span>':`<span class="ph-empty" title="Şirket bilgileri sayfasından doldurun">${esc(phLabel(k,c))}</span>`;
-    return print?esc(v):`<span class="ph" title="${esc(phLabel(k,c))} · şirket bilgilerinden">${esc(v)}</span>`;
+    if(!v) return plain?'<span class="ph-blank">……………………</span>':`<span class="ph-empty" title="Şirket bilgileri sayfasından doldurun">${esc(phLabel(k,c))}</span>`;
+    return plain?esc(v):`<span class="ph" title="${esc(phLabel(k,c))} · şirket bilgilerinden">${esc(v)}</span>`;
+  },blank(key,lab){
+    if(!fill) return print?'<span class="ph-blank">……………………</span>':`<span class="blank" title="Evrak düzenlerken yazılır">${lab}</span>`;
+    const v=fill.vals[key];
+    if(fill.mode==='edit') return `<input class="inl" data-fk="${esc(key)}" value="${esc(v||'')}" placeholder="${lab}" size="${Math.min(60,Math.max(10,lab.length+2,String(v||'').length+2))}">`;
+    return v?`<span class="fv">${esc(v)}</span>`:'<span class="ph-blank">……………………</span>';
   }};
+  return cx;
 }
 
 /* ---------- Biçim çözücü ---------- */
 function inl(s,cx){
-  return esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(PH_RE,(m,k)=>cx.ph(k));
+  return esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(PH_RE,(m,k)=>cx.ph(k)).replace(/\[\[([^\]\n]{1,120})\]\]/g,(m,l)=>cx.blank('b:'+l,l));
 }
 const FIELD_RE=/^\[(alan|uzun|secim|imza|kutu)\]\s*(.*)$/i;
 const isBlock=t=>/^#{2,3}\s/.test(t)||/^[-*•]\s+/.test(t)||/^\d+[.)]\s+/.test(t)||t.startsWith('>')||t.startsWith('|')||t.startsWith('//')||FIELD_RE.test(t);
@@ -614,16 +711,26 @@ function fieldsHTML(items,cx){
   return `<div class="fgrid">${out.join('')}</div>`;
 }
 function fieldHTML(it,cx,span){
-  const st=`style="grid-column:span ${span}"`;
+  const st=`style="grid-column:span ${span}"`,f=cx.fill,ed=f&&f.mode==='edit';
   if(it.type==='secim'){
     const i=it.rest.indexOf(':');
     const lab=i>=0?it.rest.slice(0,i):it.rest;
     const opts=i>=0?it.rest.slice(i+1).split('|').map(s=>s.trim()).filter(Boolean):[];
-    return `<div class="f f-secim" ${st}><span class="fl">${inl(lab,cx)}</span><span class="fo">${opts.map(o=>`<span class="ck"><i></i>${inl(o,cx)}</span>`).join('')}</span></div>`;
+    const key=f?fkey(f,'f:'+lab):'',sel=f?(f.vals[key]||[]):[];
+    return `<div class="f f-secim" ${st}><span class="fl">${inl(lab,cx)}</span><span class="fo">${opts.map(o=>ed?`<label class="ck"><input type="checkbox" data-fk="${esc(key)}" data-opt="${esc(o)}"${sel.includes(o)?' checked':''}>${inl(o,cx)}</label>`:`<span class="ck${sel.includes(o)?' on':''}"><i></i>${inl(o,cx)}</span>`).join('')}</span></div>`;
   }
-  if(it.type==='kutu') return `<div class="f f-kutu" ${st}><span class="ck"><i></i>${inl(it.rest,cx)}</span></div>`;
+  if(it.type==='kutu'){
+    const key=f?fkey(f,'k:'+it.rest):'',on=!!(f&&f.vals[key]);
+    return `<div class="f f-kutu" ${st}>${ed?`<label class="ck"><input type="checkbox" data-fk="${esc(key)}" data-bool="1"${on?' checked':''}>${inl(it.rest,cx)}</label>`:`<span class="ck${on?' on':''}"><i></i>${inl(it.rest,cx)}</span>`}</div>`;
+  }
   if(it.type==='imza') return `<div class="f f-imza" ${st}><span class="fl">${inl(it.rest,cx)}</span><span class="sl">Adı soyadı</span><span class="sl">Tarih</span><span class="sl">İmza</span></div>`;
-  return `<div class="f f-${it.type}" ${st}><span class="fl">${inl(it.rest,cx)}</span></div>`;
+  // "[alan] Etiket = {{p:ad}}": eşittirden sonrası, evrak düzenlerken alanın varsayılan değeridir.
+  const eq=it.rest.indexOf(' = '),lab=eq>=0?it.rest.slice(0,eq):it.rest,def=eq>=0?it.rest.slice(eq+3):'';
+  if(f){
+    const key=fkey(f,'f:'+lab);let v=f.vals[key];if(v===undefined) v=def?plainFill(def,cx):'';
+    return `<div class="f f-${it.type}" ${st}><span class="fl">${inl(lab,cx)}</span>${ed?`<textarea class="fin" data-fk="${esc(key)}" rows="${it.type==='uzun'?4:1}">${esc(v)}</textarea>`:`<span class="fv">${esc(v)}</span>`}</div>`;
+  }
+  return `<div class="f f-${it.type}" ${st}><span class="fl">${inl(lab,cx)}</span>${def&&!cx.print?`<span class="fdef">${inl(def,cx)}</span>`:''}</div>`;
 }
 function renderMd(text,cx){
   const L=String(text||'').replace(/\r/g,'').split('\n');
@@ -635,12 +742,17 @@ function renderMd(text,cx){
     if((m=t.match(/^(#{2,3})\s+(.*)$/))){const lv=m[1].length===2?3:4;h+=`<h${lv}>${inl(m[2],cx)}</h${lv}>`;i++;continue;}
     if(/^[-*•]\s+/.test(t)){h+='<ul>';while(i<L.length&&/^[-*•]\s+/.test(T(i))){h+=`<li>${inl(T(i).replace(/^[-*•]\s+/,''),cx)}</li>`;i++;}h+='</ul>';continue;}
     if(/^\d+[.)]\s+/.test(t)){const st=parseInt(t,10);h+=`<ol${st>1?` start="${st}"`:''}>`;while(i<L.length&&/^\d+[.)]\s+/.test(T(i))){h+=`<li>${inl(T(i).replace(/^\d+[.)]\s+/,''),cx)}</li>`;i++;}h+='</ol>';continue;}
-    if(t.startsWith('//')){const b=[];while(i<L.length&&T(i).startsWith('//')){b.push(T(i).replace(/^\/\/\s?/,''));i++;}if(!cx.print) h+=`<div class="prep">${b.map(x=>inl(x,cx)).join('<br>')}</div>`;continue;}
+    if(t.startsWith('//')){const b=[];while(i<L.length&&T(i).startsWith('//')){b.push(T(i).replace(/^\/\/\s?/,''));i++;}if(!cx.print&&!cx.fill) h+=`<div class="prep">${b.map(x=>inl(x,cx)).join('<br>')}</div>`;continue;}
     if(t.startsWith('>')){const b=[];while(i<L.length&&T(i).startsWith('>')){b.push(T(i).replace(/^>\s?/,''));i++;}h+=`<div class="callout">${b.map(x=>inl(x,cx)).join('<br>')}</div>`;continue;}
     if(t.startsWith('|')){
       const rows=[];
       while(i<L.length&&T(i).startsWith('|')){const r=T(i);if(!(r.replace(/[|\s:-]/g,'')===''&&r.includes('-'))) rows.push(r.replace(/^\||\|$/g,'').split('|').map(x=>x.trim()));i++;}
-      if(rows.length){const [hd,...bd]=rows;h+=`<div class="tw"><table><thead><tr>${hd.map(c=>`<th>${inl(c,cx)}</th>`).join('')}</tr></thead><tbody>${bd.map(r=>`<tr>${hd.map((_,j)=>`<td>${inl(r[j]??'',cx)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;}
+      if(rows.length){
+        const [hd,...bd]=rows,f=cx.fill,ti=f?f.tbl++:0;
+        // Evrak düzenlerken tablodaki boş hücreler yazılabilir olur.
+        const cell=(v,ri,j)=>{if(!f||(v??'')!=='') return inl(v??'',cx);const k=`t${ti}:${ri}:${j}`,x=f.vals[k]||'';return f.mode==='edit'?`<input class="tin" data-fk="${k}" value="${esc(x)}">`:esc(x);};
+        h+=`<div class="tw"><table><thead><tr>${hd.map(c=>`<th>${inl(c,cx)}</th>`).join('')}</tr></thead><tbody>${bd.map((r,ri)=>`<tr>${hd.map((_,j)=>`<td>${cell(r[j],ri,j)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+      }
       continue;
     }
     if(FIELD_RE.test(t)){const items=[];while(i<L.length&&FIELD_RE.test(T(i))){const mm=T(i).match(FIELD_RE);items.push({type:mm[1].toLowerCase(),rest:mm[2]});i++;}h+=fieldsHTML(items,cx);continue;}
@@ -745,7 +857,7 @@ function initials(){
    {{alan}} şirket bilgisiyle dolar, // ile başlayan satır yazdırılmayan hazırlık notudur. */
 function mkDoc(role,kind,title,code,secs){
   const t=nowISO();
-  return {id:uid(),role,kind,title,code,sections:secs.map(([a,b])=>({id:uid(),title:a,body:b.trim()})),revisions:[],createdAt:t,updatedAt:t,updatedBy:''};
+  return {id:uid(),role,kind,cat:ROLE_CAT[role]||(kind==='metin'?'diger':kind),title,code,sections:secs.map(([a,b])=>({id:uid(),title:a,body:b.trim()})),revisions:[],createdAt:t,updatedAt:t,updatedBy:''};
 }
 function makeDocs(){return [
 mkDoc('elkitabi','metin','Personel El Kitabı','PEK-01',[
@@ -1615,6 +1727,621 @@ mkDoc('kaza','form','İş Kazası Bildirim ve Araştırma Formu','FR-03',[
 ]),
 ];}
 
+
+/* ---------- Belge kütüphanesi: İK yazıları ----------
+   [[Etiket]] doldururken yazılan boşluktur. {{p:...}} seçilen personelden, {{bugun}} evrak tarihinden gelir.
+   [alan] Etiket = {{p:ad}} biçimi, alanın personel bilgisiyle dolmasını sağlar. */
+const CATS=[['politika','Politikalar ve el kitabı'],['isg','İş sağlığı ve güvenliği'],['yazi','İK yazıları'],['form','İK formları ve tutanaklar'],['diger','Diğer belgeler']];
+function libYazi(){return [
+mkDoc('gorevlendirme','yazi','Görevlendirme Yazısı','YZ-01',[
+['Konu ve hitap',`
+**Konu:** Geçici görevlendirme
+
+Sayın {{p:ad}},
+`],
+['Metin',`
+Şirketimizde {{p:bolum}} bölümünde {{p:pozisyon}} olarak görev yapmaktasınız. [[Görevin konusu]] amacıyla [[Başlangıç tarihi]] – [[Bitiş tarihi]] tarihleri arasında [[Görev yeri]] adresinde geçici olarak görevlendirildiniz.
+
+- Görev süresince yol, konaklama ve yemek giderleri şirket tarafından karşılanır; harcamalar belgeyle kapatılır.
+- Görev süresince ücretiniz ve diğer haklarınız saklıdır.
+- Görev yerinde o işyerinin iş sağlığı ve güvenliği kurallarına uyarsınız.
+- Görev dönüşünde [[Rapor teslim süresi]] içinde görev raporunu bağlı yöneticinize teslim edersiniz.
+
+Bilgilerinizi ve gereğini rica ederiz.
+`],
+['İmza',`
+[imza] {{isveren}}
+[imza] Tebellüğ eden (çalışan)
+`],
+]),
+mkDoc('gorev_degisikligi','yazi','Görev Değişikliği Bildirimi','YZ-02',[
+['Konu ve hitap',`
+**Konu:** Görev değişikliği
+
+Sayın {{p:ad}},
+`],
+['Metin',`
+Şirketimizde {{p:bolum}} bölümünde {{p:pozisyon}} olarak görev yapmaktasınız. [[Değişikliğin gerekçesi]] nedeniyle [[Yürürlük tarihi]] tarihinden itibaren [[Yeni bölüm]] bölümünde [[Yeni pozisyon]] olarak görevlendirilmeniz planlanmaktadır.
+
+Yeni görevinize ait görev tanımı ekte sunulmuştur. Ücretiniz ve diğer haklarınız [[Ücret ve haklarda değişiklik (yoksa “değişiklik yoktur”)]].
+
+Bu değişiklik çalışma koşullarınızda esaslı değişiklik niteliği taşıyorsa, 4857 sayılı İş Kanunu'nun 22. maddesi uyarınca ancak yazılı kabulünüzle geçerli olur. Bu bildirimin tebliğinden itibaren altı iş günü içinde kabul etmediğinizi yazılı olarak bildirmezseniz ya da aşağıdaki beyanı “kabul etmiyorum” olarak işaretlerseniz değişiklik sizi bağlamaz.
+`],
+['Çalışanın beyanı',`
+[secim] Görev değişikliğini: Kabul ediyorum | Kabul etmiyorum
+[imza] {{isveren}}
+[imza] Çalışan
+`],
+]),
+mkDoc('terfi','yazi','Terfi Yazısı','YZ-03',[
+['Konu ve hitap',`
+**Konu:** Terfi
+
+Sayın {{p:ad}},
+`],
+['Metin',`
+Şirketimize katkılarınız, gösterdiğiniz performans ve [[Terfi gerekçesi]] dikkate alınarak [[Yürürlük tarihi]] tarihinden itibaren **[[Yeni unvan]]** pozisyonuna terfi ettirildiniz.
+
+- Yeni pozisyonunuzun görev tanımı ekte sunulmuştur ({{no:gorev}}).
+- Yeni brüt ücretiniz: [[Yeni brüt ücret]]
+- Bağlı olacağınız pozisyon: [[Bağlı olacağı pozisyon]]
+
+Yeni görevinizde başarılar diler, şirketimize katkılarınız için teşekkür ederiz.
+`],
+['İmza',`
+[imza] {{isveren}}
+[imza] Tebellüğ eden (çalışan)
+`],
+]),
+mkDoc('uyari','yazi','Yazılı Uyarı (İhtar) Yazısı','YZ-04',[
+['Konu ve hitap',`
+**Konu:** Yazılı uyarı
+
+Sayın {{p:ad}},
+`],
+['Metin',`
+[[Olay tarihi]] tarihinde [[Olayın kısa tanımı]] tespit edilmiştir. Bu davranış Personel El Kitabı'nın ({{no:elkitabi}}) [[İlgili bölüm veya kural]] hükmüne aykırıdır.
+
+[[Savunma tarihi]] tarihli yazılı savunmanız değerlendirilmiş ve yeterli görülmemiştir.
+
+Bu yazı ile yazılı olarak uyarılıyorsunuz. Aynı ya da benzer davranışın tekrarı hâlinde Personel El Kitabı'ndaki disiplin süreci kapsamında daha ağır yaptırım uygulanabileceğini ve 4857 sayılı İş Kanunu'nun ilgili hükümlerinin işletilebileceğini bilgilerinize sunarız.
+
+// Yazılı uyarıdan önce çalışanın yazılı savunmasını alın (Savunma İstem Yazısı). Olay, savunma ve uyarı belgelerini özlük dosyasında saklayın.
+`],
+['İmza',`
+[imza] {{isveren}}
+[imza] Tebellüğ eden (çalışan)
+`],
+]),
+mkDoc('savunma','yazi','Savunma İstem Yazısı','YZ-05',[
+['Konu ve hitap',`
+**Konu:** Savunma istemi
+
+Sayın {{p:ad}},
+`],
+['Metin',`
+[[Olay tarihi]] tarihinde [[Olayın kısa tanımı]] tespit edilmiş ve [[Tutanak tarihi]] tarihli tutanakla kayda alınmıştır.
+
+Bu konudaki yazılı savunmanızı, bu yazının tebliğinden itibaren **[[Savunma süresi]]** içinde İnsan Kaynaklarına vermeniz gerekmektedir. Savunmanızı Savunma Tutanağı'na ({{no:savunma_form}}) yazabilir ya da ayrı bir dilekçeyle verebilirsiniz.
+
+Süresi içinde savunma vermemeniz hâlinde savunma hakkınızı kullanmaktan vazgeçmiş sayılacağınızı ve değerlendirmenin mevcut bilgilere göre yapılacağını bilgilerinize sunarız.
+
+// Savunma için makul bir süre verin ve süreyi hukuk danışmanınızla belirleyin. Çalışan yazıyı almaktan kaçınırsa durumu tanıklı tutanakla kayda geçirin.
+`],
+['İmza',`
+[imza] {{isveren}}
+[imza] Tebellüğ eden (çalışan)
+`],
+]),
+mkDoc('calisma_belgesi','yazi','Çalışma Belgesi','YZ-06',[
+['Konu ve hitap',`
+**Konu:** Çalışma belgesi
+
+İLGİLİ MAKAMA
+`],
+['Metin',`
+{{p:ad}} (T.C. kimlik no: {{p:tc}}), şirketimizde {{p:ise_giris}} – [[Ayrılış tarihi (çalışıyorsa “halen”)]] tarihleri arasında {{p:bolum}} bölümünde {{p:pozisyon}} olarak çalışmıştır.
+
+[[Ek açıklama (çalışanın isteği hâlinde hizmet ve davranış bilgisi)]]
+
+Bu belge, 4857 sayılı İş Kanunu'nun 28. maddesi uyarınca çalışanın talebi üzerine düzenlenmiştir.
+`],
+['İmza',`
+[imza] {{unvan}}
+`],
+]),
+mkDoc('tesekkur','yazi','Teşekkür ve Takdir Belgesi','YZ-07',[
+['Konu ve hitap',`
+**Konu:** Teşekkür
+
+Sayın {{p:ad}},
+`],
+['Metin',`
+[[Başarının ya da katkının konusu]] çalışmasında gösterdiğiniz özveri, sorumluluk ve başarı için teşekkür ederiz.
+
+Çalışmanız [[Şirkete sağladığı katkı]] sonucunu doğurmuş ve çalışma arkadaşlarınıza örnek olmuştur. Bu belge özlük dosyanıza konulacaktır.
+
+Başarılarınızın devamını dileriz.
+
+// Olumlu geri bildirimi de disiplin kayıtları kadar düzenli tutmak çalışan bağlılığını artırır. Öneri formundan gelen uygulanmış öneriler için de bu belgeyi kullanabilirsiniz.
+`],
+['İmza',`
+[imza] {{isveren}}
+`],
+]),
+mkDoc('istifa','yazi','İstifa Dilekçesi (Örnek)','YZ-08',[
+['Hitap',`
+**{{unvan}}**
+**İnsan Kaynakları Birimine**
+`],
+['Metin',`
+{{p:ise_giris}} tarihinden bu yana şirketinizde {{p:bolum}} bölümünde {{p:pozisyon}} olarak çalışmaktayım.
+
+[[Ayrılma nedeni (isteğe bağlı)]] nedeniyle iş sözleşmemi, yasal bildirim süresine uyarak **[[Son çalışma günü]]** tarihi itibarıyla sona erdirmek istiyorum.
+
+Gereğini bilgilerinize arz ederim.
+
+// Bu örnek, çalışanın istifasını yazılı vermesini kolaylaştırmak içindir. Çalışan kendi el yazısıyla ya da e-Devlet üzerinden de istifa edebilir. İstifanın baskı altında alınmadığından emin olun.
+`],
+['İmza',`
+[alan] Adı soyadı = {{p:ad}}
+[alan] T.C. kimlik no = {{p:tc}}
+[imza] Çalışan
+`],
+]),
+];}
+
+/* ---------- Belge kütüphanesi: İK formları ve tutanaklar ---------- */
+function libForm(){return [
+mkDoc('izin','form','İzin Talep ve Onay Formu','FR-10',[
+['Bu form ne zaman kullanılır?',`
+Yıllık izin, mazeret izni ve ücretsiz izin talepleri bu formla yapılır. Yıllık izin talebi en az **15 gün önceden** bağlı yöneticiye iletilir. Yönetici ve İnsan Kaynakları onayından sonra izin kesinleşir.
+`],
+['Çalışan bilgileri',`
+[alan] Adı soyadı = {{p:ad}}
+[alan] Sicil no = {{p:sicil}}
+[alan] Bölümü = {{p:bolum}}
+[alan] Pozisyonu = {{p:pozisyon}}
+[alan] İşe giriş tarihi = {{p:ise_giris}}
+[alan] Yıllık izin hakkı (gün) = {{p:izin_hakki}}
+`],
+['İzin bilgileri',`
+[secim] İzin türü: Yıllık ücretli izin | Mazeret izni | Babalık izni | Ücretsiz izin | Diğer
+[alan] İzin başlangıç tarihi
+[alan] İşe dönüş tarihi
+[alan] İzin süresi (iş günü)
+[alan] Kalan yıllık izin (gün)
+[alan] İzinde ulaşılabilecek telefon
+[alan] Yerine bakacak çalışan
+[uzun] Açıklama
+`],
+['Onay',`
+[imza] Talep eden
+[imza] Bağlı yönetici
+[imza] İnsan Kaynakları
+`],
+]),
+mkDoc('fazla_calisma','form','Fazla Çalışma Onay Formu','FR-11',[
+['Onay beyanı',`
+İş Kanunu'na İlişkin Fazla Çalışma Yönetmeliği kapsamında; [[Yıl]] yılı için işverenin gerekli gördüğü hâllerde fazla çalışma ve fazla sürelerle çalışma yapmayı kabul ediyorum.
+
+- Fazla çalışmanın yılda 270 saati geçemeyeceğini,
+- Her bir saat fazla çalışmanın karşılığının normal saat ücretinin yüzde elli fazlası ya da 1 saat 30 dakika serbest zaman olarak verileceğini,
+- Bu onayımı otuz gün önceden yazılı bildirimde bulunarak geri alabileceğimi biliyorum.
+
+// Onay her yıl başında alınır ve özlük dosyasında saklanır.
+`],
+['Çalışan',`
+[alan] Adı soyadı = {{p:ad}}
+[alan] Bölümü / pozisyonu = {{p:bolum}} / {{p:pozisyon}}
+[alan] Tarih = {{bugun}}
+[imza] Çalışan
+`],
+]),
+mkDoc('tutanak','form','Tutanak','FR-12',[
+['Tutanak bilgileri',`
+[secim] Tutanak konusu: Devamsızlık | Geç gelme | Kurallara aykırı davranış | Hasar / kayıp | Tebliğden kaçınma | Diğer
+[alan] Tarih ve saat
+[alan] Yer
+[alan] İlgili çalışan = {{p:ad}}
+[alan] Bölümü = {{p:bolum}}
+[uzun] Olayın açıklaması
+`],
+['Beyan ve imzalar',`
+Yukarıda açıklanan durum, aşağıda imzası bulunanların huzurunda tespit edilerek bu tutanak düzenlenmiştir.
+
+[imza] Tutanağı düzenleyen
+[imza] Tanık
+[imza] Tanık
+[imza] İlgili çalışan
+
+// Devamsızlıkta her gün için ayrı tutanak düzenleyin. Çalışan imzadan kaçınırsa bunu tutanağa yazın.
+`],
+]),
+mkDoc('savunma_form','form','Savunma Tutanağı','FR-13',[
+['Bilgiler',`
+[alan] Adı soyadı = {{p:ad}}
+[alan] Bölümü / pozisyonu = {{p:bolum}} / {{p:pozisyon}}
+[alan] Savunma istem yazısının tarihi ve sayısı
+[alan] Savunmanın verildiği tarih
+`],
+['Savunma',`
+[uzun] Savunma metni
+[uzun] Savunma metni (devam)
+[uzun] Eklenen belgeler ve tanıklar
+`],
+['İmzalar',`
+[imza] Savunmayı veren
+[imza] Teslim alan (İnsan Kaynakları)
+`],
+]),
+mkDoc('zimmet','form','Zimmet Tutanağı','FR-14',[
+['Teslim edilen malzemeler',`
+| Sıra | Demirbaş / malzeme | Marka / model | Seri no | Adet | Teslim tarihi | İade tarihi |
+|---|---|---|---|---|---|---|
+| 1 | | | | | | |
+| 2 | | | | | | |
+| 3 | | | | | | |
+| 4 | | | | | | |
+| 5 | | | | | | |
+| 6 | | | | | | |
+`],
+['Taahhüt',`
+Yukarıda bilgileri yazılı malzemeleri sağlam ve çalışır durumda teslim aldım. Malzemeleri yalnız iş amacıyla ve özenle kullanacağımı; iş ilişkisinin sona ermesi ya da talep hâlinde eksiksiz iade edeceğimi; kusurumla verdiğim zarardan mevzuat çerçevesinde sorumlu olduğumu kabul ederim.
+
+[alan] Teslim alan = {{p:ad}}
+[alan] Bölümü = {{p:bolum}}
+[imza] Teslim eden
+[imza] Teslim alan
+`],
+]),
+mkDoc('ise_giris','form','İşe Giriş Kontrol Listesi','FR-15',[
+['Çalışan',`
+[alan] Adı soyadı = {{p:ad}}
+[alan] Pozisyonu = {{p:pozisyon}}
+[alan] İşe başlama tarihi = {{p:ise_giris}}
+[alan] Bağlı olduğu yönetici
+`],
+['İşe başlamadan önce',`
+[kutu] İş sözleşmesi imzalandı
+[kutu] SGK işe giriş bildirgesi verildi (işe başlamadan önce)
+[kutu] Kimlik, diploma ve diğer evrak teslim alındı
+[kutu] İşe giriş sağlık muayenesi yapıldı
+[kutu] Mesleki eğitim / yeterlilik belgesi kontrol edildi (gerekiyorsa)
+[kutu] KVKK aydınlatma metni tebliğ edildi
+`],
+['İlk gün ve ilk hafta',`
+[kutu] Personel El Kitabı tebliğ edildi
+[kutu] Görev tanımı tebliğ edildi
+[kutu] Temel İSG eğitimi verildi
+[kutu] KKD teslim edildi ve zimmetlendi
+[kutu] Demirbaş ve erişim kartı zimmetlendi
+[kutu] E-posta ve sistem hesapları açıldı
+[kutu] Fazla çalışma onayı alındı
+[kutu] Oryantasyon ve işyeri tanıtımı yapıldı
+[kutu] Acil durum ve toplanma alanı gösterildi
+[kutu] Deneme süresi değerlendirme tarihi takvime eklendi
+`],
+['Onay',`
+[imza] İnsan Kaynakları
+[imza] Bağlı yönetici
+[imza] Çalışan
+`],
+]),
+mkDoc('isten_cikis','form','İşten Çıkış ve İlişik Kesme Formu','FR-16',[
+['Çalışan',`
+[alan] Adı soyadı = {{p:ad}}
+[alan] Pozisyonu = {{p:pozisyon}}
+[alan] İşe giriş tarihi = {{p:ise_giris}}
+[alan] Son çalışma günü
+[secim] Ayrılış nedeni: İstifa | İşveren feshi | Karşılıklı anlaşma | Emeklilik | Sözleşme süresinin bitimi | Diğer
+`],
+['İade ve kapanış',`
+[kutu] Demirbaş ve zimmetli malzemeler iade edildi
+[kutu] KKD iade edildi
+[kutu] Erişim kartı ve anahtarlar iade edildi
+[kutu] E-posta ve sistem erişimleri kapatıldı
+[kutu] Şirkete ait belge ve veriler teslim edildi
+[kutu] Avans ve harcamalar kapatıldı
+`],
+['Yasal işlemler',`
+[kutu] SGK işten ayrılış bildirgesi verildi (ayrılıştan itibaren 10 gün içinde)
+[kutu] Son ücret, kullanılmayan yıllık izin ücreti hesaplandı
+[kutu] Kıdem ve ihbar tazminatı (hak kazanıldıysa) hesaplandı
+[kutu] Çalışma belgesi verildi (talep edildiyse)
+[kutu] Çıkış görüşmesi yapıldı
+[uzun] Çıkış görüşmesi notları (ayrılma nedeni, öneriler)
+`],
+['Onay',`
+[imza] Bağlı yönetici
+[imza] Bilgi işlem / idari işler
+[imza] İnsan Kaynakları
+[imza] Çalışan
+`],
+]),
+mkDoc('deneme','form','Deneme Süresi Değerlendirme Formu','FR-17',[
+['Çalışan',`
+[alan] Adı soyadı = {{p:ad}}
+[alan] Pozisyonu = {{p:pozisyon}}
+[alan] İşe giriş tarihi = {{p:ise_giris}}
+[alan] Değerlendiren yönetici
+`],
+['Değerlendirme',`
+[secim] İş bilgisi ve beceri: Yetersiz | Gelişmeli | Yeterli | Çok iyi
+[secim] İşin kalitesi: Yetersiz | Gelişmeli | Yeterli | Çok iyi
+[secim] Talimatlara ve İSG kurallarına uyum: Yetersiz | Gelişmeli | Yeterli | Çok iyi
+[secim] Devam ve dakiklik: Yetersiz | Gelişmeli | Yeterli | Çok iyi
+[secim] Ekip çalışması ve iletişim: Yetersiz | Gelişmeli | Yeterli | Çok iyi
+[uzun] Güçlü yönler
+[uzun] Gelişmesi gereken yönler
+`],
+['Karar',`
+[secim] Sonuç: Deneme süresini başarıyla tamamladı | Deneme süresi içinde sözleşme sona erdirilecek
+[imza] Değerlendiren yönetici
+[imza] İnsan Kaynakları
+
+// Deneme süresi en çok iki aydır (toplu iş sözleşmesiyle dört ay). Değerlendirmeyi süre bitmeden yapın; Yasal takvim bu tarihi hatırlatır.
+`],
+]),
+mkDoc('performans','form','Performans Değerlendirme Formu','FR-18',[
+['Çalışan ve dönem',`
+[alan] Adı soyadı = {{p:ad}}
+[alan] Pozisyonu = {{p:pozisyon}}
+[alan] Değerlendirme dönemi
+[alan] Değerlendiren yönetici
+`],
+['Hedefler',`
+| Hedef | Ağırlık | Gerçekleşme | Puan (1–5) |
+|---|---|---|---|
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+`],
+['Yetkinlikler',`
+[secim] Mesleki bilgi: 1 | 2 | 3 | 4 | 5
+[secim] Sorumluluk ve güvenilirlik: 1 | 2 | 3 | 4 | 5
+[secim] İletişim ve ekip çalışması: 1 | 2 | 3 | 4 | 5
+[secim] Problem çözme ve inisiyatif: 1 | 2 | 3 | 4 | 5
+[secim] İSG ve kurallara uyum: 1 | 2 | 3 | 4 | 5
+`],
+['Görüşme',`
+[uzun] Güçlü yönler
+[uzun] Gelişim alanları ve gelişim planı
+[uzun] Çalışanın görüşleri
+[secim] Genel değerlendirme: Beklentinin altında | Beklenti düzeyinde | Beklentinin üzerinde
+[imza] Değerlendiren yönetici
+[imza] Çalışan
+`],
+]),
+mkDoc('oneri','form','Öneri ve Fikir Formu','FR-19',[
+['Bu form ne zaman kullanılır?',`
+İşimizi daha güvenli, daha kolay, daha hızlı ya da daha az maliyetli hâle getirecek her fikir değerlidir. Önerinizi bu formla İnsan Kaynaklarına ya da öneri kutusuna iletin. Uygulanan öneriler sahibine teşekkür belgesiyle duyurulur.
+`],
+['Öneri',`
+[alan] Adı soyadı (isteğe bağlı) = {{p:ad}}
+[alan] Bölümü = {{p:bolum}}
+[uzun] Mevcut durum ya da sorun
+[uzun] Öneriniz
+[secim] Beklenen fayda: İş güvenliği | Kalite | Maliyet | Zaman / verimlilik | Çevre | Çalışan memnuniyeti
+`],
+['Değerlendirme (öneri ekibi doldurur)',`
+[secim] Karar: Uygulanacak | Araştırılacak | Uygulanmayacak
+[uzun] Gerekçe ve uygulama planı
+[alan] Sorumlu
+[alan] Termin
+[kutu] Öneri sahibine geri bildirim verildi
+`],
+]),
+mkDoc('sikayet','form','Gizli Şikâyet ve Bildirim Formu','FR-20',[
+['Bu form ne zaman kullanılır?',`
+Psikolojik taciz (mobbing), cinsel taciz, ayrımcılık, şiddet, rüşvet, hırsızlık ya da etik kurallara aykırı bir durumla karşılaştığınızda veya tanık olduğunuzda bu formu kullanabilirsiniz.
+- Formu kapalı zarf içinde İnsan Kaynaklarına ya da işverene ({{isveren}}) teslim edin. Bildiriminiz gizli tutulur.
+- Adınızı yazmak isteğe bağlıdır; ancak ad verilen bildirimler daha hızlı incelenebilir.
+- İyi niyetle bildirimde bulunan çalışana hiçbir şekilde misilleme yapılmaz.
+`],
+['Bildirim',`
+[alan] Adı soyadı (isteğe bağlı)
+[alan] İletişim (isteğe bağlı)
+[secim] Konu: Psikolojik taciz | Cinsel taciz | Ayrımcılık | Şiddet / tehdit | Etik ihlal | Diğer
+[alan] Olayın tarihi / dönemi
+[alan] İlgili kişi(ler)
+[uzun] Olayın açıklaması
+[uzun] Tanıklar ve belgeler
+`],
+['İnceleme (yalnız yetkili doldurur)',`
+[alan] Teslim alma tarihi
+[alan] İnceleme sorumlusu
+[uzun] Sonuç ve alınan önlemler
+[kutu] Bildirim sahibine sonuç bildirildi
+`],
+]),
+mkDoc('cikar','form','Çıkar Çatışması ve Hediye Beyan Formu','FR-21',[
+['Bu form ne zaman kullanılır?',`
+Görev kararlarınızı etkileyebilecek bir kişisel ilişki, ortaklık ya da menfaat varsa veya iş ilişkisi olan bir kişi ya da kurumdan hediye teklif edildiyse bu formla beyan edin. Beyan, sorunu önceden çözmek içindir; beyanda bulunmak suç ya da kusur sayılmaz.
+`],
+['Beyan',`
+[alan] Adı soyadı = {{p:ad}}
+[alan] Pozisyonu = {{p:pozisyon}}
+[secim] Beyan türü: Çıkar çatışması | Hediye / ağırlama teklifi | Şirket dışı ek iş
+[alan] İlgili kişi / kurum
+[alan] Tahmini değer (hediye ise)
+[uzun] Açıklama
+`],
+['Karar',`
+[secim] Karar: Uygun | Uygun değil, hediye iade edilecek | Görev değişikliği / önlem gerekli
+[imza] Beyan eden
+[imza] Bağlı yönetici
+`],
+]),
+];}
+
+/* ---------- Belge kütüphanesi: İSG formları ve politikalar ---------- */
+function libIsgPol(){return [
+mkDoc('kkd_zimmet','form','KKD Teslim ve Zimmet Tutanağı','FR-04',[
+['Teslim edilen kişisel koruyucu donanım',`
+| KKD türü | Model / standart | Adet | Teslim tarihi | Değişim tarihi |
+|---|---|---|---|---|
+| | | | | |
+| | | | | |
+| | | | | |
+| | | | | |
+| | | | | |
+`],
+['Taahhüt',`
+Yukarıdaki kişisel koruyucu donanımı ücretsiz olarak teslim aldım ve kullanımı hakkında bilgilendirildim. Donanımı İSG Kuralları'na ({{no:isg}}) ve 6331 sayılı Kanun'un 19. maddesine uygun olarak kullanacağımı, koruyacağımı, hasar gördüğünde ya da kullanım ömrü dolduğunda bildireceğimi kabul ederim.
+
+[alan] Teslim alan = {{p:ad}}
+[alan] Bölümü / pozisyonu = {{p:bolum}} / {{p:pozisyon}}
+[imza] Teslim eden
+[imza] Teslim alan
+`],
+]),
+mkDoc('egitim','form','İSG Eğitim Katılım Formu','FR-05',[
+['Eğitim bilgileri',`
+[alan] Eğitimin konusu
+[alan] Tarih
+[alan] Süre (saat)
+[alan] Eğitimi veren ve unvanı
+[secim] Eğitim türü: Temel İSG eğitimi | Yenileme eğitimi | İşe dönüş / ek eğitim | Konu bazlı eğitim
+[secim] İşlenen konu grupları: Genel konular (mevzuat, haklar ve sorumluluklar) | Sağlık konuları (meslek hastalıkları, ilk yardım) | Teknik konular (KKD, elektrik, kimyasal, acil durum)
+`],
+['Katılımcılar',`
+| Sıra | Adı soyadı | Bölümü / görevi | İmza |
+|---|---|---|---|
+| 1 | | | |
+| 2 | | | |
+| 3 | | | |
+| 4 | | | |
+| 5 | | | |
+| 6 | | | |
+| 7 | | | |
+| 8 | | | |
+| 9 | | | |
+| 10 | | | |
+| 11 | | | |
+| 12 | | | |
+
+// Bu işyerinde eğitimler {{egitim_periyodu}} tekrarlanır, asgari süre {{egitim_suresi}} saattir. Eğitim tarihini personel kartına da girin; Yasal takvim yenileme tarihini hatırlatır.
+`],
+['Onay',`
+[imza] Eğitimi veren
+[imza] İşveren / işveren vekili
+`],
+]),
+mkDoc('is_izni','form','İş İzni Formu','FR-06',[
+['Bu form ne zaman kullanılır?',`
+Sıcak iş (kaynak, kesme, taşlama), yüksekte çalışma, kapalı alanda çalışma, elektrik tesisatında çalışma ve kazı gibi yüksek riskli işlere **başlamadan önce** bu form doldurulur. Onay alınmadan iş başlatılmaz; iş bittiğinde form kapatılır.
+`],
+['İş bilgileri',`
+[secim] İş türü: Sıcak iş | Yüksekte çalışma | Kapalı alanda çalışma | Elektrik işi | Kazı | Diğer
+[alan] Çalışma yeri
+[alan] Tarih ve saat aralığı
+[alan] İşi yapan kişi / firma
+[uzun] Yapılacak işin tanımı
+`],
+['Güvenlik kontrolleri',`
+[kutu] Enerji kesildi, kilitlendi ve etiketlendi
+[kutu] Çalışma alanı çevrildi, uyarı levhaları konuldu
+[kutu] Yanıcı malzemeler uzaklaştırıldı, yangın söndürücü hazır
+[kutu] Gaz / oksijen ölçümü yapıldı (kapalı alan)
+[kutu] Emniyet kemeri, yaşam hattı ve iskele kontrol edildi (yüksekte çalışma)
+[kutu] Gerekli KKD kullanılıyor
+[kutu] Gözetmen / yangın nöbetçisi belirlendi
+`],
+['Onay ve kapanış',`
+[imza] İşi yapan
+[imza] Alan sorumlusu
+[imza] İş güvenliği uzmanı
+[alan] İşin bitiş saati
+[kutu] İş bitti, alan güvenli hâle getirildi
+`],
+]),
+mkDoc('ziyaretci','form','Ziyaretçi Bilgilendirme ve Giriş Formu','FR-07',[
+['Ziyaretçiler için güvenlik bilgileri',`
+- İşyerinde refakatçiyle dolaşın; yetkisiz alanlara girmeyin.
+- Size verilen kişisel koruyucu donanımı kullanın.
+- Acil durumda refakatçinizi izleyerek **{{toplanma_yeri}}** toplanma alanına gidin. Acil çağrı: 112, iç hat: {{acil_tel_ic}}.
+- İzin almadan fotoğraf ve video çekmeyin.
+`],
+['Giriş kaydı',`
+| Tarih | Adı soyadı | Firma | Ziyaret edilen | Giriş | Çıkış | İmza |
+|---|---|---|---|---|---|---|
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+`],
+]),
+mkDoc('kvkk','metin','Çalışan Kişisel Verilerin Korunması Aydınlatma Metni','PL-01',[
+['Veri sorumlusu',`
+6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında veri sorumlusu **{{unvan}}**'dır (adres: {{adres}}, e-posta: {{eposta}}). Bu metin, çalışanlarımızın kişisel verilerinin hangi amaçla, hangi hukuki sebeple işlendiğini ve haklarını açıklar.
+`],
+['İşlenen kişisel veriler',`
+| Veri kategorisi | Örnek |
+|---|---|
+| Kimlik | Ad soyad, T.C. kimlik no, doğum tarihi |
+| İletişim | Adres, telefon, e-posta |
+| Özlük | Pozisyon, işe giriş tarihi, izin, disiplin ve performans kayıtları |
+| Finans | Banka hesap bilgisi, ücret, bordro |
+| Mesleki deneyim | Diploma, sertifika, eğitim kayıtları |
+| Sağlık (özel nitelikli) | İşe giriş ve periyodik muayene sonuçları, sağlık raporları |
+| Fiziksel mekân güvenliği | Kamera kayıtları, giriş-çıkış kayıtları |
+`],
+['İşleme amaçları ve hukuki sebepler',`
+Kişisel veriler; iş sözleşmesinin kurulması ve ifası, ücret ödemesi, SGK, vergi ve iş sağlığı ve güvenliği mevzuatından doğan yükümlülüklerin yerine getirilmesi, eğitim ve performans süreçlerinin yürütülmesi ile işyeri güvenliğinin sağlanması amaçlarıyla işlenir.
+
+Hukuki sebepler; 6698 sayılı Kanun'un 5. maddesindeki sözleşmenin kurulması ve ifası, hukuki yükümlülüğün yerine getirilmesi ve meşru menfaat sebepleridir. Sağlık verileri gibi özel nitelikli kişisel veriler Kanun'un 6. maddesindeki şartlar çerçevesinde işlenir.
+`],
+['Aktarım',`
+Kişisel veriler, yasal yükümlülükler ve hizmet gereği; Sosyal Güvenlik Kurumu, vergi daireleri, yetkili kamu kurum ve kuruluşları, iş sağlığı ve güvenliği hizmeti alınan kuruluşlar (OSGB), ücret ödemesi için bankalar ve hizmet alınan muhasebe ve hukuk danışmanlarıyla paylaşılabilir.
+`],
+['Haklarınız ve başvuru',`
+6698 sayılı Kanun'un 11. maddesi uyarınca kişisel verilerinizin işlenip işlenmediğini öğrenme, bilgi isteme, düzeltilmesini veya silinmesini isteme, aktarıldığı kişileri bilme ve zarara uğramanız hâlinde giderilmesini talep etme haklarına sahipsiniz. Başvurularınızı yazılı olarak {{adres}} adresine ya da {{eposta}} adresine iletebilirsiniz.
+
+## Bilgilendirme beyanı
+Bu aydınlatma metnini okudum ve bilgilendirildim.
+
+[alan] Adı soyadı = {{p:ad}}
+[alan] Tarih = {{bugun}}
+[imza] Çalışan
+
+// Aydınlatma metni, kişisel verilerinizi işleme biçiminize göre hukuk danışmanınızla birlikte uyarlanmalıdır. Aydınlatma, açık rıza değildir; açık rıza gerekiyorsa ayrı metinle alınır.
+`],
+]),
+mkDoc('uzaktan','metin','Uzaktan ve Hibrit Çalışma Politikası','PL-02',[
+['Amaç ve kapsam',`
+Bu politika, {{unvan}} çalışanlarının işin niteliği uygun olduğunda evden ya da başka bir yerden uzaktan veya haftanın bir bölümünde ofiste (hibrit) çalışmasına ilişkin kuralları belirler. Uzaktan çalışma ilişkisi 4857 sayılı İş Kanunu'nun 14. maddesi ve Uzaktan Çalışma Yönetmeliği'ne uygun olarak yazılı yapılır.
+`],
+['Uygunluk ve başvuru',`
+- Uzaktan çalışma; işin niteliği, bilgi güvenliği ve ekip ihtiyacı uygunsa yöneticinin önerisi ve İnsan Kaynaklarının onayıyla uygulanır.
+- Üretim, depo ve sahada yapılması gereken işler uzaktan çalışmaya uygun değildir.
+- Uzaktan çalışmanın süresi, günleri ve iş yeri dışındaki çalışma adresi yazılı olarak belirlenir.
+`],
+['Çalışma düzeni',`
+- Çalışma saatleri ofisteki düzenle aynıdır: **{{calisma_saatleri}}**
+- Çalışan bu saatlerde telefon ve e-postayla ulaşılabilir olur; toplantılara kamerası açık katılır.
+- Hibrit çalışmada ofis günleri ekip içinde planlanır ve yöneticiye bildirilir.
+- Fazla çalışma, ofisteki gibi yönetici onayıyla yapılır ve kayda geçirilir.
+`],
+['Ekipman, masraf ve bilgi güvenliği',`
+- İşin yapılması için gerekli bilgisayar ve donanım şirket tarafından sağlanır ve zimmetlenir ({{no:zimmet}}).
+- Şirket verileri yalnız şirket cihazlarında ve şirketin izin verdiği uygulamalarda işlenir; ortak ve açık ağlarda şirket sistemine güvenli bağlantı kullanılır.
+- Ekranlar başkalarının göremeyeceği şekilde konumlanır, cihazlar kilitsiz bırakılmaz.
+- Uzaktan çalışmadan doğan zorunlu giderlerin (internet vb.) karşılanma usulü sözleşmede belirlenir.
+`],
+['İş sağlığı ve güvenliği',`
+- Çalışan, uzaktan çalıştığı ortamda ergonomi ve ekranlı araçlarla çalışma kuralları konusunda bilgilendirilir.
+- Çalışma sırasında meydana gelen kaza, iş kazası bildirim süreciyle ({{no:kaza}}) derhal bildirilir.
+- Uzun süreli ekran çalışmasında düzenli ara verilir.
+`],
+]),
+];}
+
 /* Görev Tanımları belgesine yeni bölüm eklenince gelen boş pozisyon şablonu */
 const POZ_TPL=`| Pozisyon bilgisi | Açıklama |
 |---|---|
@@ -1645,12 +2372,13 @@ const POZ_TPL=`| Pozisyon bilgisi | Açıklama |
 - İSG Kuralları'na ({{no:isg}}) uyar, kendisine verilen KKD'yi kullanır.
 - Tehlikeli durumları ve ramak kala olayları bildirir.`;
 function newDocSections(kind){
+  if(kind==='yazi') return [['Konu ve hitap','**Konu:** [[Konu]]\n\nSayın {{p:ad}},'],['Metin','[[Yazının metni]]\n\nBilgilerinizi rica ederiz.'],['İmza','[imza] {{isveren}}\n[imza] Tebellüğ eden']];
   return kind==='form'
     ?[['Bu form ne zaman kullanılır?','// Formun hangi durumda, kim tarafından ve ne kadar sürede doldurulacağını yazın.'],['Bilgiler','[alan] Adı soyadı\n[alan] Bölümü / görevi\n[alan] Tarih\n[uzun] Açıklama'],['Onay','[imza] Hazırlayan\n[imza] Onaylayan']]
     :[['Amaç ve Kapsam','Bu belge, {{unvan}} bünyesinde ... amacıyla hazırlanmıştır.\n\n// Belgenin amacını ve kimleri kapsadığını yazın.'],['Kurallar','1. Birinci kural\n2. İkinci kural'],['Yürürlük','Bu belge işveren onayıyla yürürlüğe girer.']];
 }
 function mkCompany(info){
-  return {id:uid(),app:FILE_APP,createdAt:nowISO(),info:{...info},logo:'',docs:makeDocs(),log:[],lastBackup:null};
+  return {id:uid(),app:FILE_APP,createdAt:nowISO(),info:{...info},logo:'',docs:makeDocs(),log:[],people:[],records:[],lastBackup:null};
 }
 
 /* Örnek şirket: geçmiş revizyonları ve bekleyen bir değişikliği göstermek için hazır kayıtlarla gelir. */
@@ -1663,6 +2391,7 @@ function createSampleCompany(){
     calisan_temsilcisi:'Hasan Çelik',ilkyardimci:'Zeynep Şahin, Murat Aydın',destek:'Ali Yıldız (yangın), Fatma Koç (tahliye), Okan Er (arama-kurtarma)',
     calisma_saatleri:'Pazartesi–Cuma 08.00–18.00',mola:'12.00–13.00 öğle arası',maas_gunu:'her ayın son iş günü',yan_haklar:'Öğle yemeği ve personel servisi',
     toplanma_yeri:'Ana giriş karşısındaki otopark',acil_tel_ic:'Dahili 100',saglik_kurulusu:'',
+    risk_tarihi:'2024-11-20',acil_plan_tarihi:'2024-11-20',tatbikat_tarihi:'2025-10-01',
   });
   const at=(m,d,h,mi)=>new Date(2026,m-1,d,h,mi).toISOString();
   addLog(c,{act:'olustur',text:'Şirket oluşturuldu',note:c.info.unvan,ts:at(9,1,8,30),user:'Mehmet Kaya'});
@@ -1680,6 +2409,20 @@ function createSampleCompany(){
   const o2=kkd.body;kkd.body=o2.replace('| Ofis | Gerekmez |','| Kaynak atölyesi | Kaynak maskesi, deri önlük, kaynak eldiveni, iş ayakkabısı |\n| Ofis | Gerekmez |');
   addLog(c,{act:'bolum',doc:isg.id,docTitle:isg.title,text:`${isg.sections.indexOf(kkd)+1}. Kişisel Koruyucu Donanım (KKD) bölümü düzenlendi`,diff:compactDiff(diffLines(o2,kkd.body)),ts:at(10,28,11,5),user:'Elif Arslan'});
   touch(isg,at(10,28,11,5),'Elif Arslan');
+  for(const t of [...libYazi(),...libForm(),...libIsgPol()]){c.docs.push(t);publishTo(c,t,{date:'2026-09-01',desc:'İlk yayın',by:'Mehmet Kaya',approver:'Ayşe Demir',ts:at(9,1,9,30),user:'Mehmet Kaya'});touch(t,at(9,1,9,30),'Mehmet Kaya');}
+  const P=o=>({id:uid(),tc:'',telefon:'',eposta:'',adres:'',cikis:'',acks:{},...o});
+  c.people=[
+    P({ad:'Zeynep Şahin',sicil:'1024',pozisyon:'Bölüm Yöneticisi (Üretim Şefi)',bolum:'Üretim',ise_giris:'2021-11-08',dogum:'1988-04-12',son_egitim:'2026-02-10',son_muayene:'2026-02-10'}),
+    P({ad:'Mehmet Kaya',sicil:'1003',pozisyon:'İnsan Kaynakları Sorumlusu',bolum:'İnsan Kaynakları',ise_giris:'2019-03-04',dogum:'1983-09-30',son_egitim:'2026-03-05',son_muayene:'2025-12-01'}),
+    P({ad:'Fatma Koç',sicil:'0987',pozisyon:'Depo ve Sevkiyat Personeli',bolum:'Depo ve Sevkiyat',ise_giris:'2010-05-10',dogum:'1972-01-18',son_egitim:'2025-10-20',son_muayene:'2025-11-20'}),
+    P({ad:'Ali Yıldız',sicil:'1102',pozisyon:'Üretim Operatörü',bolum:'Üretim',ise_giris:'2026-09-15',dogum:'1999-06-02',son_egitim:'2026-09-15',son_muayene:'2026-09-14'}),
+  ];
+  const [zey,meh,fat,ali]=c.people,ack=(p,role,rev,date)=>{p.acks[roleDoc(c,role).id]={rev,date};};
+  for(const p of [zey,meh,fat]){ack(p,'elkitabi',1,'2026-10-16');ack(p,'isg',0,'2026-09-02');ack(p,'gorev',0,'2026-09-02');ack(p,'kvkk',0,'2026-09-02');}
+  ack(ali,'elkitabi',0,'2026-09-15');ack(ali,'isg',0,'2026-09-15');ack(ali,'gorev',0,'2026-09-15');
+  addLog(c,{act:'personel',text:'4 personel listeden eklendi',ts:at(9,2,10,0),user:'Mehmet Kaya'});
+  mkRecord(c,roleDoc(c,'gorevlendirme'),zey,'2026-10-05',{'b:Görevin konusu':'Müşteri tesisinde hat kurulumu ve devreye alma','b:Başlangıç tarihi':'12.10.2026','b:Bitiş tarihi':'14.10.2026','b:Görev yeri':'Gebze Organize Sanayi Bölgesi, Kocaeli','b:Rapor teslim süresi':'3 iş günü'},{ts:at(10,5,14,10),user:'Mehmet Kaya'});
+  mkRecord(c,roleDoc(c,'izin'),fat,'2026-10-20',{'f:İzin türü':['Yıllık ücretli izin'],'f:İzin başlangıç tarihi':'02.11.2026','f:İşe dönüş tarihi':'09.11.2026','f:İzin süresi (iş günü)':'5','f:Kalan yıllık izin (gün)':'21','f:İzinde ulaşılabilecek telefon':'Dahili 214','f:Yerine bakacak çalışan':'Ali Yıldız'},{ts:at(10,20,9,40),user:'Mehmet Kaya'});
   return c;
 }
 
@@ -1700,9 +2443,9 @@ const WQ=[
   {q:'Bir olay yaşandı mı? Bir şey düştü, devrildi, kaydı, çarptı, sızdı ya da patladı mı?',yes:'ramak'},
   {q:'Zarar verebilecek bir durum ya da davranış mı gördünüz?',yes:'tehlike'},
 ];
-const ACT_LABEL={olustur:'Şirket oluşturuldu',sirket:'Şirket bilgisi',logo:'Logo',bolum:'Bölüm düzenlendi','bolum-ekle':'Bölüm eklendi','bolum-sil':'Bölüm silindi',sira:'Sıra değişti',belge:'Belge ayarları','belge-ekle':'Belge eklendi','belge-sil':'Belge silindi',yayin:'Revizyon yayınlandı',geri:'Taslak geri alındı',yedek:'Yedek yüklendi'};
+const ACT_LABEL={olustur:'Şirket oluşturuldu',sirket:'Şirket bilgisi',logo:'Logo',bolum:'Bölüm düzenlendi','bolum-ekle':'Bölüm eklendi','bolum-sil':'Bölüm silindi',sira:'Sıra değişti',belge:'Belge ayarları','belge-ekle':'Belge eklendi','belge-sil':'Belge silindi',yayin:'Revizyon yayınlandı',geri:'Taslak geri alındı',yedek:'Yedek yüklendi',evrak:'Evrak',personel:'Personel',teblig:'Tebliğ'};
 
-function route(){const h=decodeURIComponent(location.hash.slice(1));const [v,id]=h.split('/');return {v:v||'genel',id:id||''};}
+function route(){const h=decodeURIComponent(location.hash.slice(1));const [v,id,sub]=h.split('/');return {v:v||'genel',id:id||'',sub:sub||''};}
 function go(h){if(location.hash==='#'+h) render(); else location.hash=h;}
 function curDoc(){const r=route();return r.v==='belge'&&C?C.docs.find(d=>d.id===r.id):null;}
 function logoHTML(print){return C.logo?`<img src="${esc(C.logo)}" alt="Logo">`:(print?'':'<a class="nologo" href="#sirket">Logo ekle</a>');}
@@ -1714,7 +2457,8 @@ function render(){
   $('#side').hidden=false;shell.style.gridTemplateColumns='';
   const r=route();
   renderSide(r);
-  const V={sirket:companyHTML,belge:()=>docHTML(r.id),rehber:guideHTML,kayit:logHTML};
+  const V={sirket:companyHTML,belge:()=>docHTML(r.id),rehber:guideHTML,kayit:logHTML,kutuphane:libHTML,takvim:takvimHTML,
+    personel:()=>r.id?personHTML(r.id):peopleHTML(),evrak:()=>r.id?recordHTML(r.id):recordsHTML(),doldur:()=>fillHTML(r.id,r.sub)};
   $('#main').innerHTML=(V[r.v]||homeHTML)();
   if(r.v==='belge') bindEditor();
 }
@@ -1727,12 +2471,20 @@ function renderTop(){
 function renderSide(r=route()){
   const cur=(v,id)=>r.v===v&&(!id||r.id===id)?' aria-current="page"':'';
   const miss=missingFields().length;
+  const late=dueItems().filter(x=>x.st.cls==='late').length;
   let h=`<a class="nv" href="#genel"${cur('genel')}>Genel bakış</a>
   <a class="nv" href="#sirket"${cur('sirket')}>Şirket bilgileri${miss?`<span class="badge warn" title="Boş alan sayısı">${miss}</span>`:''}</a>
+  <a class="nv" href="#personel"${cur('personel')}>Personel<span class="badge">${activePeople().length}</span></a>
+  <a class="nv" href="#takvim"${cur('takvim')}>Yasal takvim${late?`<span class="badge warn" title="Geciken iş sayısı">${late}</span>`:''}</a>
   <div class="side-h">Belgeler</div>`;
-  for(const d of C.docs){const s=docState(d);h+=`<a class="nv" href="#belge/${esc(d.id)}"${cur('belge',d.id)} title="${esc(s.label)}"><span class="dot ${s.cls}"></span><span>${esc(d.title)}</span></a>`;}
-  h+=`<button class="nv nv-add" data-act="new-doc">+ Yeni belge</button>
+  for(const [k,l] of CATS){
+    const ds=C.docs.filter(d=>d.cat===k);if(!ds.length) continue;
+    h+=`<div class="side-sub">${esc(l)}</div>`;
+    for(const d of ds){const s=docState(d);h+=`<a class="nv" href="#belge/${esc(d.id)}"${cur('belge',d.id)||cur('doldur',d.id)} title="${esc(s.label)}"><span class="dot ${s.cls}"></span><span>${esc(d.title)}</span></a>`;}
+  }
+  h+=`<a class="nv nv-add" href="#kutuphane"${cur('kutuphane')}>+ Belge kütüphanesi</a>
   <div class="side-h">Araçlar</div>
+  <a class="nv" href="#evrak"${cur('evrak')}>Evrak kayıt defteri<span class="badge">${C.records.length}</span></a>
   <a class="nv" href="#rehber"${cur('rehber')}>Hangi form?</a>
   <a class="nv" href="#kayit"${cur('kayit')}>Değişiklik kaydı<span class="badge">${C.log.length}</span></a>
   <div class="side-foot">Veriler yalnız bu tarayıcıda saklanır.<br>Son yedek: <b>${C.lastBackup?fmtD(C.lastBackup):'alınmadı'}</b><br><button class="link" data-act="export">Yedek indir</button></div>`;
@@ -1745,10 +2497,12 @@ function welcomeHTML(){return `<div class="hero">
   <p class="lead">Şirketinize göre uyarlanan personel el kitabı, iş sağlığı ve güvenliği kuralları ve bildirim formları. Her değişiklik kayda geçer, yayınlanan her sürüm yeni revizyon numarası alır.</p>
   <div class="actions"><button class="btn primary big" data-act="new-company">Şirketimi ekle</button><button class="btn big" data-act="sample">Örnek şirketle incele</button><button class="btn ghost big" data-act="import">Yedek yükle</button></div>
   <div class="feat">
-    <div><b>Hazır taslak</b><span>Personel el kitabı, İSG kuralları; tehlikeli durum, ramak kala ve iş kazası formları.</span></div>
+    <div><b>32 hazır taslak</b><span>El kitabı, görev tanımları, İSG kuralları, İK yazıları, formlar, tutanaklar ve politikalar.</span></div>
     <div><b>Şirketinize göre</b><span>Ünvan, logo, sorumlular ve tehlike sınıfı belgelere kendiliğinden yerleşir.</span></div>
     <div><b>Revizyon kaydı</b><span>Her değişiklik kişi ve saatle kaydedilir. Yayınlanan her sürümün numarası artar.</span></div>
-    <div><b>Yazdır ya da PDF</b><span>Başlıklı, numaralı A4 çıktı ve pano için “Hangi form?” afişi.</span></div>
+    <div><b>Personel ve evrak</b><span>Çalışanı seçin, yazı kendiliğinden dolsun; her evrak sıra numarasıyla deftere işlensin.</span></div>
+    <div><b>Tebliğ takibi</b><span>Yeni revizyonu hangi çalışanın imzalamadığını görün, imza listesini basın.</span></div>
+    <div><b>Yasal takvim</b><span>Risk değerlendirmesi, tatbikat, eğitim, muayene ve deneme süresi tarihleri hatırlatılır.</span></div>
   </div>
   <p class="muted small">Veriler yalnız bu tarayıcıda saklanır, hiçbir sunucuya gönderilmez. Taslaklar genel bilgilendirme amaçlıdır; yürürlüğe koymadan önce iş güvenliği uzmanınız ve hukuk danışmanınızla kontrol edin.</p>
 </div>`;}
@@ -1758,7 +2512,7 @@ function homeHTML(){
   const sub=[displayVal('tehlike_sinifi',C.info.tehlike_sinifi),C.info.calisan_sayisi?C.info.calisan_sayisi+' çalışan':'',C.info.nace?'NACE '+C.info.nace:''].filter(Boolean);
   return `<div class="wrap">
   <div class="page-h"><div><div class="crumb">${esc(coName(C))}</div><h1>Genel bakış</h1></div>
-    <div class="actions"><button class="btn" data-act="print-all">Tüm seti yazdır</button><button class="btn" data-act="new-doc">+ Yeni belge</button></div></div>
+    <div class="actions"><button class="btn" data-act="print-all">Tüm seti yazdır</button><a class="btn" href="#kutuphane">Belge kütüphanesi</a></div></div>
   <div class="card co-card">
     <div class="co-logo">${C.logo?`<img src="${esc(C.logo)}" alt="Logo">`:`<span class="nologo">${esc(initials())}</span>`}</div>
     <div class="co-info"><div class="co-name">${esc(C.info.unvan||'Şirket ünvanı girilmedi')}</div>
@@ -1767,6 +2521,7 @@ function homeHTML(){
     <a class="btn sm" href="#sirket">Düzenle</a>
   </div>
   ${pend.length?`<div class="note warn" style="margin-top:14px"><div><b>${pend.length} belge yayın bekliyor:</b> ${pend.map(x=>esc(x.d.title)).join(', ')}. Yayınlanmamış belgeler “taslak” ibaresiyle yazdırılır.</div><button class="btn sm warn" data-act="publish-all">Bekleyenleri yayınla</button></div>`:''}
+  ${dueWidget()}
   <h2 class="h2">Doküman ana listesi</h2>
   ${masterListHTML(st)}
   <h2 class="h2">Son değişiklikler</h2>
@@ -1788,7 +2543,7 @@ function companyHTML(){
     const v=C.info[f.k]??'',n=usedBy(f.k),id='f_'+f.k;let inp;
     if(f.type==='select') inp=`<select id="${id}" data-field="${f.k}">${f.opts.map(([o,l])=>`<option value="${o}"${o===v?' selected':''}>${l}</option>`).join('')}</select>`;
     else if(f.type==='textarea') inp=`<textarea id="${id}" data-field="${f.k}" rows="2" placeholder="${esc(f.ph||'')}">${esc(v)}</textarea>`;
-    else inp=`<input id="${id}" data-field="${f.k}" ${f.type==='number'?'type="number" min="0" inputmode="numeric"':'type="text"'} value="${esc(v)}" placeholder="${esc(f.ph||'')}" autocomplete="off">`;
+    else inp=`<input id="${id}" data-field="${f.k}" ${f.type==='number'?'type="number" min="0" inputmode="numeric"':f.type==='date'?'type="date"':'type="text"'} value="${esc(v)}" placeholder="${esc(f.ph||'')}" autocomplete="off">`;
     const hint=[f.hint,n?`${n} belgede kullanılıyor`:''].filter(Boolean).join(' · ');
     return `<label class="fi${f.wide?' wide':''}"><span class="fi-l">${esc(f.l)}<span class="fi-s" id="s_${f.k}"></span></span>${inp}${hint?`<span class="fi-h">${esc(hint)}</span>`:''}</label>`;
   };
@@ -1818,14 +2573,15 @@ function headMeta(d,revIdx=null){
     rev:p?(dirty?revStr(p.rev+1)+' (taslak)':revStr(p.rev)):'00 (taslak)',
     yayin:f?fmtD(f.date):'Yayınlanmadı',revT:p?(dirty?'Yayınlanmadı':(p.rev?fmtD(p.date):'—')):'—',draft:dirty};
 }
-function docHeadHTML(m,print){
+function docHeadHTML(m,print,kind){
+  if(kind==='yazi') return letterHeadHTML({no:null,date:null,print})+(print?'':`<div class="lh-ctl">Şablon ${esc(m.no)} · Rev. ${esc(m.rev)} · Yayın ${esc(m.yayin)}</div>`);
   const dr=v=>/taslak|Yayınlanmadı/.test(v)?' class="dr"':'';
   return `<div class="dochead"><div class="dh-logo">${logoHTML(print)}</div>
   <div class="dh-title"><div class="dh-co">${esc(m.unvan||'Şirket ünvanı')}</div><div class="dh-doc">${esc(m.title)}</div></div>
   <div class="dh-m"><table class="dh-meta"><tr><th>Doküman no</th><td>${esc(m.no)}</td></tr><tr><th>Yayın tarihi</th><td${dr(m.yayin)}>${esc(m.yayin)}</td></tr><tr><th>Revizyon no</th><td${dr(m.rev)}>${esc(m.rev)}</td></tr><tr><th>Revizyon tarihi</th><td${dr(m.revT)}>${esc(m.revT)}</td></tr></table></div></div>`;
 }
 function roSecHTML(kind,s,i,cx){
-  return `<section class="sec"><h2 class="sec-t">${kind==='metin'?(i+1)+'. ':''}${inl(s.title,cx)}</h2><div class="md">${renderMd(s.body,cx)}</div></section>`;
+  return `<section class="sec">${kind==='yazi'?'':`<h2 class="sec-t">${kind==='metin'?(i+1)+'. ':''}${inl(s.title,cx)}</h2>`}<div class="md">${renderMd(s.body,cx)}</div></section>`;
 }
 function secHTML(d,s,i,cx){
   return `<section class="sec" data-sid="${esc(s.id)}"><div class="sec-h"><h2 class="sec-t">${d.kind==='metin'?(i+1)+'. ':''}${inl(s.title,cx)}</h2>
@@ -1840,13 +2596,14 @@ function docHTML(id){
   const ed=editing&&editing.docId===d.id?editing:null;
   return `<div class="wrap">
   <div class="page-h"><div><div class="crumb">Belgeler</div><h1>${esc(d.title)}</h1>
-    <div class="chips"><span class="chip mono">${esc(m.no)}</span><span class="chip ${s.cls}">${p?'Rev.'+revStr(p.rev)+' · ':''}${esc(s.label)}</span><span class="chip">Son düzenleme: ${fmtDT(d.updatedAt)}${d.updatedBy?' · '+esc(d.updatedBy):''}</span></div></div>
-    <div class="actions">${s.cls!=='ok'?`<button class="btn primary" data-act="publish">${p?'Revizyonu yayınla':'İlk sürümü yayınla'}</button>`:''}<button class="btn" data-act="print-doc">Yazdır / PDF</button><button class="btn" data-act="doc-settings">Belge ayarları</button></div></div>
+    <div class="chips"><span class="chip mono">${esc(m.no)}</span><span class="chip ${s.cls}">${p?'Rev.'+revStr(p.rev)+' · ':''}${esc(s.label)}</span><span class="chip">Son düzenleme: ${fmtDT(d.updatedAt)}${d.updatedBy?' · '+esc(d.updatedBy):''}</span>${C.records.some(r=>r.docId===d.id)?`<span class="chip">${C.records.filter(r=>r.docId===d.id).length} evrak</span>`:''}</div></div>
+    <div class="actions">${s.cls!=='ok'?`<button class="btn primary" data-act="publish">${p?'Revizyonu yayınla':'İlk sürümü yayınla'}</button>`:''}${p&&fillableDoc(d)?'<button class="btn" data-act="fill">Evrak düzenle</button>':''}<button class="btn" data-act="print-doc">${d.kind==='metin'?'Yazdır / PDF':'Boş şablonu yazdır'}</button><button class="btn" data-act="doc-settings">Belge ayarları</button></div></div>
   ${s.cls==='warn'?`<div class="note warn"><div><b>Yayınlanmamış değişiklikler.</b> Yayınlandığında belge <b class="mono">${esc(m.no)} Rev.${revStr(p.rev)}</b> → <b class="mono">Rev.${revStr(p.rev+1)}</b> olur.<ul class="chg">${s.changes.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div class="note-act"><button class="btn sm warn" data-act="publish">Yayınla</button><button class="btn sm ghost" data-act="revert">Taslağı geri al</button></div></div>`:''}
   ${s.cls==='none'?'<div class="note"><div><b>Bu belge henüz yayınlanmadı.</b> İçeriği şirketinize göre düzenleyin, ardından ilk sürümü yayınlayın. İlk yayın Rev.00 olarak kaydedilir.</div></div>':''}
   ${empt.length?`<div class="note warn"><div>Belgede <b>${empt.length} şirket bilgisi boş:</b> ${empt.map(k=>esc(phLabel(k))).join(', ')}. Yazdırıldığında noktalı boşluk olarak görünür.</div><a class="btn sm" href="#sirket">Şirket bilgilerine git</a></div>`:''}
+  ${tebligBoxHTML(d)}
   <div class="paper ${d.kind}">
-    ${docHeadHTML(m)}
+    ${docHeadHTML(m,false,d.kind)}
     ${d.sections.map((x,i)=>ed&&ed.sid===x.id?editorHTML(d):secHTML(d,x,i,cx)).join('')}
     ${ed&&ed.sid===null?editorHTML(d):'<button class="btn add-sec" data-act="sec-add">+ Bölüm ekle</button>'}
   </div>
@@ -1879,7 +2636,8 @@ function editorHTML(d){
   const e=editing;
   const phOpts=FIELDS.map(([g,fs])=>`<optgroup label="${esc(g)}">${fs.map(f=>`<option value="${f.k}">${esc(f.l)}</option>`).join('')}</optgroup>`).join('')
     +`<optgroup label="Tehlike sınıfına göre">${COMPUTED.map(f=>`<option value="${f.k}">${esc(f.l)}</option>`).join('')}</optgroup>`
-    +`<optgroup label="Belge numaraları">${C.docs.map(x=>`<option value="no:${esc(x.role)}">${esc(x.title)}</option>`).join('')}</optgroup>`;
+    +`<optgroup label="Belge numaraları">${C.docs.map(x=>`<option value="no:${esc(x.role)}">${esc(x.title)}</option>`).join('')}</optgroup>`
+    +`<optgroup label="Evrakta dolar (personel, tarih, sayı)">${[...PFIELDS.map(f=>['p:'+f.k,'Personel: '+f.l]),['p:kidem','Personel: Kıdem'],['p:izin_hakki','Personel: Yıllık izin hakkı'],['bugun','Evrak tarihi'],['evrak_no','Evrak sayısı']].map(([k,l])=>`<option value="${k}">${esc(l)}</option>`).join('')}</optgroup>`;
   return `<section class="sec editing" id="editor">
   <label class="ed-l">Bölüm başlığı<input id="edTitle" value="${esc(e.title)}" maxlength="160"></label>
   <div class="ed-bar" role="toolbar" aria-label="Biçim">
@@ -1889,6 +2647,7 @@ function editorHTML(d){
     <button data-act="ins" data-snip="ol">1. Numaralı</button>
     <button data-act="ins" data-snip="table">Tablo</button>
     <button data-act="ins" data-snip="note">Not kutusu</button>
+    <button data-act="ins" data-snip="blank" title="Evrak düzenlerken doldurulan boşluk">[[Boşluk]]</button>
     <button data-act="ins" data-snip="prep">Hazırlık notu</button>
     <select data-change="ins-ph" aria-label="Şirket bilgisi ekle"><option value="">Şirket bilgisi ekle…</option>${phOpts}</select>
     <select data-change="ins-field" aria-label="Form alanı ekle"><option value="">Form alanı ekle…</option><option value="alan">Kısa yazı alanı</option><option value="uzun">Geniş yazı alanı</option><option value="secim">İşaret kutuları</option><option value="kutu">Tek işaret kutusu</option><option value="imza">İmza alanı</option></select>
@@ -1963,7 +2722,7 @@ function docPrintHTML(d,revIdx=null,o={}){
   const revs=isRev?d.revisions.slice(0,revIdx+1):d.revisions;
   const last=isRev?r:(m.draft?null:pub(d));
   let h=d.kind==='metin'?coverHTML(m,snap,cx):'';
-  h+=`<table class="ptable"><thead><tr><td>${docHeadHTML(m,true)}</td></tr></thead><tbody><tr><td><div class="${d.kind}">${snap.sections.map((s,i)=>roSecHTML(d.kind,s,i,cx)).join('')}${d.kind==='metin'?revTablePrint(revs,m)+apprHTML(last):''}</div></td></tr></tbody></table>`;
+  h+=`<table class="ptable"><thead><tr><td>${docHeadHTML(m,true,d.kind)}</td></tr></thead><tbody><tr><td><div class="${d.kind}">${snap.sections.map((s,i)=>roSecHTML(d.kind,s,i,cx)).join('')}${d.kind==='metin'?revTablePrint(revs,m)+apprHTML(last):''}</div></td></tr></tbody></table>`;
   if(o.watermark&&m.draft) h+='<div class="draftmark">TASLAK</div>';
   return `<div class="pdoc">${h}</div>`;
 }
@@ -2089,19 +2848,21 @@ async function deleteCompany(){
 /* ---------- Belge işlemleri ---------- */
 async function newDoc(){
   // Şirkette bulunmayan hazır taslaklar (sonradan eklenen ya da silinmiş olanlar) buradan geri eklenebilir.
-  const ready=makeDocs().filter(t=>!C.docs.some(d=>d.role===t.role));
+  const ready=allTemplates().filter(t=>!C.docs.some(d=>d.role===t.role));
   const r=await dlg(`<form method="dialog"><h2>Yeni belge</h2><p class="muted">Hazır bir taslak, talimat, prosedür ya da şirkete özel bir form ekleyin. Belge, numarası ve revizyon kaydıyla diğer belgeler gibi yönetilir.</p>
   ${ready.length?`<label>Başlangıç<select name="tpl" data-change="tpl-pick"><option value="">Boş belge</option>${ready.map(t=>`<option value="${esc(t.role)}" data-title="${esc(t.title)}" data-code="${esc(t.code)}">Hazır taslak: ${esc(t.title)}</option>`).join('')}</select></label>`:''}
   <label>Belge adı<input name="title" required autofocus maxlength="120" placeholder="Örn. Forklift Kullanma Talimatı"></label>
-  <div class="row2"><label>Doküman kodu<input name="code" required maxlength="20" placeholder="TL-01"></label><label>Belge türü<select name="kind"><option value="metin">Metin (talimat, prosedür)</option><option value="form">Form</option></select></label></div>
+  <div class="row2"><label>Doküman kodu<input name="code" required maxlength="20" placeholder="TL-01"></label><label>Belge türü<select name="kind"><option value="metin">Metin (talimat, prosedür, politika)</option><option value="form">Form</option><option value="yazi">Yazı (antetli kâğıt)</option></select></label></div>
+  <label>Kategori<select name="cat">${CATS.map(([k,l])=>`<option value="${k}"${k==='diger'?' selected':''}>${esc(l)}</option>`).join('')}</select></label>
   <p class="muted small">Tam numara, şirketin belge kodu önekiyle birleşir: ${esc(C.info.kod||'ÖNEK')}-TL-01</p>${foot('Belgeyi ekle')}</form>`);
   if(!r) return;
   if(!(await ensureUser())) return;
-  const code=normKod(r.fd.get('code')),kind=r.fd.get('kind')==='form'?'form':'metin',title=String(r.fd.get('title')).trim();
+  const code=normKod(r.fd.get('code')),kind=['form','yazi'].includes(r.fd.get('kind'))?r.fd.get('kind'):'metin',title=String(r.fd.get('title')).trim();
   if(!code){toast('Doküman kodu geçersiz.','err');return;}
   if(C.docs.some(d=>d.code===code)){toast(`${code} kodu başka bir belgede kullanılıyor.`,'err');return;}
   const tpl=ready.find(t=>t.role===r.fd.get('tpl'));
   const d=tpl?Object.assign(tpl,{title,code}):mkDoc('x'+uid().slice(-5),kind,title,code,newDocSections(kind));
+  if(!tpl){const ct=r.fd.get('cat');d.cat=CATS.some(x=>x[0]===ct)?ct:'diger';}
   touch(d);C.docs.push(d);
   addLog(C,{act:'belge-ekle',doc:d.id,docTitle:title,text:`Belge eklendi: ${docNo(C,d)} ${title}`});
   persist();go('belge/'+d.id);
@@ -2243,7 +3004,7 @@ async function delSec(sid){
   persist();render();
 }
 const SNIP={
-  bold:['**','**','kalın metin'],h:'## Ara başlık',ul:'- Madde',ol:'1. Madde',table:'| Başlık 1 | Başlık 2 |\n|---|---|\n| Hücre | Hücre |',note:'> Not metni',prep:'// Hazırlık notu (yazdırılmaz)',
+  bold:['**','**','kalın metin'],blank:['[[',']]','Doldurulacak alan'],h:'## Ara başlık',ul:'- Madde',ol:'1. Madde',table:'| Başlık 1 | Başlık 2 |\n|---|---|\n| Hücre | Hücre |',note:'> Not metni',prep:'// Hazırlık notu (yazdırılmaz)',
   alan:'[alan] Etiket',uzun:'[uzun] Etiket',secim:'[secim] Soru: Seçenek 1 | Seçenek 2',kutu:'[kutu] Kontrol maddesi',imza:'[imza] Unvan',
 };
 function insertSnip(key,raw){
@@ -2277,6 +3038,8 @@ function fillPrintForRoute(){
   if(r.v==='belge'&&curDoc()){const d=curDoc(),m=headMeta(d);$('#print').innerHTML=docPrintHTML(d,null,{watermark:true});setPageStyle(`${coName(C)} · ${m.no} · Rev.${m.rev}`);}
   else if(r.v==='rehber'){$('#print').innerHTML=posterHTML();setPageStyle(coName(C)+' · İSG Bildirim Rehberi',false);}
   else if(r.v==='genel'){$('#print').innerHTML=printAllHTML();setPageStyle(coName(C)+' · Şirket Yönetmeliği');}
+  else if(r.v==='evrak'&&C.records.find(x=>x.id===r.id)){const rec=C.records.find(x=>x.id===r.id);$('#print').innerHTML=recordPrintHTML(rec);setPageStyle(recFooter(rec));}
+  else if(r.v==='takvim'){$('#print').innerHTML=duePrintHTML();setPageStyle(coName(C)+' · Yasal takvim');}
   else{$('#print').innerHTML=`<div class="plain">${$('#main').innerHTML}</div>`;setPageStyle(coName(C));}
 }
 window.addEventListener('beforeprint',()=>{if(!$('#print').innerHTML.trim()) fillPrintForRoute();});
@@ -2320,8 +3083,411 @@ function exportCSV(){
   download('\ufeff'+rows.map(r=>r.map(cell).join(';')).join('\r\n'),`KurumKitabi_DegisiklikKaydi_${slug(coName(C))}_${dayInput()}.csv`,'text/csv;charset=utf-8');
 }
 function helpDlg(){
-  const R=[['## Ara başlık','Ara başlık'],['- Madde','Madde işaretli liste'],['1. Madde','Numaralı liste'],['**kalın**','<b>kalın</b>'],['> Not','Renkli not kutusu'],['// Not','Hazırlık notu (yalnız ekranda, yazdırılmaz)'],['| A | B |','Tablo (ilk satır başlık)'],['{{isg_uzmani}}','Şirket bilgisi, kendiliğinden dolar'],['{{no:kaza}}','Başka bir belgenin numarası'],['[alan] Etiket','Form: kısa yazı alanı (ikişer yan yana)'],['[uzun] Etiket','Form: geniş yazı alanı'],['[secim] Soru: A | B','Form: işaret kutuları'],['[kutu] Madde','Form: tek işaret kutusu'],['[imza] Unvan','Form: imza alanı (üçer yan yana)']];
+  const R=[['## Ara başlık','Ara başlık'],['- Madde','Madde işaretli liste'],['1. Madde','Numaralı liste'],['**kalın**','<b>kalın</b>'],['> Not','Renkli not kutusu'],['// Not','Hazırlık notu (yalnız ekranda, yazdırılmaz)'],['| A | B |','Tablo (ilk satır başlık)'],['{{isg_uzmani}}','Şirket bilgisi, kendiliğinden dolar'],['{{no:kaza}}','Başka bir belgenin numarası'],['[[Başlangıç tarihi]]','Evrak düzenlerken doldurulan boşluk'],['{{p:ad}}','Seçilen personelin bilgisi (ad, pozisyon, işe giriş, kıdem…)'],['{{bugun}} · {{evrak_no}}','Evrak tarihi ve sayısı'],['[alan] Adı soyadı = {{p:ad}}','Personelden kendiliğinden dolan form alanı'],['[alan] Etiket','Form: kısa yazı alanı (ikişer yan yana)'],['[uzun] Etiket','Form: geniş yazı alanı'],['[secim] Soru: A | B','Form: işaret kutuları'],['[kutu] Madde','Form: tek işaret kutusu'],['[imza] Unvan','Form: imza alanı (üçer yan yana)']];
   dlg(`<div class="dlg-in"><h2>Biçim rehberi</h2><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Yazdığınız</th><th>Görünen</th></tr></thead><tbody>${R.map(([a,b])=>`<tr><td><code>${esc(a)}</code></td><td>${b}</td></tr>`).join('')}</tbody></table></div><p class="muted small">Boş satır yeni paragraf başlatır. Ctrl+S kaydeder, Ctrl+B seçili metni kalın yapar.</p><div class="dlg-foot"><button class="btn primary" data-act="dlg-close">Tamam</button></div></div>`);
+}
+
+
+/* ---------- Kütüphane ve kategoriler ---------- */
+const ROLE_CAT={elkitabi:'politika',gorev:'politika',kvkk:'politika',uzaktan:'politika',isg:'isg',tehlike:'isg',ramak:'isg',kaza:'isg',kkd_zimmet:'isg',egitim:'isg',is_izni:'isg',ziyaretci:'isg'};
+const DESC={
+  elkitabi:'Çalışma düzeni, izinler, davranış ve kılık kıyafet kuralları, disiplin ve okudum-anladım beyanı.',
+  gorev:'Pozisyon bazında görev, yetki, nitelik ve İSG sorumlulukları; tebliğ tutanağı.',
+  kvkk:'Çalışanlara verilen 6698 sayılı Kanun aydınlatma metni ve bilgilendirme beyanı.',
+  uzaktan:'Uzaktan ve hibrit çalışmanın uygunluk, düzen, ekipman, bilgi güvenliği ve İSG kuralları.',
+  isg:'İSG kuralları, KKD, bildirimler, iş kazası anında yapılacaklar, acil durumlar, eğitim ve sağlık gözetimi.',
+  tehlike:'Henüz olay yokken görülen güvensiz durum ve davranışların bildirimi.',
+  ramak:'Yaralanmasız ya da yalnız maddi hasarlı olayların bildirimi ve değerlendirmesi.',
+  kaza:'Yaralanmalı olayların bildirimi, kök neden araştırması ve yasal bildirim kaydı.',
+  kkd_zimmet:'Kişisel koruyucu donanımın teslimi ve çalışanın taahhüdü.',
+  egitim:'İSG eğitiminin konusu, süresi, eğiticisi ve katılımcı imza listesi.',
+  is_izni:'Sıcak iş, yüksekte ve kapalı alanda çalışma gibi riskli işler öncesi izin ve kontrol listesi.',
+  ziyaretci:'Ziyaretçilere güvenlik bilgilendirmesi ve giriş-çıkış kaydı.',
+  gorevlendirme:'Geçici görev, şehir dışı görev ya da proje görevlendirmesi.',
+  gorev_degisikligi:'Pozisyon ya da bölüm değişikliği bildirimi; 4857 md. 22 kabul beyanıyla.',
+  terfi:'Yeni unvan, yürürlük tarihi ve ücret bilgisiyle terfi yazısı.',
+  uyari:'Savunma sonrası verilen yazılı uyarı (ihtar).',
+  savunma:'Disiplin işlemi öncesi yazılı savunma isteme yazısı.',
+  calisma_belgesi:'4857 md. 28 uyarınca işin türünü ve süresini gösteren belge.',
+  tesekkur:'Başarı ve katkı için teşekkür ve takdir belgesi.',
+  istifa:'Çalışanın kullanabileceği örnek istifa dilekçesi.',
+  izin:'Yıllık, mazeret ve ücretsiz izin talebi; yönetici ve İK onayı.',
+  fazla_calisma:'Yıllık fazla çalışma onay beyanı.',
+  tutanak:'Devamsızlık, geç gelme, kural ihlali ve hasar için tanıklı tutanak.',
+  savunma_form:'Çalışanın yazılı savunmasını verdiği tutanak.',
+  zimmet:'Demirbaş, cihaz ve malzeme zimmet tutanağı.',
+  ise_giris:'İşe başlayan çalışan için evrak, eğitim ve zimmet kontrol listesi.',
+  isten_cikis:'Ayrılan çalışan için iade, yasal bildirim ve çıkış görüşmesi listesi.',
+  deneme:'Deneme süresi sonunda yönetici değerlendirmesi ve karar.',
+  performans:'Hedef ve yetkinlik bazlı dönemsel performans değerlendirmesi.',
+  oneri:'Çalışan fikirlerini toplayan ve sonuçlandıran öneri formu.',
+  sikayet:'Mobbing, taciz, ayrımcılık ve etik ihlaller için gizli bildirim.',
+  cikar:'Çıkar çatışması, hediye ve ek iş beyanı.',
+};
+const KIND_L={metin:'Metin',form:'Form',yazi:'Yazı'};
+function allTemplates(){return [...makeDocs(),...libYazi(),...libForm(),...libIsgPol()];}
+function libHTML(){
+  const all=allTemplates(),have=new Set(C.docs.map(d=>d.role)),miss=all.filter(t=>!have.has(t.role)).length;
+  const grp=([k,l])=>{
+    const ts=all.filter(t=>t.cat===k);if(!ts.length) return '';
+    const m=ts.filter(t=>!have.has(t.role)).length;
+    return `<section><div class="lib-h"><h2 class="h2">${esc(l)}</h2>${m?`<button class="btn sm" data-act="lib-add-cat" data-cat="${k}">Bu gruptakileri ekle (${m})</button>`:''}</div>
+    <div class="lib-grid">${ts.map(t=>{const d=roleDoc(C,t.role);return `<div class="lib-card"><div class="lib-t"><b>${esc(t.title)}</b><span class="mono muted small">${esc(t.code)}</span></div><p class="muted small">${esc(DESC[t.role]||'')}</p><div class="lib-a">${d?`<a class="btn sm" href="#belge/${esc(d.id)}">Aç</a><span class="chip ok">Eklendi</span>`:`<button class="btn sm primary" data-act="lib-add" data-role="${esc(t.role)}">Ekle</button>`}<span class="muted small">${KIND_L[t.kind]}</span></div></div>`;}).join('')}</div></section>`;
+  };
+  return `<div class="wrap">
+  <div class="page-h"><div><div class="crumb">Belgeler</div><h1>Belge kütüphanesi</h1><p class="lead muted">${all.length} hazır taslak. Şirketinize gerekenleri ekleyin; eklenen belge şirket bilgilerinizle dolar, düzenleyip yayınlarsınız.</p></div>
+    <div class="actions">${miss?`<button class="btn" data-act="lib-add-all">Tümünü ekle (${miss})</button>`:''}<button class="btn" data-act="new-doc">+ Boş belge</button></div></div>
+  ${CATS.map(grp).join('')}
+</div>`;
+}
+async function libAdd(roles){
+  if(!(await ensureUser())) return;
+  const all=allTemplates(),added=[];
+  for(const role of roles){
+    if(roleDoc(C,role)) continue;
+    const t=all.find(x=>x.role===role);if(!t) continue;
+    if(C.docs.some(d=>d.code===t.code)) t.code=t.code+'-'+uid().slice(-2).toUpperCase();
+    touch(t);C.docs.push(t);added.push(t);
+  }
+  if(!added.length) return;
+  for(const t of added) addLog(C,{act:'belge-ekle',doc:t.id,docTitle:t.title,text:`Belge eklendi: ${docNo(C,t)} ${t.title}`,note:'Belge kütüphanesinden'});
+  persist();render();
+  toast(added.length===1?`${added[0].title} eklendi. Düzenleyip yayınlayın.`:`${added.length} belge eklendi. Genel bakıştan toplu yayınlayabilirsiniz.`);
+}
+
+/* ---------- Personel ---------- */
+const PFIELDS=[
+  {k:'ad',l:'Adı soyadı',req:true},
+  {k:'tc',l:'T.C. kimlik no'},
+  {k:'sicil',l:'Sicil no'},
+  {k:'pozisyon',l:'Pozisyon'},
+  {k:'bolum',l:'Bölüm'},
+  {k:'ise_giris',l:'İşe giriş tarihi',type:'date'},
+  {k:'dogum',l:'Doğum tarihi',type:'date'},
+  {k:'telefon',l:'Telefon'},
+  {k:'eposta',l:'E-posta'},
+  {k:'son_egitim',l:'Son İSG eğitimi',type:'date'},
+  {k:'son_muayene',l:'Son periyodik muayene',type:'date'},
+  {k:'cikis',l:'İşten ayrılış tarihi',type:'date'},
+  {k:'adres',l:'Adres',type:'textarea',wide:true},
+];
+const PLABEL={...Object.fromEntries(PFIELDS.map(f=>[f.k,f.l])),kidem:'Kıdem',izin_hakki:'Yıllık izin hakkı (gün)'};
+const SY={az:{eg:3,mu:5,rk:6},tehlikeli:{eg:2,mu:3,rk:4},cok:{eg:1,mu:1,rk:2}};
+const today0=()=>{const t=new Date();t.setHours(0,0,0,0);return t;};
+const addMonths=(d,m)=>{const x=new Date(d);x.setMonth(x.getMonth()+m);return x;};
+const addYears=(d,y)=>addMonths(d,12*y);
+function ymd(a,b){let y=b.getFullYear()-a.getFullYear(),m=b.getMonth()-a.getMonth();if(b.getDate()<a.getDate()) m--;if(m<0){y--;m+=12;}return {y,m};}
+function kidemOf(p){const s=toDate(p.ise_giris);if(!s) return null;const k=ymd(s,toDate(p.cikis)||today0());return k.y<0?null:k;}
+function kidemStr(p){const k=kidemOf(p);return k?(k.y?`${k.y} yıl `:'')+`${k.m} ay`:'';}
+function izinHakki(p){
+  // 4857 md. 53: 1–5 yıl 14, 6–14 yıl 20, 15 yıl ve üzeri 26 gün; 18 yaş altı ve 50 yaş üstü en az 20 gün.
+  const k=kidemOf(p);if(!k) return '';if(k.y<1) return '0';
+  let g=k.y>=15?26:k.y>=6?20:14;
+  const b=toDate(p.dogum);if(b){const a=ymd(b,today0()).y;if(a<=18||a>=50) g=Math.max(g,20);}
+  return String(g);
+}
+function pval(p,k){
+  if(!p) return '';
+  if(Object.prototype.hasOwnProperty.call(p,'_'+k)) return p['_'+k];
+  if(k==='kidem') return kidemStr(p);
+  if(k==='izin_hakki') return izinHakki(p);
+  const f=PFIELDS.find(x=>x.k===k);
+  return f&&f.type==='date'?(p[k]?fmtD(p[k]):''):String(p[k]??'');
+}
+function pdataOf(p){const o={};for(const f of PFIELDS) o[f.k]=p[f.k]||'';o._kidem=kidemStr(p);o._izin_hakki=izinHakki(p);return o;}
+const activePeople=()=>C.people.filter(p=>!p.cikis);
+function peopleHTML(){
+  const tdocs=tebligDocs(),act=activePeople(),gone=C.people.filter(p=>p.cikis);
+  const row=p=>{const ak=tdocs.filter(d=>ackOk(p,d)).length,ih=izinHakki(p);
+    return `<tr><td><a href="#personel/${esc(p.id)}">${esc(p.ad)}</a></td><td>${esc(p.pozisyon)}</td><td>${esc(p.bolum)}</td><td class="mono nowrap">${fmtD(p.ise_giris)}</td><td class="nowrap">${esc(kidemStr(p))||'—'}</td><td class="mono">${ih?ih+' gün':'—'}</td><td>${p.cikis?`<span class="chip none">Ayrıldı ${fmtD(p.cikis)}</span>`:tdocs.length?`<span class="chip ${ak===tdocs.length?'ok':'warn'}">${ak}/${tdocs.length}</span>`:'—'}</td></tr>`;};
+  return `<div class="wrap">
+  <div class="page-h"><div><div class="crumb">${esc(coName(C))}</div><h1>Personel</h1><p class="lead muted">Çalışan kartları yazı ve formlara kendiliğinden dolar; kıdem ve yıllık izin hakkı hesaplanır, tebliğ ve eğitim tarihleri takip edilir.</p></div>
+    <div class="actions"><button class="btn" data-act="p-paste">Listeden yapıştır</button><button class="btn primary" data-act="p-new">+ Personel ekle</button></div></div>
+  ${C.people.length?`<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Adı soyadı</th><th>Pozisyon</th><th>Bölüm</th><th>İşe giriş</th><th>Kıdem</th><th>İzin hakkı</th><th>Tebliğ</th></tr></thead><tbody>${act.map(row).join('')}${gone.map(row).join('')}</tbody></table></div>
+  <p class="muted small">${act.length} aktif çalışan${gone.length?`, ${gone.length} ayrılmış`:''}. Tebliğ sütunu, yürürlükteki politika belgelerinden kaçının son sürümünün tebliğ edildiğini gösterir. Bilgiler yalnız bu tarayıcıda saklanır; T.C. kimlik numarası gibi verileri girerken KVKK aydınlatma metnini çalışanlara verin.</p>`
+  :'<div class="card"><p style="margin:0">Henüz personel yok. Tek tek ekleyebilir ya da Excel’den ad, T.C., pozisyon, bölüm ve işe giriş tarihi sütunlarını yapıştırabilirsiniz.</p></div>'}
+</div>`;
+}
+function personHTML(id){
+  const p=C.people.find(x=>x.id===id);
+  if(!p) return '<div class="wrap"><h1>Personel bulunamadı</h1><p><a href="#personel">Personel listesine dön</a></p></div>';
+  const due=personDue(p).map(it=>({...it,st:dueStatus(it)}));
+  const recs=C.records.filter(r=>r.pid===p.id),tdocs=tebligDocs();
+  const fillables=C.docs.filter(d=>pub(d)&&fillableDoc(d));
+  const info=PFIELDS.filter(f=>f.k!=='ad').map(f=>`<div><span>${esc(f.l)}</span>${esc(pval(p,f.k))||'—'}</div>`).join('');
+  return `<div class="wrap">
+  <div class="page-h"><div><div class="crumb"><a href="#personel">Personel</a></div><h1>${esc(p.ad)}</h1>
+    <div class="chips">${p.pozisyon?`<span class="chip">${esc(p.pozisyon)}</span>`:''}${p.bolum?`<span class="chip">${esc(p.bolum)}</span>`:''}${kidemStr(p)?`<span class="chip">Kıdem ${esc(kidemStr(p))}</span>`:''}${izinHakki(p)?`<span class="chip">Yıllık izin hakkı ${izinHakki(p)} gün</span>`:''}${p.cikis?'<span class="chip none">Ayrıldı</span>':''}</div></div>
+    <div class="actions"><select data-change="p-fill" data-pid="${esc(p.id)}" aria-label="Evrak düzenle" style="width:auto"><option value="">Evrak düzenle…</option>${fillables.map(d=>`<option value="${esc(d.id)}">${esc(d.title)}</option>`).join('')}</select><button class="btn" data-act="p-edit" data-pid="${esc(p.id)}">Düzenle</button><button class="btn danger" data-act="p-del" data-pid="${esc(p.id)}">Sil</button></div></div>
+  <div class="card pgrid">${info}</div>
+  <h2 class="h2">Yaklaşan tarihler</h2>
+  ${due.length?dueListHTML(due):'<p class="muted">İşe giriş, eğitim ve muayene tarihlerini girince burada hesaplanır.</p>'}
+  <h2 class="h2">Tebliğ durumu</h2>
+  ${tdocs.length?`<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Belge</th><th>Yürürlükteki sürüm</th><th>Tebliğ edilen</th><th>Durum</th><th></th></tr></thead><tbody>${tdocs.map(d=>{const a=ackOf(p,d),r=pub(d),ok=ackOk(p,d);return `<tr><td><a href="#belge/${esc(d.id)}">${esc(d.title)}</a></td><td class="mono">Rev.${revStr(r.rev)}</td><td class="mono">${a?`Rev.${revStr(a.rev)} · ${fmtD(a.date)}`:'—'}</td><td>${ok?'<span class="chip ok">Güncel</span>':a?'<span class="chip warn">Eski sürüm</span>':'<span class="chip warn">Tebliğ edilmedi</span>'}</td><td>${ok?'':`<button class="btn sm" data-act="teb-one" data-doc="${esc(d.id)}" data-pid="${esc(p.id)}">Bugün tebliğ edildi</button>`}</td></tr>`;}).join('')}</tbody></table></div>`:'<p class="muted">Yayınlanmış politika belgesi yok.</p>'}
+  <h2 class="h2">Evrak</h2>
+  ${recs.length?recTableHTML(recs):'<p class="muted">Bu çalışan için düzenlenmiş evrak yok. Yukarıdaki “Evrak düzenle” ile yazı ya da form hazırlayabilirsiniz.</p>'}
+</div>`;
+}
+async function personDlg(pid){
+  const p=pid?C.people.find(x=>x.id===pid):null;
+  const inp=f=>{const v=esc(p?p[f.k]:'');return `<label${f.wide?' style="grid-column:1/-1"':''}>${esc(f.l)}${f.type==='textarea'?`<textarea name="${f.k}" rows="2">${v}</textarea>`:`<input name="${f.k}" type="${f.type==='date'?'date':'text'}" value="${v}"${f.req?' required':''}${f.k==='ad'?' autofocus':''}${f.k==='tc'?' inputmode="numeric" maxlength="11"':''}>`}</label>`;};
+  const r=await dlg(`<form method="dialog"><h2>${p?'Personeli düzenle':'Personel ekle'}</h2><div class="row2">${PFIELDS.map(inp).join('')}</div><p class="muted small">Eğitim ve muayene tarihleri Yasal takvimde yenileme tarihini hesaplamak için kullanılır.</p>${foot(p?'Kaydet':'Ekle')}</form>`,true);
+  if(!r) return;
+  if(!(await ensureUser())) return;
+  const o=p||{id:uid(),acks:{}};const ch=[];
+  for(const f of PFIELDS){const v=String(r.fd.get(f.k)||'').trim();if(p&&String(p[f.k]||'')!==v&&f.k!=='tc') ch.push(f.l);o[f.k]=v;}
+  if(!p){C.people.push(o);addLog(C,{act:'personel',text:`Personel eklendi: ${o.ad}`,note:[o.pozisyon,o.bolum].filter(Boolean).join(' · ')});}
+  else addLog(C,{act:'personel',text:`Personel kartı güncellendi: ${o.ad}`,note:ch.length?'Değişen alanlar: '+ch.join(', '):''});
+  persist();go('personel/'+o.id);toast(p?'Kart güncellendi.':'Personel eklendi.');
+}
+async function personDel(pid){
+  const p=C.people.find(x=>x.id===pid);if(!p) return;
+  const ok=await confirmDlg('Personel kartı silinsin mi?',`${p.ad} kartı silinir. Bu çalışana düzenlenmiş evraklar kayıt defterinde kalır. Ayrılan çalışanlar için kartı silmek yerine “İşten ayrılış tarihi” girmeniz önerilir.`,'Kartı sil',true);
+  if(!ok) return;
+  C.people=C.people.filter(x=>x!==p);
+  addLog(C,{act:'personel',text:`Personel kartı silindi: ${p.ad}`});
+  persist();go('personel');
+}
+function parseDay(s){
+  s=String(s||'').trim();let m;
+  if((m=s.match(/^(\d{1,2})[./-](\d{1,2})[./-](\d{4})$/))) return `${m[3]}-${pad2(m[2])}-${pad2(m[1])}`;
+  if(/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+  return '';
+}
+async function pasteDlg(){
+  const r=await dlg(`<form method="dialog"><h2>Listeden yapıştır</h2><p class="muted">Excel’den sütunları şu sırayla kopyalayıp yapıştırın: <b>Adı soyadı · T.C. kimlik no · Pozisyon · Bölüm · İşe giriş tarihi</b>. Her satır bir çalışandır; boş sütun bırakılabilir.</p><label>Liste<textarea name="t" rows="10" required placeholder="Ayşe Yılmaz&#9;&#9;Muhasebe Uzmanı&#9;Finans&#9;01.03.2024"></textarea></label>${foot('Ekle')}</form>`,true);
+  if(!r) return;
+  if(!(await ensureUser())) return;
+  const rows=String(r.fd.get('t')).split(/\r?\n/).map(l=>l.split(/\t|;/).map(x=>x.trim())).filter(a=>a[0]);
+  for(const a of rows) C.people.push({id:uid(),acks:{},...Object.fromEntries(PFIELDS.map(f=>[f.k,''])),ad:a[0],tc:(a[1]||'').replace(/\D/g,'').slice(0,11),pozisyon:a[2]||'',bolum:a[3]||'',ise_giris:parseDay(a[4])});
+  addLog(C,{act:'personel',text:`${rows.length} personel listeden eklendi`});
+  persist();render();toast(`${rows.length} personel eklendi.`);
+}
+
+/* ---------- Tebliğ takibi ---------- */
+const tebligDocs=()=>C.docs.filter(d=>d.kind==='metin'&&pub(d));
+const ackOf=(p,d)=>p.acks&&p.acks[d.id];
+function ackOk(p,d){const a=ackOf(p,d),r=pub(d);return !!(a&&r&&a.rev===r.rev);}
+function tebligBoxHTML(d){
+  const r=pub(d);if(!r||d.kind!=='metin') return '';
+  const ps=activePeople();
+  if(!ps.length) return '<div class="card teb"><div class="muted small">Tebliğ takibi için <a href="#personel">Personel</a> sayfasından çalışan ekleyin. Her yeni revizyonda kimin yeni sürümü imzalamadığı burada görünür.</div></div>';
+  const ok=ps.filter(p=>ackOk(p,d)),wait=ps.filter(p=>!ackOk(p,d));
+  return `<div class="card teb"><div class="teb-h"><div><b>Tebliğ: Rev.${revStr(r.rev)} sürümü ${ok.length}/${ps.length} çalışana tebliğ edildi</b>${wait.length?`<div class="muted small">Bekleyen: ${wait.map(p=>esc(p.ad)+(ackOf(p,d)?' (eski sürüm)':'')).join(', ')}</div>`:''}</div>
+  <div class="actions"><button class="btn sm" data-act="teb-print">İmza listesi yazdır</button>${wait.length?'<button class="btn sm primary" data-act="teb-mark">Tebliğ edildi işaretle</button>':''}</div></div></div>`;
+}
+async function tebMarkDlg(d){
+  const r=pub(d),wait=activePeople().filter(p=>!ackOk(p,d));if(!r||!wait.length) return;
+  const x=await dlg(`<form method="dialog"><h2>Tebliğ edildi işaretle</h2><p class="muted">${esc(d.title)} Rev.${revStr(r.rev)} sürümünü imzalayan çalışanları seçin.</p><div class="chk-list">${wait.map(p=>`<label class="ckrow"><input type="checkbox" name="p" value="${esc(p.id)}" checked> ${esc(p.ad)}<span class="muted small">${esc(p.pozisyon)}</span></label>`).join('')}</div><label>Tebliğ tarihi<input type="date" name="date" required value="${dayInput()}"></label>${foot('İşaretle')}</form>`);
+  if(!x) return;
+  if(!(await ensureUser())) return;
+  const ids=x.fd.getAll('p'),date=String(x.fd.get('date'));
+  for(const p of C.people) if(ids.includes(p.id)){p.acks=p.acks||{};p.acks[d.id]={rev:r.rev,date};}
+  addLog(C,{act:'teblig',doc:d.id,docTitle:d.title,text:`Rev.${revStr(r.rev)} ${ids.length} çalışana tebliğ edildi`,list:C.people.filter(p=>ids.includes(p.id)).map(p=>p.ad)});
+  persist();render();toast('Tebliğ kaydedildi.');
+}
+async function tebOne(docId,pid){
+  const d=C.docs.find(x=>x.id===docId),p=C.people.find(x=>x.id===pid),r=d&&pub(d);if(!r||!p) return;
+  if(!(await ensureUser())) return;
+  p.acks=p.acks||{};p.acks[d.id]={rev:r.rev,date:dayInput()};
+  addLog(C,{act:'teblig',doc:d.id,docTitle:d.title,text:`Rev.${revStr(r.rev)} ${p.ad} adlı çalışana tebliğ edildi`});
+  persist();render();
+}
+function tebPrint(d){
+  const r=pub(d);if(!r) return;
+  const m={unvan:C.info.unvan||'',title:'Tebliğ ve İmza Listesi',no:docNo(C,d),yayin:fmtD(d.revisions[0].date),rev:revStr(r.rev),revT:r.rev?fmtD(r.date):'—'};
+  const rows=activePeople().map((p,i)=>`<tr><td>${i+1}</td><td>${esc(p.ad)}</td><td>${esc(p.pozisyon)}</td><td>${ackOk(p,d)?fmtD(ackOf(p,d).date):''}</td><td style="width:32%"></td></tr>`).join('')+Array.from({length:5},(_,i)=>`<tr><td>${activePeople().length+i+1}</td><td></td><td></td><td></td><td></td></tr>`).join('');
+  doPrint(`<div class="pdoc"><table class="ptable"><thead><tr><td>${docHeadHTML(m,true)}</td></tr></thead><tbody><tr><td><div class="md"><p><b>${esc(d.title)}</b> belgesinin <b>${esc(docNo(C,d))} Rev.${revStr(r.rev)}</b> sürümünü aldım, okudum ve anladım. Belgede yer alan kurallara uyacağımı beyan ederim.</p><table><thead><tr><th>Sıra</th><th>Adı soyadı</th><th>Pozisyon</th><th>Tarih</th><th>İmza</th></tr></thead><tbody>${rows}</tbody></table></div></td></tr></tbody></table></div>`,`${coName(C)} · Tebliğ listesi · ${docNo(C,d)} Rev.${revStr(r.rev)}`);
+}
+
+/* ---------- Yasal takvim ---------- */
+let dfil='all';
+function personDue(p){
+  const s=SY[C.info.tehlike_sinifi],out=[],L='#personel/'+p.id,g=toDate(p.ise_giris);
+  if(g){
+    const dn=addMonths(g,2);
+    if(dn>=addMonths(today0(),-1)) out.push({date:dn,title:`Deneme süresi bitişi: ${p.ad}`,sub:`İşe giriş ${fmtD(g)} · deneme süresi en çok 2 ay`,link:L});
+    const k=kidemOf(p);
+    if(k) out.push({date:addYears(g,k.y+1),title:`Yıllık izin hakedişi: ${p.ad}`,sub:`${k.y+1}. hizmet yılı dolar`,link:L});
+  }
+  if(s){
+    const e=toDate(p.son_egitim),m=toDate(p.son_muayene);
+    out.push({date:e?addYears(e,s.eg):null,title:`İSG eğitimi yenileme: ${p.ad}`,sub:e?`Son eğitim ${fmtD(e)} · ${s.eg} yılda bir`:'Son eğitim tarihi girilmedi',link:L});
+    out.push({date:m?addYears(m,s.mu):null,title:`Periyodik muayene: ${p.ad}`,sub:m?`Son muayene ${fmtD(m)} · ${s.mu} yılda bir`:'Son muayene tarihi girilmedi',link:L});
+  }
+  return out;
+}
+function dueItems(){
+  const s=SY[C.info.tehlike_sinifi],out=[];
+  const co=(k,t,yrs,per)=>{const d=toDate(C.info[k]);out.push({date:d&&yrs?addYears(d,yrs):null,title:t,sub:d?`Son: ${fmtD(d)} · ${per}`:`${FIELD_MAP[k].l} girilmedi`,link:'#sirket'});};
+  if(s){co('risk_tarihi','Risk değerlendirmesinin yenilenmesi',s.rk,`en geç ${s.rk} yılda bir`);co('acil_plan_tarihi','Acil durum planının yenilenmesi',s.rk,`en geç ${s.rk} yılda bir`);}
+  else out.push({date:null,title:'Tehlike sınıfı seçilmedi',sub:'Yenileme süreleri hesaplanamıyor',link:'#sirket'});
+  co('tatbikat_tarihi','Acil durum tatbikatı',1,'yılda en az bir kez');
+  const fc=roleDoc(C,'fazla_calisma');
+  out.push({date:new Date(today0().getFullYear()+1,0,1),title:'Fazla çalışma onaylarının yenilenmesi',sub:'Her yıl başında çalışanlardan alınır',link:fc?'#doldur/'+fc.id:'#kutuphane'});
+  for(const d of C.docs){const r=pub(d);if(r&&d.kind==='metin') out.push({date:addYears(toDate(r.date),1),title:`Belge gözden geçirme: ${d.title}`,sub:`Son revizyon ${fmtD(r.date)} · yılda bir gözden geçirilmesi önerilir`,link:'#belge/'+d.id});}
+  for(const p of activePeople()) out.push(...personDue(p));
+  return out.map(it=>({...it,st:dueStatus(it)})).sort((a,b)=>(a.date?a.date.getTime():-1)-(b.date?b.date.getTime():-1));
+}
+function dueStatus(it){
+  if(!it.date) return {cls:'miss',label:'Tarih yok'};
+  const n=Math.round((it.date-today0())/864e5);
+  if(n<0) return {cls:'late',label:`${-n} gün gecikti`};
+  if(n<=30) return {cls:'soon',label:n?`${n} gün kaldı`:'Bugün'};
+  return {cls:'plan',label:'Planlı'};
+}
+function dueListHTML(list){
+  return `<ul class="due-list">${list.map(it=>`<li class="due"><div><span class="st ${it.st.cls}">${esc(it.st.label)}</span><div class="mono small muted">${it.date?fmtD(it.date):''}</div></div><div><a href="${esc(it.link)}"><b>${esc(it.title)}</b></a><div class="muted small">${esc(it.sub)}</div></div></li>`).join('')}</ul>`;
+}
+function takvimHTML(){
+  const all=dueItems(),cnt=k=>all.filter(x=>x.st.cls===k).length;
+  const list=dfil==='all'?all:all.filter(x=>x.st.cls===dfil);
+  const tab=(k,l,n)=>`<button class="btn sm${dfil===k?' primary':''}" data-act="due-f" data-f="${k}">${l}${n!=null?` (${n})`:''}</button>`;
+  return `<div class="wrap">
+  <div class="page-h"><div><div class="crumb">${esc(coName(C))}</div><h1>Yasal takvim</h1><p class="lead muted">Tehlike sınıfına göre hesaplanan yenileme tarihleri, çalışanların eğitim, muayene, deneme süresi ve izin hakediş tarihleri.</p></div>
+    <div class="actions"><button class="btn" data-act="due-print">Yazdır</button></div></div>
+  <div class="actions" style="margin-bottom:10px">${tab('all','Tümü',all.length)}${tab('late','Geciken',cnt('late'))}${tab('soon','30 gün içinde',cnt('soon'))}${tab('miss','Tarihi eksik',cnt('miss'))}${tab('plan','Planlı',cnt('plan'))}</div>
+  ${list.length?dueListHTML(list):'<p class="muted">Bu grupta kayıt yok.</p>'}
+  <p class="muted small">Süreler: risk değerlendirmesi ve acil durum planı çok tehlikeli, tehlikeli ve az tehlikeli sınıfta en geç 2, 4 ve 6 yılda; İSG eğitimi 1, 2 ve 3 yılda; periyodik muayene 1, 3 ve 5 yılda bir yenilenir. Tatbikat yılda en az bir kez yapılır. Tarihleri Şirket bilgileri ve Personel kartlarından girin.</p>
+</div>`;
+}
+function duePrintHTML(){
+  const m={unvan:C.info.unvan||'',title:'Yasal Takvim',no:'Bilgilendirme listesi',yayin:fmtD(nowISO()),rev:'—',revT:'—'};
+  const rows=dueItems().map(it=>`<tr><td>${esc(it.st.label)}</td><td>${it.date?fmtD(it.date):'—'}</td><td>${esc(it.title)}</td><td>${esc(it.sub)}</td></tr>`).join('');
+  return `<div class="pdoc"><table class="ptable"><thead><tr><td>${docHeadHTML(m,true).replace('<th>Yayın tarihi</th>','<th>Basım tarihi</th>')}</td></tr></thead><tbody><tr><td><div class="md"><table><thead><tr><th>Durum</th><th>Tarih</th><th>İş</th><th>Açıklama</th></tr></thead><tbody>${rows}</tbody></table></div></td></tr></tbody></table></div>`;
+}
+
+/* ---------- Doldur, yazdır ve evrak kayıt defteri ---------- */
+let fst=null;
+let ef={doc:'',p:'',q:''};
+const isDyn=k=>k.startsWith('p:')||k==='bugun'||k==='evrak_no';
+const DYN_L={bugun:'Evrak tarihi',evrak_no:'Evrak sayısı'};
+const dynLabel=k=>k.startsWith('p:')?'Personel: '+(PLABEL[k.slice(2)]||k.slice(2)):(DYN_L[k]||k);
+function dynVal(k,f){
+  if(k==='bugun') return f.date?fmtD(f.date):'';
+  if(k==='evrak_no') return f.no||'';
+  return pval(f.person,k.slice(2));
+}
+function fillableDoc(d){return d.kind!=='metin'||d.sections.some(s=>/\[\[|\{\{\s*p:|^\s*\[(alan|uzun|secim|kutu)\]/m.test(s.body));}
+function fkey(f,base){f.seen[base]=(f.seen[base]||0)+1;return f.seen[base]>1?base+'#'+f.seen[base]:base;}
+function plainFill(s,cx){return String(s).replace(PH_RE,(m,k)=>isDyn(k)?(cx.fill?dynVal(k,cx.fill):''):((cx.info&&k in cx.info?cx.info[k]:resolve(C,k))||''));}
+function nextEvrakNo(c,date){
+  const y=(toDate(date)||new Date()).getFullYear(),pre=(String(c.info.kod||'').trim()||'EVR')+'-'+y+'-';
+  let mx=0;for(const r of c.records) if(r.no.startsWith(pre)) mx=Math.max(mx,parseInt(r.no.slice(pre.length),10)||0);
+  return pre+String(mx+1).padStart(4,'0');
+}
+function letterHeadHTML({no,date,print}){
+  const co=[C.info.telefon,C.info.eposta,C.info.web].filter(Boolean).join(' · ');
+  return `<div class="lhead"><div class="lh-logo">${logoHTML(print)}</div><div class="lh-co"><b>${esc(C.info.unvan||'Şirket ünvanı')}</b>${C.info.adres?`<span>${esc(resolve(C,'adres'))}</span>`:''}${co?`<span>${esc(co)}</span>`:''}</div></div>
+  <div class="lh-meta"><span>Sayı: <b>${no?esc(no):'……………………'}</b></span><span>Tarih: <b>${date?fmtD(date):'…… / …… / 20……'}</b></span></div>`;
+}
+function recMeta(d,rev,snap){
+  const f=d&&d.revisions[0],rr=d&&d.revisions.find(x=>x.rev===rev);
+  return {unvan:snap.info.unvan||C.info.unvan||'',title:snap.title,no:[snap.info.kod,snap.code].filter(Boolean).join('-'),yayin:f?fmtD(f.date):'—',rev:revStr(rev),revT:rr&&rr.rev?fmtD(rr.date):'—'};
+}
+function fillDocHTML(kind,head,snap,cx,no,date){
+  const line=kind==='yazi'?'':`<div class="rec-line">Evrak sayısı: <b>${no?esc(no):'kayıtta verilir'}</b> · Tarih: <b>${fmtD(date)}</b></div>`;
+  return head+line+snap.sections.map((s,i)=>roSecHTML(kind,s,i,cx)).join('');
+}
+function fillHTML(id,pre){
+  const d=C.docs.find(x=>x.id===id);
+  if(!d) return '<div class="wrap"><h1>Belge bulunamadı</h1></div>';
+  const r=pub(d);
+  if(!r) return `<div class="wrap"><div class="crumb"><a href="#belge/${esc(d.id)}">${esc(d.title)}</a></div><h1>Evrak düzenle</h1><div class="note warn" style="margin-top:14px"><div>Bu belge henüz yayınlanmadı. Evrak düzenlemek için önce belgeyi yayınlayın; böylece her evrakın hangi sürümle düzenlendiği kayıtlı kalır.</div><a class="btn sm" href="#belge/${esc(d.id)}">Belgeye git</a></div></div>`;
+  if(!fst||fst.docId!==d.id) fst={docId:d.id,pid:pre||'',date:dayInput(),vals:{}};
+  const person=C.people.find(p=>p.id===fst.pid)||null;
+  const cx=mkCtx(C,{info:r.snapshot.info,fill:{mode:'edit',vals:fst.vals,person,date:fst.date,no:null,seen:{},tbl:0}});
+  const head=d.kind==='yazi'?letterHeadHTML({no:null,date:fst.date}):docHeadHTML(recMeta(d,r.rev,r.snapshot));
+  const opts=C.people.filter(p=>!p.cikis||p.id===fst.pid).map(p=>`<option value="${esc(p.id)}"${p.id===fst.pid?' selected':''}>${esc(p.ad)}${p.pozisyon?' · '+esc(p.pozisyon):''}</option>`).join('');
+  return `<div class="wrap">
+  <div class="page-h"><div><div class="crumb"><a href="#belge/${esc(d.id)}">${esc(d.title)}</a></div><h1>Evrak düzenle</h1><p class="lead muted">Belgenin yayındaki Rev.${revStr(r.rev)} sürümü doldurulur. Kaydedince evrak kayıt defterine <b class="mono">${esc(nextEvrakNo(C,fst.date))}</b> sayısıyla işlenir ve yazdırılır.</p></div></div>
+  <div class="card fill-bar"><label>Personel<select data-change="fill-person"><option value="">Seçilmedi, elle yazılacak</option>${opts}</select></label><label>Evrak tarihi<input type="date" data-change="fill-date" value="${esc(fst.date)}"></label><div class="actions"><button class="btn primary" data-act="fill-save">Kaydet ve yazdır</button><button class="btn" data-act="fill-cancel">Vazgeç</button></div></div>
+  ${C.people.length?'':'<p class="muted small">İpucu: Personel sayfasına çalışan eklerseniz ad, pozisyon, işe giriş tarihi gibi bilgiler kendiliğinden dolar.</p>'}
+  <div class="paper ${d.kind}" id="fillPaper">${fillDocHTML(d.kind,head,r.snapshot,cx,null,fst.date)}</div>
+</div>`;
+}
+function collectFill(){
+  const vals={};
+  for(const el of $$('#fillPaper [data-fk]')){
+    const k=el.dataset.fk;
+    if(el.type==='checkbox'){if(el.dataset.bool) vals[k]=el.checked;else{vals[k]=vals[k]||[];if(el.checked) vals[k].push(el.dataset.opt);}}
+    else vals[k]=el.value;
+  }
+  return vals;
+}
+function mkRecord(c,d,person,date,vals,o={}){
+  const r=pub(d),no=nextEvrakNo(c,date);
+  const rec={id:uid(),no,date,ts:o.ts||nowISO(),user:o.user||meta.user||'Belirtilmedi',docId:d.id,docTitle:r.snapshot.title,docNo:[r.snapshot.info.kod,r.snapshot.code].filter(Boolean).join('-'),rev:r.rev,kind:d.kind,snap:r.snapshot,pid:person?person.id:'',pname:person?person.ad:'',pdata:person?pdataOf(person):null,vals,iptal:null};
+  c.records.unshift(rec);
+  addLog(c,{act:'evrak',doc:d.id,docTitle:d.title,text:`Evrak düzenlendi: ${no} · ${rec.docTitle}${person?' · '+person.ad:''}`,ts:o.ts,user:o.user});
+  return rec;
+}
+async function fillSave(){
+  const d=C.docs.find(x=>x.id===fst.docId);if(!d||!pub(d)) return;
+  if(!(await ensureUser())) return;
+  const person=C.people.find(p=>p.id===fst.pid)||null;
+  const rec=mkRecord(C,d,person,fst.date,collectFill());
+  persist();fst=null;go('evrak/'+rec.id);printRecord(rec);
+}
+function recCtx(rec,print){return mkCtx(C,{info:rec.snap.info,print,fill:{mode:'view',vals:rec.vals,person:rec.pdata,date:rec.date,no:rec.no,seen:{},tbl:0}});}
+function recHeadHTML(rec,print){
+  const d=C.docs.find(x=>x.id===rec.docId);
+  return rec.kind==='yazi'?letterHeadHTML({no:rec.no,date:rec.date,print}):docHeadHTML(recMeta(d,rec.rev,rec.snap),print);
+}
+function recordPrintHTML(rec){
+  const body=rec.snap.sections.map((s,i)=>roSecHTML(rec.kind,s,i,recCtx(rec,true))).join('');
+  const line=rec.kind==='yazi'?'':`<div class="rec-line">Evrak sayısı: <b>${esc(rec.no)}</b> · Tarih: <b>${fmtD(rec.date)}</b></div>`;
+  return `<div class="pdoc"><table class="ptable"><thead><tr><td>${recHeadHTML(rec,true)}</td></tr></thead><tbody><tr><td><div class="${rec.kind}">${line}${body}</div></td></tr></tbody></table>${rec.iptal?'<div class="draftmark">İPTAL</div>':''}</div>`;
+}
+const recFooter=rec=>`${coName(C)} · ${rec.no} · ${rec.docNo} Rev.${revStr(rec.rev)}`;
+function printRecord(rec){if(rec) doPrint(recordPrintHTML(rec),recFooter(rec));}
+function dueWidget(){
+  const it=dueItems().filter(x=>x.st.cls==='late'||x.st.cls==='soon').slice(0,6);
+  return it.length?`<h2 class="h2">Geciken ve yaklaşan işler</h2>${dueListHTML(it)}<p><a href="#takvim">Yasal takvimin tamamı →</a></p>`:'';
+}
+function recTableHTML(list){
+  return `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Sayı</th><th>Tarih</th><th>Belge</th><th>Personel</th><th>Düzenleyen</th><th>Durum</th></tr></thead><tbody>${list.map(r=>`<tr><td class="mono nowrap"><a href="#evrak/${esc(r.id)}">${esc(r.no)}</a></td><td class="mono nowrap">${fmtD(r.date)}</td><td>${esc(r.docTitle)}</td><td>${r.pid?`<a href="#personel/${esc(r.pid)}">${esc(r.pname)}</a>`:esc(r.pname||'—')}</td><td>${esc(r.user)}</td><td>${r.iptal?'<span class="chip warn">İptal</span>':'<span class="chip ok">Geçerli</span>'}</td></tr>`).join('')}</tbody></table></div>`;
+}
+function filteredRecs(){
+  const q=ef.q.trim().toLocaleLowerCase('tr-TR');
+  return C.records.filter(r=>(!ef.doc||r.docId===ef.doc)&&(!ef.p||r.pid===ef.p)&&(!q||[r.no,r.docTitle,r.pname,r.user].join(' ').toLocaleLowerCase('tr-TR').includes(q)));
+}
+function recordsHTML(){
+  const docs=[...new Map(C.records.map(r=>[r.docId,r.docTitle])).entries()];
+  const fillables=C.docs.filter(d=>pub(d)&&fillableDoc(d));
+  return `<div class="wrap">
+  <div class="page-h"><div><div class="crumb">Araçlar</div><h1>Evrak kayıt defteri</h1><p class="lead muted">Yazılar ve formlar doldurulup kaydedildiğinde sıra numarası alır (${esc((C.info.kod||'EVR')+'-'+today0().getFullYear()+'-0001')} gibi). Kayıtlar silinmez; gerekirse gerekçesiyle iptal edilir.</p></div>
+    <div class="actions"><select data-change="p-fill" aria-label="Yeni evrak" style="width:auto"><option value="">+ Yeni evrak…</option>${fillables.map(d=>`<option value="${esc(d.id)}">${esc(d.title)}</option>`).join('')}</select><button class="btn" data-act="evrak-csv">Excel (CSV) indir</button></div></div>
+  <div class="filters"><select data-change="ev-doc" aria-label="Belge"><option value="">Tüm belgeler</option>${docs.map(([id,t])=>`<option value="${esc(id)}"${ef.doc===id?' selected':''}>${esc(t)}</option>`).join('')}</select><select data-change="ev-p" aria-label="Personel"><option value="">Tüm personel</option>${C.people.map(p=>`<option value="${esc(p.id)}"${ef.p===p.id?' selected':''}>${esc(p.ad)}</option>`).join('')}</select><input type="search" data-input="ev-q" placeholder="Sayı, belge ya da ad ara" value="${esc(ef.q)}"></div>
+  <div id="recList">${C.records.length?recTableHTML(filteredRecs()):'<p class="muted">Henüz evrak yok. Bir yazı ya da form açıp “Evrak düzenle”ye basın.</p>'}</div>
+</div>`;
+}
+function recordHTML(id){
+  const rec=C.records.find(r=>r.id===id);
+  if(!rec) return '<div class="wrap"><h1>Evrak bulunamadı</h1><p><a href="#evrak">Kayıt defterine dön</a></p></div>';
+  const cx=recCtx(rec,false);
+  return `<div class="wrap">
+  <div class="page-h"><div><div class="crumb"><a href="#evrak">Evrak kayıt defteri</a></div><h1>${esc(rec.no)}</h1>
+    <div class="chips"><span class="chip">${esc(rec.docTitle)}</span><span class="chip mono">${esc(rec.docNo)} Rev.${revStr(rec.rev)}</span>${rec.pname?`<span class="chip">${esc(rec.pname)}</span>`:''}<span class="chip">Düzenleyen: ${esc(rec.user)} · ${fmtDT(rec.ts)}</span>${rec.iptal?'<span class="chip warn">İptal edildi</span>':''}</div></div>
+    <div class="actions"><button class="btn primary" data-act="rec-print" data-rid="${esc(rec.id)}">Yazdır / PDF</button>${rec.iptal?'':`<button class="btn danger" data-act="rec-cancel" data-rid="${esc(rec.id)}">İptal et</button>`}</div></div>
+  ${rec.iptal?`<div class="note warn"><div><b>Bu evrak iptal edildi.</b> ${esc(rec.iptal.user)} · ${fmtDT(rec.iptal.ts)} · Gerekçe: ${esc(rec.iptal.reason)}</div></div>`:''}
+  <div class="paper ${rec.kind}">${fillDocHTML(rec.kind,recHeadHTML(rec,false),rec.snap,cx,rec.no,rec.date)}</div>
+</div>`;
+}
+async function recCancel(rid){
+  const rec=C.records.find(r=>r.id===rid);if(!rec) return;
+  const r=await dlg(`<form method="dialog"><h2>Evrak iptal edilsin mi?</h2><p class="muted">${esc(rec.no)} sayılı evrak kayıt defterinde kalır, “iptal” olarak işaretlenir ve çıktısında İPTAL filigranı görünür.</p><label>İptal gerekçesi<textarea name="why" required rows="2"></textarea></label>${foot('İptal et',true)}</form>`);
+  if(!r) return;
+  if(!(await ensureUser())) return;
+  rec.iptal={ts:nowISO(),user:meta.user,reason:String(r.fd.get('why')).trim()};
+  addLog(C,{act:'evrak',doc:rec.docId,docTitle:rec.docTitle,text:`Evrak iptal edildi: ${rec.no}`,note:rec.iptal.reason});
+  persist();render();
+}
+function exportRecordsCSV(){
+  const cell=x=>{let s=String(x??'');if(/^[=+\-@\t\r]/.test(s)) s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};
+  const rows=[['Sayı','Tarih','Belge','Doküman no','Rev.','Personel','Düzenleyen','Durum']];
+  for(const r of C.records) rows.push([r.no,fmtD(r.date),r.docTitle,r.docNo,revStr(r.rev),r.pname,r.user,r.iptal?'İptal: '+r.iptal.reason:'Geçerli']);
+  download('﻿'+rows.map(r=>r.map(cell).join(';')).join('\r\n'),`KurumKitabi_EvrakKayit_${slug(coName(C))}_${dayInput()}.csv`,'text/csv;charset=utf-8');
 }
 
 /* ---------- Olaylar ---------- */
@@ -2341,11 +3507,17 @@ const ACT={
   ins:b=>insertSnip(b.dataset.snip),help:helpDlg,'dlg-close':closeDlg,
   'rev-diff':b=>{const i=+b.dataset.i,row=$('#revx-'+i);if(!row) return;if(row.hidden){row.firstElementChild.innerHTML=revDiffHTML(curDoc(),i);row.hidden=false;b.textContent='Gizle';}else{row.hidden=true;b.textContent='Farklar';}},
   'rev-view':b=>{const d=curDoc(),i=+b.dataset.i,r=d.revisions[i],cx=mkCtx(C,{info:r.snapshot.info});
-    dlg(`<div class="dlg-in"><div class="dlg-top"><h2>${esc(r.snapshot.title)} · Rev.${revStr(r.rev)}</h2><div class="actions"><button class="btn" data-act="print-rev" data-i="${i}">Bu sürümü yazdır</button><button class="btn" data-act="dlg-close">Kapat</button></div></div><p class="muted small">${fmtD(r.date)} tarihinde yayınlanan sürüm. Şirket bilgileri o günkü değerleriyle gösterilir.</p><div class="paper ${d.kind}">${docHeadHTML(headMeta(d,i))}${r.snapshot.sections.map((s,k)=>roSecHTML(d.kind,s,k,cx)).join('')}</div></div>`,true);},
+    dlg(`<div class="dlg-in"><div class="dlg-top"><h2>${esc(r.snapshot.title)} · Rev.${revStr(r.rev)}</h2><div class="actions"><button class="btn" data-act="print-rev" data-i="${i}">Bu sürümü yazdır</button><button class="btn" data-act="dlg-close">Kapat</button></div></div><p class="muted small">${fmtD(r.date)} tarihinde yayınlanan sürüm. Şirket bilgileri o günkü değerleriyle gösterilir.</p><div class="paper ${d.kind}">${docHeadHTML(headMeta(d,i),false,d.kind)}${r.snapshot.sections.map((s,k)=>roSecHTML(d.kind,s,k,cx)).join('')}</div></div>`,true);},
   'print-rev':async b=>{const d=curDoc(),i=+b.dataset.i;await closeDlg();printDoc(d,i);},
   wiz:b=>{if(b.dataset.v==='1') wz.res=WQ[wz.step].yes; else if(wz.step<2) wz.step++; else wz.res='yok';$('#wiz').innerHTML=wizHTML();},
   'wiz-reset':()=>{wz={step:0,res:null};$('#wiz').innerHTML=wizHTML();},
   csv:exportCSV,
+  'lib-add':b=>libAdd([b.dataset.role]),'lib-add-cat':b=>libAdd(allTemplates().filter(t=>t.cat===b.dataset.cat).map(t=>t.role)),'lib-add-all':()=>libAdd(allTemplates().map(t=>t.role)),
+  'p-new':()=>personDlg(null),'p-edit':b=>personDlg(b.dataset.pid),'p-del':b=>personDel(b.dataset.pid),'p-paste':pasteDlg,
+  fill:()=>{fst=null;go('doldur/'+curDoc().id);},'fill-save':fillSave,'fill-cancel':()=>{const id=fst&&fst.docId;fst=null;go(id?'belge/'+id:'evrak');},
+  'rec-print':b=>printRecord(C.records.find(r=>r.id===b.dataset.rid)),'rec-cancel':b=>recCancel(b.dataset.rid),'evrak-csv':exportRecordsCSV,
+  'teb-mark':()=>tebMarkDlg(curDoc()),'teb-print':()=>tebPrint(curDoc()),'teb-one':b=>tebOne(b.dataset.doc,b.dataset.pid),
+  'due-f':b=>{dfil=b.dataset.f;render();},'due-print':()=>doPrint(duePrintHTML(),coName(C)+' · Yasal takvim'),
 };
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-act]');if(!b||b.disabled) return;
@@ -2359,6 +3531,11 @@ document.addEventListener('dblclick',e=>{
 document.addEventListener('change',e=>{
   const t=e.target;
   if(t.dataset.field){onFieldChange(t);return;}
+  if(t.dataset.fk&&t.type==='checkbox'&&fst){
+    const k=t.dataset.fk;
+    fst.vals[k]=t.dataset.bool?t.checked:$$('#fillPaper input[type=checkbox]').filter(x=>x.dataset.fk===k&&x.checked).map(x=>x.dataset.opt);
+    return;
+  }
   if(t.id==='logoFile'){loadLogo(t.files[0]);t.value='';return;}
   if(t.id==='importFile'){importBackup(t.files[0]);t.value='';return;}
   const k=t.dataset.change;
@@ -2366,11 +3543,16 @@ document.addEventListener('change',e=>{
   else if(k==='log-doc'){lf.doc=t.value;$('#logList').innerHTML=logListHTML(filteredLog());}
   else if(k==='ins-ph'&&t.value){insertSnip(null,`{{${t.value}}}`);t.value='';}
   else if(k==='ins-field'&&t.value){insertSnip(t.value);t.value='';}
+  else if(k==='fill-person'){fst.pid=t.value;render();}
+  else if(k==='fill-date'){if(t.value){fst.date=t.value;render();}}
+  else if(k==='p-fill'&&t.value){fst=null;go('doldur/'+t.value+(t.dataset.pid?'/'+t.dataset.pid:''));}
+  else if(k==='ev-doc'){ef.doc=t.value;$('#recList').innerHTML=recTableHTML(filteredRecs());}
+  else if(k==='ev-p'){ef.p=t.value;$('#recList').innerHTML=recTableHTML(filteredRecs());}
   else if(k==='tpl-pick'){
-    const o=t.selectedOptions[0],f=t.form,tp=t.value?makeDocs().find(x=>x.role===t.value):null;
+    const o=t.selectedOptions[0],f=t.form,tp=t.value?allTemplates().find(x=>x.role===t.value):null;
     f.title.value=tp?o.dataset.title:'';f.code.value=tp?o.dataset.code:'';
-    if(tp) f.kind.value=tp.kind;
-    f.kind.disabled=!!tp;
+    if(tp){f.kind.value=tp.kind;f.cat.value=tp.cat;}
+    f.kind.disabled=!!tp;f.cat.disabled=!!tp;
   }
 });
 document.addEventListener('input',e=>{
@@ -2378,6 +3560,12 @@ document.addEventListener('input',e=>{
   if(t.id==='edBody'&&editing){editing.body=t.value;t._prev&&t._prev();}
   else if(t.id==='edTitle'&&editing){editing.title=t.value;}
   else if(t.dataset.input==='log-q'){lf.q=t.value;$('#logList').innerHTML=logListHTML(filteredLog());}
+  else if(t.dataset.input==='ev-q'){ef.q=t.value;$('#recList').innerHTML=recTableHTML(filteredRecs());}
+  else if(t.dataset.fk&&fst&&t.type!=='checkbox'){
+    fst.vals[t.dataset.fk]=t.value;
+    if(t.classList.contains('inl')) t.size=Math.min(60,Math.max(10,t.placeholder.length+2,t.value.length+2));
+    for(const o of $$('#fillPaper [data-fk]')) if(o!==t&&o.dataset.fk===t.dataset.fk&&o.type!=='checkbox') o.value=t.value;
+  }
 });
 document.addEventListener('keydown',e=>{
   if(!editing||$('#dlg').open) return;

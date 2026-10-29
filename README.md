@@ -15,16 +15,32 @@ Kurum Kitabı, şirketler için ücretsiz bir yönetmelik hazırlama aracıdır.
 - Değişiklikler “taslak” olarak birikir. Yayınlandığında belge numarası artar (ORM-ISG-01 Rev.02 → Rev.03), yayın tarihi ve onaylayan kaydedilir.
 - Eski sürümler saklanır; görüntülenebilir, yazdırılabilir ve sürümler arasındaki fark gösterilir.
 
-## Hazır taslaklar
+## Belge kütüphanesi (32 hazır taslak)
 
+**Politikalar ve el kitabı**
 - **Personel El Kitabı:** işe başlama, çalışma saatleri, ücret, izinler, davranış kuralları, kılık kıyafet ve kişisel bakım (saç, sakal, kadın ve erkek çalışanlar), gizlilik, disiplin, işten ayrılma ve okudum-anladım beyanı
-- **Görev Tanımları:** pozisyon bilgisi, amaç, görev ve sorumluluklar, yetkiler, aranan nitelikler ve İSG sorumlulukları; genel müdürden üretim operatörüne, iş güvenliği uzmanından ilk yardımcıya örnek pozisyonlar ve tebliğ tutanağı
-- **İş Sağlığı ve Güvenliği Kuralları:** tanımlar, görev ve sorumluluklar, genel kurallar, KKD, bildirimler, iş kazası anında yapılacaklar, çalışmaktan kaçınma hakkı, acil durumlar, eğitim ve sağlık gözetimi
-- **Tehlikeli Durum Bildirim Formu**
-- **Ramak Kala Olay Bildirim Formu**
-- **İş Kazası Bildirim ve Araştırma Formu**
+- **Görev Tanımları:** pozisyon bilgisi, amaç, görev ve sorumluluklar, yetkiler, aranan nitelikler ve İSG sorumlulukları; 10 örnek pozisyon ve tebliğ tutanağı
+- **Çalışan KVKK Aydınlatma Metni** ve **Uzaktan ve Hibrit Çalışma Politikası**
 
-Eğitim sıklığı, eğitim süresi, periyodik muayene ve risk değerlendirmesi yenileme süreleri seçilen tehlike sınıfına göre yazılır. Şirkete özel talimat ve formlar da eklenebilir.
+**İş sağlığı ve güvenliği**
+- **İSG Kuralları**, **Tehlikeli Durum**, **Ramak Kala** ve **İş Kazası** bildirim formları
+- **KKD Teslim ve Zimmet Tutanağı**, **İSG Eğitim Katılım Formu**, **İş İzni Formu** (sıcak iş, yüksekte ve kapalı alanda çalışma), **Ziyaretçi Bilgilendirme ve Giriş Formu**
+
+**İK yazıları** (antetli kâğıt düzeninde)
+- Görevlendirme, Görev Değişikliği Bildirimi (4857 md. 22 kabul beyanıyla), Terfi, Yazılı Uyarı (İhtar), Savunma İstem, Çalışma Belgesi, Teşekkür ve Takdir, örnek İstifa Dilekçesi
+
+**İK formları ve tutanaklar**
+- İzin Talep ve Onay, Fazla Çalışma Onayı, Tutanak, Savunma Tutanağı, Zimmet Tutanağı, İşe Giriş ve İşten Çıkış kontrol listeleri, Deneme Süresi ve Performans Değerlendirme, Öneri ve Fikir Formu, Gizli Şikâyet ve Bildirim Formu, Çıkar Çatışması ve Hediye Beyanı
+
+Eğitim sıklığı, eğitim süresi, periyodik muayene, risk değerlendirmesi yenileme süreleri ve iş güvenliği uzmanı belge sınıfı seçilen tehlike sınıfına göre yazılır. Şirkete özel talimat, yazı ve formlar da eklenebilir.
+
+## Personel, evrak, tebliğ ve takvim
+
+- **Personel kartları:** Çalışanların bilgileri bir kez girilir ya da Excel'den yapıştırılır. Kıdem ve 4857 md. 53'e göre yıllık izin hakkı (yaş kuralı dâhil) hesaplanır.
+- **Evrak düzenle:** Yazı ya da form açılır, personel seçilir. Ad, pozisyon, işe giriş tarihi gibi alanlar kendiliğinden dolar; kalan boşluklar ekranda yazılır.
+- **Evrak kayıt defteri:** Kaydedilen her evrak sıra numarası alır (ORM-2026-0001 gibi), hangi belge sürümüyle düzenlendiği saklanır. Kayıtlar silinmez, gerekçesiyle iptal edilir. Çalışanın tüm evrakı kartında birikir.
+- **Tebliğ takibi:** Politika belgeleri yeni revizyon aldığında yeni sürümü hangi çalışanın imzalamadığı görünür; imza listesi basılır.
+- **Yasal takvim:** Risk değerlendirmesi, acil durum planı, tatbikat, çalışanların İSG eğitimi ve periyodik muayenesi, deneme süresi bitişi, yıllık izin hakedişi ve belge gözden geçirme tarihleri hesaplanır; geciken ve yaklaşan işler genel bakışta görünür.
 
 “Hangi form?” sayfası üç soruda doğru bildirim formunu gösterir ve panoya asılacak A4 afiş olarak yazdırılabilir.
 
