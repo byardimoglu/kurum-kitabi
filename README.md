@@ -58,6 +58,8 @@ Not: Veriler tarayıcıda saklandığı için sayı sırası tek bilgisayar içi
 
 “Hangi form?” sayfası üç soruda doğru bildirim formunu gösterir ve panoya asılacak A4 afiş olarak yazdırılabilir.
 
+**Genel bakış** panosu yürürlükteki belgeleri, tebliği eksik çalışanları, yılın evrak sayısını ve geciken yasal işleri tek ekranda gösterir. **Belgeler** sayfası doküman ana listesini kategoriye göre süzer. Üst çubuktaki arama (Ctrl+K) belge, bölüm, personel ve evrak sayısını bulur.
+
 ## Yazdırma
 
 Her belge A4 olarak yazdırılır ya da PDF'e kaydedilir. Her sayfada logo, şirket ünvanı, doküman numarası, yayın tarihi, revizyon numarası ve revizyon tarihi bulunan başlık tablosu tekrarlanır. Metin belgelerinde kapak, içindekiler, revizyon tablosu ve onay alanı yer alır. Yayınlanmamış değişiklik içeren belgeler “TASLAK” filigranıyla basılır. “Tüm seti yazdır” bütün belgeleri doküman ana listesiyle birlikte tek çıktıda toplar.
